@@ -1,0 +1,54 @@
+<?php
+    include 'app/controllers/admin/master_data/post_kemlem.php';
+?>
+<main role="main" class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-title"><?= $page; ?></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <strong class="card-title">Form <?= $page; ?></strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="idKemlem">ID Kementrian/Lembaga</label>
+                            <input type="text" id="idKemlem" class="form-control" placeholder="Otomatis" disabled>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="simpleinput">Nama Kementrian/Lembaga</label>
+                            <input type="text" id="simpleinput" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                    </div>
+                </div> <!-- / .card -->
+            </div> <!-- .col-4 -->
+
+            <div class="col-md-8">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <strong class="card-title">Daftar <?= $page; ?></strong>
+                    </div>
+                    <div class="card-body">
+                        <table class="table datatables" id="dataTable-1">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php tampil_data($mysqli); ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- / .card -->
+            </div> <!-- .col-8 -->
+        </div> <!-- .row -->
+    </div> <!-- .container-fluid -->
+</main> <!-- main -->
