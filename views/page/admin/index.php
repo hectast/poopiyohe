@@ -3,6 +3,8 @@
         $page = "Beranda"; $title = $page . " | PO'OPIYOHE";
     } else if ($_GET['views_admin'] == "kemlem") {
         $page = "Kementrian/Lembaga"; $title = $page . " | PO'OPIYOHE";
+    } else if ($_GET['views_admin'] == "pemda") {
+        $page = "Pemerintah Daerah"; $title = $page . " | PO'OPIYOHE";
     }
 ?>
 
@@ -15,6 +17,8 @@
         include 'views/page/admin/beranda.php';
     } else if ($_GET['views_admin'] == "kemlem") {
         include 'views/page/admin/master_data/kemlem.php';
+    } else if ($_GET['views_admin'] == "pemda") {
+        include 'views/page/admin/master_data/pemda.php';
     } else {
         include 'views/page/admin/beranda.php';
     }
