@@ -4,11 +4,10 @@ include 'app/flash_message.php';
 
 
 if (isset($_POST['simpan'])) {
-	$idPemda = $_POST['idPemda'];
 	$namaPemda = $_POST['namaPemda'];
 
-	simpan_data()
-
+	simpan_data($namaPemda,$mysqli);
+	flash("msg_sukses_data", "Data berhasil di simpan");
 }
 
 if (isset($_POST['hapus_data'])) {

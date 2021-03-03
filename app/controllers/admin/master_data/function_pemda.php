@@ -22,7 +22,7 @@ function tampil_data($mysqli)
                     <span class="text-muted sr-only">Aksi</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Ubah</a>
+                    <a class="dropdown-item" href="pemda?id=<?= $id ?>">Ubah</a>
                     <form action="pemda" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
@@ -35,6 +35,13 @@ function tampil_data($mysqli)
         echo "";
         $no++;
     }
+}
+
+
+function simpan_data($namaPemda,$mysqli)
+{
+	$simpan = $mysqli->prepare("INSERT INTO pemda VALUES ('','$namaPemda')"); 
+	$simpan->execute();
 }
 
 function hapus_data($id, $mysqli)
