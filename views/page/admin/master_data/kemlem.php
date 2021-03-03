@@ -1,5 +1,5 @@
 <?php
-    include 'app/controllers/admin/master_data/post_kemlem.php';
+include 'app/controllers/admin/master_data/post_kemlem.php';
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -8,6 +8,18 @@
                 <h2 class="page-title"><?= $page; ?></h2>
             </div>
         </div>
+        <?php
+            if (isset($_SESSION['msg_hapus_data'])) {
+        ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_hapus_data'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        <?php
+            }
+        ?>
         <div class="row">
             <div class="col-md-4">
                 <div class="card shadow mb-4">

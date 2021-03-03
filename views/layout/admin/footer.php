@@ -12,40 +12,25 @@
 <script src="assets/js/apps.js"></script>
 <script src='assets/js/jquery.dataTables.min.js'></script>
 <script src='assets/js/dataTables.bootstrap4.min.js'></script>
+<!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
+<script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
 <script>
-    $('#dataTable-1').DataTable({
-        "responsive": true,
-        "autoWidth": true,
-    });
+  $('#dataTable-1').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
 </script>
-
-<script>
-    <?php
-    if (isset($_SESSION['msg_kirim_lamaran'])) {
-    ?>
-      toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "onClick": null,
-        "timeOut": 10000,
-        "extendedTimeOut": 5000
-      }
-      toastr.success("<?= flash('msg_kirim_lamaran'); ?>");
-    <?php
-    }
-    ?>
-  </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
+  window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-56159088-1');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-56159088-1');
 </script>
 </body>
 

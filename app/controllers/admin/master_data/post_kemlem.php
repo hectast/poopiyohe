@@ -12,5 +12,6 @@ if (isset($_POST['hapus_data'])) {
 
     if ($token_hapus === $token) {
         hapus_data($id, $mysqli);
+        flash("msg_hapus_data", "Data berhasil di hapus");
     }
 }
