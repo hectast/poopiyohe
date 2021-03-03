@@ -39,7 +39,8 @@ function tampil_data($mysqli)
 
 function hapus_data($id, $mysqli)
 {
-    $mysqli->query("DELETE FROM kemlem WHERE id='$id'");
+    $delete = $mysqli->prepare("DELETE FROM kemlem WHERE id='$id'");
+    $delete->execute();
 }
 
 ?>
