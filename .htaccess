@@ -7,6 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^admin$ admin.php
 RewriteRule ^beranda$ admin.php?views_admin=beranda
 RewriteRule ^kemlem$ admin.php?views_admin=kemlem
+RewriteRule ^pemda$ admin.php?views_admin=pemda
 
 RewriteRule ^([a-zA-Z0-9_-]+)$ admin.php?views_admin=$1
 
