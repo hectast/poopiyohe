@@ -1,3 +1,6 @@
+<?php
+include 'app/controllers/admin/daftar_audit/post_auditor.php';
+?>
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">

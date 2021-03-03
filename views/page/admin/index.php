@@ -23,9 +23,7 @@
         include 'views/page/admin/daftar_audit/auditor.php';
     } else if($_GET['views_admin'] == "auditan"){
         include 'views/page/admin/daftar_audit/auditan.php';
-
-    }
-    else {
+    } else {
         include 'views/page/admin/beranda.php';
     }
 ?>
