@@ -6,7 +6,9 @@ include 'app/flash_message.php';
 if (isset($_POST['simpan'])) {
 	$idPemda = $_POST['idPemda'];
 	$namaPemda = $_POST['namaPemda'];
-	
+
+	simpan_data()
+
 }
 
 if (isset($_POST['hapus_data'])) {
