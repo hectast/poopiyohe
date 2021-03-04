@@ -9,22 +9,32 @@ include 'app/controllers/admin/master_data/post_kemlem.php';
             </div>
         </div>
         <?php
-        if (isset($_SESSION['msg_tambah_data'])) {
+        if (isset($_SESSION['msg_simpan_data'])) {
         ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_tambah_data'); ?>
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_simpan_data'); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         <?php
-        return 0;
         }
 
         if (isset($_SESSION['msg_hapus_data'])) {
         ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_hapus_data'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+
+        if (isset($_SESSION['msg_ubah_data'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_ubah_data'); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -39,15 +49,17 @@ include 'app/controllers/admin/master_data/post_kemlem.php';
                         <strong class="card-title">Form <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
-                        <div class="form-group mb-3">
-                            <label for="idKemlem">ID Kementrian/Lembaga</label>
-                            <input type="text" id="idKemlem" class="form-control" placeholder="Otomatis" disabled>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="simpleinput">Nama Kementrian/Lembaga</label>
-                            <input type="text" id="simpleinput" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                        <form action="kemlem" method="post">
+                            <div class="form-group mb-3">
+                                <label>ID Kementrian/Lembaga</label>
+                                <input type="text" class="form-control" placeholder="Otomatis" disabled>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="nama">Nama Kementrian/Lembaga</label>
+                                <input type="text" id="nama" name="kemlem" class="form-control">
+                            </div>
+                            <button type="submit" name="simpan_data" class="btn btn-primary float-right">Simpan</button>
+                        </form>
                     </div>
                 </div> <!-- / .card -->
             </div> <!-- .col-4 -->
