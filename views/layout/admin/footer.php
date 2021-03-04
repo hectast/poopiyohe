@@ -12,6 +12,7 @@
 <script src="assets/js/apps.js"></script>
 <script src='assets/js/jquery.dataTables.min.js'></script>
 <script src='assets/js/dataTables.bootstrap4.min.js'></script>
+<script src='assets/js/select2.min.js'></script>
 <!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
 <script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
 <script>
@@ -19,6 +20,11 @@
     "responsive": true,
     "autoWidth": true,
   });
+
+
+  // $('.select2').select2({
+  //   theme: 'bootstrap4',
+  // });
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

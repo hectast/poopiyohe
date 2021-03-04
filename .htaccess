@@ -7,8 +7,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^admin$ admin.php
 RewriteRule ^beranda$ admin.php?views_admin=beranda
 RewriteRule ^kemlem$ admin.php?views_admin=kemlem
+RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
+
 RewriteRule ^auditor$ admin.php?views_admin=auditor
 RewriteRule ^auditan$ admin.php?views_admin=auditan
+
 RewriteRule ^([a-zA-Z0-9_-]+)$ admin.php?views_admin=$1
 
 Options All -Indexes

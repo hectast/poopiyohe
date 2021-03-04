@@ -8,6 +8,9 @@ if ($_GET['views_admin'] == "beranda") {
 } else if ($_GET['views_admin'] == "pemda") {
     $page = "Pemerintah Daerah";
     $title = $page . " | PO'OPIYOHE";
+} else if ($_GET['views_admin'] == "instansi_vertikal") {
+    $page = "Instansi Vertikal";
+    $title = $page . " | PO'OPIYOHE";
 } else if ($_GET['views_admin'] == "auditor") {
     $page = "Auditor";
     $title = $page . " | PO'OPIYOHE";
@@ -28,6 +31,8 @@ if ($_GET['views_admin'] == "beranda") {
     include 'views/page/admin/master_data/kemlem.php';
 } else if ($_GET['views_admin'] == "pemda") {
     include 'views/page/admin/master_data/pemda.php';
+} else if ($_GET['views_admin'] == "instansi_vertikal") {
+    include 'views/page/admin/master_data/instansi.php';
 } else if ($_GET['views_admin'] == "auditor") {
     include 'views/page/admin/daftar_audit/auditor.php';
 } else if ($_GET['views_admin'] == "auditan") {

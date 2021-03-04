@@ -36,7 +36,7 @@
                         <a class="nav-link pl-3" href="pemda"><span class="ml-1 item-text">Pemerintah Daerah</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">Instansi Vertikal</span></a>
+                        <a class="nav-link pl-3" href="instansi_vertikal"><span class="ml-1 item-text">Instansi Vertikal</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="./ui-buttons.html"><span class="ml-1 item-text">OPD</span></a>

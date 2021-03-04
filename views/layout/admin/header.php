@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/daterangepicker.css">
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="assets/notif_plug/toastr/toastr.min.css"> -->
+    <link rel="stylesheet" href="assets/css/select2.css">
     <!-- App CSS -->
     <link rel="stylesheet" href="assets/css/app-light.css" id="lightTheme">
     <!-- <link rel="stylesheet" href="assets/css/app-dark.css" id="darkTheme" disabled> -->
