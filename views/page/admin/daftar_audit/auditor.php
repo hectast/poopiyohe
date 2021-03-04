@@ -48,8 +48,8 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                     <div class="card-body">
                     <form action="auditor" method="POST">
                         <div class="form-group mb-3">
-                            <label for="idauditor">ID Auditor</label>
-                            <input type="text" id="idauditor" name="idauditor" class="form-control" placeholder="Otomatis" autocomplete="off">
+                            <label>ID Auditor</label>
+                            <input type="text" class="form-control" placeholder="Otomatis" autocomplete="off" disabled>
                         </div>
                         <div class="form-group mb-3">
                             <label for="simpleinput">Nama Auditor</label>
@@ -71,6 +71,7 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
+                                    <th>Id</th>
                                     <th>Nama Auditor</th>
                                     <th>Aksi</th>
                                 </tr>

@@ -18,8 +18,8 @@ function tampil_data($mysqli)
             <td><?= $no; ?></td>
             <td><?= $row->pemda; ?></td>
             <td>
-                <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="text-muted sr-only">Aksi</span>
+                <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fe fe-settings"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
@@ -35,10 +35,10 @@ function tampil_data($mysqli)
         </tr>
 
         <div class="modal fade" id="defaultModal<?= $row->id; ?>" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="defaultModalLabel">Form Ubah Pemerintah Daerah</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

@@ -16,6 +16,7 @@ function tampil_data($mysqli){
 ?>
  <tr>
             <td><?= $no; ?></td>
+            <td><?= $id; ?></td>
             <td><?= $row->nama; ?></td>
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
