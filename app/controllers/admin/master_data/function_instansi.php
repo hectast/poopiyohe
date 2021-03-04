@@ -58,8 +58,8 @@ function tampil_data($mysqli)
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="simple-select2">Kementrian/Lembaga</label>
-                                <select class="form-control select2" id="simple-select2" name="id_kemlem">
+                                <label for="pilih-kemlem">Kementrian/Lembaga</label>
+                                <select class="form-control select2ubah" id="pilih-kemlem" name="id_kemlem">
                                     <option>--Pilih Kementrian/Lembaga--</option>
                                     <?php
                                     $query2 = "SELECT * FROM kemlem";
@@ -92,6 +92,7 @@ function tampil_data($mysqli)
                 </div>
             </div>
         </div>
+
 <?php
         echo "";
         $no++;
