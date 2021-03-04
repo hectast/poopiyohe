@@ -50,11 +50,11 @@
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="daftar-audit">
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">Auditan</span>
+                        <a class="nav-link pl-3" href="auditan"><span class="ml-1 item-text">Auditan</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">Auditor</span>
+                        <a class="nav-link pl-3" href="auditor"><span class="ml-1 item-text">Auditor</span>
                         </a>
                     </li>
                 </ul>

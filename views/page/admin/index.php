@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 if ($_GET['views_admin'] == "beranda") {
     $page = "Beranda";
@@ -38,3 +39,6 @@ if ($_GET['views_admin'] == "beranda") {
 ?>
 
 <?php include 'views/layout/admin/footer.php'; ?>
+=======
+
+>>>>>>> 4969dce81da00d035240fb469e27562b1dcf5718
