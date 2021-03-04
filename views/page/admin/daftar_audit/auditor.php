@@ -18,6 +18,25 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                     </button>
                 </div>
         <?php
+            }else if(isset($_SESSION['msg_simpan_data'])){
+        ?>
+                 <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_simpan_data'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        <?php
+            }else if(isset($_SESSION['msg_edit_data'])){
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_edit_data'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        <?php
+
             }
         ?>
         <div class="row">
@@ -27,15 +46,17 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                         <strong class="card-title">Form <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
+                    <form action="auditor" method="POST">
                         <div class="form-group mb-3">
-                            <label for="idKemlem">ID Auditor</label>
-                            <input type="text" id="idKemlem" class="form-control" placeholder="Otomatis" disabled>
+                            <label for="idauditor">ID Auditor</label>
+                            <input type="text" id="idauditor" name="idauditor" class="form-control" placeholder="Otomatis" autocomplete="off">
                         </div>
                         <div class="form-group mb-3">
                             <label for="simpleinput">Nama Auditor</label>
-                            <input type="text" id="simpleinput" class="form-control">
+                            <input type="text" name="namaauditor" id="simpleinput" class="form-control" autocomplete="off">
                         </div>
-                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                        <button type="submit" name="simpan" class="btn btn-primary float-right">Simpan</button>
+                    </form>
                     </div>
                 </div> <!-- / .card -->
             </div> <!-- .col-4 -->
