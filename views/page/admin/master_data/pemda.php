@@ -24,11 +24,24 @@
             }
         ?>
 
+         <?php
+            if (isset($_SESSION['msg_ubah_data'])) {
+        ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_ubah_data'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        <?php
+            }
+        ?>
+
 
         <?php
             if (isset($_SESSION['msg_hapus_data'])) {
         ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_hapus_data'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
