@@ -26,7 +26,7 @@ function tampil_data($mysqli)
                     <form action="kemlem" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
-                        <button type="submit" name="hapus_data" class="dropdown-item">Hapus</button>
+                        <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
                     </form>
                 </div>
             </td>
