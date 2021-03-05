@@ -8,6 +8,7 @@ RewriteRule ^admin$ admin.php
 RewriteRule ^beranda$ admin.php?views_admin=beranda
 RewriteRule ^kemlem$ admin.php?views_admin=kemlem
 RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
+RewriteRule ^opd$ admin.php?views_admin=opd
 
 RewriteRule ^auditor$ admin.php?views_admin=auditor
 RewriteRule ^auditan$ admin.php?views_admin=auditan
