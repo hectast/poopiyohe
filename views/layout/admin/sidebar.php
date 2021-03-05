@@ -41,14 +41,6 @@
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="opd"><span class="ml-1 item-text">OPD</span></a>
                     </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#daftar-audit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-user fe-16"></i>
-                    <span class="ml-3 item-text">Daftar Audit</span>
-                </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="daftar-audit">
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="auditan"><span class="ml-1 item-text">Auditan</span>
                         </a>
@@ -59,11 +51,64 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item w-100">
-                <a class="nav-link" href="calendar.html">
-                    <i class="fe fe-file fe-16"></i>
-                    <span class="ml-3 item-text">Daftar Temuan</span>
+            <li class="nav-item dropdown">
+                <a href="#daftar-audit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-user fe-16"></i>
+                    <span class="ml-3 item-text">Pengawasan</span>
                 </a>
+                <ul class="collapse list-unstyled pl-4 w-100" id="daftar-audit">
+                     <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Field Work</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Pembahasan</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Peyusunan LAP.WAS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Daftar Temuan</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#daftar-penilaian" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-check-square fe-16"></i>
+                    <span class="ml-3 item-text">Penilaian</span>
+                </a>
+                <ul class="collapse list-unstyled pl-4 w-100" id="daftar-penilaian">
+                     <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Terhadap Auditor</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#daftar-laporan" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-file fe-16"></i>
+                    <span class="ml-3 item-text">Laporan</span>
+                </a>
+                <ul class="collapse list-unstyled pl-4 w-100" id="daftar-laporan">
+                     <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Hasil Pengawasan</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Auditor yang Bertugas</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Daftar Temuan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Jumlah Nominal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">Penilaian Terhadap Auditor</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
