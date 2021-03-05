@@ -59,8 +59,8 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                                 <input type="text" id="instansi" name="instansi" class="form-control">
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simple-select2">Kementrian/Lembaga</label>
-                                <select class="form-control select2" id="simple-select2" name="id_kemlem">
+                                <label for="kmlm">Kementrian/Lembaga</label>
+                                <select class="form-control select2" id="kmlm" name="id_kemlem">
                                     <option>--Pilih Kementrian/Lembaga--</option>
                                     <?php
                                         $query = "SELECT * FROM kemlem";
