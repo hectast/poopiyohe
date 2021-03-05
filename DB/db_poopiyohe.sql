@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 08:15 PM
+-- Generation Time: Mar 05, 2021 at 07:16 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auditan` (
-  `id` int(11) NOT NULL,
+  `id` char(20) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `mitra` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,9 +40,18 @@ CREATE TABLE `auditan` (
 --
 
 CREATE TABLE `auditor` (
-  `id` int(20) NOT NULL,
+  `id` char(20) NOT NULL,
   `nama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `auditor`
+--
+
+INSERT INTO `auditor` (`id`, `nama`) VALUES
+('ADTR2021030425B9', 'Zulhamd Kayyies Podungge'),
+('ADTR202103044616', 'Azwar Ramadhan Botutihe'),
+('ADTR202103048882', 'Ichaq Rahim Zees');
 
 -- --------------------------------------------------------
 
@@ -55,6 +64,14 @@ CREATE TABLE `instansi_vertikal` (
   `nama_instansi` varchar(50) NOT NULL,
   `id_kemlem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `instansi_vertikal`
+--
+
+INSERT INTO `instansi_vertikal` (`id`, `nama_instansi`, `id_kemlem`) VALUES
+(1, 'Kominfo Bonebolango', '10'),
+(2, 'Porokoko Kabgor', '9');
 
 -- --------------------------------------------------------
 
@@ -72,7 +89,8 @@ CREATE TABLE `kemlem` (
 --
 
 INSERT INTO `kemlem` (`id`, `kemlem`) VALUES
-(5, 'Dinas Pendidikan');
+(9, 'Dinas Pertambangan'),
+(10, 'Dinas Kelautan');
 
 -- --------------------------------------------------------
 
@@ -96,6 +114,14 @@ CREATE TABLE `pemda` (
   `id` int(11) NOT NULL,
   `pemda` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemda`
+--
+
+INSERT INTO `pemda` (`id`, `pemda`) VALUES
+(2, 'Bonebolango'),
+(3, 'Boalemo');
 
 --
 -- Indexes for dumped tables
@@ -145,13 +171,13 @@ ALTER TABLE `pemda`
 -- AUTO_INCREMENT for table `instansi_vertikal`
 --
 ALTER TABLE `instansi_vertikal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kemlem`
 --
 ALTER TABLE `kemlem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `opd`
@@ -163,7 +189,7 @@ ALTER TABLE `opd`
 -- AUTO_INCREMENT for table `pemda`
 --
 ALTER TABLE `pemda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
