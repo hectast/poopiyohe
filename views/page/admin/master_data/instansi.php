@@ -59,24 +59,28 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                                 <input type="text" id="instansi" name="instansi" class="form-control">
                             </div>
                             <div class="form-group mb-3">
-                                <label for="kmlm">Kementrian/Lembaga</label>
-                                <select class="form-control select2" id="kmlm" name="id_kemlem">
-                                    <option>--Pilih Kementrian/Lembaga--</option>
+                                <label for="pemda">Kementrian/Lembaga</label>
+                                <select class="form-control select2" id="pemda" name="id_pemda">
+                                    <option>--Pilih Pemerintah Daerah--</option>
                                     <?php
-                                        $query = "SELECT * FROM kemlem";
+                                        $query = "SELECT * FROM pemda";
                                         $to = $mysqli->prepare($query);
                                         $to->execute();
-                                        $result_kemlem = $to->get_result();
-                                        while ($row_kemlem = $result_kemlem->fetch_object()) {
+                                        $result_pemda = $to->get_result();
+                                        while ($row_pemda = $result_pemda->fetch_object()) {
                                             echo"";
                                     ?>
-                                            <option value="<?= $row_kemlem->id; ?>"><?= $row_kemlem->kemlem; ?></option>
+                                            <option value="<?= $row_pemda->id; ?>"><?= $row_pemda->pemda; ?></option>
                                     <?php
                                             echo"";
                                         }
 
                                     ?>
                                 </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="keterangan">Keterangan</label>
+                                <textarea id="keterangan" name="keterangan" class="form-control"></textarea>
                             </div>
                             <button type="submit" name="simpan_data" class="btn btn-primary float-right">Simpan</button>
                         </form>
@@ -95,7 +99,8 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Instansi</th>
-                                    <th>Kementrian/Lembaga</th>
+                                    <th>Keterangan</th>
+                                    <th>Pemerintah Daerah</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -104,7 +109,7 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                             </tbody>
                         </table>
                     </div>
-                </div> <!-- / .card -->
+                </div> <!--  .card -->
             </div> <!-- .col-8 -->
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->
