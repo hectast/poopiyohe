@@ -51,6 +51,13 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="beranda">
+                    <i class="fe fe-briefcase fe-16"></i>
+                    <span class="ml-3 item-text">Data Penugasan</span>
+                </a>
+            </li>
+            
             <li class="nav-item dropdown">
                 <a href="#daftar-audit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-user fe-16"></i>
@@ -73,6 +80,7 @@
                     </li>
                 </ul>
             </li>
+           
             <li class="nav-item dropdown">
                 <a href="#daftar-penilaian" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-check-square fe-16"></i>
