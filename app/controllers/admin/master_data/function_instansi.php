@@ -24,8 +24,8 @@ function tampil_data($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
-            <td><?= $row->keterangan; ?></td>
             <td><?= $row_pemda->pemda; ?></td>
+            <td><?= $row->keterangan; ?></td>
 
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
