@@ -33,27 +33,27 @@ function tampil_data($mysqli)
         </tr>
 
         <div class="modal fade" id="defaultModal<?= $id; ?>" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="defaultModalLabel">Form Ubah Kementrian/Lembaga</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
                     <form action="kemlem" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Form Ubah Kementrian/Lembaga</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="modal-body">
-                                <input type="hidden" name="token_edit" value="<?= $token; ?>">
-                                <input type="hidden" name="id" value="<?= $id; ?>">
-                                <div class="form-group">
-                                    <label for="kemlem" class="col-form-label">Nama Kementrian/Lembaga</label>
-                                    <input type="text" id="kemlem" name="kemlem" class="form-control" value="<?= $row->kemlem; ?>">
-                                </div>
-
+                            <input type="hidden" name="token_edit" value="<?= $token; ?>">
+                            <input type="hidden" name="id" value="<?= $id; ?>">
+                            <div class="form-group">
+                                <label for="kemlem" class="col-form-label">Nama Kementrian/Lembaga</label>
+                                <input type="text" id="kemlem" name="kemlem" class="form-control" value="<?= $row->kemlem; ?>">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="ubah_data" class="btn mb-2 btn-primary">Simpan Perubahan</button>
                         </div>
+
                     </form>
                 </div>
             </div>

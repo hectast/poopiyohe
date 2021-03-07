@@ -26,17 +26,13 @@ include 'app/controllers/user/daftar_function.php';
                 <input type="text" name="" id="" class="form-control">
             </div>
             <div class="form-group">
-                <label for="">Satuan Kerja</label>
-                <select name="" id="" class="custom-select select2">
-                    <option value="" hidden>-Pilih Satuan Kerja-</option>
-                    <optgroup label="Organisasi Perangkat Daerah">
-                       <?php tampil_data_opd($mysqli)?>
-                    </optgroup>
-                    <optgroup label="Instansi Vertikal">
-                        <?php tampil_data_instansi($mysqli)?>
-                    </optgroup>
-
-                </select>
+                <div class="">
+                    <label for="">Satuan Kerja</label>
+                    <select name="" id="" class="custom-select select2">
+                        <option value="" hidden>-Pilih Satuan Kerja-</option>
+                        <?php tampil_data_opd($mysqli)?>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">Email</label>
