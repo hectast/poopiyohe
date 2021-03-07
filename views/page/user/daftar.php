@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'app/controllers/user/daftar_function.php';
 ?>
 <!DOCTYPE html>
@@ -25,12 +25,12 @@ include 'app/controllers/user/daftar_function.php';
                 <label for="">Nama</label>
                 <input type="text" name="" id="" class="form-control">
             </div>
-            <div class="form-group">
-                <div class="">
-                    <label for="">Satuan Kerja</label>
-                    <select name="" id="" class="custom-select select2">
-                        <option value="" hidden>-Pilih Satuan Kerja-</option>
-                        <?php tampil_data_opd($mysqli)?>
+            <div class="form-group" id="#divdiv">
+                <div class="pemda_row">
+                    <label for="">Pemerintah Daerah</label>
+                    <select name="" id="id_pemda" class="custom-select select2">
+                        <option hidden>-Pilih Pemerintah Daerah-</option>
+                        <?php tampil_data_pemda($mysqli) ?>
                     </select>
                 </div>
             </div>
@@ -48,7 +48,7 @@ include 'app/controllers/user/daftar_function.php';
             <div class="form-group">
                 <a href="index" class="btn btn-danger col-12">Kembali</a>
             </div>
-           
+
 
         </div>
     </header>
@@ -59,8 +59,25 @@ include 'app/controllers/user/daftar_function.php';
     <script src="assets/js/select2.min.js"></script>
     <script>
         $('.select2').select2({
-    theme: 'bootstrap4',
-  });
+            theme: 'bootstrap4',
+        });
+    </script>
+    <script>
+        $(function() {
+
+            $('#id_pemda').change(function() {
+                $('.instansi_row').remove();
+                if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
+                    $.get('app/controllers/user/daftar_dynoption.php', {
+                            id_pemda: $('#id_pemda').val()
+                        })
+                        .done(function(data) {
+                            $('div.pemda_row').after(data);
+                        })
+                }
+            });
+
+        });
     </script>
 </body>
 
