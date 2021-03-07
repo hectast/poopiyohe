@@ -21,7 +21,7 @@
     "autoWidth": true,
   });
 
-  $('.select2').select2({
+  $('.select').select({
     theme: 'bootstrap4',
   });
 </script>

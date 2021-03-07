@@ -2,23 +2,14 @@
 if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
     $page = "Beranda";
     $title = $page . " | PO'OPIYOHE";
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "kemlem") {
-    $page = "Kementrian/Lembaga";
-    $title = $page . " | PO'OPIYOHE";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "pemda") {
     $page = "Pemerintah Daerah";
     $title = $page . " | PO'OPIYOHE";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "instansi_vertikal") {
     $page = "Instansi Vertikal";
     $title = $page . " | PO'OPIYOHE";
-}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "opd") {
-    $page = "OPD";
-    $title = $page . " | PO'OPIYOHE";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditor") {
     $page = "Auditor";
-    $title = $page . " | PO'OPIYOHE";
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditan") {
-    $page = "Auditan";
     $title = $page . " | PO'OPIYOHE";
 }
 ?>
@@ -30,18 +21,12 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
 <?php
 if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
     include 'views/page/admin/beranda.php';
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "kemlem") {
-    include 'views/page/admin/master_data/kemlem.php';
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "pemda") {
     include 'views/page/admin/master_data/pemda.php';
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "instansi_vertikal") {
     include 'views/page/admin/master_data/instansi.php';
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "opd") {
-    include 'views/page/admin/master_data/opd.php';
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditor") {
     include 'views/page/admin/daftar_audit/auditor.php';
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditan") {
-    include 'views/page/admin/daftar_audit/auditan.php';
 } else {
     include 'views/page/admin/beranda.php';
 }
