@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+a:hover{
+	text-decoration: none;
+}
+body{
+	width: 100%;
+	font-family: 'Montserrat',sans-serif;
+}
+h1{
+	font-size: 48px;
+	font-weight: 100;
+	color: #fff;
+}
+header{
+	height:  770px;	
+	min-height: 80px;
+	background:url('../img/images/banner4.jpg') no-repeat;
+	background-size: contain;
+	background-position: top left;
+	padding: 2% 10%;
+}
+header h1{
+	width: 40%;  
+	margin-top:0px;
+}
+nav{
+	line-height: 70px;
+	text-align: right;
+	font-size: 18px;
+}
+nav a{
+	text-decoration: none;
+	color:#fff;
+	font-weight: bold;
+	transition: 0.2s;
+	margin-right: 50px;
+}
+#nv{
+	margin-top: 20px;
+	text-align: right;
+	font-size: 20px;
+	display: none;
+}
+#nv a{
+	text-decoration: none;
+	color: #fff;
+	margin-right: 5px;
+}
+.logo{
+	float: left;
+	margin: 17px 0px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 30px;
+}
+
+.head_title{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 140px;
+}
+
+.head_subtitle{
+	font-weight: bold;
+	font-size: 35px;
+}
+
+header p{
+	color: #87ceff;
+	margin-top: 10px;
+	width: 40%;
+}
+
+.login{
+	background-color: #fff;
+	color: #0666e1;
+	padding: 5px 10px;
+	border-radius: 20px;
+	transition: 0.2s;
+}
+.login:hover{
+	text-decoration: none;
+	transition: 0.2s;
+	color: #075fd3;
+	
+}
+
+
+.break{
+	padding: 2% 8%;
+}
+#section{
+	padding: 5% 8%;
+}
+.break h2{
+	text-align: center;
+	font-weight: bold;
+	color: #0666e1;
+	margin-bottom:50px ;
+}
+#section h2{
+	text-align: center;
+	font-weight: bold;
+	color: #33b7f5;
+	margin-bottom: 50px;
+}
+h2 .upper{
+	color: #fff;
+	display: inline;
+	padding: 2px 5px;
+	margin: 0 2px 0 0 ;
+	font-weight: bold;
+	border-radius: 5px;
+}
+.box{
+	box-shadow: 1px 1px 10px #eceeef;
+	padding: 25px;
+	margin-bottom: 20px;
+}
+.box-centered{
+	text-align: center;
+}
+
+.box h1{
+	color: black;
+	font-size: 20px;
+	margin:20px
+}
+.box p{
+	color: #888;
+}
+.left-heading{
+	margin-top: 50px;
+}
+.left-text p{
+	text-align: justify;
+	color: #888;
+}
+
+.modalheader{
+	background-color: #0666e1;
+	color: #fff;
+}
+.modal-title{
+	text-align: center;
+}
+
+.btn-bkp {
+	color: #fff;
+	background-color:#24a7ff;
+	border-color: #24a7ff;
+	width: 120px;
+	border-radius: 130px;
+  }
+  .btn-primer {
+	color: #fff;
+	background-color:#0666e1;
+	border-color: #0666e1;
+  }
+  .btn-primer:hover {
+	color: #fff;
+	background-color:#0961d4;
+	border-color: #0961d4;
+  }
+  .btn-putih {
+	color: #0666e1;
+	background-color:#fff;
+	border-color: #24a7ff;
+
+  }
+  
+  .btn-bkp:hover {
+	color: #fff;
+	background-color: #239ef0;
+	border-color: #239ef0;
+	width: 120px;
+  }
+  
+footer{
+	background-color: #0666e1;
+	height: 320px;
+	width: 100%;
+	color: #fff;
+	padding: 10px;
+}
+.foot{
+	padding: 2% 8%;
+}
+.footer_isi p{
+	font-size:12px;
+}
+.logo_sosmed{
+	font-size: 12px;
+}
+.logo_sosmed img{
+	margin-bottom: 5px;
+}
+
+.text-ltblue{
+	color: #88cffe;
+}
+.text-primer{
+	color: #0666e1;
+}
+
+/* login */
+.headerlogin{
+	height:  762px;	
+	background:url('../img/images/bannerlog.jpg') no-repeat;
+	background-size: cover;
+	background-position: top right;
+	padding: 2% 3%;
+}
+.hd{
+	width: 35%;
+	margin-top: 70px;
+}
+.head_title_login{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+@media screen and (max-width:1367px){
+	.hd{
+		width: 30%;
+	}
+}
+
+@media screen and (max-width:1290px){
+	.head_title{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 100px;
+}
+header h1{
+	width: 50%;
+}
+}
+@media screen and (max-width:1264px){
+	.hd{
+		padding: 0 150px;
+		width: 100%;
+	}
+	.headerlogin{
+		height: 500px;
+		background: url('../img/images/bannerlog2.jpg') no-repeat;
+		background-position: top right;
+		background-size: contain;
+
+	}
+}
+@media screen and (max-width:1192px){
+	.break{
+		margin-top: -100px;
+	}
+}
+@media screen and (max-width:1044px){
+	nav{
+		font-size: 12px;
+		line-height: 90px;
+	}
+	.head_title{
+		margin-top: 50px;
+	}
+	.head_subtitle{
+		font-size: 15px;
+	}
+	.break{
+		margin-top: -150px;
+	}
+}
+@media screen and (max-width:1026px){
+	footer{
+	
+		height: 400px;
+	}
+}
+@media screen and (max-width:892px){
+	nav a{
+		margin-right: 15px;	
+	}
+	.head_title{
+		margin-top: 10px;
+	}
+	.break{
+		margin-top: -250px;
+	}
+}
+@media screen and (max-width:782px){
+	header{
+
+		background: #0666e1;
+		height: 550px;
+	}
+	header h1{
+		text-align: center;
+		width: 100%;
+
+	}
+	.head_title{
+		margin-top: 100px;
+	}
+	header .tombol{
+		text-align: center;
+	}
+	.center{
+		text-align: center;
+	}
+	header p {
+		width: 100%;
+	}
+	.break{
+		margin-top: 5px;
+	}
+	nav{
+		display: none;
+	}
+	#nv{
+		display: inherit;
+	}
+	.fa-bars {
+		color: #fff;
+	}
+.dropdown-divider {
+		border: none;
+	}
+
+	.navbar-toggler {
+		border: none;
+		margin-left: -10px;
+	} 
+	 .navbar-collapse { 
+		 background: #fff;
+		 box-shadow: 0px 0px 15px #000;
+		 position: absolute; 
+		 top: 0px; 
+		 left: -300px; 
+		 padding:20px; 
+		width: 220px; 
+		height: 100vh; 
+		transition: all 0.3s ease; 
+		position: fixed;
+		z-index: 2;
+	} 
+	.nav-item a{
+		color: #0666e1;
+		font-weight: bold;
+	}
+	.nav-item a:hover{
+			color: #fff;
+	}
+	.nav-item:hover{
+		background: #0666e1;
+		padding: 5px;
+	}
+	.navbar-collapse.collapsing { 
+		height: 100vh; 
+		margin-right: 50%; 
+		transition: all 0.3s ease; 
+		display: block; 
+	} 
+
+	.navbar-collapse.show { left: 0; } 
+	.nav-item{
+		color: #0666e1;
+	}
+}
+@media screen and (max-width:764px){
+	footer{
+		height: 700px;
+	}
+}
+@media screen and (max-width:655px){
+	.hd{
+		padding: 0 50px;
+	}
+}
