@@ -2,7 +2,7 @@
 
 function tampil_data($mysqli)
 {
-    $query = "SELECT * FROM instansi_vertikal ORDER BY nama_instansi ASC";
+    $query = "SELECT * FROM instansi_vertikal ORDER BY id DESC";
     $to = $mysqli->prepare($query);
     $to->execute();
     $result = $to->get_result();

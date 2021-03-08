@@ -71,7 +71,7 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Auditor</th>
+                                    <th width="100%">Nama Auditor</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

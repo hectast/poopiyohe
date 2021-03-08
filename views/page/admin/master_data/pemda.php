@@ -82,7 +82,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th width="100%">Nama</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

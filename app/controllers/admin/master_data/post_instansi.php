@@ -4,7 +4,7 @@ include 'app/controllers/admin/master_data/function_instansi.php';
 include 'app/flash_message.php';
 
 if (isset($_POST['simpan_data'])) {
-    $instansi = $_POST['instansi'];
+    $instansi = strtoupper($_POST['instansi']);
     $keterangan = $_POST['keterangan'];
     $id_pemda = $_POST['id_pemda'];
 

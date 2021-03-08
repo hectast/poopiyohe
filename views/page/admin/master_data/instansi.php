@@ -60,6 +60,7 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                             </div>
                             <div class="form-group mb-3">
                                 <label for="pemda">Pemerintah Daerah</label>
+
                                 <select class="form-control select1" id="pemda" name="id_pemda">
                                     <option>--Pilih Pemerintah Daerah--</option>
                                     <?php

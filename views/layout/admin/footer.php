@@ -21,20 +21,17 @@
     "autoWidth": true,
   });
   
-
   $('.select1').select2({
     theme: 'bootstrap4',
   });
 
   $(document).ready(function() {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 3000);
-    });    
-
-    
+    setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+      });
+    }, 2000);
+  });
 </script>
 <script>
     $(function() {
