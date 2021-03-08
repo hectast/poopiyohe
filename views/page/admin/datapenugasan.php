@@ -20,7 +20,8 @@ include 'app/controllers/admin/post_penugasan.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Tugas</th>
+                                    <th>Instansi</th>
+                                    <th>Pemerintahan Daerah</th>
                                     <th>Auditor</th>
                                     <th>Aksi</th>
                                 </tr>

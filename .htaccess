@@ -10,13 +10,13 @@ RewriteRule ^daftar daftar.php
 
 
 RewriteRule ^beranda$ admin.php?views_admin=beranda
-RewriteRule ^kemlem$ admin.php?views_admin=kemlem
+RewriteRule ^pemda$ admin.php?views_admin=pemda
 RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
-RewriteRule ^opd$ admin.php?views_admin=opd
 RewriteRule ^auditor$ admin.php?views_admin=auditor
-RewriteRule ^auditan$ admin.php?views_admin=auditan
+
 RewriteRule ^data_penugasan$ admin.php?views_admin=datapenugasan
 RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
+
 
 
 

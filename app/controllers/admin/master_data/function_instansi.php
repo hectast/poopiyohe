@@ -9,13 +9,13 @@ function tampil_data($mysqli)
     $no = 1;
     while ($row = $result->fetch_object()) {
         $id = $row->id;
-        $id_kemlem = $row->id_kemlem;
+        $id_pemda = $row->id_pemda;
 
-        $query = "SELECT * FROM kemlem WHERE id='$id_kemlem'";
-        $to_kemlem = $mysqli->prepare($query);
-        $to_kemlem->execute();
-        $result_kemlem = $to_kemlem->get_result();
-        $row_kemlem = $result_kemlem->fetch_object();
+        $query = "SELECT * FROM pemda WHERE id='$id_pemda'";
+        $to_pemda = $mysqli->prepare($query);
+        $to_pemda->execute();
+        $result_pemda = $to_pemda->get_result();
+        $row_pemda = $result_pemda->fetch_object();
 
         $tkn = 'sam_san_tech)';
         $token = md5("$tkn:$id");
@@ -24,7 +24,9 @@ function tampil_data($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
-            <td><?= $row_kemlem->kemlem; ?></td>
+            <td><?= $row_pemda->pemda; ?></td>
+            <td><?= $row->keterangan; ?></td>
+
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fe fe-settings"></span>
@@ -58,31 +60,37 @@ function tampil_data($mysqli)
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="pilih-kemlem">Kementrian/Lembaga</label>
-                                <select class="form-control select2ubah" id="pilih-kemlem" name="id_kemlem">
-                                    <option>--Pilih Kementrian/Lembaga--</option>
+                                <label for="pilih-pemda">Pemerintah Daerah</label>
+                                <select class="form-control select2 <?= $id; ?>" id="pilih-pemda" name="id_pemda">
+                                    <option>--Pilih Pemerintah Daerah--</option>
                                     <?php
-                                    $query2 = "SELECT * FROM kemlem";
-                                    $to_kemlem2 = $mysqli->prepare($query2);
-                                    $to_kemlem2->execute();
-                                    $result_kemlem2 = $to_kemlem2->get_result();
-                                    while ($row_kemlem2 = $result_kemlem2->fetch_object()) {
-                                        if ($row_kemlem2->id == $id_kemlem) {
+                                    $query2 = "SELECT * FROM pemda";
+                                    $to_pemda2 = $mysqli->prepare($query2);
+                                    $to_pemda2->execute();
+                                    $result_pemda2 = $to_pemda2->get_result();
+                                    while ($row_pemda2 = $result_pemda2->fetch_object()) {
+                                        if ($row_pemda2->id == $id_pemda) {
                                             echo "";
                                     ?>
-                                            <option value="<?= $row_kemlem2->id; ?>" selected><?= $row_kemlem2->kemlem; ?></option>
+                                            <option value="<?= $row_pemda2->id; ?>" selected><?= $row_pemda2->pemda; ?></option>
                                         <?php
                                             echo "";
                                         } else {
                                             echo "";
                                         ?>
-                                            <option value="<?= $row_kemlem2->id; ?>"><?= $row_kemlem2->kemlem; ?></option>
+                                            <option value="<?= $row_pemda2->id; ?>"><?= $row_pemda2->pemda; ?></option>
                                     <?php
                                             echo "";
                                         }
                                     }
                                     ?>
                                 </select>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan" class="col-form-label">Keterangan</label>
+                                <textarea id="keterangan" name="keterangan" class="form-control"><?= $row->keterangan; ?></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -92,16 +100,24 @@ function tampil_data($mysqli)
                 </div>
             </div>
         </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src='assets/js/select2.min.js'></script>
+        <script>
+              $('.select2.<?= $id; ?>').select2({
+                theme: 'bootstrap4',
+              });
+        </script>
 
 <?php
         echo "";
         $no++;
+
     }
 }
 
-function simpan_data($instansi, $id_kemlem, $mysqli)
+function simpan_data($instansi, $keterangan, $id_pemda, $mysqli)
 {
-    $save = $mysqli->prepare("INSERT INTO instansi_vertikal (nama_instansi,id_kemlem) VALUES ('$instansi', '$id_kemlem')");
+    $save = $mysqli->prepare("INSERT INTO instansi_vertikal (nama_instansi,keterangan,id_pemda) VALUES ('$instansi','$keterangan', '$id_pemda')");
     $save->execute();
 }
 
@@ -111,9 +127,9 @@ function hapus_data($id, $mysqli)
     $delete->execute();
 }
 
-function ubah_data($id, $instansi, $id_kemlem, $mysqli)
+function ubah_data($id, $instansi, $keterangan, $id_pemda, $mysqli)
 {
-    $update = $mysqli->prepare("UPDATE instansi_vertikal SET nama_instansi='$instansi',id_kemlem='$id_kemlem' WHERE id='$id'");
+    $update = $mysqli->prepare("UPDATE instansi_vertikal SET nama_instansi='$instansi', keterangan='$keterangan', id_pemda='$id_pemda' WHERE id='$id'");
     $update->execute();
 }
 

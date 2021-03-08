@@ -4,14 +4,10 @@ include 'app/controllers/admin/daftar_audit/function_auditor.php';
 include 'app/flash_message.php';
 
 if (isset($_POST['simpan'])) {
-    $today = date("Ymd");
-    $rand = strtoupper(substr(uniqid(sha1(time())), 0, 4));
-    $unique = 'ADTR' . $today . $rand;
-
-    $idauditor = $unique;
 
     $namaauditor = $_POST['namaauditor'];
-    $insert = simpan_data($idauditor, $namaauditor, $mysqli);
+
+    simpan_data($namaauditor, $mysqli);
     flash("msg_simpan_data", "Data berhasil ditambahkan");
 }
 
@@ -30,14 +26,14 @@ if (isset($_POST['hapus_data'])) {
 }
 
 if (isset($_POST['ubah'])) {
-    $idauditor = $_POST['idauditor'];
+    $id = $_POST['id'];
     $namaauditor = $_POST['namaauditor'];
     $token_ubah = $_POST['token_ubah'];
 
     $tkn = 'sam_san_tech)';
-    $token = md5("$tkn:$idauditor");
+    $token = md5("$tkn:$id");
     if ($token_ubah === $token) {
-        edit_data($idauditor, $namaauditor, $mysqli);
+        edit_data($id, $namaauditor, $mysqli);
         flash("msg_edit_data", "Data berhasi diubah");
     }
 }
