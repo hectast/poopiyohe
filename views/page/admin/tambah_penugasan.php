@@ -32,6 +32,7 @@ include 'app/controllers/admin/post_penugasan.php';
         <?php
         }
         ?>
+       
         <div class="row">
             <div class="col-6">
                 <div class="card shadow mb-4">
@@ -63,15 +64,24 @@ include 'app/controllers/admin/post_penugasan.php';
                     </div>
 
                     <div class="card-body">
+                        <form action="tambah_penugasan" method="post">
+                        <div class="form-group mb-3">
+                            <label for="">ID Tugas</label>
+                            <input type="text" class="form-control" name="idtugas" placeholder="Otomatis">
+                        </div>
                         <div class="form-group mb-3">
                             <label for="">Tujuan Tugas :</label><br>
-                            <label for="instansi">Pemerintahan Daerah</label>
-                            <input type="text" id="instansi" name="instansi" class="form-control">
+                            <div class="pemda_row">
+                                <label for="">Pemerintah Daerah</label>
+                                <select name="id_pemda" id="id_pemda" class="custom-select select1">
+                                    <option hidden>-Pilih Pemerintah Daerah-</option>
+                                    <?php tampil_data_pemda($mysqli) ?>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="instansi">Nama Instansi</label>
-                            <input type="text" id="instansi" name="instansi" class="form-control">
-                        </div>
+
+
                         <div class="form-group mb-3">
                             <label for="instansi">Auditor :</label><br>
 
@@ -89,6 +99,7 @@ include 'app/controllers/admin/post_penugasan.php';
                             </table>
                             <button name="addpenugasan" class="btn btn-primary"><i class="fe fe-save"></i> Simpan</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

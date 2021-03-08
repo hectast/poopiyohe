@@ -33,8 +33,26 @@
             });
         }, 3000);
     });    
-</script>
 
+    
+</script>
+<script>
+    $(function() {
+
+        $('#id_pemda').change(function() {
+            $('.instansi_row').remove();
+            if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
+                $.get('app/controllers/admin/daftar_dynoption.php', {
+                        id_pemda: $('#id_pemda').val()
+                    })
+                    .done(function(data) {
+                        $('div.pemda_row').after(data);
+                    })
+            }
+        });
+
+    });
+</script>
 </body>
 
 </html>

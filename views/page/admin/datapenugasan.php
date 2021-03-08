@@ -23,6 +23,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                     <th>Instansi</th>
                                     <th>Pemerintahan Daerah</th>
                                     <th>Auditor</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
