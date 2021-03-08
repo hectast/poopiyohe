@@ -87,8 +87,3 @@ function hapus_data($id, $mysqli)
 }
 
 ?>
-
-
-
-
-?>

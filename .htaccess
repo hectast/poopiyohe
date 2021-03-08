@@ -5,14 +5,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^admin$ admin.php
-RewriteRule ^beranda$ admin.php?views_admin=beranda
-RewriteRule ^kemlem$ admin.php?views_admin=kemlem
-RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
-RewriteRule ^opd$ admin.php?views_admin=opd
+RewriteRule ^index$ index.php
+RewriteRule ^daftar daftar.php
 
+
+RewriteRule ^beranda$ admin.php?views_admin=beranda
+RewriteRule ^pemda$ admin.php?views_admin=pemda
+RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
 RewriteRule ^auditor$ admin.php?views_admin=auditor
-RewriteRule ^auditan$ admin.php?views_admin=auditan
+
+RewriteRule ^data_penugasan$ admin.php?views_admin=datapenugasan
+RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
+
+
+
 
 RewriteRule ^([a-zA-Z0-9_-]+)$ admin.php?views_admin=$1
+
 
 Options All -Indexes

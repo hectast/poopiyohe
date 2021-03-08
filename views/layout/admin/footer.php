@@ -20,12 +20,36 @@
     "responsive": true,
     "autoWidth": true,
   });
-
-  $('.select2').select2({
+  
+  $('.select1').select2({
     theme: 'bootstrap4',
   });
-</script>
 
+  $(document).ready(function() {
+    setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+      });
+    }, 2000);
+  });
+</script>
+<script>
+    $(function() {
+
+        $('#id_pemda').change(function() {
+            $('.instansi_row').remove();
+            if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
+                $.get('app/controllers/admin/daftar_dynoption.php', {
+                        id_pemda: $('#id_pemda').val()
+                    })
+                    .done(function(data) {
+                        $('div.pemda_row').after(data);
+                    })
+            }
+        });
+
+    });
+</script>
 </body>
 
 </html>

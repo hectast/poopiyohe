@@ -49,7 +49,7 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                     <form action="auditor" method="POST">
                         <div class="form-group mb-3">
                             <label>ID Auditor</label>
-                            <input type="text" class="form-control" placeholder="Otomatis" autocomplete="off" disabled>
+                            <input type="text" class="form-control" placeholder="Otomatis" disabled>
                         </div>
                         <div class="form-group mb-3">
                             <label for="simpleinput">Nama Auditor</label>
@@ -71,8 +71,7 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Id</th>
-                                    <th>Nama Auditor</th>
+                                    <th width="100%">Nama Auditor</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
