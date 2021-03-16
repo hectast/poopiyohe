@@ -29,7 +29,7 @@
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="master-data">
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="pemda"><span class="ml-1 item-text">Pemerintah Daerah</span></a>
+                        <a class="nav-link pl-3" href="OPD"><span class="ml-1 item-text">OPD</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="instansi_vertikal"><span class="ml-1 item-text">Instansi Vertikal</span></a>

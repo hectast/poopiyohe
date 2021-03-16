@@ -8,9 +8,9 @@ RewriteRule ^admin$ admin.php
 RewriteRule ^index$ index.php
 RewriteRule ^daftar daftar.php
 
-RewriteRule ^beranda$ admin.php?views_admin=beranda
-RewriteRule ^pemda$ admin.php?views_admin=pemda
-RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
+RewriteRule ^beranda$ admin.php?views_admin=berandaa
+RewriteRule ^OPD$ admin.php?views_admin=OPD
+RewriteRule ^OPD$ admin.php?views_admin=instansi_vertikal
 RewriteRule ^auditor$ admin.php?views_admin=auditor
 
 

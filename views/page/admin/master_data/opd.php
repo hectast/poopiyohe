@@ -1,5 +1,5 @@
 <?php
-include 'app/controllers/admin/master_data/post_instansi.php';
+include 'app/controllers/admin/master_data/post_opd.php';
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -49,7 +49,7 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                         <strong class="card-title">Form <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
-                        <form action="instansi_vertikal" method="post">
+                        <form action="OPD" method="post">
                             <div class="form-group mb-3">
                                 <label>ID Instansi</label>
                                 <input type="text" class="form-control" placeholder="Otomatis" disabled>
@@ -61,22 +61,15 @@ include 'app/controllers/admin/master_data/post_instansi.php';
                             <div class="form-group mb-3">
                                 <label for="pemda">Pemerintah Daerah</label>
 
-                                <select class="form-control select1" id="pemda" name="id_pemda">
+                                <select class="form-control select1" id="pemda" name="nama_pemda">
                                     <option>--Pilih Pemerintah Daerah--</option>
-                                    <?php
-                                        $query = "SELECT * FROM pemda";
-                                        $to = $mysqli->prepare($query);
-                                        $to->execute();
-                                        $result_pemda = $to->get_result();
-                                        while ($row_pemda = $result_pemda->fetch_object()) {
-                                            echo"";
-                                    ?>
-                                            <option value="<?= $row_pemda->id; ?>"><?= $row_pemda->pemda; ?></option>
-                                    <?php
-                                            echo"";
-                                        }
-
-                                    ?>
+                                    <option>Provinsi Gorontalo</option>
+                                    <option>Kota Gorontalo</option>
+                                    <option>Kabupaten Gorontalo</option>
+                                    <option>Kabupaten Boalemo</option>
+                                    <option>Kabupaten Pohuwato</option>
+                                    <option>Kabupaten Bone Bolango</option>
+                                    <option>Kabupaten Gorontalo Utara</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
