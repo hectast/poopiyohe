@@ -11,6 +11,14 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditor") {
     $page = "Auditor";
     $title = $page . " | PO'OPIYOHE";
+
+} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "datapenugasan") {
+    $page = "Data Penugasan";
+    $title = $page . " | PO'OPIYOHE";
+}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
+    $page = "Tambah Data Penugasan";
+    $title = $page . " | PO'OPIYOHE";
+
 }
 ?>
 
@@ -27,7 +35,13 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
     include 'views/page/admin/master_data/instansi_vertikal.php';
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "auditor") {
     include 'views/page/admin/daftar_audit/auditor.php';
+
+}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "datapenugasan") {
+    include 'views/page/admin/datapenugasan.php';
+}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
+    include 'views/page/admin/tambah_penugasan.php';
 } else {
+
     include 'views/page/admin/beranda.php';
 }
 ?>
