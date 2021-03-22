@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title><?= isset($title) ? $title : "PO'OPIYOHE | Administrator"; ?></title>
+    <title><?= isset($title) ? $title : "PO'OPIYOHE | Auditan"; ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="assets/css/simplebar.css">
     <!-- Fonts CSS -->

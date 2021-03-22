@@ -5,28 +5,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^admin$ admin.php
+RewriteRule ^auditan$ auditan.php
+RewriteRule ^auditor$ auditor.php
 RewriteRule ^index$ index.php
 RewriteRule ^daftar daftar.php
 
-<<<<<<< HEAD
-RewriteRule ^beranda$ admin.php?views_admin=berandaa
-RewriteRule ^OPD$ admin.php?views_admin=OPD
-RewriteRule ^OPD$ admin.php?views_admin=instansi_vertikal
-=======
-
-RewriteRule ^beranda$ admin.php?views_admin=beranda
-RewriteRule ^pemda$ admin.php?views_admin=pemda
+RewriteRule ^admin$ admin.php?views_admin=admin
+RewriteRule ^opd$ admin.php?views_admin=opd
 RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
->>>>>>> f0911cd954bccf739a5a6206e0d6275bfb5bd3eb
-RewriteRule ^auditor$ admin.php?views_admin=auditor
-
+RewriteRule ^data_auditor$ admin.php?views_admin=data_auditor
 RewriteRule ^data_penugasan$ admin.php?views_admin=datapenugasan
 RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
 
+RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 
+RewriteRule ^beranda_auditor$ auditor.php?views_auditan=beranda_auditor
 
-
-RewriteRule ^([a-zA-Z0-9_-]+)$ admin.php?views_admin=$1
-
+RewriteRule ^admin/([A-Za-z0-9-]+)/?$ admin.php?views_admin=$1 [NC,L] 
 
 Options All -Indexes

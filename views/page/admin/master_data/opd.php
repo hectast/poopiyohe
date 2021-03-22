@@ -49,7 +49,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                         <strong class="card-title">Form <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
-                        <form action="OPD" method="post">
+                        <form action="opd" method="post">
                             <div class="form-group mb-3">
                                 <label>ID Instansi</label>
                                 <input type="text" class="form-control" placeholder="Otomatis" disabled>
@@ -84,24 +84,146 @@ include 'app/controllers/admin/master_data/post_opd.php';
 
             <div class="col-md-8">
                 <div class="card shadow mb-4">
-                    <div class="card-header">
-                        <strong class="card-title">Daftar <?= $page; ?></strong>
-                    </div>
+
                     <div class="card-body">
-                        <table class="table datatables" id="dataTable-1">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Instansi</th>
-                                    <th>Pemerintah Daerah</th>
-                                    <th>Keterangan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php tampil_data($mysqli); ?>
-                            </tbody>
-                        </table>
+                        <ul class="nav nav-tabs mb-3 justify-content-center" style="font-size:smaller;" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="provinsi-tab" data-toggle="tab" href="#provinsi" role="tab" aria-controls="provinsi" aria-selected="true">Provinsi Gorontalo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="kota-tab" data-toggle="tab" href="#kota" role="tab" aria-controls="kota" aria-selected="false">Kota Gorontalo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="kabgor-tab" data-toggle="tab" href="#kabgor" role="tab" aria-controls="kabgor" aria-selected="false">Kab. Gorontalo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="gorut-tab" data-toggle="tab" href="#gorut" role="tab" aria-controls="gorut" aria-selected="false">Kab. Gorontalo Utara</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="bonbol-tab" data-toggle="tab" href="#bonbol" role="tab" aria-controls="bonbol" aria-selected="false">Kab. Bone Bolango</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="boal-tab" data-toggle="tab" href="#boal" role="tab" aria-controls="boal" aria-selected="false">Kab. Boalemo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pohu-tab" data-toggle="tab" href="#pohu" role="tab" aria-controls="pohu" aria-selected="false">Kab. Pohuwato</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="provinsi" role="tabpanel" aria-labelledby="provinsi-tab">
+                                <table class="table datatables" id="dataTable-provinsi">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_provinsi($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="kota" role="tabpanel" aria-labelledby="kota-tab">
+                                <table class="table datatables" id="dataTable-kota">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_kota($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="kabgor" role="tabpanel" aria-labelledby="kabgor-tab">
+                                <table class="table datatables" id="dataTable-kabgor">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_kabgor($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="gorut" role="tabpanel" aria-labelledby="gorut-tab">
+                                <table class="table datatables" id="dataTable-gorut">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_gorut($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="bonbol" role="tabpanel" aria-labelledby="bonbol-tab">
+                                <table class="table datatables" id="dataTable-bonbol">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_bonbol($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="boal" role="tabpanel" aria-labelledby="boal-tab">
+                                <table class="table datatables" id="dataTable-boal">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_boal($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="pohu" role="tabpanel" aria-labelledby="pohu-tab">
+                                <table class="table datatables" id="dataTable-pohu">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Instansi</th>
+                                            <th>Pemerintah Daerah</th>
+                                            <th>Keterangan</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php tampil_data_pohu($mysqli); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div> <!--  .card -->
             </div> <!-- .col-8 -->

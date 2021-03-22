@@ -23,7 +23,7 @@ function tampil_data($mysqli){
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button class="dropdown-item" data-toggle="modal" data-target="#modal-default<?= $id; ?>">Ubah</button>
-                    <form action="auditor" method="post">
+                    <form action="data_auditor" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" class="dropdown-item" onclick="return confirm('Anda Yakin Menghapus Data Ini?')">Hapus</button>
@@ -40,7 +40,7 @@ function tampil_data($mysqli){
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="auditor" method="POST">
+                                    <form action="data_auditor" method="POST">
                                         <div class="modal-body">
                                             <input type="hidden" name="id" value="<?= $id; ?>">
                                             <div class="form-group">
@@ -70,7 +70,7 @@ function hapus_data($id, $mysqli)
 }
 
 function simpan_data($namaauditor, $mysqli){
-    $insert = $mysqli->prepare("INSERT INTO auditor  VALUES ('','$namaauditor')");
+    $insert = $mysqli->prepare("INSERT INTO auditor(nama)  VALUES ('$namaauditor')");
     $insert->execute();
 }
 
