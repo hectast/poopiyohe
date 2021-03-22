@@ -28,7 +28,7 @@ function tampil_data_provinsi($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -46,7 +46,7 @@ function tampil_data_provinsi($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -193,7 +193,7 @@ function tampil_data_kota($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -211,7 +211,7 @@ function tampil_data_kota($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -358,7 +358,7 @@ function tampil_data_kabgor($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -376,7 +376,7 @@ function tampil_data_kabgor($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -523,7 +523,7 @@ function tampil_data_gorut($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -541,7 +541,7 @@ function tampil_data_gorut($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -688,7 +688,7 @@ function tampil_data_bonbol($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -706,7 +706,7 @@ function tampil_data_bonbol($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -853,7 +853,7 @@ function tampil_data_boal($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -871,7 +871,7 @@ function tampil_data_boal($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">
@@ -1018,7 +1018,7 @@ function tampil_data_pohu($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $id; ?>">Ubah</button>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <input type="hidden" name="token_hapus" value="<?= $token; ?>">
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
@@ -1036,7 +1036,7 @@ function tampil_data_pohu($mysqli)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="OPD" method="post">
+                    <form action="opd" method="post">
                         <div class="modal-body">
                             <input type="hidden" name="token_edit" value="<?= $token; ?>">
                             <input type="hidden" name="id" value="<?= $id; ?>">

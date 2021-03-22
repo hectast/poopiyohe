@@ -4,7 +4,7 @@ include 'app/controllers/admin/master_data/function_instansi_vertikal.php';
 include 'app/flash_message.php';
 
 if (isset($_POST['simpan_data'])) {
-    $instansi = strtoupper($_POST['instansi']);
+    $instansi = $_POST['instansi'];
     $keterangan = $_POST['keterangan'];
 
 
