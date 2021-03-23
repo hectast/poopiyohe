@@ -70,8 +70,8 @@
                                     <label for="instansi">Rekomendasi/Saran/Atensi</label>
                                     <input type="number"  class="form-control">
                                 </div>
-                                <a href="temuan"  class="btn btn-secondary">Kembali</a> 
-                                <button type="submit" name="simpan_data" class="btn btn-primary">Simpan Perubahan</button>
+                                <a href="temuan"  class="btn btn-secondary"><i class="fe fe-arrow-left-circle"></i> Kembali</a> 
+                                <button type="submit" name="simpan_data" class="btn btn-primary">Simpan</button>
                            </div>
                        </div>
                        </form>
