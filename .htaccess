@@ -8,9 +8,9 @@ RewriteRule ^admin$ admin.php
 RewriteRule ^auditan$ auditan.php
 RewriteRule ^auditor$ auditor.php
 RewriteRule ^index$ index.php
-RewriteRule ^daftar daftar.php
+RewriteRule ^daftar$ daftar.php
 
-RewriteRule ^admin$ admin.php?views_admin=admin
+RewriteRule ^beranda_admin$ admin.php?views_admin=beranda_admin
 RewriteRule ^opd$ admin.php?views_admin=opd
 RewriteRule ^instansi_vertikal$ admin.php?views_admin=instansi_vertikal
 RewriteRule ^data_auditor$ admin.php?views_admin=data_auditor
@@ -19,8 +19,13 @@ RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
 
 RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 
-RewriteRule ^beranda_auditor$ auditor.php?views_auditan=beranda_auditor
+RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
+RewriteRule ^laporan$ auditor.php?views_auditor=laporan
+RewriteRule ^input_laporan$ auditor.php?views_auditor=input_laporan
+RewriteRule ^edit_laporan$ auditor.php?views_auditor=edit_laporan
 
-RewriteRule ^admin/([A-Za-z0-9-]+)/?$ admin.php?views_admin=$1 [NC,L] 
+RewriteRule ^([A-Za-z0-9-]+)$ admin.php?views_admin=$1
+RewriteRule ^([A-Za-z0-9-]+)$ auditan.php?views_auditan=$1
+RewriteRule ^([A-Za-z0-9-]+)$ auditor.php?views_auditor=$1
 
 Options All -Indexes
