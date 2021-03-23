@@ -1,5 +1,6 @@
 <?php
 include 'app/controllers/admin/post_penugasan.php';
+
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -20,15 +21,16 @@ include 'app/controllers/admin/post_penugasan.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Instansi</th>
-                                    <th>Pemerintahan Daerah</th>
-                                    <th>Auditor</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th>No. ST</th>
+                                    <th>Tgl. ST</th>
+                                    <th>Nama Penugasan</th>
+                                    <th>Jenis Penugasan</th>
+                                    <th>Auditan</th>
+                                    <th>Auditor</th>  
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php tampil_data($mysqli); ?>
+                               
                             </tbody>
                         </table>
                     </div>
