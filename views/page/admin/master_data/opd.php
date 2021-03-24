@@ -97,16 +97,16 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                 <a class="nav-link" id="kabgor-tab" data-toggle="tab" href="#kabgor" role="tab" aria-controls="kabgor" aria-selected="false">Kab. Gorontalo</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="gorut-tab" data-toggle="tab" href="#gorut" role="tab" aria-controls="gorut" aria-selected="false">Kab. Gorontalo Utara</a>
+                                <a class="nav-link" id="boal-tab" data-toggle="tab" href="#boal" role="tab" aria-controls="boal" aria-selected="false">Kab. Boalemo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pohu-tab" data-toggle="tab" href="#pohu" role="tab" aria-controls="pohu" aria-selected="false">Kab. Pohuwato</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="bonbol-tab" data-toggle="tab" href="#bonbol" role="tab" aria-controls="bonbol" aria-selected="false">Kab. Bone Bolango</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="boal-tab" data-toggle="tab" href="#boal" role="tab" aria-controls="boal" aria-selected="false">Kab. Boalemo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pohu-tab" data-toggle="tab" href="#pohu" role="tab" aria-controls="pohu" aria-selected="false">Kab. Pohuwato</a>
+                                <a class="nav-link" id="gorut-tab" data-toggle="tab" href="#gorut" role="tab" aria-controls="gorut" aria-selected="false">Kab. Gorontalo Utara</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">

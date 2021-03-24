@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
+if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
     $page = "Beranda";
     $title = $page . " | PO'OPIYOHE";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "opd") {
@@ -27,7 +27,7 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda") {
 <?php include 'views/layout/admin/sidebar.php'; ?>
 
 <?php
-if (isset($_GET['views_admin']) && $_GET['views_admin'] == "admin") {
+if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
     include 'views/page/admin/beranda.php';
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "opd") {
     include 'views/page/admin/master_data/opd.php';
