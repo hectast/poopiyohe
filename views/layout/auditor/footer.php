@@ -32,6 +32,11 @@
       });
     }, 2000);
   });
+
+  $('.input-money').mask("#.##0,00",
+      {
+        reverse: true
+  });
 </script>
 <script>
     $(function() {

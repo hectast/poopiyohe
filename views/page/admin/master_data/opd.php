@@ -61,7 +61,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                             <div class="form-group mb-3">
                                 <label for="pemda">Pemerintah Daerah</label>
 
-                                <select class="form-control select1" id="pemda" name="nama_pemda">
+                                <select class="form-control select1" id="pemda" name="nama_pemda" style="width: 100%;">
                                     <option>--Pilih Pemerintah Daerah--</option>
                                     <option>Provinsi Gorontalo</option>
                                     <option>Kota Gorontalo</option>

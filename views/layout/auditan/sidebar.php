@@ -29,8 +29,8 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a class="nav-link" href="#">
-                    <i class="fe fe-layers"></i>
+                <a class="nav-link" href="daftar_temuan">
+                    <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Daftar Temuan</span>
                 </a>
             </li>

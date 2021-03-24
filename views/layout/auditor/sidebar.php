@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="temuan">
                     <i class="fe fe-edit fe-16"></i>
                     <span class="ml-3 item-text">Input Temuan</span>
                 </a>

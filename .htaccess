@@ -8,7 +8,7 @@ RewriteRule ^admin$ admin.php
 RewriteRule ^auditan$ auditan.php
 RewriteRule ^auditor$ auditor.php
 RewriteRule ^index$ index.php
-RewriteRule ^daftar daftar.php
+RewriteRule ^daftar$ daftar.php
 
 RewriteRule ^admin$ admin.php?views_admin=admin
 RewriteRule ^opd$ admin.php?views_admin=opd
@@ -19,8 +19,15 @@ RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
 
 RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 
-RewriteRule ^beranda_auditor$ auditor.php?views_auditan=beranda_auditor
+RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
+
+RewriteRule ^temuan$ auditor.php?views_auditor=temuan
+RewriteRule ^input_temuan$ auditor.php?views_auditor=input_temuan
+RewriteRule ^edit_temuan$ auditor.php?views_auditor=edit_temuan
+
+RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
+RewriteRule ^detail_daftar_temuan$ auditan.php?views_auditan=detail_daftar_temuan
 
 RewriteRule ^admin/([A-Za-z0-9-]+)/?$ admin.php?views_admin=$1 [NC,L] 
 
-Options All -Indexes
+Options All -Indexes 	
