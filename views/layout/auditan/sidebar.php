@@ -28,6 +28,12 @@
                     <span class="ml-3 item-text">Field Work</span>
                 </a>
             </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="#">
+                    <i class="fe fe-layers"></i>
+                    <span class="ml-3 item-text">Daftar Temuan</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </aside>

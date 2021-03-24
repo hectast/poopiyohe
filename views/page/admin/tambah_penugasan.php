@@ -8,9 +8,33 @@ include 'app/controllers/admin/post_penugasan.php';
                 <h2 class="page-title"><?= $page; ?></h2>
             </div>
         </div>
+        <?php
+        if (isset($_SESSION['msg_sukses_data'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_sukses_data'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['msg_sukses_hapus_data'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_sukses_hapus_data'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
         <div class="row">
             <div class="col-12">
-                <form action="">
+                <form action="tambah_penugasan" method="POST">
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <strong class="card-title">Form Data Penugasan</strong>
@@ -20,22 +44,22 @@ include 'app/controllers/admin/post_penugasan.php';
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>No. ST</label>
-                                        <input type="text" class="form-control">
+                                        <input name="no_st" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Penugasan</label>
-                                        <input type="text" class="form-control">
+                                        <input name="nama_penugasan" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Tgl. ST</label>
-                                        <input type="date" class="form-control">
+                                        <input name="tgl_st" type="date" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <div class="row_jp">
                                             <label>Jenis Penugasan</label>
-                                            <select class="form-control" id="jp">
+                                            <select class="form-control" name="jenis_penugasan" id="jp">
                                                 <option hidden>-Jenis Penugasan-</option>
                                                 <option value="Audit">Audit</option>
                                                 <option value="Verifikasi">Verifikasi</option>
@@ -52,43 +76,12 @@ include 'app/controllers/admin/post_penugasan.php';
                         </div>
                     </div>
 
-                    <div class="row">
-
-
-                        <div class="col-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-header">
-                                    <strong class="card-title">Daftar Auditor Auditor</strong>
-                                </div>
-                                <div class="card-body">
-                                    <button type="button" class="btn mb-2 btn-primary" name="modal" data-toggle="modal" data-target="#defaultModal"><i class="fe fe-plus-circle"></i> Tambah Auditor (Personel)</button><br><br>
-                                    <table class="table" id="dataTable-audit2">
-                                        <thead>
-                                            <tr>
-                                                <td>No</td>
-                                                <td>Nama</td>
-                                                <td>Aksi</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Azwar Ramadhan Botutihe</td>
-                                                <td><a href="#" class="btn btn-danger btn-sm"><i class="fe fe-trash"></i> </a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>  
-                            </div>
-                        </div>
-
-                        <!--------------------------------------- modal --------------------------------------->
+                    <!--------------------------------------- modal --------------------------------------->
                         <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                             <div class="modal-lg modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="defaultModalLabel">Daftar Auditor</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -112,6 +105,35 @@ include 'app/controllers/admin/post_penugasan.php';
                         </div>
                         <!--------------------------------------- modal --------------------------------------->
 
+                    <div class="row">
+
+
+                        <div class="col-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header">
+                                    <strong class="card-title">Daftar Auditor (Personel)</strong>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn mb-2 btn-primary" name="modal" data-toggle="modal" data-target="#defaultModal"><i class="fe fe-plus-circle"></i> Tambah Auditor (Personel)</button><br><br>
+                                    <table class="table" >
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Auditor</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php tampil_data_auditor_selek($mysqli); ?>
+                                </tbody>
+                            </table>
+                            
+                                </div>  
+                            </div>
+                        </div>
+
+                        
+                    
                         <div class="col-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header">
@@ -121,7 +143,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                     <div class="form-group">
                                         <div class="row_auditan">
                                             <label>Auditan</label>
-                                            <select name="" class="form-control" id="auditan">
+                                            <select name="jauditan" class="form-control" id="auditan">
                                                 <option hidden>-Pilih Jenis Auditan-</option>
                                                 <option value="OPD">OPD</option>
                                                 <option value="Instansi Vertikal">Instansi Vertikal</option>
@@ -133,7 +155,7 @@ include 'app/controllers/admin/post_penugasan.php';
                         </div>
 
                     </div>
-                    <button class="btn btn-primary">Simpan</button>
+                    <button name="addpenugasan" class="btn btn-primary">Simpan</button>
                     <a href="data_penugasan" class="btn btn-secondary">Kembali</a>
                 </form>
             </div>

@@ -7,7 +7,7 @@ $result = $mysqli->query($query);
     <div class="input_vertikal">
         <div class="form-group">
             <label>Instansi Vertikal</label>
-            <select name="" id="" class="selek_vertikal form-control">
+            <select name="vertikal" id="" class="selek_vertikal form-control">
                 <option hidden>-Instansi Vertikal-</option>
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {

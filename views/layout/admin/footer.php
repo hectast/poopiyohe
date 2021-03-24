@@ -23,13 +23,15 @@
 
   $('#dataTable-audit').DataTable({
     "info":false,
-    "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]]
+    "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
   });
 
   $('#dataTable-provinsi').DataTable({
     "responsive": true,
     "autoWidth": true,
   });
+
+
   $('#dataTable-kota').DataTable({
     "responsive": true,
     "autoWidth": true,

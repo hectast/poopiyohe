@@ -8,7 +8,7 @@ $result = $mysqli->query($query);
     <div class="input_opd2">
         <div class="form-group">
             <glabel>OPD</glabel>
-            <select name="" id="pemerintah" class="selek_opd custom-select">
+            <select name="opd" id="pemerintah" class="selek_opd custom-select">
                 <option hidden>-Pilih OPD-</option>
                <?php
                 while($row = mysqli_fetch_assoc($result)){
