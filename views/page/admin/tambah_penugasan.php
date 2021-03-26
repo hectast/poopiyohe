@@ -16,6 +16,7 @@ include 'app/controllers/admin/post_penugasan.php';
                 <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_addpenugasan'); ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
+                    <!-- s -->
                 </button>
             </div>
         <?php
