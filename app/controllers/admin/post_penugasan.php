@@ -1,52 +1,48 @@
 <?php
 include 'app/controllers/admin/function_penugasan.php';
 include 'app/flash_message.php';
-
-if(isset($_POST['tambah_auditor'])){
-    $id = $_POST['id'];
-    $_SESSION['keranjang'][$id] = $id ;
-    flash("msg_sukses_data", "Auditor Berhasil Ditambahkan");
-    
-}else if(isset($_POST['hapus_keranjang'])){
-    $id = $_POST['id'];
-    unset($_SESSION['keranjang'][$id]);
-    flash("msg_sukses_hapus_data", "Auditor Berhasil Dihapus");
-}else if(isset($_POST['addpenugasan'])){
-    $no_st = $_POST['no_st'];
+error_reporting(0);
+if (isset($_POST['addpenugasan'])) {
+    $no_st          = $_POST['no_st'];
     $nama_penugasan = $_POST['nama_penugasan'];
-    $tgl_st = $_POST['tgl_st'];
-    $jp = $_POST['jenis_penugasan'];
-    if($jp != 'Lainnya'){
+    $tgl_st         = $_POST['tgl_st'];
+    $jp             = $_POST['jenis_penugasan'];
+   
+    if ($jp != 'Lainnya') {
         $jenis_penugasan = $_POST['jenis_penugasan'];
-    }else{
+    } else {
         $jenis_penugasan = $_POST['lainnya'];
     }
 
-    $auditan_in = $_POST['vertikal'];
-    $auditan_opd = $_POST['opd'];
+    $pkpt = $_POST['pkpt'];
+    $kf1 = $_POST['kf1'];
 
+    $auditan_in     = $_POST['vertikal'];
+    $auditan_opd    = $_POST['opd'];
+    if (empty($auditan_in)) {
+        $auditan_instansi = '-';
+    } else {
+        $auditan_instansi = $_POST['vertikal'];
+    }
 
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Selesai')");
+    if (empty($auditan_opd)) {
+        $auditan_opda = '-';
+    } else {
+        $auditan_opda = $_POST['opd'];
+    }
+    
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_instansi','$auditan_opda','Belum Validasi','$pkpt','$kf1')");
+
+    $auditor = $_POST['auditor'];
+    $peran = $_POST['peran'];
+    $total = count($auditor)-1;
     $id_terakhir = $mysqli->insert_id;
 
-
-
-
-    foreach($_SESSION['keranjang'] as $id){
-        $query = $mysqli->query("SELECT * FROM auditor WHERE id ='$id'");
-        $tampil = $query->fetch_array();
-        $idauditor = $tampil['id'];
-        $nama = $tampil['nama'];
-        $mysqli->query("INSERT INTO penugasan_auditor VALUES('','$id_terakhir','$idauditor')");
-        
+    for ($i = 0; $i < $total; $i++) {
+        $queryinput = "INSERT INTO penugasan_auditor VALUES('','$id_terakhir','$auditor[$i]','$peran[$i]')";
+        $insert2 = $mysqli->query($queryinput);
     }
-    unset($_SESSION['keranjang']);
-    echo"
-    <script>
-        alert('Data Berhasil Disimpan');
-        window.location.href='http://localhost/poopiyohe/data_penugasan';
-    </script>
-    ";
-}
 
-?>
+
+    flash("msg_addpenugasan", "Data Berhasil Disimpan");
+}
