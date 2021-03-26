@@ -1,17 +1,16 @@
 <?php
-function tampil_data_auditor($mysqli){
-    $nomor = 1;
-    $query = "SELECT * FROM auditor ORDER BY id ASC";
-    $result = $mysqli->query($query);
-    while($r = mysqli_fetch_assoc($result)){
-    ?>
-        <tr>
-            <td><?= $nomor++ ?></td>
-            <td><?= $r['nama'] ?></td>
-            <td><a href="" class="btn btn-sm btn-primary"><i class="fe fe-plus-circle"></i> </a></td>
-        </tr>
-    <?php
-    }
+function tampil_data($mysqli){
+   
 }
-
+function tampil_data_auditor($mysqli){
+ $r_auditor = $mysqli->query("SELECT * FROM auditor");
+ while($auditor = mysqli_fetch_assoc($r_auditor)){
+ ?>
+ <option value="<?= $auditor['id'] ?>"><?= $auditor['nama'] ?></option>
+ <?php   
+ }
+}
+function tampil_data_auditor_selek($mysqli){
+   
+}
 ?>
