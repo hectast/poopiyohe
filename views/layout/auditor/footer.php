@@ -20,7 +20,7 @@
     "responsive": true,
     "autoWidth": true,
   });
-  
+
   $('.select1').select2({
     theme: 'bootstrap4',
   });
@@ -32,29 +32,146 @@
       });
     }, 2000);
   });
+</script>
 
-  $('.input-money').mask("#.##0,00",
-      {
-        reverse: true
+<!--start kondisi -->
+<script>
+  $(document).ready(function() {
+
+    $('#buttonKriteriaAdd').click(function(e) {
+      e.preventDefault();
+      // n++;
+      $('#kriteriaArea').append('<div class="form-group mb-3" id="kriteriaGroup"> ' +
+        '<div class="input-group"> ' +
+        '<input class="form-control" type="text" name="input"> ' +
+        '<div class="input-group-append"> ' +
+        '<button type="button" class="btn btn-link buttonKriteriaRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '</div> ' +
+        '</div> ' +
+        '</div>');
+    });
+    $('#kriteriaArea').on('click', '.buttonKriteriaRemove', function(e) {
+      e.preventDefault();
+      // const kondisiGroup = $('#kondisiGroup');
+      $('#kriteriaGroup:last-child').remove();
+      // $('#formArea'+(n-1)+'').remove();
+      // $(this).remove();
+      // console.log(n);
+      // n--;
+    });
+    // console.log(n++);
+
   });
 </script>
+<!-- end kondisi -->
+<!-- start sebab -->
 <script>
-    $(function() {
+  $(document).ready(function() {
 
-        $('#id_pemda').change(function() {
-            $('.instansi_row').remove();
-            if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
-                $.get('app/controllers/admin/daftar_dynoption.php', {
-                        id_pemda: $('#id_pemda').val()
-                    })
-                    .done(function(data) {
-                        $('div.pemda_row').after(data);
-                    })
-            }
-        });
-
+    $('#buttonSebabAdd').click(function(e) {
+      e.preventDefault();
+      // n++;
+      $('#sebabArea').append('<div class="form-group mb-3" id="sebabGroup"> ' +
+        '<div class="input-group"> ' +
+        '<input class="form-control" type="text" name="input"> ' +
+        '<div class="input-group-append"> ' +
+        '<button type="button" class="btn btn-link buttonSebabRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '</div> ' +
+        '</div> ' +
+        '</div>');
     });
+    $('#sebabArea').on('click', '.buttonSebabRemove', function(e) {
+      e.preventDefault();
+      // const kondisiGroup = $('#kondisiGroup');
+      $('#sebabGroup:last-child').remove();
+      // $('#formArea'+(n-1)+'').remove();
+      // $(this).remove();
+      // console.log(n);
+      // n--;
+    });
+    // console.log(n++);
+
+  });
 </script>
+<!-- end sebab -->
+<!-- start sebab -->
+<script>
+  $(document).ready(function() {
+
+    $('#buttonAkibatAdd').click(function(e) {
+      e.preventDefault();
+      // n++;
+      $('#akibatArea').append('<div class="form-group mb-3" id="akibatGroup"> ' +
+        '<div class="input-group"> ' +
+        '<input class="form-control" type="text" name="input"> ' +
+        '<div class="input-group-append"> ' +
+        '<button type="button" class="btn btn-link buttonAkibatRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '</div> ' +
+        '</div> ' +
+        '</div>');
+    });
+    $('#akibatArea').on('click', '.buttonAkibatRemove', function(e) {
+      e.preventDefault();
+      // const kondisiGroup = $('#kondisiGroup');
+      $('#akibatGroup:last-child').remove();
+      // $('#formArea'+(n-1)+'').remove();
+      // $(this).remove();
+      // console.log(n);
+      // n--;
+    });
+    // console.log(n++);
+
+  });
+</script>
+<!-- end sebab -->
+<!-- start kondisi -->
+<script>
+  $(document).ready(function() {
+    $('#kondisiCek').change(function() {
+      if ($(this).is(":checked")) {
+        let prepend = '<div class="input-group-prepend">' +
+                      '<span class="input-group-text">Rp.</span>' +
+                      '</div>';
+        $('#kondisiGroup .input-group').prepend(prepend);
+        $('#kondisiText').attr("type", "number");
+      } else {
+        $('#kondisiGroup .input-group .input-group-prepend').remove();
+        $('#kondisiText').attr("type", "text");
+      }
+    });
+  });
+</script>
+<!-- end kondisi -->
+<!-- start sebab -->
+<script>
+  $(document).ready(function() {
+
+    $('#buttonUraianAdd').click(function(e) {
+      e.preventDefault();
+      // n++;
+      $('#uraianArea').append('<div class="form-group mb-3" id="uraianGroup"> ' +
+        '<div class="input-group"> ' +
+        '<input class="form-control" type="text" name="input"> ' +
+        '<div class="input-group-append"> ' +
+        '<button type="button" class="btn btn-link buttonUraianRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '</div> ' +
+        '</div> ' +
+        '</div>');
+    });
+    $('#uraianArea').on('click', '.buttonUraianRemove', function(e) {
+      e.preventDefault();
+      // const kondisiGroup = $('#kondisiGroup');
+      $('#uraianGroup:last-child').remove();
+      // $('#formArea'+(n-1)+'').remove();
+      // $(this).remove();
+      // console.log(n);
+      // n--;
+    });
+    // console.log(n++);
+
+  });
+</script>
+<!-- end sebab -->
 </body>
 
 </html>
