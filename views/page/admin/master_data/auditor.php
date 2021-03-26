@@ -55,6 +55,10 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                             <label for="simpleinput">Nama Auditor</label>
                             <input type="text" name="namaauditor" id="simpleinput" class="form-control" autocomplete="off">
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="simpleinput1">Email Auditor</label>
+                            <input type="email" name="email_auditor" id="simpleinput1" class="form-control" autocomplete="off">
+                        </div>
                         <button type="submit" name="simpan" class="btn btn-primary float-right">Simpan</button>
                     </form>
                     </div>
@@ -71,7 +75,8 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th width="100%">Nama Auditor</th>
+                                    <th>Nama Auditor</th>
+                                    <th>Email Auditor</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

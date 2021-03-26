@@ -6,8 +6,9 @@ include 'app/flash_message.php';
 if (isset($_POST['simpan'])) {
 
     $namaauditor = $_POST['namaauditor'];
+    $emailauditor = $_POST['email_auditor'];
 
-    simpan_data($namaauditor, $mysqli);
+    simpan_data($namaauditor, $emailauditor, $mysqli);
     flash("msg_simpan_data", "Data berhasil ditambahkan");
 }
 
@@ -28,12 +29,13 @@ if (isset($_POST['hapus_data'])) {
 if (isset($_POST['ubah'])) {
     $id = $_POST['id'];
     $namaauditor = $_POST['namaauditor'];
+    $emailauditor = $_POST['emailauditor'];
     $token_ubah = $_POST['token_ubah'];
 
     $tkn = 'sam_san_tech)';
     $token = md5("$tkn:$id");
     if ($token_ubah === $token) {
-        edit_data($id, $namaauditor, $mysqli);
+        edit_data($id, $namaauditor, $emailauditor, $mysqli);
         flash("msg_edit_data", "Data berhasi diubah");
     }
 }
