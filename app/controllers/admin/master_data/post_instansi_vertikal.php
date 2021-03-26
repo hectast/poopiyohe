@@ -5,10 +5,11 @@ include 'app/flash_message.php';
 
 if (isset($_POST['simpan_data'])) {
     $instansi = $_POST['instansi'];
+    $email = $_POST['email'];
     $keterangan = $_POST['keterangan'];
 
 
-    simpan_data($instansi, $keterangan, $mysqli);
+    simpan_data($instansi, $email, $keterangan, $mysqli);
     flash("msg_simpan_data", "Data berhasil di simpan");
 }
 
@@ -28,6 +29,7 @@ if (isset($_POST['hapus_data'])) {
 if (isset($_POST['ubah_data'])) {
     $id = $_POST['id'];
     $instansi = $_POST['instansi'];
+    $email = $_POST['email'];
     $keterangan = $_POST['keterangan'];
     $token_edit = $_POST['token_edit'];
 
@@ -35,7 +37,7 @@ if (isset($_POST['ubah_data'])) {
     $token = md5("$tkn:$id");
 
     if ($token_edit === $token) {
-        ubah_data($id, $instansi, $keterangan, $mysqli);
+        ubah_data($id, $instansi, $email, $keterangan, $mysqli);
         flash("msg_ubah_data", "Data berhasil di ubah");
     }
 }

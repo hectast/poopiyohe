@@ -17,6 +17,7 @@ function tampil_data($mysqli){
  <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama; ?></td>
+            <td><?= $row->email; ?></td>
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fe fe-settings"></span>
@@ -44,9 +45,11 @@ function tampil_data($mysqli){
                                         <div class="modal-body">
                                             <input type="hidden" name="id" value="<?= $id; ?>">
                                             <div class="form-group">
-                                                <label for="kt">Nama Auditor</label>
+                                                <label>Nama Auditor</label>
                                                 <input type="hidden" name="token_ubah" value="<?= $token; ?>">
                                                 <input type="text" autocomplete="off" name="namaauditor" class="form-control" value="<?= $row->nama; ?>" required>
+                                                <label>Email Auditor</label>
+                                                <input type="email" name="emailauditor" class="form-control" value="<?= $row->email; ?>">
                                             </div>
                                         </div>
                                         <div class="modal-footer justify-content-between">
@@ -69,12 +72,12 @@ function hapus_data($id, $mysqli)
     $delete->execute();
 }
 
-function simpan_data($namaauditor, $mysqli){
-    $insert = $mysqli->prepare("INSERT INTO auditor(nama)  VALUES ('$namaauditor')");
+function simpan_data($namaauditor, $emailauditor, $mysqli){
+    $insert = $mysqli->prepare("INSERT INTO auditor(nama,email)  VALUES ('$namaauditor','$emailauditor')");
     $insert->execute();
 }
 
-function edit_data($id,$namaauditor,$mysqli){
-    $edit = $mysqli->prepare("UPDATE auditor SET nama='$namaauditor' WHERE id='$id'");
+function edit_data($id, $namaauditor, $emailauditor, $mysqli){
+    $edit = $mysqli->prepare("UPDATE auditor SET nama='$namaauditor' , email='$emailauditor' WHERE id='$id'");
     $edit->execute();
 }

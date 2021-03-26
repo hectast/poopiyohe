@@ -29,6 +29,11 @@ RewriteRule ^temuan$ auditor.php?views_auditor=temuan
 RewriteRule ^input_temuan$ auditor.php?views_auditor=input_temuan
 RewriteRule ^edit_temuan$ auditor.php?views_auditor=edit_temuan
 
+RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
+RewriteRule ^detail_daftar_temuan$ auditan.php?views_auditan=detail_daftar_temuan
+
+RewriteRule ^admin/([A-Za-z0-9-]+)/?$ admin.php?views_admin=$1 [NC,L] 
+
 
 RewriteRule ^([A-Za-z0-9-]+)$ admin.php?views_admin=$1
 RewriteRule ^([A-Za-z0-9-]+)$ auditan.php?views_auditan=$1

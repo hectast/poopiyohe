@@ -59,6 +59,10 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                 <input type="text" id="instansi" name="instansi" class="form-control">
                             </div>
                             <div class="form-group mb-3">
+                                <label for="instansi">Email Instansi</label>
+                                <input type="text" id="instansi" name="email" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
                                 <label for="pemda">Pemerintah Daerah</label>
 
                                 <select class="form-control select1" id="pemda" name="nama_pemda" style="width: 100%;">
@@ -116,6 +120,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -132,6 +137,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -148,6 +154,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -164,6 +171,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -180,6 +188,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -196,6 +205,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
@@ -212,6 +222,7 @@ include 'app/controllers/admin/master_data/post_opd.php';
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Instansi</th>
+                                            <th>Email Instansi</th>
                                             <th>Pemerintah Daerah</th>
                                             <th>Keterangan</th>
                                             <th>Aksi</th>
