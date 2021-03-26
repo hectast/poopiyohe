@@ -13,6 +13,9 @@
 <script src='assets/js/jquery.dataTables.min.js'></script>
 <script src='assets/js/dataTables.bootstrap4.min.js'></script>
 <script src='assets/js/select2.min.js'></script>
+<script src="assets/js/Chart.min.js"></script>
+<script src="assets/js/apexcharts.min.js"></script>
+<script src="assets/js/apexcharts.custom.js"></script>
 <!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
 <script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
 <script>
@@ -34,7 +37,158 @@
   });
 </script>
 
-<!--start kondisi -->
+<script>
+  $(document).ready(function() {
+
+    var options = {
+          series: [40 , 30, 20],
+          colors: ['#dc3545', '#eea303', '#3ad29f'],
+          chart: {
+          width: "60%",
+          offsetX: 100,
+          type: 'pie',
+        },
+        // dataLabels: {
+        //   enabled: false,
+        // },
+        legend: {
+            show: false
+        },
+        labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
+        responsive: [{
+          breakpoint: 1000,
+          options: {
+            chart: {
+              width: "80%",
+              offsetX: 40,
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#pdpPieChart"), options);
+        chart.render();
+  });
+</script>
+
+<!-- start temuan -->
+<script>
+  $(document).ready(function() {
+    let nomor = 2;
+    $('#addTemuan').click(function(e) {
+      e.preventDefault();
+
+      const rowTemuan = `<div id="temuanGroup">
+                            <h5><u>Temuan ` + (nomor++) + `</u><button type="button" class="btn btn-link buttonTemuanRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button></h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>No. ST</label>
+                                        <select class="form-control select1" me="nama_pemda" style="width: 100%;" disabled>
+                                            <option>--Pilih No ST--</option>
+                                            <option>ST/01/2021/03/23</option>
+                                            <option>ST/02/2021/03/23</option>
+                                            <option>ST/03/2021/03/23</option>
+                                            <option>ST/04/2021/03/23</option>
+                                            <option>ST/05/2021/03/23</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="instansi">Tgl. ST</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>No. Laporan</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="instansi">Tgl. Laporan</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="kondisiArea">
+                                        <div class="form-group mb-3" id="kondisiGroup">
+                                            <label>Kondisi</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" id="kondisiText">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <input type="checkbox" id="kondisiCek">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="kriteriaArea">
+                                        <div class="form-group mb-3">
+                                            <label>Kriteria</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="buttonKriteriaAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sebabArea">
+                                        <div class="form-group mb-3">
+                                            <label>Sebab</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="buttonSebabAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="akibatArea">
+                                        <div class="form-group mb-3">
+                                            <label>Akibat</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="buttonAkibatAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="uraianArea">
+                                        <div class="form-group mb-3">
+                                            <label>Uraian</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="text">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="buttonUraianAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>`;
+      $('#temuanArea').append(rowTemuan);
+    });
+    $('#temuanArea').on('click', '.buttonTemuanRemove', function(e) {
+      e.preventDefault();
+      // const kondisiGroup = $('#kondisiGroup');
+      $('#temuanGroup:last-child').remove();
+      // $('#formArea'+(n-1)+'').remove();
+      // $(this).remove();
+      // console.log(n);
+      nomor--;
+    });
+    // console.log(n++);
+  });
+</script>
+<!-- end temuan -->
+<!--start kriteria -->
 <script>
   $(document).ready(function() {
 
@@ -45,7 +199,7 @@
         '<div class="input-group"> ' +
         '<input class="form-control" type="text" name="input"> ' +
         '<div class="input-group-append"> ' +
-        '<button type="button" class="btn btn-link buttonKriteriaRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '<button type="button" class="btn btn-link buttonKriteriaRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
         '</div> ' +
         '</div> ' +
         '</div>');
@@ -63,7 +217,7 @@
 
   });
 </script>
-<!-- end kondisi -->
+<!-- end kriteria -->
 <!-- start sebab -->
 <script>
   $(document).ready(function() {
@@ -75,7 +229,7 @@
         '<div class="input-group"> ' +
         '<input class="form-control" type="text" name="input"> ' +
         '<div class="input-group-append"> ' +
-        '<button type="button" class="btn btn-link buttonSebabRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '<button type="button" class="btn btn-link buttonSebabRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
         '</div> ' +
         '</div> ' +
         '</div>');
@@ -105,7 +259,7 @@
         '<div class="input-group"> ' +
         '<input class="form-control" type="text" name="input"> ' +
         '<div class="input-group-append"> ' +
-        '<button type="button" class="btn btn-link buttonAkibatRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '<button type="button" class="btn btn-link buttonAkibatRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
         '</div> ' +
         '</div> ' +
         '</div>');
@@ -130,8 +284,8 @@
     $('#kondisiCek').change(function() {
       if ($(this).is(":checked")) {
         let prepend = '<div class="input-group-prepend">' +
-                      '<span class="input-group-text">Rp.</span>' +
-                      '</div>';
+          '<span class="input-group-text">Rp.</span>' +
+          '</div>';
         $('#kondisiGroup .input-group').prepend(prepend);
         $('#kondisiText').attr("type", "number");
       } else {
@@ -153,7 +307,7 @@
         '<div class="input-group"> ' +
         '<input class="form-control" type="text" name="input"> ' +
         '<div class="input-group-append"> ' +
-        '<button type="button" class="btn btn-link buttonUraianRemove"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+        '<button type="button" class="btn btn-link buttonUraianRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
         '</div> ' +
         '</div> ' +
         '</div>');
