@@ -24,6 +24,9 @@ include 'app/controllers/admin/post_penugasan.php';
                                    <th>Tgl.ST</th>
                                    <th>Uraian Penugasan</th>
                                    <th>Jenis Penugasan</th>
+                                   <th>Ket</th>
+                                   <th>Status</th>
+                                   <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
