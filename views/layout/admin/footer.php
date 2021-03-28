@@ -21,17 +21,10 @@
     "autoWidth": true,
   });
 
-<<<<<<< HEAD
-  // $('#dataTable-audit').DataTable({
-  //   "info":false,
-  //   "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]]
-  // });
-=======
   $('#dataTable-audit').DataTable({
     "info":false,
     "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
   });
->>>>>>> 1247ab157e4e1a2e0f7bbaedd36f1ad7278d1a50
 
   $('#dataTable-provinsi').DataTable({
     "responsive": true,

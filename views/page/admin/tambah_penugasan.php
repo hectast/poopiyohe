@@ -89,7 +89,6 @@ include 'app/controllers/admin/post_penugasan.php';
                             </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="row">
                         <div class="col-12">

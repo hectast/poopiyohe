@@ -41,33 +41,33 @@
   $(document).ready(function() {
 
     var options = {
-          series: [40 , 30, 20],
-          colors: ['#dc3545', '#eea303', '#3ad29f'],
+      series: [40, 30, 20],
+      colors: ['#dc3545', '#eea303', '#3ad29f'],
+      chart: {
+        width: "60%",
+        offsetX: 100,
+        type: 'pie',
+      },
+      // dataLabels: {
+      //   enabled: false,
+      // },
+      legend: {
+        show: false
+      },
+      labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
+      responsive: [{
+        breakpoint: 1000,
+        options: {
           chart: {
-          width: "60%",
-          offsetX: 100,
-          type: 'pie',
-        },
-        // dataLabels: {
-        //   enabled: false,
-        // },
-        legend: {
-            show: false
-        },
-        labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
-        responsive: [{
-          breakpoint: 1000,
-          options: {
-            chart: {
-              width: "80%",
-              offsetX: 40,
-            }
+            width: "80%",
+            offsetX: 40,
           }
-        }]
-        };
+        }
+      }]
+    };
 
-        var chart = new ApexCharts(document.querySelector("#pdpPieChart"), options);
-        chart.render();
+    var chart = new ApexCharts(document.querySelector("#pdpPieChart"), options);
+    chart.render();
   });
 </script>
 
@@ -79,7 +79,7 @@
       e.preventDefault();
 
       const rowTemuan = `<div id="temuanGroup">
-                            <h5><u>Temuan ` + (nomor++) + `</u><button type="button" class="btn btn-link buttonTemuanRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button></h5>
+                            <h5><u>Temuan ` + (nomor) + `</u><button type="button" class="btn btn-link buttonTemuanRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button></h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -122,35 +122,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="kriteriaArea">
+                                    <div class="kriteriaArea` + (nomor) + `">
                                         <div class="form-group mb-3">
                                             <label>Kriteria</label>
                                             <div class="input-group">
                                                 <input class="form-control" type="text">
                                                 <div class="input-group-append">
-                                                    <button type="button" id="buttonKriteriaAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                    <button type="button" class="btn btn-link buttonKriteriaAdd` + (nomor) + `"><i class="fe fe-plus-circle fe-16"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="sebabArea">
+                                    <div class="sebabArea` + (nomor) + `">
                                         <div class="form-group mb-3">
                                             <label>Sebab</label>
                                             <div class="input-group">
                                                 <input class="form-control" type="text">
                                                 <div class="input-group-append">
-                                                    <button type="button" id="buttonSebabAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                    <button type="button" class="btn btn-link buttonSebabAdd` + (nomor) + `"><i class="fe fe-plus-circle fe-16"></i></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="akibatArea">
+                                    <div class="akibatArea` + (nomor) + `">
                                         <div class="form-group mb-3">
                                             <label>Akibat</label>
                                             <div class="input-group">
                                                 <input class="form-control" type="text">
                                                 <div class="input-group-append">
-                                                    <button type="button" id="buttonAkibatAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                    <button type="button" class="btn btn-link buttonAkibatAdd` + (nomor) + `"><i class="fe fe-plus-circle fe-16"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,13 +159,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="uraianArea">
+                                    <div class="uraianArea` + (nomor) + `">
                                         <div class="form-group mb-3">
                                             <label>Uraian</label>
                                             <div class="input-group">
                                                 <input class="form-control" type="text">
                                                 <div class="input-group-append">
-                                                    <button type="button" id="buttonUraianAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                    <button type="button" class="btn btn-link buttonUraianAdd` + (nomor) + `"><i class="fe fe-plus-circle fe-16"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,6 +174,96 @@
                             </div>
                           </div>`;
       $('#temuanArea').append(rowTemuan);
+
+      // kriteria
+      $('.buttonKriteriaAdd' + (nomor)).click(function() {
+        // e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="kriteriaGroup' + (nomor) + '"> ' +
+          '<div class="input-group"> ' +
+          '<input class="form-control" type="text" name="input"> ' +
+          '<div class="input-group-append"> ' +
+          '<button type="button" class="btn btn-link buttonKriteriaRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '</div> ' +
+          '</div> ' +
+          '</div>');
+        // let kriteriaArea = $('.kriteriaArea2');
+        // console.log($(this).parents("div."+ kriteriaArea));
+        // console.log($(this).parent().parent().parent().parent());
+        $('.buttonKriteriaRemove' + (nomor)).click(function() {
+          // e.preventDefault();
+          $(this).parent().parent().parent().remove();
+          // console.log($(this).parent().parent().parent().parent());
+          nomor--;
+        });
+      });
+
+      // sebab
+      $('.buttonSebabAdd' + (nomor)).click(function() {
+        // e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="sebabGroup' + (nomor) + '"> ' +
+          '<div class="input-group"> ' +
+          '<input class="form-control" type="text" name="input"> ' +
+          '<div class="input-group-append"> ' +
+          '<button type="button" class="btn btn-link buttonSebabRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '</div> ' +
+          '</div> ' +
+          '</div>');
+        // let kriteriaArea = $('.kriteriaArea2');
+        // console.log($(this).parents("div."+ kriteriaArea));
+        // console.log($(this).parent().parent().parent().parent());
+        $('.buttonSebabRemove' + (nomor)).click(function() {
+          // e.preventDefault();
+          $(this).parent().parent().parent().remove();
+          // console.log($(this).parent().parent().parent().parent());
+          nomor--;
+        });
+      });
+
+      // akibat
+      $('.buttonAkibatAdd' + (nomor)).click(function() {
+        // e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="akibatGroup' + (nomor) + '"> ' +
+          '<div class="input-group"> ' +
+          '<input class="form-control" type="text" name="input"> ' +
+          '<div class="input-group-append"> ' +
+          '<button type="button" class="btn btn-link buttonAkibatRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '</div> ' +
+          '</div> ' +
+          '</div>');
+        // let kriteriaArea = $('.kriteriaArea2');
+        // console.log($(this).parents("div."+ kriteriaArea));
+        // console.log($(this).parent().parent().parent().parent());
+        $('.buttonAkibatRemove' + (nomor)).click(function() {
+          // e.preventDefault();
+          $(this).parent().parent().parent().remove();
+          // console.log($(this).parent().parent().parent().parent());
+          nomor--;
+        });
+      });
+
+      // uraian
+      $('.buttonUraianAdd' + (nomor)).click(function() {
+        // e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="uraianGroup' + (nomor) + '"> ' +
+          '<div class="input-group"> ' +
+          '<input class="form-control" type="text" name="input"> ' +
+          '<div class="input-group-append"> ' +
+          '<button type="button" class="btn btn-link buttonUraianRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '</div> ' +
+          '</div> ' +
+          '</div>');
+        // let kriteriaArea = $('.kriteriaArea2');
+        // console.log($(this).parents("div."+ kriteriaArea));
+        // console.log($(this).parent().parent().parent().parent());
+        $('.buttonUraianRemove' + (nomor)).click(function() {
+          // e.preventDefault();
+          $(this).parent().parent().parent().remove();
+          // console.log($(this).parent().parent().parent().parent());
+          nomor--;
+        });
+      });
+
+      nomor++;
     });
     $('#temuanArea').on('click', '.buttonTemuanRemove', function(e) {
       e.preventDefault();
