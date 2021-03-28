@@ -19,6 +19,7 @@ function tampil_data($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->keterangan; ?></td>
 
             <td>
@@ -54,6 +55,10 @@ function tampil_data($mysqli)
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
                             </div>
                             <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansi</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
+                            </div>
+                            <div class="form-group">
                                 <label for="keterangan" class="col-form-label">Keterangan</label>
                                 <textarea id="keterangan" name="keterangan" class="form-control"><?= $row->keterangan; ?></textarea>
                             </div>
@@ -72,9 +77,9 @@ function tampil_data($mysqli)
     }
 }
 
-function simpan_data($instansi, $keterangan, $mysqli)
+function simpan_data($instansi, $email, $keterangan, $mysqli)
 {
-    $save = $mysqli->prepare("INSERT INTO instansi_vertikal (nama_instansi,keterangan) VALUES ('$instansi','$keterangan')");
+    $save = $mysqli->prepare("INSERT INTO instansi_vertikal (nama_instansi,email,keterangan) VALUES ('$instansi','$email','$keterangan')");
     $save->execute();
 }
 
@@ -84,9 +89,9 @@ function hapus_data($id, $mysqli)
     $delete->execute();
 }
 
-function ubah_data($id, $instansi, $keterangan, $mysqli)
+function ubah_data($id, $instansi, $email, $keterangan, $mysqli)
 {
-    $update = $mysqli->prepare("UPDATE instansi_vertikal SET nama_instansi='$instansi',keterangan='$keterangan' WHERE id='$id'");
+    $update = $mysqli->prepare("UPDATE instansi_vertikal SET nama_instansi='$instansi',email='$email',keterangan='$keterangan' WHERE id='$id'");
     $update->execute();
 }
 

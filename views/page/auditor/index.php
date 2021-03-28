@@ -37,7 +37,7 @@ if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor"
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "edit_laporan") {
     include 'views/page/auditor/laporan/edit_laporan.php';
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "temuan") {
-    include 'views/page/auditor/temuan/temuan.php';
+    include 'views/page/auditor/temuan.php';
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "input_temuan") {
     include 'views/page/auditor/temuan/input_temuan.php';
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "edit_temuan") {

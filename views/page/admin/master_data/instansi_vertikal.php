@@ -59,6 +59,10 @@ include 'app/controllers/admin/master_data/post_instansi_vertikal.php';
                                 <input type="text" id="instansi" name="instansi" class="form-control">
                             </div>
                             <div class="form-group mb-3">
+                                <label for="email">Email Instansi</label>
+                                <input type="text" id="email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
                                 <label for="keterangan">Keterangan</label>
                                 <textarea id="keterangan" name="keterangan" class="form-control"></textarea>
                             </div>
@@ -79,6 +83,7 @@ include 'app/controllers/admin/master_data/post_instansi_vertikal.php';
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Instansi</th>
+                                    <th>Email Instansi</th>
                                     <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>

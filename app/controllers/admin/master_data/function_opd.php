@@ -19,6 +19,7 @@ function tampil_data_provinsi($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -53,6 +54,10 @@ function tampil_data_provinsi($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -184,6 +189,7 @@ function tampil_data_kota($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -218,6 +224,10 @@ function tampil_data_kota($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -349,6 +359,7 @@ function tampil_data_kabgor($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -383,6 +394,10 @@ function tampil_data_kabgor($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -514,6 +529,7 @@ function tampil_data_gorut($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -548,6 +564,10 @@ function tampil_data_gorut($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -679,6 +699,7 @@ function tampil_data_bonbol($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -713,6 +734,10 @@ function tampil_data_bonbol($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -844,6 +869,7 @@ function tampil_data_boal($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -878,6 +904,10 @@ function tampil_data_boal($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -1009,6 +1039,7 @@ function tampil_data_pohu($mysqli)
         <tr>
             <td><?= $no; ?></td>
             <td><?= $row->nama_instansi; ?></td>
+            <td><?= $row->email; ?></td>
             <td><?= $row->nama_pemda; ?></td>
             <td><?= $row->keterangan; ?></td>
 
@@ -1043,6 +1074,10 @@ function tampil_data_pohu($mysqli)
                             <div class="form-group">
                                 <label for="instansi" class="col-form-label">Nama Instansi</label>
                                 <input type="text" id="instansi" name="instansi" class="form-control" value="<?= $row->nama_instansi; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email Instansil</label>
+                                <input type="text" id="email" name="email" class="form-control" value="<?= $row->email; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="pilih-pemda">Pemerintah Daerah</label>
@@ -1155,9 +1190,9 @@ function tampil_data_pohu($mysqli)
     }
 }
 
-function simpan_data($instansi, $nama_pemda, $keterangan, $mysqli)
+function simpan_data($instansi, $email, $nama_pemda, $keterangan, $mysqli)
 {
-    $save = $mysqli->prepare("INSERT INTO opd (nama_instansi,nama_pemda,keterangan) VALUES ('$instansi','$nama_pemda','$keterangan')");
+    $save = $mysqli->prepare("INSERT INTO opd (nama_instansi,email,nama_pemda,keterangan) VALUES ('$instansi','$email','$nama_pemda','$keterangan')");
     $save->execute();
 }
 
@@ -1167,9 +1202,9 @@ function hapus_data($id, $mysqli)
     $delete->execute();
 }
 
-function ubah_data($id, $instansi, $nama_pemda, $keterangan, $mysqli)
+function ubah_data($id, $instansi, $email, $nama_pemda, $keterangan, $mysqli)
 {
-    $update = $mysqli->prepare("UPDATE opd SET nama_instansi='$instansi', nama_pemda='$nama_pemda',keterangan='$keterangan' WHERE id='$id'");
+    $update = $mysqli->prepare("UPDATE opd SET nama_instansi='$instansi', email='$email', nama_pemda='$nama_pemda',keterangan='$keterangan' WHERE id='$id'");
     $update->execute();
 }
 
