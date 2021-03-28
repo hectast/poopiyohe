@@ -111,13 +111,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div id="kondisiArea">
-                                        <div class="form-group mb-3" id="kondisiGroup">
+                                        <div class="form-group mb-3" id="kondisiGroup` + (nomor) + `">
                                             <label>Kondisi</label>
                                             <div class="input-group">
-                                                <input class="form-control" type="text" id="kondisiText">
+                                                <input class="form-control" type="text" id="kondisiText` + (nomor) + `">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
-                                                        <input type="checkbox" id="kondisiCek">
+                                                        <input type="checkbox" id="kondisiCek` + (nomor) + `">
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,7 +174,26 @@
                                 </div>
                             </div>
                           </div>`;
+
+
       $('#temuanArea').append(rowTemuan);
+
+
+      $('#kondisiCek' + (nomorAppend)).change(function(e) {
+      e.preventDefault();
+      if ($(this).is(":checked")) {
+        let prepend = '<div class="input-group-prepend' + (nomorAppend) + '"> ' +
+          '<span class="input-group-text">Rp.</span>' +
+          '</div>';
+        $(this).parent().parent().parent().prepend(prepend);
+        $('#kondisiText').attr("type", "number");
+      } else {
+        $('.input-group-prepend'+ (nomorAppend)).remove();
+        $('#kondisiText'+ (nomorAppend)).attr("type", "text");
+      }
+      // console.log($(this).parent().parent().parent().parent());
+      });
+
 
       // kriteria
       $('.buttonKriteriaAdd' + (nomorAppend)).click(function(e) {

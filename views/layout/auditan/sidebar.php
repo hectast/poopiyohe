@@ -25,7 +25,7 @@
             <li class="nav-item w-100">
                 <a class="nav-link" href="#">
                     <i class="fe fe-check-square fe-16"></i>
-                    <span class="ml-3 item-text">Field Work</span>
+                    <span class="ml-3 item-text">Penilaian</span>
                 </a>
             </li>
             <li class="nav-item w-100">

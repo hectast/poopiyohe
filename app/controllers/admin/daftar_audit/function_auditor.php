@@ -72,8 +72,8 @@ function hapus_data($id, $mysqli)
     $delete->execute();
 }
 
-function simpan_data($namaauditor, $emailauditor, $mysqli){
-    $insert = $mysqli->prepare("INSERT INTO auditor(nama,email)  VALUES ('$namaauditor','$emailauditor')");
+function simpan_data($namaauditor, $emailauditor, $hash_pass, $mysqli){
+    $insert = $mysqli->prepare("INSERT INTO auditor(nama,email,password)  VALUES ('$namaauditor','$emailauditor','$hash_pass')");
     $insert->execute();
 }
 

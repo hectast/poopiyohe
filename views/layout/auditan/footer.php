@@ -13,6 +13,9 @@
 <script src='assets/js/jquery.dataTables.min.js'></script>
 <script src='assets/js/dataTables.bootstrap4.min.js'></script>
 <script src='assets/js/select2.min.js'></script>
+<script src="assets/js/Chart.min.js"></script>
+<script src="assets/js/apexcharts.min.js"></script>
+<script src="assets/js/apexcharts.custom.js"></script>
 <!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
 <script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
 <script>
@@ -49,6 +52,40 @@
         });
 
     });
+</script>
+
+<script>
+  $(document).ready(function() {
+
+    var options = {
+      series: [40, 30, 20],
+      colors: ['#dc3545', '#eea303', '#3ad29f'],
+      chart: {
+        width: "60%",
+        offsetX: 100,
+        type: 'pie',
+      },
+      // dataLabels: {
+      //   enabled: false,
+      // },
+      legend: {
+        show: false
+      },
+      labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
+      responsive: [{
+        breakpoint: 1000,
+        options: {
+          chart: {
+            width: "80%",
+            offsetX: 40,
+          }
+        }
+      }]
+    };
+
+    var chart = new ApexCharts(document.querySelector("#pdpPieChart"), options);
+    chart.render();
+  });
 </script>
 </body>
 

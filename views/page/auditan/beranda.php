@@ -10,11 +10,11 @@
                                 <div class="row align-items-center">
                                     <div class="col-3 text-center">
                                         <span class="circle circle-sm bg-primary">
-                                            <i class="fe fe-16 fe-user text-white mb-0"></i>
+                                            <i class="fe fe-16 fe-check-square text-white mb-0"></i>
                                         </span>
                                     </div>
                                     <div class="col pr-0">
-                                        <p class="small text-muted mb-0">Auditor</p>
+                                        <p class="small text-muted mb-0">Tindak Lanjut</p>
                                         <span class="h3 mb-0">21</span>
                                     </div>
                                 </div>
@@ -28,55 +28,46 @@
                                 <div class="row align-items-center">
                                     <div class="col-3 text-center">
                                         <span class="circle circle-sm bg-primary">
-                                            <i class="fe fe-16 fe-users text-white mb-0"></i>
+                                            <i class="fe   text-white " style="padding-bottom: 2px;">Rp.</i>
                                         </span>
                                     </div>
                                     <div class="col pr-0">
-                                        <p class="small text-muted mb-0">Instansi Vertikal</p>
-                                        <span class="h3 mb-0">44</span>
+                                        <p class="small text-muted mb-0">Saldo</p>
+                                        <span class="h3 mb-0">45.000.000</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-0">
+                    <div class="col-md-6 mb-3">
+                        <div class="card shadow mb-4">
                             <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-3 text-center">
-                                        <span class="circle circle-sm bg-primary">
-                                            <i class="fe fe-16 fe-users text-white mb-0"></i>
-                                        </span>
+                                <div class="card-title text-center">
+                                    <strong>Presentase Data Temuan</strong>
+                                </div>
+                                <div class="chart-widget mb-2">
+                                    <div id="pdpPieChart"></div>
+                                </div>
+                                <div class="row items-align-center">
+                                    <div class="col-4 text-center">
+                                        <p class="text-muted mb-1"><span class="dot dot-lg bg-danger mr-2"></span>Belum</p>
+                                        <h6 class="mb-1">44,4%</h6>
                                     </div>
-                                    <div class="col pr-0">
-                                        <p class="small text-muted mb-0">OPD</p>
-                                        <span class="h3 mb-0">24</span>
+                                    <div class="col-4 text-center">
+                                        <p class="text-muted mb-1"><span class="dot dot-lg bg-warning mr-2"></span>Proses</p>
+                                        <h6 class="mb-1">33,3%</h6>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <p class="text-muted mb-1"><span class="dot dot-lg bg-success mr-2"></span>Selesai</p>
+                                        <h6 class="mb-1">22,2%</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-3 text-center">
-                                        <span class="circle circle-sm bg-primary">
-                                            <i class="fe fe-16 fe-file text-white mb-0"></i>
-                                        </span>
-                                    </div>
-                                    <div class="col pr-0">
-                                        <p class="small text-muted mb-0">Temuan</p>
-                                        <span class="h3 mb-0">5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
             </div> <!-- .col-12 -->
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->
