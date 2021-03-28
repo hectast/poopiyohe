@@ -75,6 +75,7 @@
 <script>
   $(document).ready(function() {
     let nomor = 2;
+    let nomorAppend = 2;
     $('#addTemuan').click(function(e) {
       e.preventDefault();
 
@@ -176,94 +177,95 @@
       $('#temuanArea').append(rowTemuan);
 
       // kriteria
-      $('.buttonKriteriaAdd' + (nomor)).click(function() {
-        // e.preventDefault();
-        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="kriteriaGroup' + (nomor) + '"> ' +
+      $('.buttonKriteriaAdd' + (nomorAppend)).click(function(e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="kriteriaGroup' + (nomorAppend) + '"> ' +
           '<div class="input-group"> ' +
           '<input class="form-control" type="text" name="input"> ' +
           '<div class="input-group-append"> ' +
-          '<button type="button" class="btn btn-link buttonKriteriaRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '<button type="button" class="btn btn-link buttonKriteriaRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
           '</div> ' +
           '</div> ' +
           '</div>');
         // let kriteriaArea = $('.kriteriaArea2');
         // console.log($(this).parents("div."+ kriteriaArea));
         // console.log($(this).parent().parent().parent().parent());
-        $('.buttonKriteriaRemove' + (nomor)).click(function() {
-          // e.preventDefault();
+        $('.buttonKriteriaRemove' + (nomorAppend)).click(function(e) {
+          e.preventDefault();
           $(this).parent().parent().parent().remove();
           // console.log($(this).parent().parent().parent().parent());
-          nomor--;
+          nomorAppend--;
         });
       });
 
       // sebab
-      $('.buttonSebabAdd' + (nomor)).click(function() {
-        // e.preventDefault();
-        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="sebabGroup' + (nomor) + '"> ' +
+      $('.buttonSebabAdd' + (nomorAppend)).click(function(e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="sebabGroup' + (nomorAppend) + '"> ' +
           '<div class="input-group"> ' +
           '<input class="form-control" type="text" name="input"> ' +
           '<div class="input-group-append"> ' +
-          '<button type="button" class="btn btn-link buttonSebabRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '<button type="button" class="btn btn-link buttonSebabRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
           '</div> ' +
           '</div> ' +
           '</div>');
         // let kriteriaArea = $('.kriteriaArea2');
         // console.log($(this).parents("div."+ kriteriaArea));
         // console.log($(this).parent().parent().parent().parent());
-        $('.buttonSebabRemove' + (nomor)).click(function() {
-          // e.preventDefault();
+        $('.buttonSebabRemove' + (nomorAppend)).click(function(e) {
+          e.preventDefault();
           $(this).parent().parent().parent().remove();
           // console.log($(this).parent().parent().parent().parent());
-          nomor--;
+          nomorAppend--;
         });
       });
 
       // akibat
-      $('.buttonAkibatAdd' + (nomor)).click(function() {
-        // e.preventDefault();
-        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="akibatGroup' + (nomor) + '"> ' +
+      $('.buttonAkibatAdd' + (nomorAppend)).click(function(e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="akibatGroup' + (nomorAppend) + '"> ' +
           '<div class="input-group"> ' +
           '<input class="form-control" type="text" name="input"> ' +
           '<div class="input-group-append"> ' +
-          '<button type="button" class="btn btn-link buttonAkibatRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '<button type="button" class="btn btn-link buttonAkibatRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
           '</div> ' +
           '</div> ' +
           '</div>');
         // let kriteriaArea = $('.kriteriaArea2');
         // console.log($(this).parents("div."+ kriteriaArea));
         // console.log($(this).parent().parent().parent().parent());
-        $('.buttonAkibatRemove' + (nomor)).click(function() {
-          // e.preventDefault();
+        $('.buttonAkibatRemove' + (nomorAppend)).click(function(e) {
+          e.preventDefault();
           $(this).parent().parent().parent().remove();
           // console.log($(this).parent().parent().parent().parent());
-          nomor--;
+          nomorAppend--;
         });
       });
 
       // uraian
-      $('.buttonUraianAdd' + (nomor)).click(function() {
-        // e.preventDefault();
-        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="uraianGroup' + (nomor) + '"> ' +
+      $('.buttonUraianAdd' + (nomorAppend)).click(function(e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="uraianGroup' + (nomorAppend) + '"> ' +
           '<div class="input-group"> ' +
           '<input class="form-control" type="text" name="input"> ' +
           '<div class="input-group-append"> ' +
-          '<button type="button" class="btn btn-link buttonUraianRemove' + (nomor) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
+          '<button type="button" class="btn btn-link buttonUraianRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
           '</div> ' +
           '</div> ' +
           '</div>');
         // let kriteriaArea = $('.kriteriaArea2');
         // console.log($(this).parents("div."+ kriteriaArea));
         // console.log($(this).parent().parent().parent().parent());
-        $('.buttonUraianRemove' + (nomor)).click(function() {
-          // e.preventDefault();
+        $('.buttonUraianRemove' + (nomorAppend)).click(function(e) {
+          e.preventDefault();
           $(this).parent().parent().parent().remove();
           // console.log($(this).parent().parent().parent().parent());
-          nomor--;
+          nomorAppend--;
         });
       });
 
       nomor++;
+      nomorAppend++;
     });
     $('#temuanArea').on('click', '.buttonTemuanRemove', function(e) {
       e.preventDefault();
