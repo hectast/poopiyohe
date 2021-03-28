@@ -72,7 +72,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                     <div class="form-group">
                                         <div class="row_jp">
                                             <label>Jenis Penugasan</label>
-                                            <select class="form-control" name="jenis_penugasan" id="jp">
+                                            <select class="form-control jenpen" name="jenis_penugasan" id="jp">
                                                 <option hidden>-Jenis Penugasan-</option>
                                                 <option value="Audit">Audit</option>
                                                 <option value="Verifikasi">Verifikasi</option>
@@ -100,7 +100,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                     <div class="form-group">
                                         <div class="row_auditan">
                                             <label>Auditan</label>
-                                            <select name="jauditan" class="form-control" id="auditan">
+                                            <select name="jauditan" class="form-control jena" id="auditan">
                                                 <option hidden>-Pilih Jenis Auditan-</option>
                                                 <option value="OPD">OPD</option>
                                                 <option value="Instansi Vertikal">Instansi Vertikal</option>
@@ -163,7 +163,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                                     </div>
                                                     <div class="col-5">
                                                         <div class="form-group">
-                                                            <select name="peran[]" id="" class="select-peran custom-select">
+                                                            <select name="peran[]" id="" class="select-peran custom-select pilah">
                                                                 <option value="" hidden>-Pilih Peran-</option>
                                                                 <option value="Ketua Tim">Ketua Tim</option>
                                                                 <option value="Pengendali Teknis">Pengendali Teknis</option>
@@ -204,6 +204,19 @@ include 'app/controllers/admin/post_penugasan.php';
         theme: 'bootstrap4',
     });
 </script> -->
+
+<script>
+    $('.jenpen').select2({
+        theme: 'bootstrap4' 
+    });
+
+    $('.jena').select2({
+        theme: 'bootstrap4' 
+    });
+
+</script>
+
+
 <script>
     $(function() {
         $('#jp').change(function() {

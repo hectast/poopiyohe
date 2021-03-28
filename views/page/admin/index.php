@@ -17,6 +17,10 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
 }else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
     $page = "Tambah Data Penugasan";
     $title = $page . " | PO'OPIYOHE";
+}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "detail_penugasan") {
+    $page = "Detail Data Penugasan";
+    $title = $page . " | PO'OPIYOHE";
+
 }
 ?>
 
@@ -38,7 +42,9 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
     include 'views/page/admin/datapenugasan.php';
 }else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
     include 'views/page/admin/tambah_penugasan.php';
-} else {
+}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "detail_penugasan") {
+    include 'views/page/admin/detailpenugasan.php';
+}else {
 
     include 'views/page/admin/beranda.php';
 }

@@ -20,18 +20,18 @@ if (isset($_POST['addpenugasan'])) {
     $auditan_in     = $_POST['vertikal'];
     $auditan_opd    = $_POST['opd'];
     if (empty($auditan_in)) {
-        $auditan_instansi = '-';
+        $auditan_instansi = $_POST['vertikal'];
     } else {
         $auditan_instansi = $_POST['vertikal'];
     }
 
     if (empty($auditan_opd)) {
-        $auditan_opda = '-';
+        $auditan_opda = $_POST['opd'];
     } else {
         $auditan_opda = $_POST['opd'];
     }
     
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_instansi','$auditan_opda','Belum Validasi','$pkpt','$kf1')");
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_instansi','$auditan_opda','Belum Divalidasi','$pkpt','$kf1')");
 
     $auditor = $_POST['auditor'];
     $peran = $_POST['peran'];
@@ -45,4 +45,8 @@ if (isset($_POST['addpenugasan'])) {
 
 
     flash("msg_addpenugasan", "Data Berhasil Disimpan");
+} 
+if(isset($_POST['lihat_data'])){
+    $id_tampil = $_POST['id_lihat'];
+    
 }
