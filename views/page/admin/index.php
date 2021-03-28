@@ -11,14 +11,12 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "data_auditor") {
     $page = "Data Auditor";
     $title = $page . " | PO'OPIYOHE";
-
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "datapenugasan") {
     $page = "Data Penugasan";
     $title = $page . " | PO'OPIYOHE";
 }else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
     $page = "Tambah Data Penugasan";
     $title = $page . " | PO'OPIYOHE";
-
 }
 ?>
 

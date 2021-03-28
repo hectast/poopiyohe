@@ -23,7 +23,6 @@ if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "beranda_auditan"
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_daftar_temuan") {
     include 'views/page/auditan/daftar_temuan/detail_daftar_temuan.php';
 } else {
-
     include 'views/page/auditan/beranda.php';
 }
 ?>
