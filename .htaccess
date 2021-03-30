@@ -4,6 +4,11 @@ RewriteBase /poopiyohe/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+RewriteRule ^404$ not-found.php
+
+ErrorDocument 404 http://localhost/poopiyohe/404.html
+ErrorDocument 403 http://localhost/poopiyohe/403.html
+
 RewriteRule ^admin$ admin.php
 RewriteRule ^auditan$ auditan.php
 RewriteRule ^auditor$ auditor.php
@@ -31,5 +36,17 @@ RewriteRule ^([A-Za-z0-9-]+)$ admin.php?views_admin=$1
 RewriteRule ^([A-Za-z0-9-]+)$ auditan.php?views_auditan=$1
 RewriteRule ^([A-Za-z0-9-]+)$ auditor.php?views_auditor=$1
 RewriteRule ^([A-Za-z0-9-]+)$ index.php?views_user=$1
+
+# X-XSS-Protection
+<IfModule mod_headers.c>
+	Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Protect database config file
+<Files env.php>
+    deny from all
+</Files>
+
+# Deny from 192.168.43.75
 
 Options All -Indexes 	

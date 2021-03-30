@@ -17,4 +17,5 @@ if (isset($_SESSION['loggedin']) && $_SESSION['tipe_user'] == 'admin') {
 }
 
 include 'app/env.php';
+include 'app/controllers/user/cek_session.php';
 require_once 'views/page/auditan/index.php';
