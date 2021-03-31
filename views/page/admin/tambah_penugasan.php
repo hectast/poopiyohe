@@ -9,22 +9,10 @@ include 'app/controllers/admin/post_penugasan.php';
             </div>
         </div>
 
-        <?php
-        if (isset($_SESSION['msg_addpenugasan'])) {
-        ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_addpenugasan'); ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <!-- s -->
-                </button>
-            </div>
-        <?php
-        }
-        ?>
+        
         <div class="row">
             <div class="col-12">
-                <form action="tambah_penugasan" method="POST">
+                <form action="datapenugasan" method="POST">
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <strong class="card-title">Form Data Penugasan</strong>
