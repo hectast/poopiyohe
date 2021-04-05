@@ -23,8 +23,8 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a class="nav-link" href="temuan">
-                    <i class="fe fe-edit fe-16"></i>
+                <a class="nav-link" href="hasil_penugasan">
+                    <i class="fe fe-file-text fe-16"></i>
                     <span class="ml-3 item-text">Hasil Penugasan</span>
                 </a>
             </li>

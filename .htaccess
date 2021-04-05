@@ -28,7 +28,8 @@ RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
 RewriteRule ^detail_daftar_temuan$ auditan.php?views_auditan=detail_daftar_temuan
 
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
-RewriteRule ^temuan$ auditor.php?views_auditor=temuan
+RewriteRule ^hasil_penugasan$ auditor.php?views_auditor=hasil_penugasan
+RewriteRule ^tambah_temuan$ auditor.php?views_auditor=tambah_temuan
 
 RewriteRule ^beranda$ index.php?views_user=beranda
 

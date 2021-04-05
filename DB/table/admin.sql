@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Mar 2021 pada 12.55
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.2.34
+-- Generation Time: Mar 29, 2021 at 01:12 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,46 +24,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auditor_penugasan`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `auditor_penugasan` (
-  `id_penugasan` int(11) NOT NULL,
-  `id_tugas` int(11) NOT NULL,
-  `id` int(11) NOT NULL
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `auditor_penugasan`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `auditor_penugasan` (`id_penugasan`, `id_tugas`, `id`) VALUES
-(8, 5, 2),
-(9, 5, 3),
-(10, 5, 4),
-(11, 5, 5),
-(12, 6, 2),
-(13, 6, 3);
+INSERT INTO `admin` (`id`, `nama`, `email`, `password`) VALUES
+(1, 'admin', 'adminbpkp@gmail.com', '$2y$10$.elM14CGqMaU2WrfgwcaeuM8Lpd7H0Hn/EXdk4gnHOY2ngXDZFiWi');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `auditor_penugasan`
+-- Indexes for table `admin`
 --
-ALTER TABLE `auditor_penugasan`
-  ADD PRIMARY KEY (`id_penugasan`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `auditor_penugasan`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `auditor_penugasan`
-  MODIFY `id_penugasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
