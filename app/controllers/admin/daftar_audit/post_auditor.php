@@ -16,7 +16,7 @@ if (isset($_POST['simpan'])) {
     $result_query = $to_query->get_result();
     
     if (mysqli_num_rows($result_query) > 0) {
-        flash("msg_gagal_data", "Email yang anda masukkan sudah pernah digunakan!");
+        flash("msg_gagal_data", "Email yang anda masukkan sudah digunakan!");
         return false;
     }
 
@@ -48,6 +48,18 @@ if (isset($_POST['ubah'])) {
 
     $tkn = 'sam_san_tech)';
     $token = md5("$tkn:$id");
+
+
+    $query = "SELECT* FROM auditor WHERE email='{$emailauditor}'";
+    $to_query = $mysqli->prepare($query);
+    $to_query->execute();
+    $result_query = $to_query->get_result();
+    
+    if (mysqli_num_rows($result_query) > 0) {
+        flash("msg_gagal_data", "Email yang anda masukkan sudah digunakan!");
+        return false;
+    }
+
     if ($token_ubah === $token) {
         edit_data($id, $namaauditor, $emailauditor, $mysqli);
         flash("msg_edit_data", "Data berhasi diubah");

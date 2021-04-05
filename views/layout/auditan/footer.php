@@ -58,10 +58,10 @@
   $(document).ready(function() {
 
     var options = {
-      series: [40, 30, 20],
-      colors: ['#dc3545', '#eea303', '#3ad29f'],
+      series: [60,40],
+      colors: ['#dc3545', '#3ad29f'],
       chart: {
-        width: "60%",
+        width: "53%",
         offsetX: 100,
         type: 'pie',
       },
@@ -71,7 +71,7 @@
       legend: {
         show: false
       },
-      labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
+      labels: ['Belum','Selesai'],
       responsive: [{
         breakpoint: 1000,
         options: {
@@ -87,6 +87,8 @@
     chart.render();
   });
 </script>
+
+
 </body>
 
 </html>
