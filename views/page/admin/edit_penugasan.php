@@ -33,7 +33,8 @@ $row = mysqli_fetch_assoc($result);
                                         <input name="nama_penugasan" value="<?= $row['uraian_penugasan'] ?>" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-check form-check-inline">
+                                    <div class="boks">
+                                    <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio1" value="PKPT" <?php if ($row['pkpt'] == 'PKPT') {
                                                                                                                                         echo 'checked';
                                                                                                                                     } ?>>
@@ -45,8 +46,9 @@ $row = mysqli_fetch_assoc($result);
                                                                                                                                         } ?>>
                                             <label class="form-check-label" for="inlineRadio2">Non PKPT</label>
                                         </div>
-
-                                        <div class="form-check form-check-inline" style="margin-left: 50px;">
+                                    </div>
+                                    <div class="boks">
+                                    <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="kf1" id="inlineRadio3" value="KF1" <?php if ($row['kf1'] == 'KF1') {
                                                                                                                                         echo 'checked';
                                                                                                                                     } ?>>
@@ -58,7 +60,18 @@ $row = mysqli_fetch_assoc($result);
                                                                                                                                     } ?>>
                                             <label class="form-check-label" for="inlineRadio4">KF3</label>
                                         </div>
-                                    </div>                            
+                                    </div>
+                                    <div class="boks">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio3" value="D1">
+                                            <label class="form-check-label" for="inlineRadio3">D1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio4" value="D2">
+                                            <label class="form-check-label" for="inlineRadio4">D2</label>
+                                        </div>
+                                    </div>
+                                    </div>                           
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">

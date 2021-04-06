@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="assets/css/select2.css">
     <!-- App CSS -->
     <link rel="stylesheet" href="assets/css/app-light.css" id="lightTheme">
+    <style>
+.boks{
+    display: inline-block;
+    padding: 10px;
+    margin: 5px 5px 0 0;
+    background-color: #f7f8f9;      
+}
+</style>
     <!-- <link rel="stylesheet" href="assets/css/app-dark.css" id="darkTheme" disabled> -->
 </head>
 <?php

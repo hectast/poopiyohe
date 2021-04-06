@@ -11,12 +11,31 @@ function tampil_data($mysqli)
         <tr>
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
+            <td>
+            <?php 
+            $instansi_vertikal = $row['auditan_in'];
+            $opede             = $row['auditan_opd'];
+            
+            if(empty($instansi_vertikal)){
+                $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
+                $row_opede = mysqli_fetch_assoc($result_opede);
+                echo $row_opede['nama_instansi']; echo " - "; echo $row_opede['nama_pemda'];
+            }
+             if(empty($opede)){
+                $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
+                $row_vertikal = mysqli_fetch_assoc($result_vertikal);
+                echo $row_vertikal['nama_instansi'];
+            }
+            
+            
+            ?>
+            </td>
             <td><?= $row['uraian_penugasan']; ?></td>
             <td><?= $row['jenis_penugasan'] ?></td>
-            <td><?= $row['pkpt'] ?> | <?= $row['kf1'] ?></td>
+            <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status'] == 'Belum Divalidasi') {
+                if ($row['status'] == 'Belum Direview') {
                 ?>
                     <small class="badge badge-danger"><?= $row['status']; ?></small>
                 <?php
@@ -123,13 +142,13 @@ function detail($id_tampil, $mysqli)
                     <tr>
                         <td>Keterangan</td>
                         <td>:</td>
-                        <td><?= $row['pkpt'] ?> | <?= $row['kf1'] ?></td>
+                        <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
                     </tr>
                     <tr>
                         <td>Status</td>
                         <td>:</td>
                         <td> <?php
-                                if ($row['status'] == 'Belum Divalidasi') {
+                                if ($row['status'] == 'Belum Direview') {
                                 ?>
                                 <small class="badge badge-danger"><?= $row['status']; ?></small>
                             <?php

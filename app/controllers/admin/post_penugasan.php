@@ -16,12 +16,13 @@ if (isset($_POST['addpenugasan'])) {
 
     $pkpt = $_POST['pkpt'];
     $kf1 = $_POST['kf1'];
+    $d1 = $_POST['d1'];
 
     $auditan_in     = $_POST['vertikal'];
     $auditan_opd    = $_POST['opd'];
  
     
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Divalidasi','$pkpt','$kf1')");
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1')");
 
     $auditor = $_POST['auditor'];
     $peran = $_POST['peran'];
@@ -71,7 +72,7 @@ if(isset($_POST['editpenugasan'])){
     $total = count($auditor)-1;
     
    
-    if($auditor[0] == 0){
+    if($auditor[0] == 0){   
        
     }else{
         $mysqli->query("DELETE FROM penugasan_auditor WHERE id_penugasan = '$idid'");
