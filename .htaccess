@@ -30,6 +30,7 @@ RewriteRule ^detail_daftar_temuan$ auditan.php?views_auditan=detail_daftar_temua
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
 RewriteRule ^hasil_penugasan$ auditor.php?views_auditor=hasil_penugasan
 RewriteRule ^tambah_temuan$ auditor.php?views_auditor=tambah_temuan
+RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring
 
 RewriteRule ^beranda$ index.php?views_user=beranda
 

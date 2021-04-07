@@ -5,10 +5,6 @@ include 'app/token.php';
 if (isset($_POST['login'])) {
     // $cek_password = password_hash('admin123', PASSWORD_DEFAULT);
     // var_dump($cek_password);
-    // bpkp123
-    // auditan123
-    // admin123
-    // var_dump($_POST['email'],$_POST['password'],$_POST['tipe_user']);
 
     if (empty($_POST['email']) && empty($_POST['password'])) {
 ?>
@@ -20,125 +16,169 @@ if (isset($_POST['login'])) {
         return false;
     }
 
-    if ($_POST['tipe_user'] == "auditan") {
-        if ($stmt = $mysqli->prepare('SELECT id, password FROM auditan WHERE email = ?')) {
-            $stmt->bind_param('s', $_POST['email']);
-            $stmt->execute();
-            $stmt->store_result();
+    $stmt_auditan = $mysqli->prepare('SELECT id, nama, password FROM auditan WHERE email = ?');
+    $stmt_auditor = $mysqli->prepare('SELECT id, nama, password, akses FROM auditor WHERE email = ?');
 
-            if ($stmt->num_rows > 0) {
-                $stmt->bind_result($id, $password);
-                $stmt->fetch();
-                if (password_verify($_POST['password'], $password)) {
-                    session_regenerate_id();
+    if ($stmt_auditan || $stmt_auditor) {
 
-                    $token = getToken(10);
-                    $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
-                    $toCheckToken = $mysqli->prepare($checkToken);
-                    $toCheckToken->execute();
-                    $resultToken = $toCheckToken->get_result();
-                    $rowToken = mysqli_num_rows($resultToken);
+        $stmt_auditan->bind_param('s', $_POST['email']);
+        $stmt_auditan->execute();
+        $stmt_auditan->store_result();
 
-                    if ($rowToken > 0) {
-                        $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
-                        $toUpToken = $mysqli->prepare($upToken);
-                        $toUpToken->execute();
-                    } else {
-                        $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
-                        $toInToken = $mysqli->prepare($inToken);
-                        $toInToken->execute();
-                    }
+        $stmt_auditor->bind_param('s', $_POST['email']);
+        $stmt_auditor->execute();
+        $stmt_auditor->store_result();
 
-                    $_SESSION['loggedin'] = TRUE;
-                    $_SESSION['tipe_user'] = $_POST['tipe_user'];
-                    $_SESSION['email'] = $_POST['email'];
-                    $_SESSION['id'] = $id;
-                    $_SESSION['token'] = $token;
-                    ?>
-                    <script>
-                        document.location.href = 'auditan';
-                    </script>
-                    <?php
+        if ($stmt_auditan->num_rows > 0) {
+            $stmt_auditan->bind_result($id_auditan, $nama_auditan, $password_auditan);
+            $stmt_auditan->fetch();
+            if (password_verify($_POST['password'], $password_auditan)) {
+                session_regenerate_id();
+    
+                $token = getToken(10);
+                $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
+                $toCheckToken = $mysqli->prepare($checkToken);
+                $toCheckToken->execute();
+                $resultToken = $toCheckToken->get_result();
+                $rowToken = mysqli_num_rows($resultToken);
+    
+                if ($rowToken > 0) {
+                    $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
+                    $toUpToken = $mysqli->prepare($upToken);
+                    $toUpToken->execute();
                 } else {
-                    ?>
-                    <script>
-                        alert('Password yang anda masukkan salah !');
-                        document.location.href = 'beranda';
-                    </script>
-                    <?php
-                    return false;
+                    $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
+                    $toInToken = $mysqli->prepare($inToken);
+                    $toInToken->execute();
                 }
+    
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['id'] = $id_auditan;
+                $_SESSION['nama'] = $nama_auditan;
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['tipe_user'] = 'auditan';
+                $_SESSION['token'] = $token;
+                ?>
+                <script>
+                    document.location.href = 'auditan';
+                </script>
+                <?php
             } else {
                 ?>
                 <script>
-                    alert('Email yang anda masukkan salah !');
+                    alert('Password yang anda masukkan salah !');
                     document.location.href = 'beranda';
                 </script>
                 <?php
-                return false;
             }
-
-            $stmt->close();
-        }
-    } else if ($_POST['tipe_user'] === "auditor") {
-        if ($stmt = $mysqli->prepare('SELECT id, password FROM auditor WHERE email = ?')) {
-            $stmt->bind_param('s', $_POST['email']);
-            $stmt->execute();
-            $stmt->store_result();
-
-            if ($stmt->num_rows > 0) {
-                $stmt->bind_result($id, $password);
-                $stmt->fetch();
-                if (password_verify($_POST['password'], $password)) {
-                    session_regenerate_id();
-                    
-                    $token = getToken(10);
-                    $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
-                    $toCheckToken = $mysqli->prepare($checkToken);
-                    $toCheckToken->execute();
-                    $resultToken = $toCheckToken->get_result();
-                    $rowToken = mysqli_num_rows($resultToken);
-
-                    if ($rowToken > 0) {
-                        $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
-                        $toUpToken = $mysqli->prepare($upToken);
-                        $toUpToken->execute();
-                    } else {
-                        $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
-                        $toInToken = $mysqli->prepare($inToken);
-                        $toInToken->execute();
-                    }
-
-                    $_SESSION['loggedin'] = TRUE;
-                    $_SESSION['tipe_user'] = $_POST['tipe_user'];
-                    $_SESSION['email'] = $_POST['email'];
-                    $_SESSION['id'] = $id;
-                    $_SESSION['token'] = $token;
-                ?>
-                    <script>
-                        document.location.href = 'auditor';
-                    </script>
-                <?php
+        } else if ($stmt_auditor->num_rows > 0) {
+            $stmt_auditor->bind_result($id_auditor, $nama_auditor, $password_auditor, $akses_auditor);
+            $stmt_auditor->fetch();
+            if (password_verify($_POST['password'], $password_auditor)) {
+                session_regenerate_id();
+    
+                $token = getToken(10);
+                $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
+                $toCheckToken = $mysqli->prepare($checkToken);
+                $toCheckToken->execute();
+                $resultToken = $toCheckToken->get_result();
+                $rowToken = mysqli_num_rows($resultToken);
+    
+                if ($rowToken > 0) {
+                    $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
+                    $toUpToken = $mysqli->prepare($upToken);
+                    $toUpToken->execute();
                 } else {
-                ?>
-                    <script>
-                        alert('Password yang anda masukkan salah !');
-                        document.location.href = 'beranda';
-                    </script>
-                <?php
-                    return false;
+                    $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
+                    $toInToken = $mysqli->prepare($inToken);
+                    $toInToken->execute();
                 }
+    
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['id'] = $id_auditor;
+                $_SESSION['nama'] = $nama_auditor;
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['tipe_user'] = 'auditor';
+                $_SESSION['token'] = $token;
+                ?>
+                <script>
+                    document.location.href = 'auditor';
+                </script>
+                <?php
             } else {
                 ?>
                 <script>
-                    alert('Email yang anda masukkan salah !');
+                    alert('Password yang anda masukkan salah !');
                     document.location.href = 'beranda';
                 </script>
-<?php
-                return false;
+                <?php
             }
-
-            $stmt->close();
+        } else {
+            ?>
+            <script>
+                alert('Email yang anda masukkan salah !');
+                document.location.href = 'beranda';
+            </script>
+            <?php
         }
+        $stmt_auditan->close();
+        $stmt_auditor->close();
     }
+
+    
+    
+
+
+
+    // if ($stmt_auditor->num_rows > 0) {
+    //     $stmt_auditor->bind_result($id_auditor, $nama_auditor, $password_auditor);
+    //     $stmt_auditor->fetch();
+    //     if (password_verify($_POST['password'], $password_auditor)) {
+    //         session_regenerate_id();
+
+    //         $token = getToken(10);
+    //         $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
+    //         $toCheckToken = $mysqli->prepare($checkToken);
+    //         $toCheckToken->execute();
+    //         $resultToken = $toCheckToken->get_result();
+    //         $rowToken = mysqli_num_rows($resultToken);
+
+    //         if ($rowToken > 0) {
+    //             $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
+    //             $toUpToken = $mysqli->prepare($upToken);
+    //             $toUpToken->execute();
+    //         } else {
+    //             $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
+    //             $toInToken = $mysqli->prepare($inToken);
+    //             $toInToken->execute();
+    //         }
+
+    //         $_SESSION['loggedin'] = TRUE;
+    //         $_SESSION['id'] = $id_auditor;
+    //         $_SESSION['nama'] = $nama_auditor;
+    //         $_SESSION['email'] = $_POST['email'];
+    //         $_SESSION['tipe_user'] = 'auditor';
+    //         $_SESSION['token'] = $token;
+    //         ?>
+    //         <script>
+    //             document.location.href = 'auditor';
+    //         </script>
+    //         <?php
+    //     } else {
+    //         ?>
+    //         <script>
+    //             alert('Password yang anda masukkan salah !');
+    //             document.location.href = 'beranda';
+    //         </script>
+    //         <?php
+    //     }
+    // } else {
+    //     ?>
+    //     <script>
+    //         alert('Email yang anda masukkan salah !');
+    //         document.location.href = 'beranda';
+    //     </script>
+    //     <?php
+    // }
 }
+?>

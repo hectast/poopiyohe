@@ -17,23 +17,46 @@
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="beranda_auditor">
-                    <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">Beranda</span>
+                <?php
+                    if ($akses === 1 && isset($_GET['views_monitoring'])) {
+                ?>
+                        <a class="nav-link" href="beranda_monitoring">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Beranda</span>
+                        </a>
+                <?php
+                    } else {
+                ?>
+                        <a class="nav-link" href="beranda_auditor">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Beranda</span>
+                        </a>
+                <?php
+                    }
+                ?>
                 </a>
             </li>
-            <li class="nav-item w-100">
-                <a class="nav-link" href="hasil_penugasan">
-                    <i class="fe fe-file-text fe-16"></i>
-                    <span class="ml-3 item-text">Hasil Penugasan</span>
-                </a>
-            </li>
-            <!-- <li class="nav-item w-100">
-                <a class="nav-link" href="laporan">
-                    <i class="fe fe-file-text fe-16"></i>
-                    <span class="ml-3 item-text">Input Laporan</span>
-                </a>
-            </li> -->
+            <?php
+                if ($akses === 1 && isset($_GET['views_monitoring'])) {
+            ?>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="hasil_penugasan">
+                            <i class="fe fe-file-text fe-16"></i>
+                            <span class="ml-3 item-text">Menu 2</span>
+                        </a>
+                    </li>
+            <?php
+                } else {
+            ?>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="hasil_penugasan">
+                            <i class="fe fe-file-text fe-16"></i>
+                            <span class="ml-3 item-text">Hasil Penugasan</span>
+                        </a>
+                    </li>
+            <?php       
+                }
+            ?>
         </ul>
     </nav>
 </aside>

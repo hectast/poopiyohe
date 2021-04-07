@@ -20,18 +20,6 @@
                         <input type="password" name="password" class="form-control" >
                     </div>
                     <div class="form-group">
-                        <label for="" class="text-primer"><i class="fa fa-user"></i> Tipe User</label>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tipe_user" id="inlineRadio1" value="auditan">
-                            <label class="form-check-label" for="inlineRadio1">Auditan</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tipe_user" id="inlineRadio2" value="auditor">
-                            <label class="form-check-label" for="inlineRadio2">Auditor</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <button type="submit" name="login" class="btn btn-primary col-12"> <i class="fa fa-door-open"></i>Masuk</button>
                         <a href="login" class="btn btn-link mt-2 col-12"><small>Login sebagai admin</small></a>
                     </div>
