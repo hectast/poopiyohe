@@ -1,6 +1,7 @@
 <?php
 include 'app/controllers/admin/post_penugasan.php';
 ?>
+
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -9,22 +10,10 @@ include 'app/controllers/admin/post_penugasan.php';
             </div>
         </div>
 
-        <?php
-        if (isset($_SESSION['msg_addpenugasan'])) {
-        ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_addpenugasan'); ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <!-- s -->
-                </button>
-            </div>
-        <?php
-        }
-        ?>
+        
         <div class="row">
             <div class="col-12">
-                <form action="tambah_penugasan" method="POST">
+                <form action="datapenugasan" method="POST">
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <strong class="card-title">Form Data Penugasan</strong>
@@ -41,16 +30,18 @@ include 'app/controllers/admin/post_penugasan.php';
                                         <input name="nama_penugasan" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-check form-check-inline">
+                                    <div class="boks">
+                                        <div class="form-check form-check-inline ">
                                             <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio1" value="PKPT">
                                             <label class="form-check-label" for="inlineRadio1">PKPT</label>
                                         </div>
-                                        <div class="form-check form-check-inline">
+                                        <div class="form-check form-check-inline ">
                                             <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio2" value="Non PKPT">
                                             <label class="form-check-label" for="inlineRadio2">Non PKPT</label>
                                         </div>
-
-                                        <div class="form-check form-check-inline" style="margin-left: 50px;">
+                                    </div>
+                                    <div class="boks">
+                                        <div class="form-check form-check-inline ">
                                             <input class="form-check-input" type="radio" name="kf1" id="inlineRadio3" value="KF1">
                                             <label class="form-check-label" for="inlineRadio3">KF1</label>
                                         </div>
@@ -58,6 +49,17 @@ include 'app/controllers/admin/post_penugasan.php';
                                             <input class="form-check-input" type="radio" name="kf1" id="inlineRadio4" value="KF3">
                                             <label class="form-check-label" for="inlineRadio4">KF3</label>
                                         </div>
+                                    </div>
+                                    <div class="boks">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio3" value="D1">
+                                            <label class="form-check-label" for="inlineRadio3">D1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio4" value="D2">
+                                            <label class="form-check-label" for="inlineRadio4">D2</label>
+                                        </div>
+                                    </div>
                                     </div>
                                     <div class="form-group">
 
