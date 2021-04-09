@@ -55,7 +55,7 @@ include 'app/controllers/admin/post_penugasan.php';
                     </div>
                     <div class="card-body">
                     <a href="tambah_penugasan" class="btn btn-primary"><i class="fe fe-plus-circle"></i> Tambah Data</a> <br><br>
-                        <table class="table table-responsive table-hover datatables" id="dataTable-1">
+                        <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
                                    <th>No.ST</th>
