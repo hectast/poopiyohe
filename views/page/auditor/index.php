@@ -29,9 +29,9 @@ if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor"
 if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor") {
     include 'views/page/auditor/beranda.php';
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "hasil_penugasan") {
-    include 'views/page/auditor/hasil_penugasan.php';
+    include 'views/page/auditor/hasil_penugasan/hasil_penugasan.php';
 } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "tambah_temuan") {
-    include 'views/page/auditor/tambah_temuan.php';
+    include 'views/page/auditor/hasil_penugasan/tambah_temuan.php';
 } else if ($akses === 1 && isset($_GET['views_monitoring'])) {
     if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "beranda_monitoring") {
         include 'views/page/auditor/monitoring/beranda.php';

@@ -55,7 +55,7 @@ function tampil_data($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</a>
-                    <a href="tambah_temuan" class="dropdown-item"> <i class="fe fe-edit"></i> Tambah Temuan</a>
+                    <a href="tambah_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Input Temuan</a>
                 </div>
             </td>
         </tr>

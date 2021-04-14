@@ -20,14 +20,14 @@
                 <?php
                     if ($akses === 1 && isset($_GET['views_monitoring'])) {
                 ?>
-                        <a class="nav-link" href="beranda_monitoring">
+                        <a class="nav-link" href="<?= $base_url; ?>beranda_monitoring">
                             <i class="fe fe-home fe-16"></i>
                             <span class="ml-3 item-text">Beranda</span>
                         </a>
                 <?php
                     } else {
                 ?>
-                        <a class="nav-link" href="beranda_auditor">
+                        <a class="nav-link" href="<?= $base_url; ?>beranda_auditor">
                             <i class="fe fe-home fe-16"></i>
                             <span class="ml-3 item-text">Beranda</span>
                         </a>
@@ -40,7 +40,7 @@
                 if ($akses === 1 && isset($_GET['views_monitoring'])) {
             ?>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="hasil_penugasan">
+                        <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
                             <i class="fe fe-file-text fe-16"></i>
                             <span class="ml-3 item-text">Menu 2</span>
                         </a>
@@ -49,7 +49,7 @@
                 } else {
             ?>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="hasil_penugasan">
+                        <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
                             <i class="fe fe-file-text fe-16"></i>
                             <span class="ml-3 item-text">Hasil Penugasan</span>
                         </a>

@@ -95,6 +95,20 @@ $(document).ready(function () {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> 
+                                    <div class="form-group mb-3" id="cekRpNonRp` + (nomor) + `">
+                                        <div class="form-check form-check-inline">
+                                            <input type="checkbox" id="cekRupiah` + (nomor) + `" name="cekrpnonrp" class="form-check-input" value="Rupiah">
+                                            <label class="form-check-label" for="cekRupiah` + (nomor) + `">Rupiah</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="checkbox" id="cekNonRupiah` + (nomor) + `" name="cekrpnonrp" class="form-check-input" value="Non Rupiah">
+                                            <label class="form-check-label" for="cekNonRupiah` + (nomor) + `">Non Rupiah</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Hal-hal yang perlu di perhatikan <small class="text-danger">* tidak wajib</small></label>
+                                        <textarea class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -117,6 +131,38 @@ $(document).ready(function () {
                 $('#kondisiText' + (nomorAppend)).attr("type", "text");
             }
             // console.log($(this).parent().parent().parent().parent());
+        });
+
+        let cR = $('#cekRupiah' + (nomorAppend));
+        let cNR = $('#cekNonRupiah' + (nomorAppend));
+        let cRNR = $('#cekRpNonRp' + (nomorAppend));
+        cRNR.change(function (e) {
+            e.preventDefault();
+            let nmrapd = nomorAppend;
+
+            // console.log(this);
+            let isianRupiah = $('.isian-rupiah'+ (nmrapd));
+
+            if (cR.is(":checked") && cNR.is(":checked")) {
+                alert('Maaf, anda tidak bisa mencentang keduanya. Pilih salah satu !');
+                isianRupiah.remove();
+                cR.prop("checked", false);
+                cNR.prop("checked", false);
+            } else if (cR.is(":checked")) {
+                let html = '<div class="form-group mb-3 mt-2 isian-rupiah' + (nmrapd) + '">' +
+                                '<div class="input-group">' +
+                                    '<div class="input-group-prepend">' +
+                                        '<span class="input-group-text">Rp.</span>' +
+                                    '</div>' +
+                                    '<input class="form-control" type="number" name="isianrupiah">' +
+                                '</div>' +
+                            '</div>';
+                            cRNR.append(html);
+            } else {
+                isianRupiah.remove();
+                
+            }
+            nmrapd--;
         });
 
 
@@ -339,4 +385,28 @@ $(document).ready(function () {
         // n--;
     });
     // console.log(n++);
+});
+
+$(document).ready(function() {
+    $('#cekRpNonRp').change(function () {
+        if ($("#cekRupiah").is(":checked") && $("#cekNonRupiah").is(":checked")) {
+            alert('Maaf, anda tidak bisa mencentang keduanya. Pilih salah satu !');
+            $('#cekRpNonRp .isian-rupiah').remove();
+            $("#cekRupiah").prop("checked", false);
+            $("#cekNonRupiah").prop("checked", false);
+        } else if ($("#cekRupiah").is(":checked")) {
+            let html = '<div class="form-group mb-3 mt-2 isian-rupiah">' +
+                            '<div class="input-group">' +
+                                '<div class="input-group-prepend">' +
+                                    '<span class="input-group-text">Rp.</span>' +
+                                '</div>' +
+                                '<input class="form-control" type="number" name="isianrupiah">' +
+                            '</div>' +
+                        '</div>';
+            $('#cekRpNonRp').append(html);
+            // console.log("napa dia");
+        } else {
+            $('#cekRpNonRp .isian-rupiah').remove();
+        }
+    });
 });
