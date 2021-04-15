@@ -52,12 +52,12 @@ include 'app/controllers/admin/post_penugasan.php';
                                     </div>
                                     <div class="boks">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio3" value="D1">
-                                            <label class="form-check-label" for="inlineRadio3">D1</label>
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio5" value="D1">
+                                            <label class="form-check-label" for="inlineRadio5">D1</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio4" value="D2">
-                                            <label class="form-check-label" for="inlineRadio4">D2</label>
+                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio6" value="D2">
+                                            <label class="form-check-label" for="inlineRadio6">D2</label>
                                         </div>
                                     </div>
                                     </div>
@@ -102,8 +102,8 @@ include 'app/controllers/admin/post_penugasan.php';
                                     <div class="form-group">
                                         <div class="row_auditan">
                                             <label>Auditan</label>
-                                            <select name="jauditan" class="form-control jena" id="auditan">
-                                                <option hidden>-Pilih Jenis Auditan-</option>
+                                            <select name="jauditan" class="form-control" id="auditan" style="width: 100%;">
+                                                <option>-Pilih Jenis Auditan-</option>
                                                 <option value="OPD">OPD</option>
                                                 <option value="Instansi Vertikal">Instansi Vertikal</option>
                                             </select>
@@ -126,7 +126,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                         <div class="row">
                                             <div class="col-5">
                                                 <div class="form-group">
-                                                    <select name="auditor[]" id="" class="select-auditor custom-select">
+                                                    <select name="auditor[]" class="select-auditor custom-select">
                                                         <option value="" hidden>-Pilih Auditor-</option>
                                                         <?php tampil_data_auditor($mysqli);  ?>
                                                     </select>
@@ -134,7 +134,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                             </div>
                                             <div class="col-5">
                                                 <div class="form-group">
-                                                    <select name="peran[]" id="" class="select-peran custom-select">
+                                                    <select name="peran[]" class="select-peran custom-select">
                                                         <option value="" hidden>-Pilih Peran-</option>
                                                         <option value="Ketua Tim">Ketua Tim</option>
                                                         <option value="Pengendali Teknis">Pengendali Teknis</option>
@@ -157,7 +157,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                                     <div class="col-5">
                                                         <div class="form-group">
 
-                                                            <select name="auditor[]" id="" class="select-auditor custom-select">
+                                                            <select name="auditor[]" class="select-auditor custom-select">
                                                                 <option value="" hidden>-Pilih Auditor-</option>
                                                                 <?php tampil_data_auditor($mysqli);  ?>
                                                             </select>
@@ -165,7 +165,7 @@ include 'app/controllers/admin/post_penugasan.php';
                                                     </div>
                                                     <div class="col-5">
                                                         <div class="form-group">
-                                                            <select name="peran[]" id="" class="select-peran custom-select pilah">
+                                                            <select name="peran[]" class="select-peran custom-select pilah">
                                                                 <option value="" hidden>-Pilih Peran-</option>
                                                                 <option value="Ketua Tim">Ketua Tim</option>
                                                                 <option value="Pengendali Teknis">Pengendali Teknis</option>
@@ -198,26 +198,6 @@ include 'app/controllers/admin/post_penugasan.php';
 </main> <!-- main -->
 <script src="assets/js/jquery-2.1.4.min.js"></script>
 <script src='assets/js/select2.min.js'></script>
-<!-- <script>
-    $('.select-auditor').select2({
-        theme: 'bootstrap4',
-    });
-    $('.select-peran').select2({
-        theme: 'bootstrap4',
-    });
-</script> -->
-
-<script>
-    $('.jenpen').select2({
-        theme: 'bootstrap4' 
-    });
-
-    $('.jena').select2({
-        theme: 'bootstrap4' 
-    });
-
-</script>
-
 
 <script>
     $(function() {
@@ -254,7 +234,7 @@ include 'app/controllers/admin/post_penugasan.php';
 </script>
 <script>
     $(function() {
-        $('#auditan').change(function() {
+        $('#auditan').click(function() {
             $('.input_opd').remove();
             if ($('#auditan').val() == 'OPD') {
                 $.get('app/controllers/admin/dynamic_auditan3.php', {
@@ -264,8 +244,8 @@ include 'app/controllers/admin/post_penugasan.php';
                         $('div.row_auditan').after(data);
                     })
             }
+            // alert("test");
         });
-
     });
 </script>
 

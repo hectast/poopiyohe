@@ -23,8 +23,8 @@ $result = $mysqli->query($query);
     </div>
 </div>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src='assets/js/select2.min.js'></script>
+<!-- <script src="../../../assets/js/jquery.min.js"></script>
+<script src='../../../assets/js/select2.min.js'></script> -->
 <script>
     $('.selek_opd').select2({
         theme: 'bootstrap4',

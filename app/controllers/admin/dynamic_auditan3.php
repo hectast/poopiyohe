@@ -7,7 +7,7 @@ $result = $mysqli->query($query);
     <div class="input_opd">
         <div class="form-group">
             <label>Pemerintahan</label>
-            <select name="" id="pemerintah" class="selek_vertikal custom-select">
+            <select name="" id="pemerintah" class="selek_opd2 custom-select">
                <option hidden>-Pilih OPD-</option>
                <option>Provinsi Gorontalo</option>
                <option>Kota Gorontalo</option>
@@ -21,15 +21,13 @@ $result = $mysqli->query($query);
     </div>
 </div>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src='assets/js/select2.min.js'></script>
+<!-- <script src="../../../assets/js/jquery.min.js"></script>
+<script src='../../../assets/js/select2.min.js'></script> -->
 <script>
-    $('.selek_vertikal').select2({
-        theme: 'bootstrap4',
-        placeholder:'-Pilih OPD-'
-    });
-</script>  
-<script>
+    // $('.selek_opd2').select2({
+    //     theme: 'bootstrap4',
+    //     placeholder:'-Pilih OPD-'
+    // });
         $(function() {
             $('#pemerintah').change(function() {
                 $('.input_opd2').remove();
