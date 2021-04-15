@@ -35,6 +35,7 @@ RewriteRule ^hasil_penugasan$ auditor.php?views_auditor=hasil_penugasan
 #RewriteRule ^tambah_temuan$ auditor.php?views_auditor=tambah_temuan
 RewriteRule ^tambah_temuan/([0-9]+)$ auditor.php?views_auditor=tambah_temuan&id=$1 [NC,L]
 RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring
+RewriteRule ^monitoring_hasil_penugasan$ auditor.php?views_monitoring=monitoring_hasil_penugasan
 
 RewriteRule ^beranda$ index.php?views_user=beranda
 

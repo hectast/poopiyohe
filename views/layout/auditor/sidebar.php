@@ -40,9 +40,9 @@
                 if ($akses === 1 && isset($_GET['views_monitoring'])) {
             ?>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
+                        <a class="nav-link" href="<?= $base_url; ?>monitoring_hasil_penugasan">
                             <i class="fe fe-file-text fe-16"></i>
-                            <span class="ml-3 item-text">Menu 2</span>
+                            <span class="ml-3 item-text">Hasil Penugasan</span>
                         </a>
                     </li>
             <?php
