@@ -129,19 +129,19 @@ $(document).ready(function () {
         let cR = $('#cekRupiah' + (nomorAppend));
         let cNR = $('#cekNonRupiah' + (nomorAppend));
         let cRNR = $('#cekRpNonRp' + (nomorAppend));
-        cRNR.change(function (e) {
+
+        // start cek rupiah
+        cR.change(function (e) {
             e.preventDefault();
             let nmrapd = nomorAppend;
 
             // console.log(this);
             let isianRupiah = $('.isian-rupiah'+ (nmrapd));
+            let isianRupiahHidden = $('.rupiahHidden'+ (nmrapd));
 
-            if (cR.is(":checked") && cNR.is(":checked")) {
-                alert('Maaf, anda tidak bisa mencentang keduanya. Pilih salah satu !');
-                isianRupiah.remove();
-                cR.prop("checked", false);
+            if ($(this).is(":checked")) {
                 cNR.prop("checked", false);
-            } else if (cR.is(":checked")) {
+                isianRupiahHidden.remove();
                 let html = '<div class="form-group mb-3 mt-2 isian-rupiah' + (nmrapd) + '">' +
                                 '<div class="input-group">' +
                                     '<div class="input-group-prepend">' +
@@ -153,10 +153,37 @@ $(document).ready(function () {
                             cRNR.append(html);
             } else {
                 isianRupiah.remove();
-                
             }
             nmrapd--;
         });
+        // end cek rupiah
+
+        // start cek non rupiah
+        cNR.change(function (e) {
+            e.preventDefault();
+            let nmrapd = nomorAppend;
+
+            let isianRupiah = $('.isian-rupiah'+ (nmrapd));
+            let isianRupiahHidden = $('.rupiahHidden'+ (nmrapd));
+
+            if ($(this).is(":checked")) {
+                cR.prop("checked", false);
+                isianRupiah.remove();
+                let html = '<div class="form-group d-none mb-3 mt-2 rupiahHidden' + (nmrapd) + '">' +
+                                '<div class="input-group">' +
+                                    '<div class="input-group-prepend">' +
+                                        '<span class="input-group-text">Rp.</span>' +
+                                    '</div>' +
+                                    '<input class="form-control" type="text" name="isianrupiah">' +
+                                '</div>' +
+                            '</div>';
+                            cRNR.append(html);
+            } else {
+                isianRupiahHidden.remove();
+            }
+            nmrapd--;
+        });
+        // end cek non rupiah
 
 
         // kriteria
@@ -381,13 +408,33 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
-    $('#cekRpNonRp').change(function () {
-        if ($("#cekRupiah").is(":checked") && $("#cekNonRupiah").is(":checked")) {
-            alert('Maaf, anda tidak bisa mencentang keduanya. Pilih salah satu !');
-            $('#cekRpNonRp .isian-rupiah').remove();
-            $("#cekRupiah").prop("checked", false);
+    // $('#cekRpNonRp').change(function (e) {
+    //     e.preventDefault();
+    //     if ($("#cekRupiah").is(":checked") && $("#cekNonRupiah").is(":checked")) {
+    //         alert('Maaf, anda tidak bisa mencentang keduanya. Pilih salah satu !');
+    //         $('#cekRpNonRp .isian-rupiah').remove();
+    //         $("#cekRupiah").prop("checked", false);
+    //         $("#cekNonRupiah").prop("checked", false);
+    //     } else if ($("#cekRupiah").is(":checked")) {
+    //         let html = '<div class="form-group mb-3 mt-2 isian-rupiah">' +
+    //                         '<div class="input-group">' +
+    //                             '<div class="input-group-prepend">' +
+    //                                 '<span class="input-group-text">Rp.</span>' +
+    //                             '</div>' +
+    //                             '<input class="form-control" type="number" name="isianrupiah">' +
+    //                         '</div>' +
+    //                     '</div>';
+    //         $('#cekRpNonRp').append(html);
+    //         // console.log("napa dia");
+    //     } else if ($("#cekRupiah").prop("checked", false)) {
+    //         $('#cekRpNonRp .isian-rupiah').remove();
+    //     }
+    // });
+
+    $('#cekRupiah').change(function (e) {
+        e.preventDefault();
+        if ($(this).is(":checked")) {
             $("#cekNonRupiah").prop("checked", false);
-        } else if ($("#cekRupiah").is(":checked")) {
             let html = '<div class="form-group mb-3 mt-2 isian-rupiah">' +
                             '<div class="input-group">' +
                                 '<div class="input-group-prepend">' +
@@ -397,8 +444,15 @@ $(document).ready(function() {
                             '</div>' +
                         '</div>';
             $('#cekRpNonRp').append(html);
-            // console.log("napa dia");
         } else {
+            $('#cekRpNonRp .isian-rupiah').remove();
+        }
+    });
+
+    $('#cekNonRupiah').change(function (e) {
+        e.preventDefault();
+        if ($(this).is(":checked")) {
+            $("#cekRupiah").prop("checked", false);
             $('#cekRpNonRp .isian-rupiah').remove();
         }
     });
