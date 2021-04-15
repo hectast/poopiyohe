@@ -298,6 +298,7 @@ if (mysqli_num_rows($result) > 0) {
             let nomor = 1;
             let nomorAppend = 1;
             let nomorTemuan = 2;
+            let nomorArray = 0;
             $('#addTemuan').click(function(e) {
                 e.preventDefault();
 
@@ -480,7 +481,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="kriteriaGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="kriteria[' + (nomorAppend) + '][]">' +
+                        '<input class="form-control" type="text" name="kriteria[' + (nomorArray) + '][]">' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonKriteriaRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -501,7 +502,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="sebabGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="sebab[' + (nomorAppend) + '][]"> ' +
+                        '<input class="form-control" type="text" name="sebab[' + (nomorArray) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonSebabRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -522,7 +523,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="akibatGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="akibat[' + (nomorAppend) + '][]"> ' +
+                        '<input class="form-control" type="text" name="akibat[' + (nomorArray) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonAkibatRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -543,7 +544,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="uraianGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="uraian[' + (nomorAppend) + '][]"> ' +
+                        '<input class="form-control" type="text" name="uraian[' + (nomorArray) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonUraianRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -564,7 +565,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="rekomGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="rekomendasi[' + (nomorAppend) + '][]"> ' +
+                        '<input class="form-control" type="text" name="rekomendasi[' + (nomorArray) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonRekomRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -581,6 +582,7 @@ if (mysqli_num_rows($result) > 0) {
                 });
 
                 nomorTemuan++;
+                nomorArray++;
                 nomor++;
                 nomorAppend++;
 
@@ -595,6 +597,7 @@ if (mysqli_num_rows($result) > 0) {
                 // $(this).remove();
                 // console.log(n);
                 nomorTemuan--;
+                nomorArray--;
                 nomor--;
                 nomorAppend--;
             });
