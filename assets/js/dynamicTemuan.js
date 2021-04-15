@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     let nomor = 2;
     let nomorAppend = 2;
@@ -8,18 +9,10 @@ $(document).ready(function () {
                             <h5><u>Temuan ` + (nomor) + `</u><button type="button" class="btn btn-link buttonTemuanRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button></h5>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label>No. ST</label>
-                                        <select class="form-control select1" me="nama_pemda" style="width: 100%;" disabled>
-                                            <option>--Pilih No ST--</option>
-                                            <option>ST/01/2021/03/23</option>
-                                            <option>ST/02/2021/03/23</option>
-                                            <option>ST/03/2021/03/23</option>
-                                            <option>ST/04/2021/03/23</option>
-                                            <option>ST/05/2021/03/23</option>
-                                        </select>
-
-                                    </div>
+                                <div class="form-group mb-3">
+                                <label>No. ST</label>
+                                <input type="text" name="no_st[]" class="form-control" value="" disabled>
+                                </div>
                                     <div class="form-group mb-3">
                                         <label for="instansi">Tgl. ST</label>
                                         <input type="date" class="form-control">
