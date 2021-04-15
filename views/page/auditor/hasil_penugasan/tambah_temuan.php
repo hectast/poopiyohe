@@ -110,11 +110,11 @@ if (mysqli_num_rows($result) > 0) {
                                                                 <div class="col-md-6">
                                                                     <div class="form-group mb-3">
                                                                         <label>No. Laporan</label>
-                                                                        <input type="text" name="no_laporan[]" class="form-control">
+                                                                        <input type="text" name="no_laporan" class="form-control">
                                                                     </div>
                                                                     <div class="form-group mb-3">
                                                                         <label for="instansi">Tgl. Laporan</label>
-                                                                        <input type="date" name="tgl_laporan[]" class="form-control">
+                                                                        <input type="date" name="tgl_laporan" class="form-control">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -480,7 +480,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="kriteriaGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="input"> ' +
+                        '<input class="form-control" type="text" name="kriteria[' + (nomorAppend) + '][]">' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonKriteriaRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -501,7 +501,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="sebabGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="input"> ' +
+                        '<input class="form-control" type="text" name="sebab[' + (nomorAppend) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonSebabRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -522,7 +522,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="akibatGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="input"> ' +
+                        '<input class="form-control" type="text" name="akibat[' + (nomorAppend) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonAkibatRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -543,7 +543,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="uraianGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="uraian[][]"> ' +
+                        '<input class="form-control" type="text" name="uraian[' + (nomorAppend) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonUraianRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -564,7 +564,7 @@ if (mysqli_num_rows($result) > 0) {
                     e.preventDefault();
                     $(this).parent().parent().parent().parent().append('<div class="form-group mb-3" id="rekomGroup' + (nomorAppend) + '"> ' +
                         '<div class="input-group"> ' +
-                        '<input class="form-control" type="text" name="rekomendasi[][]"> ' +
+                        '<input class="form-control" type="text" name="rekomendasi[' + (nomorAppend) + '][]"> ' +
                         '<div class="input-group-append"> ' +
                         '<button type="button" class="btn btn-link buttonRekomRemove' + (nomorAppend) + ' text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                         '</div> ' +
@@ -608,7 +608,7 @@ if (mysqli_num_rows($result) > 0) {
                 // n++;
                 $('#kriteriaArea').append('<div class="form-group mb-3" id="kriteriaGroup"> ' +
                     '<div class="input-group"> ' +
-                    '<input class="form-control" type="text" name="input"> ' +
+                    '<input class="form-control" type="text" name="kriteria[0][]"> ' +
                     '<div class="input-group-append"> ' +
                     '<button type="button" class="btn btn-link buttonKriteriaRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                     '</div> ' +
@@ -634,7 +634,7 @@ if (mysqli_num_rows($result) > 0) {
                 // n++;
                 $('#sebabArea').append('<div class="form-group mb-3" id="sebabGroup"> ' +
                     '<div class="input-group"> ' +
-                    '<input class="form-control" type="text" name="input"> ' +
+                    '<input class="form-control" type="text" name="sebab[0][]"> ' +
                     '<div class="input-group-append"> ' +
                     '<button type="button" class="btn btn-link buttonSebabRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                     '</div> ' +
@@ -660,7 +660,7 @@ if (mysqli_num_rows($result) > 0) {
                 // n++;
                 $('#akibatArea').append('<div class="form-group mb-3" id="akibatGroup"> ' +
                     '<div class="input-group"> ' +
-                    '<input class="form-control" type="text" name="input"> ' +
+                    '<input class="form-control" type="text" name="akibat[0][]"> ' +
                     '<div class="input-group-append"> ' +
                     '<button type="button" class="btn btn-link buttonAkibatRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                     '</div> ' +
@@ -700,7 +700,7 @@ if (mysqli_num_rows($result) > 0) {
                 // n++;
                 $('#uraianArea').append('<div class="form-group mb-3" id="uraianGroup"> ' +
                     '<div class="input-group"> ' +
-                    '<input class="form-control" type="text" name="input"> ' +
+                    '<input class="form-control" type="text" name="uraian[0][]"> ' +
                     '<div class="input-group-append"> ' +
                     '<button type="button" class="btn btn-link buttonUraianRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                     '</div> ' +
@@ -719,7 +719,7 @@ if (mysqli_num_rows($result) > 0) {
                 // n++;
                 $('#rekomArea').append('<div class="form-group mb-3" id="rekomGroup"> ' +
                     '<div class="input-group"> ' +
-                    '<input class="form-control" type="text" name="input"> ' +
+                    '<input class="form-control" type="text" name="rekomendasi[0][]"> ' +
                     '<div class="input-group-append"> ' +
                     '<button type="button" class="btn btn-link buttonRekomRemove text-danger"><i class="fe fe-minus-circle fe-16"></i></button> ' +
                     '</div> ' +
