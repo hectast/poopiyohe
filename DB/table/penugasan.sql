@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Mar 2021 pada 20.03
+-- Waktu pembuatan: 15 Apr 2021 pada 22.57
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -32,21 +32,22 @@ CREATE TABLE `penugasan` (
   `no_st` varchar(20) NOT NULL,
   `tgl_st` date NOT NULL,
   `uraian_penugasan` varchar(50) NOT NULL,
-  `jenis_penugasan` varchar(15) NOT NULL,
+  `jenis_penugasan` varchar(50) NOT NULL,
   `auditan_in` varchar(50) NOT NULL,
   `auditan_opd` varchar(50) NOT NULL,
   `status` varchar(25) NOT NULL,
   `pkpt` varchar(15) NOT NULL,
-  `kf1` varchar(15) NOT NULL
+  `kf1` varchar(15) NOT NULL,
+  `d1` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `penugasan`
 --
 
-INSERT INTO `penugasan` (`id_penugasan`, `no_st`, `tgl_st`, `uraian_penugasan`, `jenis_penugasan`, `auditan_in`, `auditan_opd`, `status`, `pkpt`, `kf1`) VALUES
-(34, 'BPKP/PROJEK/001/A1', '2021-03-26', 'Penugasan', 'Verifikasi', '', '240', 'Belum Divalidasi', 'PKPT', 'KF1'),
-(35, 'TIWI001', '2021-03-27', 'TIWI CANTIK', 'Audit', '9', '-', 'Belum Divalidasi', 'PKPT', 'KF1');
+INSERT INTO `penugasan` (`id_penugasan`, `no_st`, `tgl_st`, `uraian_penugasan`, `jenis_penugasan`, `auditan_in`, `auditan_opd`, `status`, `pkpt`, `kf1`, `d1`) VALUES
+(53, 'BPKP/01/002/2002', '2021-04-04', 'Contoh Uraian Penugasan', 'Audit', '9', '', 'Belum Direview', 'PKPT', 'KF1', 'D2'),
+(55, 'BPKP/01/002/2002', '2021-04-05', 'Contoh yang k 2', 'Asistensi', '', '351', 'Belum Direview', 'Non PKPT', 'KF3', 'D1');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +67,7 @@ ALTER TABLE `penugasan`
 -- AUTO_INCREMENT untuk tabel `penugasan`
 --
 ALTER TABLE `penugasan`
-  MODIFY `id_penugasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_penugasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
