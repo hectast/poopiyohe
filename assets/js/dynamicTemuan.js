@@ -136,15 +136,19 @@ $(document).ready(function () {
         let cR = $('#cekRupiah' + (nomorAppend));
         let cNR = $('#cekNonRupiah' + (nomorAppend));
         let cRNR = $('#cekRpNonRp' + (nomorAppend));
+
+        // start cek rupiah
         cR.change(function (e) {
             e.preventDefault();
             let nmrapd = nomorAppend;
 
             // console.log(this);
             let isianRupiah = $('.isian-rupiah'+ (nmrapd));
+            let isianRupiahHidden = $('.rupiahHidden'+ (nmrapd));
 
             if ($(this).is(":checked")) {
                 cNR.prop("checked", false);
+                isianRupiahHidden.remove();
                 let html = '<div class="form-group mb-3 mt-2 isian-rupiah' + (nmrapd) + '">' +
                                 '<div class="input-group">' +
                                     '<div class="input-group-prepend">' +
@@ -159,20 +163,34 @@ $(document).ready(function () {
             }
             nmrapd--;
         });
+        // end cek rupiah
 
+        // start cek non rupiah
         cNR.change(function (e) {
             e.preventDefault();
             let nmrapd = nomorAppend;
 
-            // console.log(this);
             let isianRupiah = $('.isian-rupiah'+ (nmrapd));
+            let isianRupiahHidden = $('.rupiahHidden'+ (nmrapd));
 
             if ($(this).is(":checked")) {
                 cR.prop("checked", false);
                 isianRupiah.remove();
+                let html = '<div class="form-group d-none mb-3 mt-2 rupiahHidden' + (nmrapd) + '">' +
+                                '<div class="input-group">' +
+                                    '<div class="input-group-prepend">' +
+                                        '<span class="input-group-text">Rp.</span>' +
+                                    '</div>' +
+                                    '<input class="form-control" type="text" name="isianrupiah">' +
+                                '</div>' +
+                            '</div>';
+                            cRNR.append(html);
+            } else {
+                isianRupiahHidden.remove();
             }
             nmrapd--;
         });
+        // end cek non rupiah
 
 
         // kriteria
