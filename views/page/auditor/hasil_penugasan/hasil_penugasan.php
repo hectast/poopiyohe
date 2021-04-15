@@ -1,5 +1,5 @@
 <?php
-    include 'app/controllers/auditor/post.php';
+include 'app/controllers/auditor/post.php';
 ?>
 
 <main role="main" class="main-content">
@@ -9,9 +9,22 @@
                 <h2 class="page-title"><?= $page; ?></h2>
             </div>
         </div>
+        <?php
+            if (isset($_SESSION['msg_temuan'])) {
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_temuan'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <!-- s -->
+                    </button>
+                </div>
+            <?php
+            }
+            ?>
         <div class="row">
             <div class="col-12">
-            <div class="card shadow mb-4">
+                <div class="card shadow mb-4">
                     <div class="card-header">
                         <strong class="card-title">Daftar Penugasan</strong>
                     </div>
@@ -19,17 +32,17 @@
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
-                                   <th>No.ST</th>
-                                   <th>Tgl.ST</th>
-                                   <th>Uraian Penugasan</th>
-                                   <th>Jenis Penugasan</th>
-                                   <th>Ket</th>
-                                   <th>Status</th>
-                                   <th>Aksi</th>
+                                    <th>No.ST</th>
+                                    <th>Tgl.ST</th>
+                                    <th>Uraian Penugasan</th>
+                                    <th>Jenis Penugasan</th>
+                                    <th>Ket</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               <?= tampil_data($mysqli);  ?>
+                                <?= tampil_data($mysqli);  ?>
                             </tbody>
                         </table>
                     </div>
