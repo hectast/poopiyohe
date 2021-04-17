@@ -1,3 +1,4 @@
+<?php include 'app/controllers/auditor/monitoring/hasil_panugasan/post.php'; ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -5,6 +6,19 @@
                 <h2 class="page-title"><?= $page; ?></h2>
             </div>
         </div>
+        <?php
+            if (isset($_SESSION['msg_teruskan_data'])) {
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_teruskan_data'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <!-- s -->
+                    </button>
+                </div>
+            <?php
+            }
+        ?>
         <div class="row">
             <div class="col-12">
             <div class="card shadow mb-4">
@@ -26,7 +40,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               
+                               <?php
+                                    tampil_data($mysqli);
+                               ?>
                             </tbody>
                         </table>
                     </div>

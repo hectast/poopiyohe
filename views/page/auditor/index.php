@@ -15,6 +15,9 @@ if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor"
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_hasil_penugasan") {
         $page = "Hasil Penugasan";
         $title = $page . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "detail_hasil_penugasan") {
+        $page = "Detail Penugasan";
+        $title = $page . " | PO'OPIYOHE";
     }
 } else {
     $page = "Beranda";
@@ -38,6 +41,8 @@ if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor"
         include 'views/page/auditor/monitoring/beranda.php';
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_hasil_penugasan") {
         include 'views/page/auditor/monitoring/hasil_penugasan/hasil_penugasan.php';
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "detail_hasil_penugasan") {
+        include 'views/page/auditor/monitoring/hasil_penugasan/detail_penugasan.php';
     }
 } else if ($akses !== 1 && isset($_GET['views_monitoring'])) {
     ?>

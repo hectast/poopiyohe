@@ -15,48 +15,90 @@
                 </svg>
             </a>
         </div>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <?php
-                    if ($akses === 1 && isset($_GET['views_monitoring'])) {
-                ?>
-                        <a class="nav-link" href="<?= $base_url; ?>beranda_monitoring">
-                            <i class="fe fe-home fe-16"></i>
-                            <span class="ml-3 item-text">Beranda</span>
-                        </a>
-                <?php
-                    } else {
-                ?>
+
+        <?php
+            if ($akses === 1 && isset($_GET['views_monitoring'])) {
+        ?>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>beranda_monitoring">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Beranda</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>monitoring_hasil_penugasan">
+                        <i class="fe fe-file-text fe-16"></i>
+                        <span class="ml-3 item-text">Hasil Penugasan</span>
+                    </a>
+                </li>
+            </ul>
+        <?php
+            } else {
+        ?>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item w-100">
                         <a class="nav-link" href="<?= $base_url; ?>beranda_auditor">
                             <i class="fe fe-home fe-16"></i>
                             <span class="ml-3 item-text">Beranda</span>
                         </a>
-                <?php
-                    }
-                ?>
-                </a>
-            </li>
-            <?php
-                if ($akses === 1 && isset($_GET['views_monitoring'])) {
-            ?>
-                    <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= $base_url; ?>monitoring_hasil_penugasan">
-                            <i class="fe fe-file-text fe-16"></i>
-                            <span class="ml-3 item-text">Hasil Penugasan</span>
-                        </a>
                     </li>
-            <?php
-                } else {
-            ?>
-                    <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
-                            <i class="fe fe-file-text fe-16"></i>
-                            <span class="ml-3 item-text">Hasil Penugasan</span>
+                </ul>
+                
+                <p class="text-muted nav-heading mt-4 mb-1">
+                    <span>Menu</span>
+                </p>
+        
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#ketuaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                            <i class="fe fe-circle fe-16"></i>
+                            <span class="ml-3 item-text">Ketua Tim</span>
                         </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="ketuaTim">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
+                                    <span class="ml-3 item-text">Hasil Penugasan</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-            <?php       
-                }
-            ?>
-        </ul>
+                </ul>
+        
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#anggotaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                            <i class="fe fe-circle fe-16"></i>
+                            <span class="ml-3 item-text">Anggota Tim</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="anggotaTim">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
+                                    <span class="ml-3 item-text">Hasil Penugasan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+        
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <li class="nav-item dropdown">
+                        <a href="#dalnis" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                            <i class="fe fe-circle fe-16"></i>
+                            <span class="ml-3 item-text">Dalnis</span>
+                        </a>
+                        <ul class="collapse list-unstyled pl-4 w-100" id="dalnis">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
+                                    <span class="ml-3 item-text">Hasil Penugasan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+        <?php
+            }
+        ?>
+
     </nav>
 </aside>

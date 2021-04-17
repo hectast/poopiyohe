@@ -1,5 +1,7 @@
 <?php
 include 'app/controllers/auditor/post.php';
+
+$idFromSA = $_SESSION['id'];
 ?>
 
 <main role="main" class="main-content">
@@ -21,7 +23,7 @@ include 'app/controllers/auditor/post.php';
                 </div>
             <?php
             }
-            ?>
+        ?>
         <div class="row">
             <div class="col-12">
                 <div class="card shadow mb-4">
@@ -32,17 +34,18 @@ include 'app/controllers/auditor/post.php';
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>No.ST</th>
-                                    <th>Tgl.ST</th>
-                                    <th>Uraian Penugasan</th>
-                                    <th>Jenis Penugasan</th>
-                                    <th>Ket</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                   <th>No.ST</th>
+                                   <th>Tgl.ST</th>
+                                   <th>Auditan</th>
+                                   <th>Uraian Penugasan</th>
+                                   <th>Jenis Penugasan</th>
+                                   <th>Ket</th>
+                                   <th>Status</th>
+                                   <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?= tampil_data($mysqli);  ?>
+                                <?= tampil_data($idFromSA, $mysqli);  ?>
                             </tbody>
                         </table>
                     </div>

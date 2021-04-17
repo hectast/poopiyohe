@@ -39,6 +39,10 @@ function tampil_data($mysqli)
                 ?>
                     <small class="badge badge-danger"><?= $row['status']; ?></small>
                 <?php
+                } else if ($row['status'] == 'Belum Divalidasi') {
+                ?>
+                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                <?php
                 } else {
                 ?>
                     <small class="badge badge-success"><?= $row['status']; ?></small>
@@ -147,16 +151,21 @@ function detail($id_tampil, $mysqli)
                     <tr>
                         <td>Status</td>
                         <td>:</td>
-                        <td> <?php
-                                if ($row['status'] == 'Belum Direview') {
-                                ?>
+                        <td> 
+                            <?php
+                            if ($row['status'] == 'Belum Direview') {
+                            ?>
                                 <small class="badge badge-danger"><?= $row['status']; ?></small>
                             <?php
-                                } else {
+                            } else if ($row['status'] == 'Belum Divalidasi') {
+                            ?>
+                                <small class="badge badge-warning"><?= $row['status']; ?></small>
+                            <?php
+                            } else {
                             ?>
                                 <small class="badge badge-success"><?= $row['status']; ?></small>
                             <?php
-                                }
+                            }
                             ?>
                         </td>
                     </tr>
