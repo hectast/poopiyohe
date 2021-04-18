@@ -1,5 +1,5 @@
 <?php
-    include 'app/controllers/user/cek_login.php';
+    include 'app/controllers/login/cek_login.php';
 ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -21,13 +21,13 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" name="login" class="btn btn-primary col-12"> <i class="fa fa-door-open"></i>Masuk</button>
-                        <a href="login" class="btn btn-link mt-2 col-12"><small>Login sebagai admin</small></a>
+                        <!-- <a href="login" class="btn btn-link mt-2 col-12"><small>Login sebagai admin</small></a> -->
                     </div>
                 </form>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

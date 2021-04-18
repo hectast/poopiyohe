@@ -81,7 +81,7 @@ function tampil_data($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
-                    <a href="detail_hasil_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                    <a href="monitoring_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
                     <?php
                     if ($row['status'] == 'Belum Direview') {
                     ?>

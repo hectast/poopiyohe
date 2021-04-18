@@ -1,10 +1,9 @@
 <?php
-include 'app/controllers/auditor/post.php';
+include 'app/controllers/auditor/dalnis/post.php';
 
 $idFromSA = $_SESSION['id'];
-$peran = $rowKetua['peran'];
+$peran = $rowDalnis['peran'];
 ?>
-
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -13,10 +12,10 @@ $peran = $rowKetua['peran'];
             </div>
         </div>
         <?php
-            if (isset($_SESSION['msg_temuan'])) {
+            if (isset($_SESSION['msg_teruskan_data'])) {
             ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_temuan'); ?>
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_teruskan_data'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         <!-- s -->
@@ -27,9 +26,9 @@ $peran = $rowKetua['peran'];
         ?>
         <div class="row">
             <div class="col-12">
-                <div class="card shadow mb-4">
+            <div class="card shadow mb-4">
                     <div class="card-header">
-                        <strong class="card-title">Daftar Penugasan</strong>
+                        <strong class="card-title">Daftar <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover datatables" id="dataTable-1">
@@ -46,7 +45,9 @@ $peran = $rowKetua['peran'];
                                 </tr>
                             </thead>
                             <tbody>
-                                <?= tampil_data($idFromSA, $peran, $mysqli);  ?>
+                               <?php
+                                    tampil_data($idFromSA, $peran, $mysqli);
+                               ?>
                             </tbody>
                         </table>
                     </div>

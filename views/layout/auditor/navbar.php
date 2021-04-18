@@ -18,7 +18,7 @@
                 <?php
                     }
                 ?>
-                <a class="dropdown-item" href="<?= $base_url; ?>app/logout.php">Keluar</a>
+                <a class="dropdown-item" href="<?= $base_url; ?>app/logout.php" onclick="return confirm('Yakin keluar dari halaman ini ?')">Keluar</a>
             </div>
         </li>
     </ul>

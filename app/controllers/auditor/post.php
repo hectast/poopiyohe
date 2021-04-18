@@ -55,7 +55,7 @@ error_reporting(0);
                     $mysqli->query($sql_kri);
                     $id_kriteria = $mysqli->insert_id;
 
-                    $input_kri = "INSERT INTO data_kriteria VALUES('$id_akhir','$id_uraian')";
+                    $input_kri = "INSERT INTO data_kriteria VALUES('$id_akhir','$id_kriteria')";
                     $mysqli->query($input_kri);
                 }
 

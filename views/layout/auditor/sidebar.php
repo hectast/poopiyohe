@@ -44,11 +44,12 @@
                         </a>
                     </li>
                 </ul>
-                
+
                 <p class="text-muted nav-heading mt-4 mb-1">
                     <span>Menu</span>
                 </p>
-        
+
+                <?php if (mysqli_num_rows($rslt_getDataKetua) > 0) : ?>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item dropdown">
                         <a href="#ketuaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -64,7 +65,9 @@
                         </ul>
                     </li>
                 </ul>
+                <?php endif; ?>
         
+                <?php if (mysqli_num_rows($rslt_getDataAnggota) > 0) : ?>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item dropdown">
                         <a href="#anggotaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -80,7 +83,9 @@
                         </ul>
                     </li>
                 </ul>
-        
+                <?php endif; ?>
+
+                <?php if (mysqli_num_rows($rslt_getDataDalnis) > 0) : ?>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
                     <li class="nav-item dropdown">
                         <a href="#dalnis" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -89,13 +94,14 @@
                         </a>
                         <ul class="collapse list-unstyled pl-4 w-100" id="dalnis">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
+                                <a class="nav-link" href="<?= $base_url; ?>dalnis_hasil_penugasan">
                                     <span class="ml-3 item-text">Hasil Penugasan</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+                <?php endif; ?>
         <?php
             }
         ?>
