@@ -105,11 +105,70 @@ if (isset($_POST['login'])) {
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['tipe_user'] = 'auditor';
                 $_SESSION['token'] = $token;
-                ?>
-                <script>
-                    document.location.href = 'auditor';
-                </script>
-                <?php
+
+                // ketua
+                $stmt_getDataKetua = $mysqli->prepare("SELECT * FROM penugasan_auditor WHERE id = {$id_auditor} AND peran = 'Ketua Tim'");
+                                    $stmt_getDataKetua->execute();
+                                    $rslt_getDataKetua = $stmt_getDataKetua->get_result();
+                $stmt_getDataKetua->close();
+
+                // anggota
+                $stmt_getDataAnggota = $mysqli->prepare("SELECT * FROM penugasan_auditor WHERE id = {$id_auditor} AND peran = 'Anggota Tim'");
+                                    $stmt_getDataAnggota->execute();
+                                    $rslt_getDataAnggota = $stmt_getDataAnggota->get_result();
+                $stmt_getDataAnggota->close();
+
+                // dalnis
+                $stmt_getDataDalnis = $mysqli->prepare("SELECT * FROM penugasan_auditor WHERE id = {$id_auditor} AND peran = 'Pengendali Teknis'");
+                                    $stmt_getDataDalnis->execute();
+                                    $rslt_getDataDalnis = $stmt_getDataDalnis->get_result();
+                $stmt_getDataDalnis->close();
+
+                $stmt_getData = $mysqli->prepare("SELECT * FROM auditor WHERE id = {$id_auditor}");
+                                $stmt_getData->execute();
+                                $rslt_getData = $stmt_getData->get_result();
+                                $rowToken = $rslt_getData->fetch_assoc();
+                                $akses = $rowToken['akses'];
+                $stmt_getData->close();    
+
+                if ($akses === 2) {
+                    ?>
+                        <script>
+                            document.location.href = 'beranda_korwas';
+                        </script>
+                    <?php
+                }else if (mysqli_num_rows($rslt_getDataKetua) > 0) {
+                    ?>
+                        <script>
+                            document.location.href = 'beranda_ketua';
+                        </script>
+                    <?php
+                } else if (mysqli_num_rows($rslt_getDataAnggota) > 0) {
+                    ?>
+                        <script>
+                            document.location.href = 'beranda_anggota';
+                        </script>
+                    <?php
+                } else if (mysqli_num_rows($rslt_getDataDalnis) > 0) {
+                    ?>
+                        <script>
+                            document.location.href = 'beranda_dalnis';
+                        </script>
+                    <?php
+                } else if ($akses === 1) {
+                    ?>
+                        <script>
+                            document.location.href = 'beranda_monitoring';
+                        </script>
+                    <?php
+                } else {
+                    ?>
+                        <script>
+                            alert('Anda belum memiliki penugasan !');
+                            document.location.href = 'app/logout.php';
+                        </script>
+                    <?php
+                }
             } else {
                 ?>
                 <script>

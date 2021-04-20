@@ -20,6 +20,15 @@
             if ($akses === 1 && isset($_GET['views_monitoring'])) {
         ?>
             <ul class="navbar-nav flex-fill w-100 mb-2">
+                <div class="nav-heading text-center mb-1">
+                    <div class="avatar avatar-lg mb-3">
+                        <img src="<?= $base_url ?>assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                    <span><?= $_SESSION['nama']; ?></span>
+                </div>
+                <div class="nav-heading text-center mb-1 badge badge-secondary">
+                    <span>Monitoring</span>
+                </div>
                 <li class="nav-item w-100">
                     <a class="nav-link" href="<?= $base_url; ?>beranda_monitoring">
                         <i class="fe fe-home fe-16"></i>
@@ -34,6 +43,138 @@
                 </li>
             </ul>
         <?php
+            } else if ($akses === 2) {
+        ?>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <div class="nav-heading text-center mb-1">
+                    <div class="avatar avatar-lg mb-3">
+                        <img src="<?= $base_url ?>assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                    <span><?= $_SESSION['nama']; ?></span>
+                </div>
+                <div class="nav-heading text-center mb-1 badge badge-secondary">
+                    <span>Koordinator Pengawas</span>
+                </div>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>beranda_korwas">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Beranda</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>korwas_data_penugasan">
+                        <i class="fe fe-briefcase fe-16"></i>
+                        <span class="ml-3 item-text">Data Penugasan</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>korwas_hasil_penugasan">
+                        <i class="fe fe-file-text fe-16"></i>
+                        <span class="ml-3 item-text">Hasil Penugasan</span>
+                    </a>
+                </li>
+            </ul>
+        <?php
+            } else if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
+                $peranKetua = $rowKetua['peran'];
+        ?>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <div class="nav-heading text-center mb-1">
+                        <div class="avatar avatar-lg mb-3">
+                            <img src="<?= $base_url ?>assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <span><?= $_SESSION['nama']; ?></span>
+                    </div>
+                    <div class="nav-heading text-center mb-1 badge badge-secondary">
+                        <span><?= $peranKetua; ?></span>
+                    </div>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>beranda_ketua">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Beranda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>ketua_data_penugasan">
+                            <i class="fe fe-briefcase fe-16"></i>
+                            <span class="ml-3 item-text">Data Penugasan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>ketua_hasil_penugasan">
+                            <i class="fe fe-file-text fe-16"></i>
+                            <span class="ml-3 item-text">Hasil Penugasan</span>
+                        </a>
+                    </li>
+                </ul>
+        <?php            
+            } else if (mysqli_num_rows($rslt_getDataAnggota) > 0 && isset($_GET['views_anggota'])) {
+                $peranAnggota = $rowAnggota['peran'];
+        ?>
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <div class="nav-heading text-center mb-1">
+                        <div class="avatar avatar-lg mb-3">
+                            <img src="<?= $base_url ?>assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <span><?= $_SESSION['nama']; ?></span>
+                    </div>
+                    <div class="nav-heading text-center mb-1 badge badge-secondary">
+                        <span><?= $peranAnggota; ?></span>
+                    </div>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>beranda_anggota">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Beranda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>anggota_data_penugasan">
+                            <i class="fe fe-briefcase fe-16"></i>
+                            <span class="ml-3 item-text">Data Penugasan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>anggota_hasil_penugasan">
+                            <i class="fe fe-file-text fe-16"></i>
+                            <span class="ml-3 item-text">Hasil Penugasan</span>
+                        </a>
+                    </li>
+                </ul>
+        <?php
+            } else if (mysqli_num_rows($rslt_getDataDalnis) > 0 && isset($_GET['views_dalnis'])) {
+                $peranDalnis = $rowDalnis['peran'];
+        ?>
+
+                <ul class="navbar-nav flex-fill w-100 mb-2">
+                    <div class="nav-heading text-center mb-1">
+                        <div class="avatar avatar-lg mb-3">
+                            <img src="<?= $base_url ?>assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        <span><?= $_SESSION['nama']; ?></span>
+                    </div>
+                    <div class="nav-heading text-center mb-1 badge badge-secondary">
+                        <span><?= $peranDalnis; ?></span>
+                    </div>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>beranda_dalnis">
+                            <i class="fe fe-home fe-16"></i>
+                            <span class="ml-3 item-text">Beranda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>dalnis_data_penugasan">
+                            <i class="fe fe-briefcase fe-16"></i>
+                            <span class="ml-3 item-text">Data Penugasan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= $base_url; ?>dalnis_hasil_penugasan">
+                            <i class="fe fe-file-text fe-16"></i>
+                            <span class="ml-3 item-text">Hasil Penugasan</span>
+                        </a>
+                    </li>
+                </ul>
+        <?php
             } else {
         ?>
                 <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -44,64 +185,6 @@
                         </a>
                     </li>
                 </ul>
-
-                <p class="text-muted nav-heading mt-4 mb-1">
-                    <span>Menu</span>
-                </p>
-
-                <?php if (mysqli_num_rows($rslt_getDataKetua) > 0) : ?>
-                <ul class="navbar-nav flex-fill w-100 mb-2">
-                    <li class="nav-item dropdown">
-                        <a href="#ketuaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-circle fe-16"></i>
-                            <span class="ml-3 item-text">Ketua Tim</span>
-                        </a>
-                        <ul class="collapse list-unstyled pl-4 w-100" id="ketuaTim">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
-                                    <span class="ml-3 item-text">Hasil Penugasan</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <?php endif; ?>
-        
-                <?php if (mysqli_num_rows($rslt_getDataAnggota) > 0) : ?>
-                <ul class="navbar-nav flex-fill w-100 mb-2">
-                    <li class="nav-item dropdown">
-                        <a href="#anggotaTim" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-circle fe-16"></i>
-                            <span class="ml-3 item-text">Anggota Tim</span>
-                        </a>
-                        <ul class="collapse list-unstyled pl-4 w-100" id="anggotaTim">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= $base_url; ?>hasil_penugasan">
-                                    <span class="ml-3 item-text">Hasil Penugasan</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <?php endif; ?>
-
-                <?php if (mysqli_num_rows($rslt_getDataDalnis) > 0) : ?>
-                <ul class="navbar-nav flex-fill w-100 mb-2">
-                    <li class="nav-item dropdown">
-                        <a href="#dalnis" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                            <i class="fe fe-circle fe-16"></i>
-                            <span class="ml-3 item-text">Dalnis</span>
-                        </a>
-                        <ul class="collapse list-unstyled pl-4 w-100" id="dalnis">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= $base_url; ?>dalnis_hasil_penugasan">
-                                    <span class="ml-3 item-text">Hasil Penugasan</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <?php endif; ?>
         <?php
             }
         ?>

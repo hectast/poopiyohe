@@ -32,17 +32,35 @@ RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
 RewriteRule ^detail_temuan/([0-9]+)$ auditan.php?views_auditan=detail_temuan&id=$1 [NC,L]
 
-# Auditor
-RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
-RewriteRule ^hasil_penugasan$ auditor.php?views_auditor=hasil_penugasan
-#RewriteRule ^tambah_temuan$ auditor.php?views_auditor=tambah_temuan
-RewriteRule ^tambah_temuan/([0-9]+)$ auditor.php?views_auditor=tambah_temuan&id=$1 [NC,L]
-RewriteRule ^edit_temuan/([0-9]+)$ auditor.php?views_auditor=edit_temuan&id=$1 [NC,L]
-RewriteRule ^detail_penugasan/([0-9]+)$ auditor.php?views_auditor=detail_penugasan&id=$1 [NC,L]
+# RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
+
+# Auditor Ketua
+RewriteRule ^beranda_ketua$ auditor.php?views_ketua=beranda_ketua
+RewriteRule ^ketua_hasil_penugasan$ auditor.php?views_ketua=ketua_hasil_penugasan
+#RewriteRule ^ketua_tambah_temuan$ auditor.php?views_ketua=ketua_tambah_temuan
+RewriteRule ^ketua_tambah_temuan/([0-9]+)$ auditor.php?views_ketua=ketua_tambah_temuan&id=$1 [NC,L]
+RewriteRule ^ketua_edit_temuan/([0-9]+)$ auditor.php?views_ketua=ketua_edit_temuan&id=$1 [NC,L]
+RewriteRule ^ketua_detail_penugasan/([0-9]+)$ auditor.php?views_ketua=ketua_detail_penugasan&id=$1 [NC,L]
+
+# Auditor Anggota
+RewriteRule ^beranda_anggota$ auditor.php?views_anggota=beranda_anggota
+RewriteRule ^anggota_hasil_penugasan$ auditor.php?views_anggota=anggota_hasil_penugasan
+RewriteRule ^anggota_detail_penugasan/([0-9]+)$ auditor.php?views_anggota=anggota_detail_penugasan&id=$1 [NC,L]
 
 # Auditor Dalnis
-RewriteRule ^dalnis_hasil_penugasan$ auditor.php?views_auditor=dalnis_hasil_penugasan
-RewriteRule ^dalnis_detail_penugasan/([0-9]+)$ auditor.php?views_auditor=dalnis_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^beranda_dalnis$ auditor.php?views_dalnis=beranda_dalnis
+RewriteRule ^dalnis_hasil_penugasan$ auditor.php?views_dalnis=dalnis_hasil_penugasan
+RewriteRule ^dalnis_detail_penugasan/([0-9]+)$ auditor.php?views_dalnis=dalnis_detail_penugasan&id=$1 [NC,L]
+
+# Auditor Korwas
+RewriteRule ^beranda_korwas$ auditor.php?views_korwas=beranda_korwas
+RewriteRule ^korwas_data_penugasan$ auditor.php?views_korwas=korwas_data_penugasan
+RewriteRule ^korwas_tambah_penugasan$ auditor.php?views_korwas=korwas_tambah_penugasan
+RewriteRule ^korwas_lihat_penugasan$ auditor.php?views_korwas=korwas_lihat_penugasan
+RewriteRule ^korwas_edit_penugasan$ auditor.php?views_korwas=korwas_edit_penugasan
+RewriteRule ^korwas_hasil_penugasan$ auditor.php?views_korwas=korwas_hasil_penugasan
+RewriteRule ^korwas_detail_penugasan/([0-9]+)$ auditor.php?views_korwas=korwas_detail_penugasan&id=$1 [NC,L]
+
 
 # Auditor Monitoring
 RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring

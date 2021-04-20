@@ -1,5 +1,5 @@
 <?php
-include 'app/controllers/auditor/dalnis/function.php';
+include 'app/controllers/auditor/korwas/hasil_penugasan/function.php';
 include 'app/flash_message.php';
 
 if (isset($_POST['teruskan_data'])) {

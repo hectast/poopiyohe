@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-    include 'app/controllers/auditor/function.php';
+    include 'app/controllers/auditor/dalnis/hasil_penugasan/function.php';
     include 'app/flash_message.php';
     if(isset($_POST['simpan_data'])){
         

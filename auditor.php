@@ -20,9 +20,5 @@ $base_url = 'http://localhost/poopiyohe/';
 
 include 'app/env.php';
 include 'app/controllers/login/cek_session.php';
-include 'app/controllers/auditor/monitoring/getData.php';
 include 'app/controllers/auditor/getData.php';
-include 'app/controllers/auditor/anggota/getData.php';
-include 'app/controllers/auditor/dalnis/getData.php';
-include 'app/controllers/auditor/korwas/getData.php';
 require_once 'views/page/auditor/index.php';
