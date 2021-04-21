@@ -9,16 +9,7 @@ if (mysqli_num_rows($result) > 0) {
     $row_penugasan = $result->fetch_assoc();
 
 
-    $query_surat = "SELECT * FROM surat_tuntas WHERE id_penugasan = {$row_penugasan['id_penugasan']}";
-    $result_surat = $mysqli->query($query_surat);
-    $row_surat = mysqli_fetch_assoc($result_surat);
-    $cek_surat = mysqli_num_rows($result_surat);
-    // echo "<center>";
-    // print_r($cek_surat);
-    // echo "</center>";
-    if ($cek_surat > 0) {
-        $filesurat = $row_surat['surat_tuntas'];
-    }
+  
 
 ?>
     <main role="main" class="main-content">
@@ -330,6 +321,7 @@ if (mysqli_num_rows($result) > 0) {
             </form>
             <?php
         } else if ($row_penugasan['status'] == 'Sudah Direview') {
+               
             $sql_cektuntas = "SELECT * FROM surat_tuntas WHERE id_penugasan = '$row_penugasan[id_penugasan]'";
             $tuntas = $mysqli->query($sql_cektuntas);
             $cek_tuntas = mysqli_num_rows($tuntas);
@@ -378,6 +370,16 @@ if (mysqli_num_rows($result) > 0) {
 
             <?php
             } else {
+                $query_surat = "SELECT * FROM surat_tuntas WHERE id_penugasan = {$row_penugasan['id_penugasan']}";
+                $result_surat = $mysqli->query($query_surat);
+                $row_surat = mysqli_fetch_assoc($result_surat);
+                $cek_surat = mysqli_num_rows($result_surat);
+                // echo "<center>";
+                // print_r($cek_surat);
+                // echo "</center>";
+                if ($cek_surat > 0) {
+                    $filesurat = $row_surat['surat_tuntas'];
+                }
             ?>
 
                 <form class="mb-5" action="">

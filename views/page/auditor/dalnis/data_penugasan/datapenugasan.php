@@ -1,8 +1,6 @@
 <?php
-include 'app/controllers/auditor/anggota/hasil_penugasan/post.php';
+include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
 
-$idFromSA = $_SESSION['id'];
-$peran = $rowAnggota['peran'];
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -12,17 +10,42 @@ $peran = $rowAnggota['peran'];
             </div>
         </div>
         <?php
-            if (isset($_SESSION['msg_teruskan_data'])) {
-            ?>
+            if (isset($_SESSION['msg_hapus_data'])) {
+        ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_teruskan_data'); ?>
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_hapus_data'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                        <!-- s -->
                     </button>
                 </div>
-            <?php
+        <?php
             }
+            ?>
+            <?php
+        if (isset($_SESSION['msg_edit_data'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_edit_data'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <!-- s -->
+                </button>
+            </div>
+        <?php
+        }
+        ?>
+         <?php
+        if (isset($_SESSION['msg_addpenugasan'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_addpenugasan'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <!-- s -->
+                </button>
+            </div>
+        <?php
+        }
         ?>
         <div class="row">
             <div class="col-12">
@@ -31,6 +54,7 @@ $peran = $rowAnggota['peran'];
                         <strong class="card-title">Daftar <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
+                    <a href="dalnis_tambah_penugasan" class="btn btn-primary"><i class="fe fe-plus-circle"></i> Tambah Data</a> <br><br>
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
@@ -45,9 +69,7 @@ $peran = $rowAnggota['peran'];
                                 </tr>
                             </thead>
                             <tbody>
-                               <?php
-                                    tampil_data($idFromSA, $peran, $mysqli);
-                               ?>
+                               <?php tampil_data($mysqli) ?>
                             </tbody>
                         </table>
                     </div>

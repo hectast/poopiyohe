@@ -1,7 +1,7 @@
 <?php 
 $base_url = "http://localhost/poopiyohe/";
 
-include '../../../../../app/env.php';
+include '../../../../../../app/env.php';
 
 $uploadDir = $base_url . 'assets/uploads/baktl/';
 
@@ -24,7 +24,7 @@ if (in_array($extensiFile, $extensiFileValid)) {
     $namaFileBaru .= '.';
     $namaFileBaru .= $extensiFile;
 
-    if (move_uploaded_file($tmpName, '../../../../../assets/uploads/baktl/' . $namaFileBaru)) {
+    if (move_uploaded_file($tmpName, '../../../../../../assets/uploads/baktl/' . $namaFileBaru)) {
 
         $insert = $mysqli->prepare("INSERT INTO baktl (id_penugasan,file_upload) VALUES ('{$id_penugasan}', '{$namaFileBaru}')");
         $insert->execute();

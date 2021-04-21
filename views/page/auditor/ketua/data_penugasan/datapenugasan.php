@@ -1,5 +1,5 @@
 <?php
-include 'app/controllers/admin/post_penugasan.php';
+include 'app/controllers/auditor/ketua/data_penugasan/post_penugasan.php';
 
 ?>
 <main role="main" class="main-content">
@@ -54,7 +54,7 @@ include 'app/controllers/admin/post_penugasan.php';
                         <strong class="card-title">Daftar <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
-                    <a href="tambah_penugasan" class="btn btn-primary"><i class="fe fe-plus-circle"></i> Tambah Data</a> <br><br>
+                    <a href="ketua_tambah_penugasan" class="btn btn-primary"><i class="fe fe-plus-circle"></i> Tambah Data</a> <br><br>
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>

@@ -22,6 +22,15 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="<?= $base_url; ?>assets/css/app-light.css" id="lightTheme">
     <!-- <link rel="stylesheet" href="assets/css/app-dark.css" id="darkTheme" disabled> -->
+
+    <style>
+    .boks{
+        display: inline-block;
+        padding: 10px;
+        margin: 5px 5px 0 0;
+        background-color: #f7f8f9;      
+        }
+    </style>
 </head>
 
 <body class="vertical light">

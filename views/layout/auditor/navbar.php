@@ -44,19 +44,19 @@
                         }
                     }
                     
-                    if (!mysqli_num_rows($rslt_getDataKetua) > 0 && !mysqli_num_rows($rslt_getDataAnggota) && !mysqli_num_rows($rslt_getDataDalnis)) {
+                    if (!mysqli_num_rows($rslt_getDataKetua) > 0 && !mysqli_num_rows($rslt_getDataAnggota) && !mysqli_num_rows($rslt_getDataDalnis)) { // monitoring
                         ?>
                             <button class="dropdown-item" disabled>--Tidak ada peran lain--</button>
                         <?php 
-                    } else if (!mysqli_num_rows($rslt_getDataAnggota) && !mysqli_num_rows($rslt_getDataDalnis) && $akses !== 2) {
+                    } else if (!mysqli_num_rows($rslt_getDataAnggota) && !mysqli_num_rows($rslt_getDataDalnis) && $akses !== 2) { // ketua
                         ?>
                             <button class="dropdown-item" disabled>--Tidak ada peran lain--</button>
                         <?php 
-                    } else if (!mysqli_num_rows($rslt_getDataKetua) && !mysqli_num_rows($rslt_getDataDalnis) && $akses !== 2) {
+                    } else if (!mysqli_num_rows($rslt_getDataDalnis) && $akses !== 2 && !mysqli_num_rows($rslt_getDataKetua) > 0) { // anggota
                         ?>
                             <button class="dropdown-item" disabled>--Tidak ada peran lain--</button>
                         <?php 
-                    } else if (!mysqli_num_rows($rslt_getDataKetua) && !mysqli_num_rows($rslt_getDataAnggota) && $akses !== 2) {
+                    } else if ($akses !== 2 && !mysqli_num_rows($rslt_getDataKetua) > 0 && !mysqli_num_rows($rslt_getDataAnggota)) { // dalnis
                         ?>
                             <button class="dropdown-item" disabled>--Tidak ada peran lain--</button>
                         <?php 

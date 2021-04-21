@@ -40,12 +40,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item w-100">
-                <a class="nav-link" href="data_penugasan">
-                    <i class="fe fe-briefcase fe-16"></i>
-                    <span class="ml-3 item-text">Data Penugasan</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </aside>

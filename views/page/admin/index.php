@@ -11,20 +11,6 @@ if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "data_auditor") {
     $page = "Data Auditor";
     $title = $page . " | PO'OPIYOHE";
-} else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "datapenugasan") {
-    $page = "Data Penugasan";
-    $title = $page . " | PO'OPIYOHE";
-}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
-    $page = "Tambah Data Penugasan";
-    $title = $page . " | PO'OPIYOHE";
-}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "detail_penugasan") {
-    $page = "Detail Data Penugasan";
-    $title = $page . " | PO'OPIYOHE";
-
-}else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "edit_penugasan") {
-    $page = "Edit Data Penugasan";
-    $title = $page . " | PO'OPIYOHE";
-
 }
 ?>
 
@@ -44,18 +30,6 @@ else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "instansi_vertik
 }
 else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "data_auditor") {
     include 'views/page/admin/master_data/auditor.php';
-}
-else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "datapenugasan") {
-    include 'views/page/admin/datapenugasan.php';
-}
-else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "tambah_penugasan") {
-    include 'views/page/admin/tambah_penugasan.php';
-}
-else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "detail_penugasan") {
-    include 'views/page/admin/detailpenugasan.php';
-}
-else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "edit_penugasan") {
-    include 'views/page/admin/edit_penugasan.php';
 }
 else {
 

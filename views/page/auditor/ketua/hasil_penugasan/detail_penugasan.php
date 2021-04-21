@@ -38,7 +38,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="row">
                 <div class="col-12">
                     <h2 class="page-title">
-                        <a href="<?= $base_url; ?>hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
+                        <a href="<?= $base_url; ?>ketua_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
                         <?= $page; ?>
                     </h2>
                 </div>

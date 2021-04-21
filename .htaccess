@@ -41,6 +41,10 @@ RewriteRule ^ketua_hasil_penugasan$ auditor.php?views_ketua=ketua_hasil_penugasa
 RewriteRule ^ketua_tambah_temuan/([0-9]+)$ auditor.php?views_ketua=ketua_tambah_temuan&id=$1 [NC,L]
 RewriteRule ^ketua_edit_temuan/([0-9]+)$ auditor.php?views_ketua=ketua_edit_temuan&id=$1 [NC,L]
 RewriteRule ^ketua_detail_penugasan/([0-9]+)$ auditor.php?views_ketua=ketua_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^ketua_data_penugasan$ auditor.php?views_ketua=ketua_data_penugasan
+RewriteRule ^ketua_tambah_penugasan$ auditor.php?views_ketua=ketua_tambah_penugasan
+RewriteRule ^ketua_lihat_penugasan$ auditor.php?views_ketua=ketua_lihat_penugasan
+RewriteRule ^ketua_edit_penugasan$ auditor.php?views_ketua=ketua_edit_penugasan
 
 # Auditor Anggota
 RewriteRule ^beranda_anggota$ auditor.php?views_anggota=beranda_anggota
@@ -51,6 +55,10 @@ RewriteRule ^anggota_detail_penugasan/([0-9]+)$ auditor.php?views_anggota=anggot
 RewriteRule ^beranda_dalnis$ auditor.php?views_dalnis=beranda_dalnis
 RewriteRule ^dalnis_hasil_penugasan$ auditor.php?views_dalnis=dalnis_hasil_penugasan
 RewriteRule ^dalnis_detail_penugasan/([0-9]+)$ auditor.php?views_dalnis=dalnis_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^dalnis_data_penugasan$ auditor.php?views_dalnis=dalnis_data_penugasan
+RewriteRule ^dalnis_tambah_penugasan$ auditor.php?views_dalnis=dalnis_tambah_penugasan
+RewriteRule ^dalnis_lihat_penugasan$ auditor.php?views_dalnis=dalnis_lihat_penugasan
+RewriteRule ^dalnis_edit_penugasan$ auditor.php?views_dalnis=dalnis_edit_penugasan
 
 # Auditor Korwas
 RewriteRule ^beranda_korwas$ auditor.php?views_korwas=beranda_korwas
