@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2 class="page-title"><?= $page; ?></h2>
+                <h2 class="page-title">Daftar Penugasan BPKP</h2>
             </div>
         </div>
         <?php
@@ -45,21 +45,26 @@
             <div class="col-md-12">
                 <div class="card shadow mb-12">
                     <div class="card-header">
-                        <strong class="card-title"><?= $page; ?></strong>
+                        <strong class="card-title">Daftar Penugasan BPKP </strong>
                     </div>
                     <div class="card-body">
                         <table class="table datatables " id="dataTable-1" >
                             <thead class="thead-light">
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama Penugasan</th>
+
+                                    <th>No</th>                    
+                                    <th>Uraian Penugasan</th>
+                                    <th>Status</th>
+
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <?php
                                     tampil_data($base_url, $mysqli);
                                 ?>
+
                             </tbody>
                         </table>
                     </div>
