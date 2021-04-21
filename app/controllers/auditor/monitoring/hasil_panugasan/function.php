@@ -81,12 +81,15 @@ function tampil_data_belumreview($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
-                    <a href="detail_hasil_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
-                    
-                        <form action="monitoring_hasil_penugasan" method="post">
+                    <a href="monitoring_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                   
+                        <!-- <form action="monitoring_hasil_penugasan" method="post">
                             <input type="hidden" name="id_penugasan" value="<?= $row['id_penugasan']; ?>">
                             <button type="submit" name="teruskan_data" class="dropdown-item" onclick="return confirm('Konfirmasi untuk meneruskan ke Dalnis dan Korwas')"><i class="fe fe-send mt-3"></i> Teruskan ke Dalnis & Korwas</button>
-                        </form>
+                        </form> -->
+                  
+
+
                 </div>
             </td>
         </tr>
@@ -133,9 +136,9 @@ function tampil_data_sudahreview($mysqli)
                 ?>
                     <small class="badge badge-danger"><?= $row['status']; ?></small>
                 <?php
-                } else if ($row['status'] == 'Belum Divalidasi') {
+                } else if ($row['status'] == 'Sudah Direview') {
                 ?>
-                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                    <small class="badge badge-success"><?= $row['status']; ?></small>
                 <?php
                 } else {
                 ?>
@@ -150,19 +153,8 @@ function tampil_data_sudahreview($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
-                    <a href="detail_hasil_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
-                    <?php
-                    if ($row['status'] == 'Belum Direview') {
-                    ?>
-                        <form action="monitoring_hasil_penugasan" method="post">
-                            <input type="hidden" name="id_penugasan" value="<?= $row['id_penugasan']; ?>">
-                            <button type="submit" name="teruskan_data" class="dropdown-item" onclick="return confirm('Konfirmasi untuk meneruskan ke Dalnis dan Korwas')"><i class="fe fe-send mt-3"></i> Teruskan ke Dalnis & Korwas</button>
-                        </form>
-                    <?php
-                    }
-                    ?>
-
-
+                    <a href="monitoring_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+    
                 </div>
             </td>
         </tr>
@@ -171,7 +163,23 @@ function tampil_data_sudahreview($mysqli)
 }
 
 function teruskan_data($id_penugasan, $mysqli) {
-    $sql = $mysqli->prepare("UPDATE penugasan SET status='Belum Divalidasi' WHERE id_penugasan='{$id_penugasan}'");
+    $sql = $mysqli->prepare("UPDATE penugasan SET status ='Belum Divalidasi' WHERE id_penugasan='{$id_penugasan}'");
     $sql->execute();
 }
+
+function review_data($id_penugasan, $mysqli){
+    $sql = $mysqli->prepare("UPDATE penugasan SET status = 'Sudah Direview' WHERE id_penugasan = '{$id_penugasan}'");
+    $sql->execute();
+}
+
+function tambah_surat($id_penugasan, $nomor_surat, $tgl_surat, $dokumen, $mysqli){
+    $query = "INSERT INTO surat_tuntas VALUES ('','$id_penugasan','$nomor_surat','$tgl_surat','$dokumen')";
+    $sql = $mysqli->prepare($query);
+    $sql->execute();
+}
+
+
+
+
+
 ?>

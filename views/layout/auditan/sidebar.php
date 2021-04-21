@@ -17,7 +17,7 @@
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="beranda_auditan">
+                <a class="nav-link" href="<?= $base_url; ?>beranda_auditan">
                     <i class="fe fe-home fe-16"></i>
                     <span class="ml-3 item-text">Beranda</span>
                 </a>
@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a class="nav-link" href="daftar_temuan">
+                <a class="nav-link" href="<?= $base_url; ?>daftar_temuan">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Daftar Temuan</span>
                 </a>

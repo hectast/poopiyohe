@@ -1,4 +1,4 @@
-
+<?php include 'app/controllers/auditan/daftar_temuan/post.php'; ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -51,16 +51,20 @@
                         <table class="table datatables " id="dataTable-1" >
                             <thead class="thead-light">
                                 <tr>
+
                                     <th>No</th>                    
                                     <th>Uraian Penugasan</th>
                                     <th>Status</th>
+
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                   
-                                </tr>                           
+
+                                <?php
+                                    tampil_data($base_url, $mysqli);
+                                ?>
+
                             </tbody>
                         </table>
                     </div>

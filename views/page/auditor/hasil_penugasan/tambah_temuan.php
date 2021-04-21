@@ -93,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
                                                 <div class="col-md-12">
                                                     <div class="card">
                                                         <div class="card-header">
-                                                            <strong>Temuan</strong>
+                                                            <strong>Input Temuan Berdasarkan Laporan</strong>
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="row">
