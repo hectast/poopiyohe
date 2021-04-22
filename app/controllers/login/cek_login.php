@@ -16,15 +16,15 @@ if (isset($_POST['login'])) {
         return false;
     }
 
-    $stmt_auditan = $mysqli->prepare('SELECT id, nama, password FROM auditan WHERE email = ?');
+    $stmt_auditan = $mysqli->query("SELECT * FROM instansi_vertikal WHERE email = '{$_POST['email']}'");
     $stmt_auditor = $mysqli->prepare('SELECT id, nama, password, akses FROM auditor WHERE email = ?');
     $stmt_admin = $mysqli->prepare('SELECT id, password FROM admin WHERE email = ?');
 
     if ($stmt_auditan || $stmt_auditor || $stmt_admin) {
 
-        $stmt_auditan->bind_param('s', $_POST['email']);
-        $stmt_auditan->execute();
-        $stmt_auditan->store_result();
+        // $stmt_auditan->bind_param('s', $_POST['email']);
+        // $stmt_auditan->execute();
+        // $stmt_auditan->store_result();
 
         $stmt_auditor->bind_param('s', $_POST['email']);
         $stmt_auditor->execute();
@@ -35,9 +35,11 @@ if (isset($_POST['login'])) {
         $stmt_admin->store_result();
 
         if ($stmt_auditan->num_rows > 0) {
-            $stmt_auditan->bind_result($id_auditan, $nama_auditan, $password_auditan);
-            $stmt_auditan->fetch();
-            if (password_verify($_POST['password'], $password_auditan)) {
+            // $stmt_auditan->bind_result($id_auditan, $nama_instansi, $password_auditan);
+            // $stmt_auditan->fetch();
+            $row_auditan = $stmt_auditan->fetch_assoc();
+            $pass_auditan = $row_auditan['pass'];
+            if (md5($_POST['password']) == $pass_auditan) {
                 session_regenerate_id();
     
                 $token = getToken(10);
@@ -58,8 +60,8 @@ if (isset($_POST['login'])) {
                 }
     
                 $_SESSION['loggedin'] = TRUE;
-                $_SESSION['id'] = $id_auditan;
-                $_SESSION['nama'] = $nama_auditan;
+                $_SESSION['id'] = $row_auditan['id'];
+                $_SESSION['nama'] = $row_auditan['nama_instansi'];
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['tipe_user'] = 'auditan';
                 $_SESSION['token'] = $token;

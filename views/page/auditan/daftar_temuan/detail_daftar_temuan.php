@@ -4,6 +4,7 @@ $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_object();
+$hal_lain = $row->hal;
 
 if (mysqli_num_rows($result) > 0) {
 
@@ -130,6 +131,18 @@ if (mysqli_num_rows($result) > 0) {
                                                                     ?>
                                                                     <input type="text" class="form-control mb-2" value="<?= $row_rekomendasi->rekomendasi; ?>" disabled>
                                                                 <?php endwhile; ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group mb-3">
+                                                                <label for="cekRupiah">Hal-hal Lain</label>
+                                                                <input type="text" class="form-control mb-2" value="<?= $hal_lain; ?>" disabled>
                                                             </div>
                                                         </div>
                                                     </div>

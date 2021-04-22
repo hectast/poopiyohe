@@ -1,4 +1,7 @@
-<?php include 'app/controllers/auditan/daftar_temuan/post.php'; ?>
+<?php 
+include 'app/controllers/auditan/daftar_temuan/post.php'; 
+$id_instansi = $_SESSION['id'];
+?>
 <main role="main" class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -51,18 +54,16 @@
                         <table class="table datatables " id="dataTable-1" >
                             <thead class="thead-light">
                                 <tr>
-
                                     <th>No</th>                    
                                     <th>Uraian Penugasan</th>
                                     <th>Status</th>
-
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <?php
-                                    tampil_data($base_url, $mysqli);
+                                    tampil_data($id_instansi, $base_url, $mysqli);
                                 ?>
 
                             </tbody>

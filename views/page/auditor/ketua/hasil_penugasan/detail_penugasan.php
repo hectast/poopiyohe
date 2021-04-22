@@ -184,7 +184,7 @@ if (mysqli_num_rows($result) > 0) {
                         $result_surat_tuntas = $stmt_surat_tuntas->get_result();      
                     ?>
 
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="card shadow">
                                 <div class="card-header">
@@ -206,6 +206,7 @@ if (mysqli_num_rows($result) > 0) {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div> <!-- .row -->
 

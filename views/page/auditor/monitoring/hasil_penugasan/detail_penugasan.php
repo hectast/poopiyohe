@@ -9,7 +9,7 @@ if (mysqli_num_rows($result) > 0) {
     $row_penugasan = $result->fetch_assoc();
 
 
-  
+
 
 ?>
     <main role="main" class="main-content">
@@ -105,7 +105,7 @@ if (mysqli_num_rows($result) > 0) {
                                     ?>
                                         <small class="badge badge-success"><?= $row_penugasan['status']; ?></small>
                                     <?php
-                                        }else if ($row_penugasan['status'] == 'Belum Divalidasi'){
+                                        } else if ($row_penugasan['status'] == 'Belum Divalidasi') {
                                     ?>
                                         <small class="badge badge-warning"><?= $row_penugasan['status'] ?></small>
                                     <?php
@@ -161,8 +161,95 @@ if (mysqli_num_rows($result) > 0) {
 
                     </div>
                 </div>
+
+                <?php
+                $sql_baktl = "SELECT * FROM baktl WHERE id_penugasan = '{$row_penugasan['id_penugasan']}'";
+                $stmt_baktl = $mysqli->prepare($sql_baktl);
+                $stmt_baktl->execute();
+                $result_baktl = $stmt_baktl->get_result();
+
+                $sql_surat_tuntas = "SELECT * FROM surat_tuntas WHERE id_penugasan = '{$row_penugasan['id_penugasan']}'";
+                $stmt_surat_tuntas = $mysqli->prepare($sql_surat_tuntas);
+                $stmt_surat_tuntas->execute();
+                $result_surat_tuntas = $stmt_surat_tuntas->get_result();
+                ?>
+
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <strong class="card-title">Lihat File Upload</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12 text-center">
+                                        <?php if (mysqli_num_rows($result_baktl) > 0) : ?>
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalBaktl"><i class="fe fe-file-text"></i> BAKTL</button>
+                                        <?php endif; ?>
+
+                                        <?php if (mysqli_num_rows($result_surat_tuntas) > 0) : ?>
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalSuratTuntas"><i class="fe fe-mail"></i> Surat Tuntas</button>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div> <!-- .row -->
+
+        <?php if (mysqli_num_rows($result_baktl) > 0) : ?>
+            <?php
+            $row_baktl = $result_baktl->fetch_assoc();
+            $fileBaktl = $row_baktl['file_upload'];
+            ?>
+            <div class="modal fade" id="modalBaktl" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h5><i class="fe fe-file-text"></i> BAKTL</h5>
+                                </div>
+                            </div>
+                            <object data="<?= $base_url ?>assets/uploads/baktl/<?= $fileBaktl ?>" width="100%" height="600"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (mysqli_num_rows($result_surat_tuntas) > 0) : ?>
+            <?php
+            $row_surat_tuntas = $result_surat_tuntas->fetch_assoc();
+            $file_surat_tuntas = $row_surat_tuntas['surat_tuntas'];
+            $nomor_surat_tuntas = $row_surat_tuntas['nomor_surat'];
+            $tanggal_surat_tuntas = $row_surat_tuntas['tgl_surat'];
+            ?>
+            <div class="modal fade" id="modalSuratTuntas" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h5><i class="fe fe-mail"></i> Surat Tuntas</h5>
+                                    <div class="border-bottom"></div>
+                                    <p class="mt-3">
+                                        <?= $nomor_surat_tuntas; ?>
+                                        <br>
+                                        <?= $tanggal_surat_tuntas; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <object data="<?= $base_url ?>assets/uploads/surat_tuntas/<?= $file_surat_tuntas ?>" width="100%" height="600"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <?php
         $sql_temuan = "SELECT * FROM temuan WHERE id_penugasan='{$row_penugasan['id_penugasan']}'";
 
@@ -325,7 +412,7 @@ if (mysqli_num_rows($result) > 0) {
             </form>
             <?php
         } else if ($row_penugasan['status'] == 'Sudah Direview') {
-               
+
             $sql_cektuntas = "SELECT * FROM surat_tuntas WHERE id_penugasan = '$row_penugasan[id_penugasan]'";
             $tuntas = $mysqli->query($sql_cektuntas);
             $cek_tuntas = mysqli_num_rows($tuntas);
@@ -392,12 +479,12 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="modal fade" id="modalsurat" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-xl" role="document">
                             <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="defaultModalLabel"><i class="fe fe-mail"></i> Surat Tuntas </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="defaultModalLabel"><i class="fe fe-mail"></i> Surat Tuntas </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <div class="modal-body">
 
 
@@ -419,7 +506,7 @@ if (mysqli_num_rows($result) > 0) {
                                     </table>
 
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
