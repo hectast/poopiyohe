@@ -109,13 +109,13 @@ if (mysqli_num_rows($result) > 0) {
                                     <td>Status</td>
                                     <td>:</td>
                                     <td> <?php
-                                            if ($row_penugasan['status'] == 'Belum Direview') {
+                                            if ($row_penugasan['status'] == 'Belum Divalidasi') {
                                             ?>
-                                            <small class="badge badge-danger"><?= $row_penugasan['status']; ?></small>
+                                            <small class="badge badge-warning"><?= $row_penugasan['status']; ?></small>
                                         <?php
                                             } else {
                                         ?>
-                                            <small class="badge badge-warning"><?= $row_penugasan['status']; ?></small>
+                                            <small class="badge badge-primary"><?= $row_penugasan['status']; ?></small>
                                         <?php
                                             }
                                         ?>
@@ -307,6 +307,16 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
             </div>
+            <?php
+            if($row_penugasan['status'] == 'Belum Divalidasi'){
+            ?>
+            <form action="<?= $base_url ?>dalnis_hasil_penugasan" method="POST">
+            <input type="hidden" value="<?= $row_penugasan['id_penugasan'] ?>" name="id_penugasan">
+            <button type="submit" name="validasi" class="btn btn-primary mb-5"><i class="fe fe-check-circle"></i> Validasi</button>
+            </form>
+            <?php
+            }
+            ?>
             <?php $no++; ?>
             <?php endwhile; ?>
 

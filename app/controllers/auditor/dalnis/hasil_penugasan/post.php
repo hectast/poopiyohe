@@ -102,4 +102,10 @@ error_reporting(0);
 
 
     }
+    if(isset($_POST['validasi'])){
+        $id_penugasan = $_POST['id_penugasan'];
+        $sql = "UPDATE penugasan SET status = 'Sudah Divalidasi' WHERE id_penugasan = '$id_penugasan'";
+        $result = $mysqli->query($sql);
+        flash("msg_validasi","Data Berhasil Divalidasi");
+    }
 ?>

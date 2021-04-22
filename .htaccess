@@ -53,6 +53,7 @@ RewriteRule ^anggota_tambah_penugasan$ auditor.php?views_anggota=anggota_tambah_
 RewriteRule ^anggota_lihat_penugasan$ auditor.php?views_anggota=anggota_lihat_penugasan
 RewriteRule ^anggota_edit_penugasan$ auditor.php?views_anggota=anggota_edit_penugasan
 RewriteRule ^anggota_hasil_penugasan$ auditor.php?views_anggota=anggota_hasil_penugasan
+RewriteRule ^anggota_tambah_temuan/([0-9]+)$ auditor.php?views_anggota=anggota_tambah_temuan&id=$1 [NC,L]
 RewriteRule ^anggota_detail_penugasan/([0-9]+)$ auditor.php?views_anggota=anggota_detail_penugasan&id=$1 [NC,L]
 
 # Auditor Dalnis
