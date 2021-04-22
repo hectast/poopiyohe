@@ -9,8 +9,9 @@ if (mysqli_num_rows($result) > 0) {
 
     $row_penugasan = $result->fetch_assoc();
 
-    function tgl_indo($tanggal){
-        $bulan = array (
+    function tgl_indo($tanggal)
+    {
+        $bulan = array(
             1 =>   'Januari',
             'Februari',
             'Maret',
@@ -25,12 +26,12 @@ if (mysqli_num_rows($result) > 0) {
             'Desember'
         );
         $pecahkan = explode('-', $tanggal);
-        
+
         // variabel pecahkan 0 = tanggal
         // variabel pecahkan 1 = bulan
         // variabel pecahkan 2 = tahun
-     
-        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+
+        return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
     }
 ?>
     <main role="main" class="main-content">
@@ -144,7 +145,7 @@ if (mysqli_num_rows($result) > 0) {
                                     $stmt2 = $mysqli->prepare($sql2);
                                     $stmt2->execute();
                                     $result2 = $stmt2->get_result();
-                                    while ($row_penugasan2 =$result2->fetch_assoc()) {
+                                    while ($row_penugasan2 = $result2->fetch_assoc()) {
                                     ?>
                                         <tr>
                                             <td>
@@ -169,145 +170,231 @@ if (mysqli_num_rows($result) > 0) {
 
                         </div>
                     </div>
-                </div>
-            </div> <!-- .row -->
-            
-            <?php
-                $sql_temuan = "SELECT * FROM temuan WHERE id_penugasan='{$row_penugasan['id_penugasan']}'";
-                $stmt_temuan = $mysqli->prepare($sql_temuan);
-                $stmt_temuan->execute();
-                $result_temuan = $stmt_temuan->get_result();
-                $no=1;
-            ?>
-            <?php while ($row_temuan = $result_temuan->fetch_object()) : ?>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div id="temuanArea">
 
-                                <div id="temuanGroup">
-                                    <h5><u>Temuan <?= $no; ?></u></h5>
-                                    <?php if (!empty($row_temuan->isirupiah)) : ?>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group mb-3">
-                                                <label>Rupiah</label>
-                                                <input type="text" id="cekRupiah" class="form-control" value="<?= is_numeric($row_temuan->isirupiah) ? "Rp. " . number_format($row_temuan->isirupiah) : $row_temuan->isirupiah; ?>" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group mb-3">
-                                                <label>Kondisi</label>
-                                                <input type="text" id="cekRupiah" class="form-control" value="<?= $row_temuan->kondisi; ?>" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php
-                                            $sql_data_uraian = $mysqli->query("SELECT * FROM data_uraian WHERE id_temuan='$row_temuan->id_temuan'");
-                                            $sql_data_akibat = $mysqli->query("SELECT * FROM data_akibat WHERE id_temuan='$row_temuan->id_temuan'");
-                                        ?>
 
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-3">
-                                                        <label for="cekRupiah">Uraian</label>
-                                                        <?php while ($row_data_uraian = $sql_data_uraian->fetch_object()) : ?>
-                                                            <?php
-                                                                $sql_uraian = $mysqli->query("SELECT * FROM uraian WHERE id_uraian='$row_data_uraian->id_uraian'");
-                                                                $row_uraian = $sql_uraian->fetch_object();
-                                                            ?>
-                                                            <input type="text" class="form-control mb-2" value="<?= $row_uraian->uraian; ?>" disabled>
-                                                        <?php endwhile; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-3">
-                                                        <label for="cekRupiah">Akibat</label>
-                                                        <?php while ($row_data_akibat = $sql_data_akibat->fetch_object()) : ?>
-                                                            <?php
-                                                                $sql_akibat = $mysqli->query("SELECT * FROM akibat WHERE id_akibat='$row_data_akibat->id_akibat'");
-                                                                $row_akibat = $sql_akibat->fetch_object();
-                                                            ?>
-                                                            <input type="text" class="form-control mb-2" value="<?= $row_akibat->akibat; ?>" disabled>
-                                                        <?php endwhile; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php
-                                            $sql_data_kriteria = $mysqli->query("SELECT * FROM data_kriteria WHERE id_temuan='$row_temuan->id_temuan'");
-                                            $sql_data_sebab = $mysqli->query("SELECT * FROM data_sebab WHERE id_temuan='$row_temuan->id_temuan'");
-                                        ?>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-3">
-                                                        <label for="cekRupiah">Kriteria</label>
-                                                        <?php while ($row_data_kriteria = $sql_data_kriteria->fetch_object()) : ?>
-                                                            <?php
-                                                                $sql_kriteria = $mysqli->query("SELECT * FROM kriteria WHERE id_kriteria='$row_data_kriteria->id_kriteria'");
-                                                                $row_kriteria = $sql_kriteria->fetch_object();
-                                                            ?>
-                                                            <input type="text" class="form-control mb-2" value="<?= $row_kriteria->kriteria; ?>" disabled>
-                                                        <?php endwhile; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-3">
-                                                        <label for="cekRupiah">Sebab</label>
-                                                        <?php while ($row_data_sebab = $sql_data_sebab->fetch_object()) : ?>
-                                                            <?php
-                                                            $sql_sebab = $mysqli->query("SELECT * FROM sebab WHERE id_sebab='$row_data_sebab->id_sebab'");
-                                                            $row_sebab = $sql_sebab->fetch_object();
-                                                            ?>
-                                                            <input type="text" class="form-control mb-2" value="<?= $row_sebab->sebab; ?>" disabled>
-                                                        <?php endwhile; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php
-                                            $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
-                                        ?>
-                                        <div class="col-md-12">
-                                            <div class="form-group mb-3">
-                                                <label for="cekRupiah">Rekomendasi</label>
-                                                <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
-                                                    <?php
-                                                        $sql_rekomendasi = $mysqli->query("SELECT * FROM rekomendasi WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
-                                                        $row_rekomendasi = $sql_rekomendasi->fetch_object()
-                                                    ?>
-                                                    <input type="text" class="form-control mb-2" value="<?= $row_rekomendasi->rekomendasi; ?>" disabled>
-                                                <?php endwhile; ?>
-                                            </div>
+                    <?php
+                        $sql_baktl = "SELECT * FROM baktl WHERE id_penugasan = '{$row_penugasan['id_penugasan']}'";
+                        $stmt_baktl = $mysqli->prepare($sql_baktl);
+                        $stmt_baktl->execute();
+                        $result_baktl = $stmt_baktl->get_result();
+
+                        $sql_surat_tuntas = "SELECT * FROM surat_tuntas WHERE id_penugasan = '{$row_penugasan['id_penugasan']}'";
+                        $stmt_surat_tuntas = $mysqli->prepare($sql_surat_tuntas);
+                        $stmt_surat_tuntas->execute();
+                        $result_surat_tuntas = $stmt_surat_tuntas->get_result();      
+                    ?>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shadow">
+                                <div class="card-header">
+                                    <strong class="card-title">Lihat File Upload</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 text-center">
+                                            <?php if (mysqli_num_rows($result_baktl) > 0 ) : ?>
+                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalBaktl"><i class="fe fe-file-text"></i> BAKTL</button>
+                                            <?php endif; ?>
+
+                                            <?php if (mysqli_num_rows($result_surat_tuntas) > 0 ) : ?>
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalSuratTuntas"><i class="fe fe-mail"></i> Surat Tuntas</button>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
+            </div> <!-- .row -->
+
+            <?php if (mysqli_num_rows($result_baktl) > 0 ) : ?>
+            <?php 
+                $row_baktl = $result_baktl->fetch_assoc();
+                $fileBaktl = $row_baktl['file_upload']; 
+            ?>
+            <div class="modal fade" id="modalBaktl" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h5><i class="fe fe-file-text"></i> BAKTL</h5>
+                                </div>
+                            </div>
+                            <object data="<?= $base_url ?>assets/uploads/baktl/<?= $fileBaktl ?>" width="100%" height="600"></object>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <?php $no++; ?>
+            <?php endif; ?>
+
+            <?php if (mysqli_num_rows($result_surat_tuntas) > 0 ) : ?>
+            <?php 
+                $row_surat_tuntas = $result_surat_tuntas->fetch_assoc();
+                $file_surat_tuntas = $row_surat_tuntas['surat_tuntas'];
+                $nomor_surat_tuntas = $row_surat_tuntas['nomor_surat'];
+                $tanggal_surat_tuntas = $row_surat_tuntas['tgl_surat'];
+            ?>
+            <div class="modal fade" id="modalSuratTuntas" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 text-center">
+                                    <h5><i class="fe fe-mail"></i> Surat Tuntas</h5>
+                                    <div class="border-bottom"></div>
+                                    <p class="mt-3">
+                                        <?= $nomor_surat_tuntas; ?>
+                                        <br>
+                                        <?= $tanggal_surat_tuntas; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <object data="<?= $base_url ?>assets/uploads/surat_tuntas/<?= $file_surat_tuntas ?>" width="100%" height="600"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php
+            $sql_temuan = "SELECT * FROM temuan WHERE id_penugasan='{$row_penugasan['id_penugasan']}'";
+            $stmt_temuan = $mysqli->prepare($sql_temuan);
+            $stmt_temuan->execute();
+            $result_temuan = $stmt_temuan->get_result();
+            $no = 1;
+            ?>
+            <?php while ($row_temuan = $result_temuan->fetch_object()) : ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div id="temuanArea">
+
+                                    <div id="temuanGroup">
+                                        <h5><u>Temuan <?= $no; ?></u></h5>
+                                        <?php if (!empty($row_temuan->isirupiah)) : ?>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mb-3">
+                                                        <label>Rupiah</label>
+                                                        <input type="text" id="cekRupiah" class="form-control" value="<?= is_numeric($row_temuan->isirupiah) ? "Rp. " . number_format($row_temuan->isirupiah) : $row_temuan->isirupiah; ?>" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-3">
+                                                    <label>Kondisi</label>
+                                                    <input type="text" id="cekRupiah" class="form-control" value="<?= $row_temuan->kondisi; ?>" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <?php
+                                            $sql_data_uraian = $mysqli->query("SELECT * FROM data_uraian WHERE id_temuan='$row_temuan->id_temuan'");
+                                            $sql_data_akibat = $mysqli->query("SELECT * FROM data_akibat WHERE id_temuan='$row_temuan->id_temuan'");
+                                            ?>
+
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-3">
+                                                            <label for="cekRupiah">Uraian</label>
+                                                            <?php while ($row_data_uraian = $sql_data_uraian->fetch_object()) : ?>
+                                                                <?php
+                                                                $sql_uraian = $mysqli->query("SELECT * FROM uraian WHERE id_uraian='$row_data_uraian->id_uraian'");
+                                                                $row_uraian = $sql_uraian->fetch_object();
+                                                                ?>
+                                                                <input type="text" class="form-control mb-2" value="<?= $row_uraian->uraian; ?>" disabled>
+                                                            <?php endwhile; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-3">
+                                                            <label for="cekRupiah">Akibat</label>
+                                                            <?php while ($row_data_akibat = $sql_data_akibat->fetch_object()) : ?>
+                                                                <?php
+                                                                $sql_akibat = $mysqli->query("SELECT * FROM akibat WHERE id_akibat='$row_data_akibat->id_akibat'");
+                                                                $row_akibat = $sql_akibat->fetch_object();
+                                                                ?>
+                                                                <input type="text" class="form-control mb-2" value="<?= $row_akibat->akibat; ?>" disabled>
+                                                            <?php endwhile; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <?php
+                                            $sql_data_kriteria = $mysqli->query("SELECT * FROM data_kriteria WHERE id_temuan='$row_temuan->id_temuan'");
+                                            $sql_data_sebab = $mysqli->query("SELECT * FROM data_sebab WHERE id_temuan='$row_temuan->id_temuan'");
+                                            ?>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-3">
+                                                            <label for="cekRupiah">Kriteria</label>
+                                                            <?php while ($row_data_kriteria = $sql_data_kriteria->fetch_object()) : ?>
+                                                                <?php
+                                                                $sql_kriteria = $mysqli->query("SELECT * FROM kriteria WHERE id_kriteria='$row_data_kriteria->id_kriteria'");
+                                                                $row_kriteria = $sql_kriteria->fetch_object();
+                                                                ?>
+                                                                <input type="text" class="form-control mb-2" value="<?= $row_kriteria->kriteria; ?>" disabled>
+                                                            <?php endwhile; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-3">
+                                                            <label for="cekRupiah">Sebab</label>
+                                                            <?php while ($row_data_sebab = $sql_data_sebab->fetch_object()) : ?>
+                                                                <?php
+                                                                $sql_sebab = $mysqli->query("SELECT * FROM sebab WHERE id_sebab='$row_data_sebab->id_sebab'");
+                                                                $row_sebab = $sql_sebab->fetch_object();
+                                                                ?>
+                                                                <input type="text" class="form-control mb-2" value="<?= $row_sebab->sebab; ?>" disabled>
+                                                            <?php endwhile; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <?php
+                                            $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-3">
+                                                    <label for="cekRupiah">Rekomendasi</label>
+                                                    <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
+                                                        <?php
+                                                        $sql_rekomendasi = $mysqli->query("SELECT * FROM rekomendasi WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
+                                                        $row_rekomendasi = $sql_rekomendasi->fetch_object()
+                                                        ?>
+                                                        <input type="text" class="form-control mb-2" value="<?= $row_rekomendasi->rekomendasi; ?>" disabled>
+                                                    <?php endwhile; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php $no++; ?>
             <?php endwhile; ?>
 
         </div> <!-- .container-fluid -->
