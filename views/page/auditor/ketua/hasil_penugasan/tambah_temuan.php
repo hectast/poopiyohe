@@ -86,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="pb-3 timeline-item item-primary">
                                     <div class="pl-5">
 
-                                        <form action="<?= $base_url ?>hasil_penugasan" method="POST">
+                                        <form action="hasil_penugasan" method="POST">
                                             <input type="hidden" name="id_penugasan" value="<?= $_GET['id'] ?>">
 
                                             <div class="row pb-3">
