@@ -12,10 +12,10 @@ $peran = $rowDalnis['peran'];
             </div>
         </div>
         <?php
-            if (isset($_SESSION['msg_teruskan_data'])) {
+            if (isset($_SESSION['msg_validasi'])) {
             ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_teruskan_data'); ?>
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_validasi'); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         <!-- s -->

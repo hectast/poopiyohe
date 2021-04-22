@@ -105,6 +105,10 @@ if (mysqli_num_rows($result) > 0) {
                                     ?>
                                         <small class="badge badge-success"><?= $row_penugasan['status']; ?></small>
                                     <?php
+                                        }else if ($row_penugasan['status'] == 'Belum Divalidasi'){
+                                    ?>
+                                        <small class="badge badge-warning"><?= $row_penugasan['status'] ?></small>
+                                    <?php
                                         }
                                     ?>
                                 </td>
@@ -382,7 +386,7 @@ if (mysqli_num_rows($result) > 0) {
                 }
             ?>
 
-                <form class="mb-5" action="">
+                <form class="mb-5" action="<?= $base_url ?>monitoring_hasil_penugasan" method="POST">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalsurat"><i class="fe fe-eye"></i> Lihat Surat Tuntas</button>
                     <!-- modals2 -->
                     <div class="modal fade" id="modalsurat" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
@@ -420,6 +424,7 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                     <!-- modals2 -->
+                    <input type="hidden" name="id_penugasan" value="<?= $row_penugasan['id_penugasan'] ?>">
                     <button type="submit" name="teruskan_data" class="btn btn-secondary"> <i class="fe fe-send"></i> Teruskan Ke Korwas dan Dalnis</button>
                 </form>
 

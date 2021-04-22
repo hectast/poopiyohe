@@ -97,8 +97,48 @@
                             </tbody>
                         </table>
                         </div>
-                        <div class="tab-pane fade" id="BelumValidasi" role="tabpanel" aria-labelledby="BelumValidasi-tab"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. </div>
-                        <div class="tab-pane fade" id="SudahValidasi" role="tabpanel" aria-labelledby="SudahValidasi-tab"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. </div>
+                        <div class="tab-pane fade" id="BelumValidasi" role="tabpanel" aria-labelledby="BelumValidasi-tab">
+                        <table class="table table-hover datatables" id="dataTable-3">
+                            <thead class="thead-light">
+                                <tr>
+                                   <th>No.ST</th>
+                                   <th>Tgl.ST</th>
+                                   <th>Auditan</th>
+                                   <th>Uraian Penugasan</th>
+                                   <th>Jenis Penugasan</th>
+                                   <th>Ket</th>
+                                   <th>Status</th>
+                              
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php
+                                    tampil_data_belum_validasi($mysqli);
+                               ?>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="tab-pane fade" id="SudahValidasi" role="tabpanel" aria-labelledby="SudahValidasi-tab"> 
+                        <table class="table table-hover datatables" id="dataTable-4">
+                            <thead class="thead-light">
+                                <tr>
+                                   <th>No.ST</th>
+                                   <th>Tgl.ST</th>
+                                   <th>Auditan</th>
+                                   <th>Uraian Penugasan</th>
+                                   <th>Jenis Penugasan</th>
+                                   <th>Ket</th>
+                                   <th>Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php
+                                    tampil_data_sudah_validasi($mysqli);
+                               ?>
+                            </tbody>
+                        </table>
+                        </div>
                       </div>
 
                       

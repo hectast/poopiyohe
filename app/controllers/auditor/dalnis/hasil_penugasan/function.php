@@ -75,7 +75,7 @@ function tampil_data($idFromSA, $peran, $mysqli)
                     <?php
                     } else {
                     ?>
-                        <small class="badge badge-success"><?= $row['status']; ?></small>
+                        <small class="badge badge-primary"><?= $row['status']; ?></small>
                     <?php
                     }
                     ?>
@@ -86,11 +86,11 @@ function tampil_data($idFromSA, $peran, $mysqli)
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
     
-                        <a href="ketua_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                        <a href="dalnis_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
                         
                         <!-- <a href="" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</a> -->
-                        <a href="ketua_tambah_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-plus"></i> Input Temuan</a>
-                        <a href="ketua_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
+                        <a href="dalnis_tambah_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-plus"></i> Input Temuan</a>
+                        <a href="dalnis_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
                         
     
                     </div>
