@@ -200,10 +200,12 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/anggota/data_penugasan/detailpenugasan.php';
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_hasil_penugasan") {
         include 'views/page/auditor/anggota/hasil_penugasan/hasil_penugasan.php';
+    } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_tambah_temuan") {
+        include 'views/page/auditor/anggota/hasil_penugasan/tambah_temuan.php';
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_penugasan") {
         include 'views/page/auditor/anggota/hasil_penugasan/detail_penugasan.php';
     } else {
-        include 'views/page/auditor/ketua/beranda.php';
+        include 'views/page/auditor/anggota/beranda.php';
     }   
 } else if (mysqli_num_rows($rslt_getDataDalnis) > 0 && isset($_GET['views_dalnis'])) {
     if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "beranda_dalnis") {
