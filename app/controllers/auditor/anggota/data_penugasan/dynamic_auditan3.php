@@ -32,7 +32,7 @@ $result = $mysqli->query($query);
             $('#pemerintah').change(function() {
                 $('.input_opd2').remove();
                 if ($('#pemerintah').val() != '-Pilih Pemerintahan-') {
-                    $.get('app/controllers/auditor/korwas/data_penugasan/dynamic_auditan4.php', {
+                    $.get('app/controllers/auditor/anggota/data_penugasan/dynamic_auditan4.php', {
                             opd: $('#pemerintah').val()
                         })
                         .done(function(data) {

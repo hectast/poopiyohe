@@ -1,5 +1,5 @@
 <?php
-include 'app/controllers/auditor/ketua/data_penugasan/post_penugasan.php';
+include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
 
 $id = $_POST['id_lihat'];
 $query = "SELECT * FROM penugasan WHERE id_penugasan = '$id'";
@@ -11,14 +11,14 @@ $row = mysqli_fetch_assoc($result);
         <div class="row">
             <div class="col-12">
                 <h2 class="page-title">
-                    <a href="<?= $base_url; ?>ketua_data_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
+                    <a href="<?= $base_url; ?>anggota_data_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
                     <?= $page; ?>
                 </h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="ketua_data_penugasan" method="POST">
+                <form action="anggota_data_penugasan" method="POST">
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <strong class="card-title">Form Data Penugasan</strong>
@@ -317,7 +317,7 @@ $row = mysqli_fetch_assoc($result);
         $('#jp').change(function() {
             $('.input_lainnya').remove();
             if ($('#jp').val() == 'Lainnya') {
-                $.get('app/controllers/auditor/ketua/data_penugasan/dynamic_auditan.php', {
+                $.get('app/controllers/auditor/anggota/data_penugasan/dynamic_auditan.php', {
                         jp: $('#jp').val()
                     })
                     .done(function(data) {
@@ -334,7 +334,7 @@ $row = mysqli_fetch_assoc($result);
             $('.input_vertikal').remove();
             if ($('#auditan').val() == 'Instansi Vertikal') {
                 $('.input_opd2').remove();
-                $.get('app/controllers/auditor/ketua/data_penugasan/dynamic_auditan2.php', {
+                $.get('app/controllers/auditor/anggota/data_penugasan/dynamic_auditan2.php', {
                         auditan: $('#auditan').val()
                     })
                     .done(function(data) {
@@ -350,7 +350,7 @@ $row = mysqli_fetch_assoc($result);
         $('#auditan').change(function() {
             $('.input_opd').remove();
             if ($('#auditan').val() == 'OPD') {
-                $.get('app/controllers/auditor/ketua/data_penugasan/dynamic_auditan3.php', {
+                $.get('app/controllers/auditor/anggota/data_penugasan/dynamic_auditan3.php', {
                         auditan: $('#auditan').val()
                     })
                     .done(function(data) {

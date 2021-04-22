@@ -162,10 +162,11 @@ if (isset($_POST['login'])) {
                         </script>
                     <?php
                 } else {
+                    $_SESSION['auditornopngsn'] = 3;
                     ?>
                         <script>
-                            alert('Anda belum memiliki penugasan !');
-                            document.location.href = 'app/logout.php';
+                            // alert('Anda belum memiliki penugasan !');
+                            document.location.href = 'beranda_auditor';
                         </script>
                     <?php
                 }

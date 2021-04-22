@@ -14,7 +14,6 @@ include 'app/controllers/auditor/ketua/data_penugasan/post_penugasan.php';
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-12">
                 <form action="ketua_data_penugasan" method="POST">

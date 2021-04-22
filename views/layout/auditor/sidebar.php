@@ -36,6 +36,12 @@
                     </a>
                 </li>
                 <li class="nav-item w-100">
+                    <a class="nav-link" href="<?= $base_url; ?>monitoring_data_penugasan">
+                        <i class="fe fe-briefcase fe-16"></i>
+                        <span class="ml-3 item-text">Data Penugasan</span>
+                    </a>
+                </li>
+                <li class="nav-item w-100">
                     <a class="nav-link" href="<?= $base_url; ?>monitoring_hasil_penugasan">
                         <i class="fe fe-file-text fe-16"></i>
                         <span class="ml-3 item-text">Hasil Penugasan</span>

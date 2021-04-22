@@ -10,12 +10,15 @@ $row = mysqli_fetch_assoc($result);
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2 class="page-title"><?= $page; ?></h2>
+                <h2 class="page-title">
+                    <a href="<?= $base_url; ?>korwas_data_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
+                    <?= $page; ?>
+                </h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="datapenugasan" method="POST">
+                <form action="korwas_data_penugasan" method="POST">
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <strong class="card-title">Form Data Penugasan</strong>
@@ -33,46 +36,17 @@ $row = mysqli_fetch_assoc($result);
                                         <label>Uraian Penugasan</label>
                                         <input name="nama_penugasan" value="<?= $row['uraian_penugasan'] ?>" type="text" class="form-control">
                                     </div>
-                                    <div class="form-group">
-                                    <div class="boks">
-                                    <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio1" value="PKPT" <?php if ($row['pkpt'] == 'PKPT') {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?>>
-                                            <label class="form-check-label" for="inlineRadio1">PKPT</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio2" value="Non PKPT" <?php if ($row['pkpt'] == 'Non PKPT') {
-                                                                                                                                            echo 'checked';
-                                                                                                                                        } ?>>
-                                            <label class="form-check-label" for="inlineRadio2">Non PKPT</label>
-                                        </div>
+                                    <div class="row_jp mt-4">
+                                        <select class="form-control jenpen" name="d1">
+                                            <option hidden value="<?= $row['d1']; ?>"><?= $row['d1']; ?></option>
+                                            <option value="D1">D1</option>
+                                            <option value="D2">D2</option>
+                                            <option value="D3">D3</option>
+                                            <option value="D4">D4</option>
+                                            <option value="D5">D5</option>
+                                        </select>
                                     </div>
-                                    <div class="boks">
-                                    <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="kf1" id="inlineRadio3" value="KF1" <?php if ($row['kf1'] == 'KF1') {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?>>
-                                            <label class="form-check-label" for="inlineRadio3">KF1</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="kf1" id="inlineRadio4" value="KF3" <?php if ($row['kf1'] == 'KF3') {
-                                                                                                                                        echo 'checked';
-                                                                                                                                    } ?>>
-                                            <label class="form-check-label" for="inlineRadio4">KF3</label>
-                                        </div>
-                                    </div>
-                                    <div class="boks">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio3" value="D1">
-                                            <label class="form-check-label" for="inlineRadio3">D1</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="d1" id="inlineRadio4" value="D2">
-                                            <label class="form-check-label" for="inlineRadio4">D2</label>
-                                        </div>
-                                    </div>
-                                    </div>                           
+
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
@@ -92,6 +66,36 @@ $row = mysqli_fetch_assoc($result);
                                                 <option value="Asistensi">Asistensi</option>
                                                 <option value="Lainnya">Lainnya</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="boks">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio1" value="PKPT" <?php if ($row['pkpt'] == 'PKPT') {
+                                                                                                                                            echo 'checked';
+                                                                                                                                        } ?>>
+                                                <label class="form-check-label" for="inlineRadio1">PKPT</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pkpt" id="inlineRadio2" value="Non PKPT" <?php if ($row['pkpt'] == 'Non PKPT') {
+                                                                                                                                                echo 'checked';
+                                                                                                                                            } ?>>
+                                                <label class="form-check-label" for="inlineRadio2">Non PKPT</label>
+                                            </div>
+                                        </div>
+                                        <div class="boks">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="kf1" id="inlineRadio3" value="KF1" <?php if ($row['kf1'] == 'KF1') {
+                                                                                                                                            echo 'checked';
+                                                                                                                                        } ?>>
+                                                <label class="form-check-label" for="inlineRadio3">KF1</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="kf1" id="inlineRadio4" value="KF3" <?php if ($row['kf1'] == 'KF3') {
+                                                                                                                                            echo 'checked';
+                                                                                                                                        } ?>>
+                                                <label class="form-check-label" for="inlineRadio4">KF3</label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -116,19 +120,19 @@ $row = mysqli_fetch_assoc($result);
                                             $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id ='$vertikal'");
                                             $row_vertikal = mysqli_fetch_assoc($result_vertikal);
                                             $isi_vertikal = $row_vertikal['nama_instansi'];
-                                            ?>
+                                        ?>
                                             <input type="text" class="form-control" value="<?= $isi_vertikal; ?>" disabled>
                                             <input type="hidden" name="vertikaledit" value="<?= $vertikal; ?>">
-                                            <?php
+                                        <?php
                                         } else if (empty($vertikal)) {
                                             $result_opd = $mysqli->query("SELECT * FROM opd WHERE id = '$opd'");
                                             $row_opd = mysqli_fetch_assoc($result_opd);
                                             $isi_opd = $row_opd['nama_instansi'];
-                                            ?>
+                                        ?>
                                             <input type="text" class="form-control" value="<?= $isi_opd; ?>" disabled>
                                             <input type="hidden" name="opdedit" value="<?= $opd; ?>">
-                                           
-                                            <?php   
+
+                                        <?php
                                         }
                                         ?>
                                     </div>
@@ -157,36 +161,36 @@ $row = mysqli_fetch_assoc($result);
                                     <strong class="card-title">Daftar Auditor (Personel) <button type="button" class="tombol btn btn-primary btn-sm"><i class="fe fe-edit"></i>Edit</button> <button type="button" class="tombolhps btn btn-danger btn-sm"><i class="fe fe-x-circle"></i>Batal</button></strong>
                                 </div>
                                 <div class="card-body">
-                                <div class="control-group-tbl">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Auditor</th>
-                                            <th>Peran</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    $nmr = 1;
-                                    $result_auditor = $mysqli->query("SELECT * FROM penugasan_auditor WHERE id_penugasan ='$id'");
-                                    while($d = mysqli_fetch_assoc($result_auditor)){
-                                        $id_auditor = $d['id'];
-                                        $nmaudit = $mysqli->query("SELECT * FROM auditor WHERE id ='$id_auditor'");
-                                        $r = mysqli_fetch_assoc($nmaudit);
-                                        ?>
-                                        <tr>
-                                            <td><?= $nmr++ ?></td>
-                                            <td><?= $r['nama'] ?></td>
-                                            <td><?= $d['peran'] ?></td>
-                                        </tr>
-                                        <?php
-                                    }
+                                    <div class="control-group-tbl">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Auditor</th>
+                                                    <th>Peran</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $nmr = 1;
+                                                $result_auditor = $mysqli->query("SELECT * FROM penugasan_auditor WHERE id_penugasan ='$id'");
+                                                while ($d = mysqli_fetch_assoc($result_auditor)) {
+                                                    $id_auditor = $d['id'];
+                                                    $nmaudit = $mysqli->query("SELECT * FROM auditor WHERE id ='$id_auditor'");
+                                                    $r = mysqli_fetch_assoc($nmaudit);
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $nmr++ ?></td>
+                                                        <td><?= $r['nama'] ?></td>
+                                                        <td><?= $d['peran'] ?></td>
+                                                    </tr>
+                                                <?php
+                                                }
 
-                                    ?>
-                                    </tbody>
-                                </table>                                
-                                </div>
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                     <div class="control-group after-add-more">
                                         <div class="row">
                                             <div class="col-5">
@@ -253,7 +257,6 @@ $row = mysqli_fetch_assoc($result);
                         </div>
                     </div>
                     <button name="editpenugasan" class="btn btn-primary">Simpan</button>
-                    <a href="data_penugasan" class="btn btn-secondary">Kembali</a>
                 </form>
             </div>
         </div> <!-- .row -->
@@ -314,7 +317,7 @@ $row = mysqli_fetch_assoc($result);
         $('#jp').change(function() {
             $('.input_lainnya').remove();
             if ($('#jp').val() == 'Lainnya') {
-                $.get('app/controllers/admin/dynamic_auditan.php', {
+                $.get('app/controllers/auditor/korwas/data_penugasan/dynamic_auditan.php', {
                         jp: $('#jp').val()
                     })
                     .done(function(data) {
@@ -331,7 +334,7 @@ $row = mysqli_fetch_assoc($result);
             $('.input_vertikal').remove();
             if ($('#auditan').val() == 'Instansi Vertikal') {
                 $('.input_opd2').remove();
-                $.get('app/controllers/admin/dynamic_auditan2.php', {
+                $.get('app/controllers/auditor/korwas/data_penugasan/dynamic_auditan2.php', {
                         auditan: $('#auditan').val()
                     })
                     .done(function(data) {
@@ -347,7 +350,7 @@ $row = mysqli_fetch_assoc($result);
         $('#auditan').change(function() {
             $('.input_opd').remove();
             if ($('#auditan').val() == 'OPD') {
-                $.get('app/controllers/admin/dynamic_auditan3.php', {
+                $.get('app/controllers/auditor/korwas/data_penugasan/dynamic_auditan3.php', {
                         auditan: $('#auditan').val()
                     })
                     .done(function(data) {

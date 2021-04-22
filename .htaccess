@@ -32,7 +32,7 @@ RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
 RewriteRule ^detail_temuan/([0-9]+)$ auditan.php?views_auditan=detail_temuan&id=$1 [NC,L]
 
-# RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
+RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
 
 # Auditor Ketua
 RewriteRule ^beranda_ketua$ auditor.php?views_ketua=beranda_ketua
@@ -48,6 +48,10 @@ RewriteRule ^ketua_edit_penugasan$ auditor.php?views_ketua=ketua_edit_penugasan
 
 # Auditor Anggota
 RewriteRule ^beranda_anggota$ auditor.php?views_anggota=beranda_anggota
+RewriteRule ^anggota_data_penugasan$ auditor.php?views_anggota=anggota_data_penugasan
+RewriteRule ^anggota_tambah_penugasan$ auditor.php?views_anggota=anggota_tambah_penugasan
+RewriteRule ^anggota_lihat_penugasan$ auditor.php?views_anggota=anggota_lihat_penugasan
+RewriteRule ^anggota_edit_penugasan$ auditor.php?views_anggota=anggota_edit_penugasan
 RewriteRule ^anggota_hasil_penugasan$ auditor.php?views_anggota=anggota_hasil_penugasan
 RewriteRule ^anggota_detail_penugasan/([0-9]+)$ auditor.php?views_anggota=anggota_detail_penugasan&id=$1 [NC,L]
 
@@ -69,9 +73,12 @@ RewriteRule ^korwas_edit_penugasan$ auditor.php?views_korwas=korwas_edit_penugas
 RewriteRule ^korwas_hasil_penugasan$ auditor.php?views_korwas=korwas_hasil_penugasan
 RewriteRule ^korwas_detail_penugasan/([0-9]+)$ auditor.php?views_korwas=korwas_detail_penugasan&id=$1 [NC,L]
 
-
 # Auditor Monitoring
 RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring
+RewriteRule ^monitoring_data_penugasan$ auditor.php?views_monitoring=monitoring_data_penugasan
+RewriteRule ^monitoring_tambah_penugasan$ auditor.php?views_monitoring=monitoring_tambah_penugasan
+RewriteRule ^monitoring_lihat_penugasan$ auditor.php?views_monitoring=monitoring_lihat_penugasan
+RewriteRule ^monitoring_edit_penugasan$ auditor.php?views_monitoring=monitoring_edit_penugasan
 RewriteRule ^monitoring_hasil_penugasan$ auditor.php?views_monitoring=monitoring_hasil_penugasan
 RewriteRule ^monitoring_detail_penugasan/([0-9]+)$ auditor.php?views_monitoring=monitoring_detail_penugasan&id=$1 [NC,L]
 

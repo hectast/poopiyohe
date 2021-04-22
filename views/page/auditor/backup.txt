@@ -1,0 +1,133 @@
+if (isset($_GET['views_ketua']) && !mysqli_num_rows($rslt_getDataKetua) > 0) {
+        if (mysqli_num_rows($rslt_getDataAnggota) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_anggota';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataDalnis) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_dalnis';
+                </script>
+            <?php
+        } else if ($akses === 1) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_monitoring';
+                </script>
+            <?php
+        } else if ($akses === 2) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_korwas';
+                </script>
+            <?php
+        }
+    } else if (isset($_GET['views_anggota']) && !mysqli_num_rows($rslt_getDataAnggota) > 0) { 
+        if (mysqli_num_rows($rslt_getDataKetua) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_ketua';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataDalnis) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_dalnis';
+                </script>
+            <?php
+        } else if ($akses === 1) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_monitoring';
+                </script>
+            <?php
+        } else if ($akses === 2) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_korwas';
+                </script>
+            <?php
+        }
+    } else if (isset($_GET['views_dalnis']) && !mysqli_num_rows($rslt_getDataDalnis) > 0) {
+        if (mysqli_num_rows($rslt_getDataKetua) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_ketua';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataAnggota) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_anggota';
+                </script>
+            <?php
+        } else if ($akses === 1) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_monitoring';
+                </script>
+            <?php
+        } else if ($akses === 2) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_korwas';
+                </script>
+            <?php
+        }
+    } else if (isset($_GET['views_monitoring']) && $akses !== 1) {
+        if (mysqli_num_rows($rslt_getDataKetua) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_ketua';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataAnggota) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_anggota';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataDalnis) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_dalnis';
+                </script>
+            <?php
+        } else if ($akses === 2) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_korwas';
+                </script>
+            <?php
+        }
+    } else if (isset($_GET['views_korwas']) && $akses !== 2) {
+        if (mysqli_num_rows($rslt_getDataKetua) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_ketua';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataAnggota) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_anggota';
+                </script>
+            <?php
+        } else if (mysqli_num_rows($rslt_getDataDalnis) > 0) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_dalnis';
+                </script>
+            <?php
+        } else if ($akses === 1) {
+            ?>
+                <script>
+                    document.location.href = '<?= $base_url; ?>beranda_monitoring';
+                </script>
+            <?php
+        }
+    } else {
+
+    }
