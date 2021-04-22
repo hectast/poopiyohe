@@ -1,6 +1,6 @@
 <?php
 
-include 'app/controllers/auditor/ketua/hasil_penugasan/post.php';
+include 'app/controllers/auditor/anggota/hasil_penugasan/post.php';
 
 $sql = "SELECT * FROM penugasan WHERE id_penugasan='{$_GET['id']}'";
 $stmt = $mysqli->prepare($sql);
@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
 
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-title"><a href="<?= $base_url; ?>ketua_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
+                    <h2 class="page-title"><a href="<?= $base_url; ?>anggota_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
 
@@ -86,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="pb-3 timeline-item item-primary">
                                     <div class="pl-5">
 
-                                        <form action="<?= $base_url ?>ketua_hasil_penugasan" method="POST">
+                                        <form action="<?= $base_url ?>anggota_hasil_penugasan" method="POST">
                                             <input type="hidden" name="id_penugasan" value="<?= $_GET['id'] ?>">
 
                                             <div class="row pb-3">
@@ -782,7 +782,7 @@ if (mysqli_num_rows($result) > 0) {
             $("#fupForm").on('submit', function(e) {
                 e.preventDefault()
                 $.ajax({
-                    url: '<?= $base_url; ?>views/page/auditor/ketua/hasil_penugasan/action/submit_baktl.php',
+                    url: '<?= $base_url; ?>views/page/auditor/anggota/hasil_penugasan/action/submit_baktl.php',
                     type: 'POST',
                     data: new FormData(this),
                     dataType: 'JSON',
@@ -825,7 +825,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     <script>
         alert("Maaf data tidak diketahui !");
-        document.location.href = '<?= $base_url; ?>ketua_hasil_penugasan';
+        document.location.href = '<?= $base_url; ?>anggota_hasil_penugasan';
     </script>
 <?php
 }
