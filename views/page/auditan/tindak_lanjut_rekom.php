@@ -44,18 +44,51 @@ if (mysqli_num_rows($result) > 0) {
                                     </div>
                                 </div>
                                 <div class="border-bottom mb-3"></div>
+                                <div class="row">
+                                    <div class="col-md-6">                                    
+                                        <div class="form-group">
+                                            <label>Nilai Awal Temuan</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input class="form-control" name="" value="<?= number_format($row_data_temuan->isirupiah); ?>" type="text" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">                                    
+                                        <div class="form-group">
+                                            <label>Saldo</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input class="form-control" name="" type="text" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Rekomendasi/Saran/Atensi</label>
                                     <input type="text" class="form-control mb-2" value="<?= $row->rekomendasi; ?>" disabled>
                                 </div>
                                 <div id="tindakArea">
-                                    <div class="form-group">                                
+                                    <div class="form-group">
                                         <label>Uraian TL</label>
                                         <div class="input-group mb-3">
                                             <input class="form-control" name="uraian_tl[]" type="text">
                                             <div class="input-group-append">
                                                 <button type="button" id="TindakAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nominal TL</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            <input class="form-control" name="nominal_tl[]" type="number">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -78,9 +111,9 @@ if (mysqli_num_rows($result) > 0) {
 
     <script src="<?= $base_url; ?>assets/js/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             let i = 0;
-            $('#TindakAdd').click(function (e) {
+            $('#TindakAdd').click(function(e) {
                 e.preventDefault();
                 // n++;
                 const html = `<div id="appendTindak">
@@ -94,6 +127,15 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">                                
+                                    <label>Nominal TL</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        <input class="form-control input-money" name="nominal_tl[]" type="text">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Upload Bukti</label>
                                     <input type="file" class="form-control-file" name="filebukti[]">
@@ -103,7 +145,7 @@ if (mysqli_num_rows($result) > 0) {
                 // console.log("test");
                 // i++;
             });
-            $('#tindakArea').on('click', '#TindakRemove', function (e) {
+            $('#tindakArea').on('click', '#TindakRemove', function(e) {
                 e.preventDefault();
                 // const kondisiGroup = $('#kondisiGroup');
                 // $('#sebabGroup:last-child').remove();
