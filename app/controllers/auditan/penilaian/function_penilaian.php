@@ -27,14 +27,20 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                     $queryx = "SELECT * FROM penilaian WHERE id_penugasan = '$row->id_penugasan'";
                     $resultx = $mysqli->query($queryx);
                     $row_nilai = $resultx->fetch_assoc();
-                    $cek = $row_nilai['pion'];
-                    if (empty($cek)) {
+                    if (isset($row_nilai['pion'])) {
+                        $cek = $row_nilai['pion'];
+                        if (empty($cek)) {
                     ?>
-                        <div class="badge badge-danger">Belum Dinilai</div>
-                    <?php
+                            <div class="badge badge-danger">Belum Dinilai</div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="badge badge-success">Sudah Dinilai</div>
+                        <?php
+                        }
                     } else {
-                    ?>
-                        <div class="badge badge-success">Sudah Dinilai</div>
+                        ?>
+                        <div class="badge badge-danger">Belum Dinilai</div>
                     <?php
                     }
                     ?>
@@ -72,14 +78,21 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                     $queryx = "SELECT * FROM penilaian WHERE id_penugasan = '$row->id_penugasan'";
                     $resultx = $mysqli->query($queryx);
                     $row_nilai = $resultx->fetch_assoc();
-                    @$cek = $row_nilai['pion'];
-                    if (empty($cek)) {
+
+                    if (isset($row_nilai['pion'])) {
+                        $cek = $row_nilai['pion'];
+                        if (empty($cek)) {
                     ?>
-                        <div class="badge badge-danger">Belum Dinilai</div>
-                    <?php
+                            <div class="badge badge-danger">Belum Dinilai</div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="badge badge-success">Sudah Dinilai</div>
+                        <?php
+                        }
                     } else {
-                    ?>
-                        <div class="badge badge-success">Sudah Dinilai</div>
+                        ?>
+                        <div class="badge badge-danger">Belum Dinilai</div>
                     <?php
                     }
                     ?>

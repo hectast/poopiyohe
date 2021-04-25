@@ -1,4 +1,5 @@
 <?php 
+// error_reporting(0);
 include 'app/controllers/auditan/daftar_temuan/post.php'; 
 $id_instansi = $_SESSION['id'];
 ?>

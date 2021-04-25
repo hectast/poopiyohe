@@ -38,8 +38,8 @@ function tampil_data($id_instansi, $base_url, $mysqli)
             echo "";
 ?>
             <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $row_temuan_iv2->no_laporan; ?></td>
+                <td><?= $no; ?></td>
+                <td><?= isset($row_temuan_iv2->no_laporan) ? $row_temuan_iv2->no_laporan : "Temuan belum di input."; ?></td>
                 <td><?= tgl_indo($row_temuan_iv2->tgl_laporan); ?></td>
                 <td><?= $row_penugasan_iv->uraian_penugasan; ?></td>
                 <td>
@@ -101,9 +101,9 @@ function tampil_data($id_instansi, $base_url, $mysqli)
             echo "";
         ?>
             <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $row_temuan_opd2->no_laporan; ?></td>
-                <td><?= tgl_indo($row_temuan_opd2->tgl_laporan); ?></td>
+                <td><?= $no; ?></td>
+                <td><?= isset($row_temuan_opd2->no_laporan) ? $row_temuan_opd2->no_laporan : "<small><i>Temuan belum di input.</i></small>"; ?></td>
+                <td><?= isset($row_temuan_opd2->tgl_laporan) ? tgl_indo($row_temuan_opd2->tgl_laporan) : "<small><i>Temuan belum di input.</i></small>"; ?></td>
                 <td><?= $row_penugasan_opd->uraian_penugasan; ?></td>
                 <td>
                     <?php while ($row_temuan_opd = $sql_temuan_opd->fetch_object()) : ?>
@@ -124,20 +124,16 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                     <?php endwhile; ?>
 
                     <?php
-                    $napa_dia_rekom = array_unique($array_data_rekomendasi);
-                    $napa_dia = array_unique($array);
-                    // echo "<pre>";
-                    // print_r($napa_dia_rekom);
-                    // print_r($napa_dia);
-                    // print_r(count($napa_dia_rekom));
-                    // echo "<br>";
-                    // print_r(count($napa_dia));
-                    // echo "</pre>";
-
-                    if (count($napa_dia) == count($napa_dia_rekom)) {
-                        echo "<small class='badge badge-success'>Tuntas</small>";
-                    } else if (count($napa_dia) < count($napa_dia_rekom)) {
-                        echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                    if (isset($array) && isset($array_data_rekomendasi)) {
+                        $napa_dia_rekom = array_unique($array_data_rekomendasi);
+                        $napa_dia = array_unique($array);
+                        if (count($napa_dia) == count($napa_dia_rekom)) {
+                            echo "<small class='badge badge-success'>Tuntas</small>";
+                        } else if (count($napa_dia) < count($napa_dia_rekom)) {
+                            echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                        } else {
+                            echo "<small class='badge badge-danger'>Belum TL</small>";
+                        }
                     } else {
                         echo "<small class='badge badge-danger'>Belum TL</small>";
                     }

@@ -1,7 +1,7 @@
 <?php
 include 'app/controllers/auditor/korwas/data_penugasan/function_penugasan.php';
 include 'app/flash_message.php';
-// error_reporting(0);
+error_reporting(0);
 if (isset($_POST['addpenugasan'])) {
     $no_st          = $_POST['no_st'];
     $nama_penugasan = $_POST['nama_penugasan'];
@@ -21,7 +21,8 @@ if (isset($_POST['addpenugasan'])) {
     $auditan_in     = $_POST['vertikal'];
     $auditan_opd    = $_POST['opd'];
  
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1')");
+    
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1','Belum TL')");
 
     $auditor = $_POST['auditor'];
     $peran = $_POST['peran'];

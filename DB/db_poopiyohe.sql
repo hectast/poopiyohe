@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2021 at 09:21 AM
+-- Generation Time: Apr 25, 2021 at 04:30 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -57,20 +57,15 @@ CREATE TABLE `akibat` (
 --
 
 INSERT INTO `akibat` (`id_akibat`, `akibat`) VALUES
-(36, 'a1-1'),
-(37, 'a2-1'),
-(38, 'a2-2'),
-(39, 'a3-1'),
-(40, 'a3-2'),
-(41, 'a3-3'),
-(42, 'a1-1'),
-(43, 'a2-1'),
-(44, 'a2-2'),
-(45, 'a3-1'),
-(46, 'a3-2'),
-(47, 'a3-3'),
-(48, 'a1-1'),
-(49, 'lebih bayar');
+(51, 'lebih bayar'),
+(52, 'Kesengajaan  Bendahara'),
+(53, 'Kesengajaan  Bendahara'),
+(54, 'Voluptatibus asperio'),
+(55, 'Mollit autem volupta'),
+(56, 'Doloremque harum est'),
+(57, 'Quae voluptatem dol'),
+(58, 'Quibusdam irure ex q'),
+(59, 'Quidem ipsum assumen');
 
 -- --------------------------------------------------------
 
@@ -151,9 +146,8 @@ CREATE TABLE `baktl` (
 --
 
 INSERT INTO `baktl` (`id_baktl`, `id_penugasan`, `file_upload`) VALUES
-(43, 63, '1618994584.7784.pdf'),
-(44, 64, '1619070997.7684.pdf'),
-(45, 65, '1619075493.9633.pdf');
+(46, 67, '1619335167.9012.pdf'),
+(47, 68, '1619335624.5692.pdf');
 
 -- --------------------------------------------------------
 
@@ -171,20 +165,15 @@ CREATE TABLE `data_akibat` (
 --
 
 INSERT INTO `data_akibat` (`id_temuan`, `id_akibat`) VALUES
-(23, 36),
-(24, 37),
-(24, 38),
-(25, 39),
-(25, 40),
-(25, 41),
-(26, 42),
-(27, 43),
-(27, 44),
-(28, 45),
-(28, 46),
-(28, 47),
-(29, 48),
-(30, 49);
+(32, 51),
+(33, 52),
+(33, 53),
+(34, 54),
+(34, 55),
+(35, 56),
+(35, 57),
+(35, 58),
+(36, 59);
 
 -- --------------------------------------------------------
 
@@ -202,18 +191,15 @@ CREATE TABLE `data_kriteria` (
 --
 
 INSERT INTO `data_kriteria` (`id_temuan`, `id_kriteria`) VALUES
-(23, 40),
-(24, 42),
-(25, 45),
-(26, 47),
-(27, 48),
-(27, 49),
-(28, 50),
-(28, 51),
-(28, 52),
-(29, 53),
-(29, 54),
-(30, 55);
+(32, 57),
+(33, 58),
+(33, 59),
+(33, 60),
+(34, 61),
+(35, 62),
+(36, 63),
+(36, 64),
+(36, 65);
 
 -- --------------------------------------------------------
 
@@ -231,23 +217,15 @@ CREATE TABLE `data_rekomendasi` (
 --
 
 INSERT INTO `data_rekomendasi` (`id_temuan`, `id_rekomendasi`) VALUES
-(23, 39),
-(24, 40),
-(24, 41),
-(25, 42),
-(25, 43),
-(25, 44),
-(26, 45),
-(27, 46),
-(27, 47),
-(28, 48),
-(28, 49),
-(28, 50),
-(29, 51),
-(29, 52),
-(30, 53),
-(30, 54),
-(30, 55);
+(32, 57),
+(33, 58),
+(34, 59),
+(34, 60),
+(35, 61),
+(35, 62),
+(36, 63),
+(36, 64),
+(36, 65);
 
 -- --------------------------------------------------------
 
@@ -265,21 +243,13 @@ CREATE TABLE `data_sebab` (
 --
 
 INSERT INTO `data_sebab` (`id_temuan`, `id_sebab`) VALUES
-(23, 40),
-(24, 41),
-(24, 42),
-(25, 43),
-(25, 44),
-(25, 45),
-(26, 46),
-(27, 47),
-(27, 48),
-(28, 49),
-(28, 50),
-(28, 51),
-(29, 52),
-(29, 53),
-(30, 54);
+(32, 56),
+(32, 57),
+(33, 58),
+(34, 59),
+(35, 60),
+(35, 61),
+(36, 62);
 
 -- --------------------------------------------------------
 
@@ -297,21 +267,13 @@ CREATE TABLE `data_uraian` (
 --
 
 INSERT INTO `data_uraian` (`id_temuan`, `id_uraian`) VALUES
-(23, 40),
-(24, 41),
-(24, 42),
-(25, 43),
-(25, 44),
-(25, 45),
-(26, 46),
-(27, 47),
-(27, 48),
-(28, 49),
-(28, 50),
-(28, 51),
-(29, 52),
-(29, 53),
-(30, 54);
+(32, 56),
+(33, 57),
+(34, 58),
+(35, 59),
+(36, 60),
+(36, 61),
+(36, 62);
 
 -- --------------------------------------------------------
 
@@ -375,21 +337,15 @@ CREATE TABLE `kriteria` (
 --
 
 INSERT INTO `kriteria` (`id_kriteria`, `kriteria`) VALUES
-(41, 'k1-1'),
-(42, 'k2-1'),
-(43, 'k2-2'),
-(44, 'k3-1'),
-(45, 'k3-2'),
-(46, 'k3-3'),
-(47, 'k1-1'),
-(48, 'k2-1'),
-(49, 'k2-2'),
-(50, 'k3-1'),
-(51, 'k3-2'),
-(52, 'k3-3'),
-(53, 'k1-1'),
-(54, 'k1-2'),
-(55, 'peraturan');
+(57, 'peraturan'),
+(58, 'peraturan'),
+(59, 'peraturan'),
+(60, 'peraturan'),
+(61, 'Laudantium ad ab la'),
+(62, 'Explicabo Do do con'),
+(63, 'Eos et id laudantiu'),
+(64, 'Magnam occaecat nihi'),
+(65, 'Accusantium qui do n');
 
 -- --------------------------------------------------------
 
@@ -409,15 +365,10 @@ CREATE TABLE `log_token` (
 --
 
 INSERT INTO `log_token` (`id`, `email`, `token`, `timestamp`) VALUES
-(29, 'adminbpkp@gmail.com', 'PqMyaARQJw', '2021-04-21 16:56:04'),
-(30, 'farid@gmail.com', 'bj3awaiUiB', '2021-04-22 02:57:40'),
-(31, 'userauditan@gmail.com', 'CobqlwKNT9', '2021-04-18 19:43:20'),
-(32, 'erwin@gmail.com', 'jpZcHVfxQW', '2021-04-22 07:00:40'),
-(33, 'midogustaf@gmail.com', 'g2BxGTVQQ2', '2021-04-22 07:15:08'),
-(34, 'faris@gmail.com', 'BY8qbKXRSj', '2021-04-22 02:58:23'),
-(35, 'kiki@gmail.com', 'bODX8btqNA', '2021-04-22 02:45:44'),
-(36, 'susi@gmail.com', 'l5TmZztLjF', '2021-04-22 07:11:09'),
-(37, 'bpnprov@gmail.com', 'IEtgbcPMiL', '2021-04-22 07:52:19');
+(41, 'dikbudpora.prov.go@gmail.com', 'DD2SO50ZaX', '2021-04-25 07:02:33'),
+(42, 'erwin@gmail.com', 'xQerG7Z7Ls', '2021-04-25 07:31:54'),
+(43, 'ibnu@gmail.com', 'zFD9xRlBLz', '2021-04-25 07:18:26'),
+(44, 'kiki@gmail.com', '48oNO9TYaz', '2021-04-25 07:26:29');
 
 -- --------------------------------------------------------
 
@@ -733,6 +684,65 @@ INSERT INTO `opd` (`id`, `nama_instansi`, `email`, `nama_pemda`, `keterangan`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `penilaian`
+--
+
+CREATE TABLE `penilaian` (
+  `id_penilaian` int(11) NOT NULL,
+  `id_penugasan` int(11) NOT NULL,
+  `tgl_nilai` date NOT NULL,
+  `q1` varchar(11) NOT NULL,
+  `q2` varchar(11) NOT NULL,
+  `q3` varchar(11) NOT NULL,
+  `q4` varchar(11) NOT NULL,
+  `q5` varchar(11) NOT NULL,
+  `q6` varchar(11) NOT NULL,
+  `q7` varchar(11) NOT NULL,
+  `q8` varchar(11) NOT NULL,
+  `q9` varchar(11) NOT NULL,
+  `q10` varchar(11) NOT NULL,
+  `q11` varchar(11) NOT NULL,
+  `q12` varchar(11) NOT NULL,
+  `q13` varchar(11) NOT NULL,
+  `q14` varchar(11) NOT NULL,
+  `q15` varchar(11) NOT NULL,
+  `q16` varchar(11) NOT NULL,
+  `q17` varchar(11) NOT NULL,
+  `q18` varchar(11) NOT NULL,
+  `q19` varchar(11) NOT NULL,
+  `q20` varchar(11) NOT NULL,
+  `ic` varchar(11) NOT NULL,
+  `te` varchar(11) NOT NULL,
+  `er` varchar(11) NOT NULL,
+  `il` varchar(11) NOT NULL,
+  `om` varchar(11) NOT NULL,
+  `ct` varchar(11) NOT NULL,
+  `dc` varchar(11) NOT NULL,
+  `rf` varchar(11) NOT NULL,
+  `ir` varchar(11) NOT NULL,
+  `trad` varchar(11) NOT NULL,
+  `sya` varchar(11) NOT NULL,
+  `bia` varchar(11) NOT NULL,
+  `wak` varchar(11) NOT NULL,
+  `kom` varchar(11) NOT NULL,
+  `psm` varchar(11) NOT NULL,
+  `per` varchar(11) NOT NULL,
+  `pro` varchar(11) NOT NULL,
+  `sar` varchar(11) NOT NULL,
+  `smp` varchar(11) NOT NULL,
+  `pnrb` varchar(11) NOT NULL,
+  `prf` varchar(11) NOT NULL,
+  `itg` varchar(11) NOT NULL,
+  `orp` varchar(11) NOT NULL,
+  `nur` varchar(11) NOT NULL,
+  `ind` varchar(11) NOT NULL,
+  `res` varchar(11) NOT NULL,
+  `pion` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penugasan`
 --
 
@@ -747,17 +757,17 @@ CREATE TABLE `penugasan` (
   `status` varchar(25) NOT NULL,
   `pkpt` varchar(15) NOT NULL,
   `kf1` varchar(15) NOT NULL,
-  `d1` varchar(5) NOT NULL
+  `d1` varchar(5) NOT NULL,
+  `status_tl` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penugasan`
 --
 
-INSERT INTO `penugasan` (`id_penugasan`, `no_st`, `tgl_st`, `uraian_penugasan`, `jenis_penugasan`, `auditan_in`, `auditan_opd`, `status`, `pkpt`, `kf1`, `d1`) VALUES
-(63, 'ST-001/PW31/2/2021', '2021-04-21', 'Review Bos Dikmen TA 2020', 'Review', '', '217', 'Belum Divalidasi', 'PKPT', 'KF1', 'D2'),
-(64, 'ST-002/PW31/2/2021', '2021-04-23', 'Review Bos Dikmen TA 2020', 'Review', '', '463', 'Sudah Direview', 'PKPT', 'KF3', 'D2'),
-(65, 'ST-003', '2021-04-22', 'audit keuangan A', 'Audit', '7', '', 'Sudah Direview', 'PKPT', 'KF1', 'D1');
+INSERT INTO `penugasan` (`id_penugasan`, `no_st`, `tgl_st`, `uraian_penugasan`, `jenis_penugasan`, `auditan_in`, `auditan_opd`, `status`, `pkpt`, `kf1`, `d1`, `status_tl`) VALUES
+(67, 'Consequuntur esse ma', '1976-02-14', 'Provident velit nul', 'Audit', '', '217', 'Belum Direview', 'PKPT', 'KF1', 'D4', 'Belum TL'),
+(68, 'Necessitatibus ut eu', '2011-02-03', 'Necessitatibus in ip', 'Audit', '', '217', 'Belum Direview', 'Non PKPT', 'KF3', 'D2', 'Belum TL');
 
 -- --------------------------------------------------------
 
@@ -777,19 +787,15 @@ CREATE TABLE `penugasan_auditor` (
 --
 
 INSERT INTO `penugasan_auditor` (`id_pa`, `id_penugasan`, `id`, `peran`) VALUES
-(82, 63, 24, 'Ketua Tim'),
-(83, 63, 22, 'Anggota Tim'),
-(84, 63, 23, 'Pembantu Penanggung Jawab'),
-(85, 63, 24, 'Pengendali Teknis'),
-(86, 64, 25, 'Ketua Tim'),
-(87, 64, 12, 'Pembantu Penanggung Jawab'),
-(88, 64, 24, 'Anggota Tim'),
-(89, 64, 20, 'Pengendali Teknis'),
-(90, 65, 19, 'Ketua Tim'),
-(91, 65, 12, 'Pembantu Penanggung Jawab'),
-(92, 65, 14, 'Pengendali Teknis'),
-(93, 65, 20, 'Anggota Tim'),
-(94, 65, 22, 'Anggota Tim');
+(124, 66, 33, 'Ketua Tim'),
+(125, 66, 30, 'Pengendali Teknis'),
+(126, 66, 28, 'Anggota Tim'),
+(127, 67, 14, 'Ketua Tim'),
+(128, 67, 20, 'Pengendali Teknis'),
+(129, 67, 18, 'Anggota Tim'),
+(130, 68, 20, 'Ketua Tim'),
+(131, 68, 19, 'Pengendali Teknis'),
+(132, 68, 32, 'Anggota Tim');
 
 -- --------------------------------------------------------
 
@@ -807,23 +813,15 @@ CREATE TABLE `rekomendasi` (
 --
 
 INSERT INTO `rekomendasi` (`id_rekomendasi`, `rekomendasi`) VALUES
-(39, 'r1-1'),
-(40, 'r2-1'),
-(41, 'r2-2'),
-(42, 'r3-1'),
-(43, 'r3-2'),
-(44, 'r3-3'),
-(45, 'r1-1'),
-(46, 'r2-1'),
-(47, 'r2-2'),
-(48, 'r3-1'),
-(49, 'r3-2'),
-(50, 'r3-3'),
-(51, 'r1-1'),
-(52, 'r1-2'),
-(53, 'setor kas negara'),
-(54, 'rekom 2'),
-(55, 'rekom 3');
+(57, 'setor kas negara'),
+(58, 'Mengembalikan Uang senilai Rp.50.000.000'),
+(59, 'Veritatis iure recus'),
+(60, 'Aut aut et esse qua'),
+(61, 'Veniam cillum vel q'),
+(62, 'Aliquam ex ut quas u'),
+(63, 'Nisi consequatur qui'),
+(64, 'Nihil vel libero ill'),
+(65, 'Qui sed ut quis ipsa');
 
 -- --------------------------------------------------------
 
@@ -841,21 +839,13 @@ CREATE TABLE `sebab` (
 --
 
 INSERT INTO `sebab` (`id_sebab`, `sebab`) VALUES
-(40, 's1-1'),
-(41, 's2-1'),
-(42, 's2-2'),
-(43, 's3-1'),
-(44, 's3-2'),
-(45, 's3-3'),
-(46, 's1-1'),
-(47, 's2-1'),
-(48, 's2-2'),
-(49, 's3-1'),
-(50, 's3-2'),
-(51, 's3-3'),
-(52, 's1-1'),
-(53, 's1-2'),
-(54, 'lalai');
+(56, 'lalai'),
+(57, 'Kesengajaan  Bendahara'),
+(58, 'asdasd'),
+(59, 'Nam maxime ex distin'),
+(60, 'Ipsum facere rem su'),
+(61, 'Consequatur irure fu'),
+(62, 'Nulla dolorum tempor');
 
 -- --------------------------------------------------------
 
@@ -870,14 +860,6 @@ CREATE TABLE `surat_tuntas` (
   `tgl_surat` date NOT NULL,
   `surat_tuntas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `surat_tuntas`
---
-
-INSERT INTO `surat_tuntas` (`id`, `id_penugasan`, `nomor_surat`, `tgl_surat`, `surat_tuntas`) VALUES
-(7, 62, 'Dolor praesentium lo', '1973-08-06', '1619019248.5087608045f07c303.pdf'),
-(8, 63, 'Duis ea soluta nulla', '2021-05-30', '1619024073.0624608058c90f3b0.pdf');
 
 -- --------------------------------------------------------
 
@@ -901,11 +883,33 @@ CREATE TABLE `temuan` (
 --
 
 INSERT INTO `temuan` (`id_temuan`, `id_penugasan`, `no_laporan`, `tgl_laporan`, `kondisi`, `jenisnominal`, `isirupiah`, `hal`) VALUES
-(26, 63, 'BPKP/02/003/2003', '2021-04-20', 'kondisi1', 'Rupiah', '40000000', '-'),
-(27, 63, 'BPKP/02/003/2003', '2021-04-20', 'kondisi2', 'Non Rupiah', '', '-'),
-(28, 63, 'BPKP/02/003/2003', '2021-04-20', 'kondisi3', 'Rupiah', '60000000', '-'),
-(29, 64, 'BPKP/02/003/2003', '2021-04-27', 'Penggunaan Bos tidak sesuai JUKNIS BOS sebesar Rp. 98.000.000', 'Rupiah', '98000000', '-'),
-(30, 65, 'LHA-10/BPN', '2021-04-30', 'setor kas', 'Rupiah', '50000000', 'hal hal lain ');
+(32, 67, 'LHA-10/BPN', '2021-04-28', 'setor kas', 'Rupiah', '58000000', 'hal hal yang perlu di perhatikan'),
+(33, 67, 'LHA-10/BPN', '2021-04-28', 'asdasdas', 'Rupiah', '50000000', 'hal hal yang perlu di perhatikan (tidak wajib)'),
+(34, 68, 'At minim dolores inc', '1994-01-05', 'asdadda', 'Non Rupiah', '', 'Aliquid dolorem fuga'),
+(35, 68, 'At minim dolores inc', '1994-01-05', 'Dolor consequuntur m', 'Non Rupiah', '', 'Minima tenetur lauda'),
+(36, 68, 'At minim dolores inc', '1994-01-05', 'Officiis commodi adi', 'Rupiah', '67000000', 'Repellendus Et et i');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tindak_lanjut`
+--
+
+CREATE TABLE `tindak_lanjut` (
+  `id_tl` int(11) NOT NULL,
+  `id_temuan` int(11) NOT NULL,
+  `id_rekomendasi` int(11) NOT NULL,
+  `uraian_tl` varchar(100) NOT NULL,
+  `file_tl` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tindak_lanjut`
+--
+
+INSERT INTO `tindak_lanjut` (`id_tl`, `id_temuan`, `id_rekomendasi`, `uraian_tl`, `file_tl`) VALUES
+(6, 36, 63, 'uraian tl 1 temuan 3', '1619336287.460860851c5f7082a.pdf'),
+(7, 36, 63, 'uraian tl 2 temuan 3', '1619336287.466360851c5f71d55.pdf');
 
 -- --------------------------------------------------------
 
@@ -923,21 +927,13 @@ CREATE TABLE `uraian` (
 --
 
 INSERT INTO `uraian` (`id_uraian`, `uraian`) VALUES
-(40, 'u1-1'),
-(41, 'u2-1'),
-(42, 'u2-2'),
-(43, 'u3-1'),
-(44, 'u3-2'),
-(45, 'u3-3'),
-(46, 'u1-1'),
-(47, 'u2-1'),
-(48, 'u2-2'),
-(49, 'u3-1'),
-(50, 'u3-2'),
-(51, 'u3-3'),
-(52, 'u1-1'),
-(53, 'u1-2'),
-(54, 'SETOR kas ');
+(56, 'SETOR kas '),
+(57, 'mengembalikan uang negara Rp.50.000.000'),
+(58, 'Nisi amet quasi mag'),
+(59, 'Placeat a quis dolo'),
+(60, 'Magna numquam et adi'),
+(61, 'Dolore qui duis quis'),
+(62, 'Quia quaerat numquam');
 
 --
 -- Indexes for dumped tables
@@ -1028,6 +1024,12 @@ ALTER TABLE `opd`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `penilaian`
+--
+ALTER TABLE `penilaian`
+  ADD PRIMARY KEY (`id_penilaian`);
+
+--
 -- Indexes for table `penugasan`
 --
 ALTER TABLE `penugasan`
@@ -1064,6 +1066,12 @@ ALTER TABLE `temuan`
   ADD PRIMARY KEY (`id_temuan`);
 
 --
+-- Indexes for table `tindak_lanjut`
+--
+ALTER TABLE `tindak_lanjut`
+  ADD PRIMARY KEY (`id_tl`);
+
+--
 -- Indexes for table `uraian`
 --
 ALTER TABLE `uraian`
@@ -1083,7 +1091,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `akibat`
 --
 ALTER TABLE `akibat`
-  MODIFY `id_akibat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_akibat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `auditor`
@@ -1095,7 +1103,7 @@ ALTER TABLE `auditor`
 -- AUTO_INCREMENT for table `baktl`
 --
 ALTER TABLE `baktl`
-  MODIFY `id_baktl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_baktl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `instansi_vertikal`
@@ -1107,13 +1115,13 @@ ALTER TABLE `instansi_vertikal`
 -- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `log_token`
 --
 ALTER TABLE `log_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `opd`
@@ -1122,28 +1130,34 @@ ALTER TABLE `opd`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=507;
 
 --
+-- AUTO_INCREMENT for table `penilaian`
+--
+ALTER TABLE `penilaian`
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `penugasan`
 --
 ALTER TABLE `penugasan`
-  MODIFY `id_penugasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_penugasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `penugasan_auditor`
 --
 ALTER TABLE `penugasan_auditor`
-  MODIFY `id_pa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id_pa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `rekomendasi`
 --
 ALTER TABLE `rekomendasi`
-  MODIFY `id_rekomendasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_rekomendasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `sebab`
 --
 ALTER TABLE `sebab`
-  MODIFY `id_sebab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_sebab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `surat_tuntas`
@@ -1155,13 +1169,19 @@ ALTER TABLE `surat_tuntas`
 -- AUTO_INCREMENT for table `temuan`
 --
 ALTER TABLE `temuan`
-  MODIFY `id_temuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_temuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `tindak_lanjut`
+--
+ALTER TABLE `tindak_lanjut`
+  MODIFY `id_tl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `uraian`
 --
 ALTER TABLE `uraian`
-  MODIFY `id_uraian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_uraian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

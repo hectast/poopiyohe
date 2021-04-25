@@ -170,7 +170,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="col-md-12 text-center">
                                     <h4 class="mb-1">
                                         <?php
-                                            $sql_tmn = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$_GET['id']}'");
+                                        $sql_tmn = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$_GET['id']}'");
                                         ?>
                                         <?php while ($row_temuan = $sql_tmn->fetch_object()) : ?>
                                             <?php
@@ -190,22 +190,28 @@ if (mysqli_num_rows($result) > 0) {
                                         <?php endwhile; ?>
 
                                         <?php
-                                        $unique_rekom = array_unique($array_rekom);
-                                        $unique_tl = array_unique($array_tl);
-
-                                        if (count($unique_tl) == count($unique_rekom)) {
-                                            echo "
-                                                <i class='fe fe-check-circle text-success'></i><br />
-                                                <span class='badge badge-success text-light'>Tuntas</span>
-                                            ";
-                                        } else if (count($unique_tl) < count($unique_rekom)) {
-                                            echo "
-                                                <i class='fe fe-alert-circle text-warning'></i><br />
-                                                <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
-                                            ";
+                                        if (isset($array_tl) && isset($array_rekom)) {
+                                            $unique_rekom = array_unique($array_rekom);
+                                            $unique_tl = array_unique($array_tl);
+                                            if (count($unique_tl) == count($unique_rekom)) {
+                                                echo "
+                                                    <i class='fe fe-check-circle text-success'></i><br />
+                                                    <span class='badge badge-success text-light'>Tuntas</span>
+                                                ";
+                                            } else if (count($unique_tl) < count($unique_rekom)) {
+                                                echo "
+                                                    <i class='fe fe-alert-circle text-warning'></i><br />
+                                                    <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
+                                                ";
+                                            } else {
+                                                echo "
+                                                    <i class='fe fe-x-circle text-danger'></i><br />
+                                                    <span class='badge badge-danger text-light'>Belum TL</span>
+                                                ";
+                                            }
                                         } else {
                                             echo "
-                                                <i class='fe fe-x text-danger'></i><br />
+                                                <i class='fe fe-x-circle text-danger'></i><br />
                                                 <span class='badge badge-danger text-light'>Belum TL</span>
                                             ";
                                         }
