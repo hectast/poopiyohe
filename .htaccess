@@ -31,7 +31,8 @@ RewriteRule ^edit_penugasan$ admin.php?views_admin=edit_penugasan
 RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
 RewriteRule ^detail_temuan/([0-9]+)$ auditan.php?views_auditan=detail_temuan&id=$1 [NC,L]
-RewriteRule ^input_tindak_lanjut/([0-9]+)$ auditan.php?views_auditan=input_tindak_lanjut&id=$1 [NC,L]
+#RewriteRule ^input_tindak_lanjut/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=input_tindak_lanjut&tm=$1&id=$2 [NC,L]
+RewriteRule ^tindak_lanjut_rekom/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=tindak_lanjut_rekom&tm=$1&id=$2 [NC,L]
 
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
 

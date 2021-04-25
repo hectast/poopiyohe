@@ -12,7 +12,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                 <!-- <a class="dropdown-item" href="#">Profil</a> -->
-                <a class="dropdown-item" href="app/logout.php">Keluar</a>
+                <a class="dropdown-item" href="<?= $base_url; ?>app/logout.php">Keluar</a>
             </div>
         </li>
     </ul>

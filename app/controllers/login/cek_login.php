@@ -16,15 +16,19 @@ if (isset($_POST['login'])) {
         return false;
     }
 
-    $stmt_auditan = $mysqli->query("SELECT * FROM instansi_vertikal WHERE email = '{$_POST['email']}'");
+    $stmt_auditan_iv = $mysqli->prepare("SELECT id, nama_instansi, pass FROM instansi_vertikal WHERE email = ?");
+    $stmt_auditan_opd = $mysqli->prepare("SELECT id, nama_instansi, pass FROM opd WHERE email = ?");
     $stmt_auditor = $mysqli->prepare('SELECT id, nama, password, akses FROM auditor WHERE email = ?');
     $stmt_admin = $mysqli->prepare('SELECT id, password FROM admin WHERE email = ?');
 
-    if ($stmt_auditan || $stmt_auditor || $stmt_admin) {
+    if ($stmt_auditan_iv || $stmt_auditan_opd || $stmt_auditor || $stmt_admin) {
+        $stmt_auditan_iv->bind_param('s', $_POST['email']);
+        $stmt_auditan_iv->execute();
+        $stmt_auditan_iv->store_result();
 
-        // $stmt_auditan->bind_param('s', $_POST['email']);
-        // $stmt_auditan->execute();
-        // $stmt_auditan->store_result();
+        $stmt_auditan_opd->bind_param('s', $_POST['email']);
+        $stmt_auditan_opd->execute();
+        $stmt_auditan_opd->store_result();
 
         $stmt_auditor->bind_param('s', $_POST['email']);
         $stmt_auditor->execute();
@@ -34,12 +38,10 @@ if (isset($_POST['login'])) {
         $stmt_admin->execute();
         $stmt_admin->store_result();
 
-        if ($stmt_auditan->num_rows > 0) {
-            // $stmt_auditan->bind_result($id_auditan, $nama_instansi, $password_auditan);
-            // $stmt_auditan->fetch();
-            $row_auditan = $stmt_auditan->fetch_assoc();
-            $pass_auditan = $row_auditan['pass'];
-            if (md5($_POST['password']) == $pass_auditan) {
+        if ($stmt_auditan_iv->num_rows > 0) {
+            $stmt_auditan_iv->bind_result($id_auditan_iv, $nama_auditan_iv, $pass_auditan_iv);
+            $stmt_auditan_iv->fetch();
+            if (md5($_POST['password']) == $pass_auditan_iv) {
                 session_regenerate_id();
     
                 $token = getToken(10);
@@ -60,8 +62,50 @@ if (isset($_POST['login'])) {
                 }
     
                 $_SESSION['loggedin'] = TRUE;
-                $_SESSION['id'] = $row_auditan['id'];
-                $_SESSION['nama'] = $row_auditan['nama_instansi'];
+                $_SESSION['id'] = $id_auditan_iv;
+                $_SESSION['nama'] = $nama_auditan_iv;
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['tipe_user'] = 'auditan';
+                $_SESSION['token'] = $token;
+                ?>
+                <script>
+                    document.location.href = 'auditan';
+                </script>
+                <?php
+            } else {
+                ?>
+                <script>
+                    alert('Password yang anda masukkan salah !');
+                    document.location.href = 'beranda';
+                </script>
+                <?php
+            }
+        } else if ($stmt_auditan_opd->num_rows > 0) {
+            $stmt_auditan_opd->bind_result($id_auditan_opd, $nama_auditan_opd, $pass_auditan_opd);
+            $stmt_auditan_opd->fetch();
+            if (md5($_POST['password']) == $pass_auditan_opd) {
+                session_regenerate_id();
+    
+                $token = getToken(10);
+                $checkToken = "SELECT * FROM log_token WHERE email='{$_POST['email']}'";
+                $toCheckToken = $mysqli->prepare($checkToken);
+                $toCheckToken->execute();
+                $resultToken = $toCheckToken->get_result();
+                $rowToken = mysqli_num_rows($resultToken);
+    
+                if ($rowToken > 0) {
+                    $upToken = "UPDATE log_token SET token='$token' WHERE email='{$_POST['email']}'";
+                    $toUpToken = $mysqli->prepare($upToken);
+                    $toUpToken->execute();
+                } else {
+                    $inToken = "INSERT INTO log_token (email,token) VALUES ('{$_POST['email']}', '$token')";
+                    $toInToken = $mysqli->prepare($inToken);
+                    $toInToken->execute();
+                }
+    
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['id'] = $id_auditan_opd;
+                $_SESSION['nama'] = $nama_auditan_opd;
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['tipe_user'] = 'auditan';
                 $_SESSION['token'] = $token;
