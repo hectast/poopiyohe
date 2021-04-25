@@ -8,6 +8,12 @@ if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "beranda_auditan"
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_temuan") {
     $page = "Detail Temuan";
     $title = $page . " | PO'OPIYOHE";
+} else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "penilaian"){
+    $page = "Daftar Penugasan";
+    $title = $page . " | PO'OPIYOHE";
+} else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_penilaian"){
+    $page = "Penilaian";
+    $title = $page . " | PO'OPIYOHE";
 }
 ?>
 
@@ -22,7 +28,11 @@ if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "beranda_auditan"
     include 'views/page/auditan/daftar_temuan/daftar_temuan.php';
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_temuan") {
     include 'views/page/auditan/daftar_temuan/detail_daftar_temuan.php';
-} else {
+} else if(isset($_GET['views_auditan']) && $_GET['views_auditan'] == "penilaian"){
+    include 'views/page/auditan/penilaian/daftar_tugas.php';
+} else if(isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_penilaian"){
+    include 'views/page/auditan/penilaian/detail_penilaian.php';
+}else {
     include 'views/page/auditan/beranda.php';
 }
 ?>

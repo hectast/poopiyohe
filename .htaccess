@@ -30,6 +30,8 @@ RewriteRule ^edit_penugasan$ admin.php?views_admin=edit_penugasan
 # Auditan
 RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan
 RewriteRule ^daftar_temuan$ auditan.php?views_auditan=daftar_temuan
+RewriteRule ^penilaian$ auditan.php?views_auditan=penilaian
+RewriteRule ^detail_penilaian/([0-9]+)$ auditan.php?views_auditan=detail_penilaian&id=$1 [NC,L]
 RewriteRule ^detail_temuan/([0-9]+)$ auditan.php?views_auditan=detail_temuan&id=$1 [NC,L]
 
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
@@ -73,6 +75,9 @@ RewriteRule ^korwas_lihat_penugasan$ auditor.php?views_korwas=korwas_lihat_penug
 RewriteRule ^korwas_edit_penugasan$ auditor.php?views_korwas=korwas_edit_penugasan
 RewriteRule ^korwas_hasil_penugasan$ auditor.php?views_korwas=korwas_hasil_penugasan
 RewriteRule ^korwas_detail_penugasan/([0-9]+)$ auditor.php?views_korwas=korwas_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^trusted_advisor$ auditor.php?views_korwas=trusted_advisor
+RewriteRule ^pan_rb$ auditor.php?views_korwas=pan_rb
+RewriteRule ^pionir$ auditor.php?views_korwas=pionir
 
 # Auditor Monitoring
 RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring

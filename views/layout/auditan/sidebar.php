@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item w-100">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= $base_url; ?>penilaian">
                     <i class="fe fe-check-square fe-16"></i>
                     <span class="ml-3 item-text">Penilaian</span>
                 </a>
