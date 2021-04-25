@@ -1,6 +1,7 @@
 </div> <!-- .wrapper -->
 
 <script src="<?= $base_url; ?>assets/js/jquery.min.js"></script>
+<script src="<?= $base_url; ?>assets/js/jquery.steps.min.js"></script>
 <script src="<?= $base_url; ?>assets/js/popper.min.js"></script>
 <script src="<?= $base_url; ?>assets/js/moment.min.js"></script>
 <script src="<?= $base_url; ?>assets/js/bootstrap.min.js"></script>
@@ -16,14 +17,24 @@
 <script src="<?= $base_url; ?>assets/js/Chart.min.js"></script>
 <script src="<?= $base_url; ?>assets/js/apexcharts.min.js"></script>
 <script src="<?= $base_url; ?>assets/js/apexcharts.custom.js"></script>
+
 <!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
-<script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
+<scrip src="assets/notif_plug/toastr/toastr.min.js"></script> -->
 <script>
+  $(function() {
+    $("#wizard").steps({
+      headerTag: "h2",
+      bodyTag: "section",
+      previous: "false",
+      transitionEffect: "slideLeft"
+    });
+  });
+
   $('#dataTable-1').DataTable({
     "responsive": true,
     "autoWidth": true,
   });
-  
+
   $('.select1').select2({
     theme: 'bootstrap4',
   });
@@ -37,21 +48,21 @@
   });
 </script>
 <script>
-    $(function() {
+  $(function() {
 
-        $('#id_pemda').change(function() {
-            $('.instansi_row').remove();
-            if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
-                $.get('app/controllers/admin/daftar_dynoption.php', {
-                        id_pemda: $('#id_pemda').val()
-                    })
-                    .done(function(data) {
-                        $('div.pemda_row').after(data);
-                    })
-            }
-        });
-
+    $('#id_pemda').change(function() {
+      $('.instansi_row').remove();
+      if ($('#id_pemda').val() != '-- Pilih Pemerintah Daerah --') {
+        $.get('app/controllers/admin/daftar_dynoption.php', {
+            id_pemda: $('#id_pemda').val()
+          })
+          .done(function(data) {
+            $('div.pemda_row').after(data);
+          })
+      }
     });
+
+  });
 </script>
 
 <script>

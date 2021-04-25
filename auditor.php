@@ -22,3 +22,5 @@ include 'app/env.php';
 include 'app/controllers/login/cek_session.php';
 include 'app/controllers/auditor/getData.php';
 require_once 'views/page/auditor/index.php';
+
+

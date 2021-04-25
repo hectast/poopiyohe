@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<link>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?= $base_url; ?>assets/css/select2.css">
     <!-- App CSS -->
     <link rel="stylesheet" href="<?= $base_url; ?>assets/css/app-light.css" id="lightTheme">
+    <link rel="stylesheet" href="<?= $base_url; ?>assets/css/jquery.steps.css">
     <!-- <link rel="stylesheet" href="assets/css/app-dark.css" id="darkTheme" disabled> -->
 </head>
 
