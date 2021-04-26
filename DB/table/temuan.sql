@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Apr 2021 pada 12.13
+-- Waktu pembuatan: 26 Apr 2021 pada 10.13
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -32,11 +32,20 @@ CREATE TABLE `temuan` (
   `id_penugasan` int(11) NOT NULL,
   `no_laporan` varchar(20) NOT NULL,
   `tgl_laporan` date NOT NULL,
-  `kondisi` varchar(50) NOT NULL,
+  `kondisi` varchar(100) NOT NULL,
   `jenisnominal` varchar(50) NOT NULL,
   `isirupiah` varchar(20) NOT NULL,
+  `saldo` varchar(100) NOT NULL,
   `hal` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `temuan`
+--
+
+INSERT INTO `temuan` (`id_temuan`, `id_penugasan`, `no_laporan`, `tgl_laporan`, `kondisi`, `jenisnominal`, `isirupiah`, `saldo`, `hal`) VALUES
+(51, 72, 'Nobis reprehenderit ', '2003-04-20', 'Reprehenderit commo', 'Rupiah', '20000000', '0', 'Sed do in blanditiis'),
+(52, 72, 'Nobis reprehenderit ', '2003-04-20', 'kondisi', 'Non Rupiah', '', '0', 'halhahlahlahl');
 
 --
 -- Indexes for dumped tables
@@ -56,7 +65,7 @@ ALTER TABLE `temuan`
 -- AUTO_INCREMENT untuk tabel `temuan`
 --
 ALTER TABLE `temuan`
-  MODIFY `id_temuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_temuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

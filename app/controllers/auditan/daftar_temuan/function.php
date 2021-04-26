@@ -127,6 +127,7 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                     if (isset($array) && isset($array_data_rekomendasi)) {
                         $napa_dia_rekom = array_unique($array_data_rekomendasi);
                         $napa_dia = array_unique($array);
+
                         if (count($napa_dia) == count($napa_dia_rekom)) {
                             echo "<small class='badge badge-success'>Tuntas</small>";
                         } else if (count($napa_dia) < count($napa_dia_rekom)) {
