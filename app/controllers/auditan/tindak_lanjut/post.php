@@ -1,9 +1,10 @@
 <?php
+include 'app/flash_message.php';
     if (isset($_POST['tindak_lanjut']) and $_SERVER['REQUEST_METHOD'] == "POST") {
         $id_temuan = $_POST['id_temuan'];
         $id_rekomendasi = $_POST['id_rekomendasi'];
         $uraian_tl = $_POST['uraian_tl'];
-
+        $nominal = $_POST['nominal_tl'];
         $filebukti = $_FILES['filebukti']['name'];
         $error = $_FILES['filebukti']['error'];
         $ukuranFile = $_FILES['filebukti']['size'];
@@ -11,7 +12,7 @@
 
 
         $count = count($filebukti);
-
+        $saldo = $_POST['saldo'];
         for ($i=0;$i<$count;$i++) {
 
             // cek apakah tidak ada dokumen yang di upload
@@ -58,8 +59,16 @@
             // jika lolos pengecekan
             move_uploaded_file($tmpName[$i], 'assets/uploads/tindak_lanjut/' . $namaFileBaru);
 
-            $stmt_tindak_lanjut = $mysqli->prepare("INSERT INTO tindak_lanjut (id_temuan, id_rekomendasi, uraian_tl, file_tl) VALUES ('$id_temuan', '$id_rekomendasi', '$uraian_tl[$i]', '$namaFileBaru')");
-            $stmt_tindak_lanjut->execute();
+
+            @$jumlah_nominal += $nominal[$i];
+            
+            $stmt_tindak_lanjut = $mysqli->prepare("INSERT INTO tindak_lanjut (id_temuan, id_rekomendasi, uraian_tl, file_tl, nominal_tl) VALUES ('$id_temuan', '$id_rekomendasi', '$uraian_tl[$i]', '$namaFileBaru','$nominal[$i]')");
+            $stmt_tindak_lanjut->execute(); 
         }
+    @$hasil_saldo = ($saldo) - ($jumlah_nominal);
+    
+    $stmt_update_saldo = $mysqli->prepare("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$id_temuan'");
+    $stmt_update_saldo->execute();
+    flash("msg_tl","Rekomendasi Sudah Ditindak Lanjuti");
     }
 ?>

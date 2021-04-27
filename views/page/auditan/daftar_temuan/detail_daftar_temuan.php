@@ -3,7 +3,7 @@ $sql = "SELECT * FROM temuan WHERE id_penugasan='{$_GET['id']}'";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
-
+include 'app/controllers/auditan/tindak_lanjut/post.php';
 if (mysqli_num_rows($result) > 0) {
     $sql_penugasan = "SELECT * FROM penugasan WHERE id_penugasan='{$_GET['id']}'";
     $stmt_penugasan = $mysqli->prepare($sql_penugasan);

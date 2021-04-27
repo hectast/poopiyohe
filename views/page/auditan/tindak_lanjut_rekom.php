@@ -28,14 +28,25 @@ if (mysqli_num_rows($result) > 0) {
                     <h2 class="page-title"><a href="<?= $base_url; ?>detail_temuan/<?= $row_data_temuan->id_penugasan; ?>" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
-
+            <?php
+            if (isset($_SESSION['msg_tl'])) {
+        ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_tl'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+        <?php
+            }
+            ?>
             <div class="row justify-content-center mt-4">
 
                 <div class="col-md-8">
 
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="<?= $base_url ?>/detail_temuan/<?= $row_data_temuan->id_penugasan ?>" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id_temuan" value="<?= $row_data_rekomendasi->id_temuan; ?>">
                                 <input type="hidden" name="id_rekomendasi" value="<?= $row_data_rekomendasi->id_rekomendasi; ?>">
                                 <div class="row">
@@ -44,6 +55,15 @@ if (mysqli_num_rows($result) > 0) {
                                     </div>
                                 </div>
                                 <div class="border-bottom mb-3"></div>
+                                <?php
+                                $query_cek = $mysqli->query("SELECT * FROM temuan WHERE id_temuan ='$row_data_temuan->id_temuan'");
+                                $cek = $query_cek->fetch_assoc();
+                                $nonrp = $cek['jenisnominal'];
+
+                                if($nonrp == "Non Rupiah"){
+
+                                }else{
+                                ?>
                                 <div class="row">
                                     <div class="col-md-6">                                    
                                         <div class="form-group">
@@ -63,11 +83,15 @@ if (mysqli_num_rows($result) > 0) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input class="form-control" name="" type="text" disabled>
+                                                <input class="form-control"  value="<?= number_format($row_data_temuan->saldo); ?>" type="text" disabled>
+                                                <input type="hidden" name="saldo" value="<?= $row_data_temuan->saldo;?>" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php
+                                }
+                                ?>
                                 <div class="form-group">
                                     <label>Rekomendasi/Saran/Atensi</label>
                                     <input type="text" class="form-control mb-2" value="<?= $row->rekomendasi; ?>" disabled>
@@ -89,6 +113,7 @@ if (mysqli_num_rows($result) > 0) {
                                                 <span class="input-group-text">Rp.</span>
                                             </div>
                                             <input class="form-control" name="nominal_tl[]" type="number">
+                                            <small></small>
                                         </div>
                                     </div>
                                     <div class="form-group">
