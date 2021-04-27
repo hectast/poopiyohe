@@ -96,18 +96,19 @@ if (mysqli_num_rows($result) > 0) {
                             <tr>
                                 <td>Status</td>
                                 <td>:</td>
-                                <td> <?php
-                                        if ($row_penugasan['status'] == 'Belum Direview') {
+                                <td> 
+                                    <?php
+                                        if ($row_penugasan['status_tl'] == 'Tuntas') {
                                         ?>
-                                        <small class="badge badge-danger"><?= $row_penugasan['status']; ?></small>
+                                        <small class="badge badge-success">Tuntas</small>
                                     <?php
-                                        } else if ($row_penugasan['status'] == 'Sudah Direview') {
+                                        } else if ($row_penugasan['status_tl'] == 'Tuntas Sebagian') {
                                     ?>
-                                        <small class="badge badge-success"><?= $row_penugasan['status']; ?></small>
+                                        <small class="badge badge-warning">Tuntas Sebagian</small>
                                     <?php
-                                        } else if ($row_penugasan['status'] == 'Belum Divalidasi') {
+                                        } else {
                                     ?>
-                                        <small class="badge badge-warning"><?= $row_penugasan['status'] ?></small>
+                                        <small class="badge badge-danger"><?= $row_penugasan['status_tl'] ?></small>
                                     <?php
                                         }
                                     ?>

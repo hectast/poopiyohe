@@ -1,31 +1,32 @@
 <?php
-function tgl_indo($tanggal){
-	$bulan = array (
-		1 =>   'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-	);
-	$pecahkan = explode('-', $tanggal);
-	
-	// variabel pecahkan 0 = tanggal
-	// variabel pecahkan 1 = bulan
-	// variabel pecahkan 2 = tahun
- 
-	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+function tgl_indo($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
 
 function tampil_data($mysqli)
 {
-    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan";
     $result = $mysqli->query($querx);
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
@@ -36,41 +37,63 @@ function tampil_data($mysqli)
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
             <td>
-            <?php 
-            $instansi_vertikal = $row['auditan_in'];
-            $opede             = $row['auditan_opd'];
-            
-            if(empty($instansi_vertikal)){
-                $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
-                $row_opede = mysqli_fetch_assoc($result_opede);
-                echo $row_opede['nama_instansi']; echo " - "; echo $row_opede['nama_pemda'];
-            }
-             if(empty($opede)){
-                $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
-                $row_vertikal = mysqli_fetch_assoc($result_vertikal);
-                echo $row_vertikal['nama_instansi'];
-            }
-            
-            
-            ?>
+                <?php
+                $instansi_vertikal = $row['auditan_in'];
+                $opede             = $row['auditan_opd'];
+
+                if (empty($instansi_vertikal)) {
+                    $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
+                    $row_opede = mysqli_fetch_assoc($result_opede);
+                    echo $row_opede['nama_instansi'];
+                    echo " - ";
+                    echo $row_opede['nama_pemda'];
+                }
+                if (empty($opede)) {
+                    $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
+                    $row_vertikal = mysqli_fetch_assoc($result_vertikal);
+                    echo $row_vertikal['nama_instansi'];
+                }
+
+
+                ?>
             </td>
             <td><?= $row['uraian_penugasan']; ?></td>
             <td><?= $row['jenis_penugasan'] ?></td>
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status'] == 'Belum Direview') {
+                $sql_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$row['id_penugasan']}'");
                 ?>
-                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                <?php while ($row_temuan = $sql_temuan->fetch_object()) : ?>
+                    <?php
+                    $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                    ?>
+                    <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
+                        <?php
+                        $array_data_rekomendasi[] = $row_data_rekomendasi->id_rekomendasi;
+                        $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
+                        ?>
+                        <?php while ($row_tindak_lanjut = $sql_tindak_lanjut->fetch_object()) : ?>
+                            <?php
+                            $array_tl[] = $row_tindak_lanjut->id_rekomendasi;
+                            ?>
+                        <?php endwhile; ?>
+                    <?php endwhile; ?>
+                <?php endwhile; ?>
+
                 <?php
-                } else if ($row['status'] == 'Belum Divalidasi') {
-                ?>
-                    <small class="badge badge-warning"><?= $row['status']; ?></small>
-                <?php
+                if (isset($array_tl) && isset($array_data_rekomendasi)) {
+                    $rekom = array_unique($array_data_rekomendasi);
+                    $tl = array_unique($array_tl);
+                    if (count($tl) == count($rekom)) {
+                        echo "<small class='badge badge-success'>Tuntas</small>";
+                    } else if (count($tl) < count($rekom)) {
+                        echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                    } else {
+                        echo "<small class='badge badge-danger'>Belum TL</small>";
+                    }
                 } else {
-                ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
-                <?php
+                    echo "<small class='badge badge-danger'>Belum TL</small>";
                 }
                 ?>
             </td>
@@ -90,11 +113,6 @@ function tampil_data($mysqli)
                         <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
                         <input type="hidden" name="token" value="<?= $token ?>">
                         <button name="edit_data" class="dropdown-item"><i class="fe fe-edit"></i> Ubah</button>
-                    </form>
-                    <form action="ketua_data_penugasan" method="post">
-                        <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
-                        <input type="hidden" name="token" value="<?= $token ?>">
-                        <button name="hapus_data" class="dropdown-item" onclick="return confirm('Anda Yakin Menghapus Data Ini?')"><i class="fe fe-trash"></i> Hapus</button>
                     </form>
 
                 </div>
@@ -175,20 +193,40 @@ function detail($id_tampil, $mysqli)
                     <tr>
                         <td>Status</td>
                         <td>:</td>
-                        <td> 
+                        <td>
                             <?php
-                            if ($row['status'] == 'Belum Direview') {
+                            $sql_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$row['id_penugasan']}'");
                             ?>
-                                <small class="badge badge-danger"><?= $row['status']; ?></small>
+                            <?php while ($row_temuan = $sql_temuan->fetch_object()) : ?>
+                                <?php
+                                $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                                ?>
+                                <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
+                                    <?php
+                                    $array_data_rekomendasi[] = $row_data_rekomendasi->id_rekomendasi;
+                                    $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
+                                    ?>
+                                    <?php while ($row_tindak_lanjut = $sql_tindak_lanjut->fetch_object()) : ?>
+                                        <?php
+                                        $array_tl[] = $row_tindak_lanjut->id_rekomendasi;
+                                        ?>
+                                    <?php endwhile; ?>
+                                <?php endwhile; ?>
+                            <?php endwhile; ?>
+
                             <?php
-                            } else if ($row['status'] == 'Belum Divalidasi') {
-                            ?>
-                                <small class="badge badge-warning"><?= $row['status']; ?></small>
-                            <?php
+                            if (isset($array_tl) && isset($array_data_rekomendasi)) {
+                                $rekom = array_unique($array_data_rekomendasi);
+                                $tl = array_unique($array_tl);
+                                if (count($tl) == count($rekom)) {
+                                    echo "<small class='badge badge-success'>Tuntas</small>";
+                                } else if (count($tl) < count($rekom)) {
+                                    echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                                } else {
+                                    echo "<small class='badge badge-danger'>Belum TL</small>";
+                                }
                             } else {
-                            ?>
-                                <small class="badge badge-success"><?= $row['status']; ?></small>
-                            <?php
+                                echo "<small class='badge badge-danger'>Belum TL</small>";
                             }
                             ?>
                         </td>
@@ -236,7 +274,7 @@ function detail($id_tampil, $mysqli)
             </div>
         </div>
     </div>
-    <?php
+<?php
 }
 function hapus_data($id, $mysqli)
 {
@@ -245,6 +283,25 @@ function hapus_data($id, $mysqli)
 
     $delete2 = $mysqli->prepare("DELETE FROM penugasan_auditor WHERE id_penugasan ='$id'");
     $delete2->execute();
+
+    $stmt_baktl = $mysqli->prepare("SELECT * FROM baktl WHERE id_penugasan='$id'");
+    $stmt_baktl->execute();
+    $rslt_baktl = $stmt_baktl->get_result();
+    $rws_baktl = $rslt_baktl->fetch_object();
+
+    unlink("assets/uploads/baktl/$rws_baktl->file_upload");
+    $delete3 = $mysqli->prepare("DELETE FROM baktl WHERE id_baktl='{$rws_baktl->id_baktl}'");
+    $delete3->execute();
+
+    $stmt_temuan = $mysqli->prepare("SELECT * FROM temuan WHERE id_penugasan = '$id'");
+    $stmt_temuan->execute();
+    $rslt_temuan = $stmt_temuan->get_result();
+
+
+    while ($rws_temuan = $rslt_temuan->fetch_object()) {
+        $delete4 = $mysqli->prepare("DELETE FROM temuan WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        $delete4->execute();
+    }
 }
 
 

@@ -81,13 +81,13 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
 
                     if (isset($row_nilai['pion'])) {
                         $cek = $row_nilai['pion'];
-                        if (empty($cek)) {
-                    ?>
-                            <div class="badge badge-danger">Belum Dinilai</div>
-                        <?php
-                        } else {
+                        if (!empty($cek)) {
                         ?>
                             <div class="badge badge-success">Sudah Dinilai</div>
+                        <?php
+                        } else {
+                            ?>
+                            <div class="badge badge-danger">Belum Dinilai</div>
                         <?php
                         }
                     } else {
@@ -99,14 +99,20 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                 </td>
                 <td>
                     <?php
-                    if (empty($cek)) {
-                    ?>
-                        <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
-                    <?php
+                    if (isset($row_nilai['tgl_nilai'])) {
+                        if (!empty($row_nilai['tgl_nilai'])) {
+                        ?>
+                            <?= tgl_indo($row_nilai['tgl_nilai']); ?>
+                        <?php
+                        } else {
+                        ?>
+                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
+                        <?php
+                        }
                     } else {
-                    ?>
-                        <?= tgl_indo($row_nilai['tgl_nilai']) ?>
-                    <?php
+                        ?>
+                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
+                        <?php
                     }
                     ?>
                 </td>

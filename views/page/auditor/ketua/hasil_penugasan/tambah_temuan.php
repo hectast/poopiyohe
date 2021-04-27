@@ -167,11 +167,6 @@ if (mysqli_num_rows($result) > 0) {
                                                                                     <label>Kondisi</label>
                                                                                     <div class="input-group">
                                                                                         <input class="form-control" name="kondisi[]" type="text" id="kondisiText">
-                                                                                        <div class="input-group-append">
-                                                                                            <div class="input-group-text">
-                                                                                                <input type="checkbox" id="kondisiCek">
-                                                                                            </div>
-                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -336,11 +331,6 @@ if (mysqli_num_rows($result) > 0) {
                                             <label>Kondisi</label>
                                             <div class="input-group">
                                                 <input class="form-control" name="kondisi[]" type="text" id="kondisiText` + (nomor) + `">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">
-                                                        <input type="checkbox" id="kondisiCek` + (nomor) + `">
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -63,17 +63,17 @@ function tampil_data($mysqli)
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status'] == 'Belum Direview') {
+                if ($row['status_tl'] == 'Tuntas') {
                 ?>
-                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                    <small class="badge badge-success">Tuntas</small>
                 <?php
-                } else if ($row['status'] == 'Belum Divalidasi') {
+                } else if ($row['status_tl'] == 'Tuntas Sebagian') {
                 ?>
-                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                    <small class="badge badge-warning">Tuntas Sebagian</small>
                 <?php
                 } else {
                 ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
+                    <small class="badge badge-danger"><?= $row['status_tl']; ?></small>
                 <?php
                 }
                 ?>
@@ -88,89 +88,89 @@ function tampil_data($mysqli)
                 </div>
             </td>
         </tr>
+    <?php
+    }
+}
+
+function tampil_trusted_advisor($mysqli)
+{
+    $nomor = 1;
+    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
+    while ($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)) {
+        $id_penugasan = $row_penilaian['id_penugasan'];
+        $trad = $row_penilaian['trad'];
+        $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
+        $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
+        $uraian = $row_penugasan['uraian_penugasan'];
+        $no_st = $row_penugasan['no_st'];
+        $tgl  = $row_penugasan['tgl_st'];
+    ?>
+        <tr>
+            <td><?= $nomor++ ?></td>
+            <td><?= $no_st ?></td>
+            <td><?= tgl_indo($tgl) ?></td>
+            <td><?= $uraian ?></td>
+            <td>
+                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                    <?= round($trad) ?>
+                </div>
+            </td>
+        </tr>
+    <?php
+    }
+}
+function tampil_pan($mysqli)
+{
+    $nomor = 1;
+    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
+    while ($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)) {
+        $id_penugasan = $row_penilaian['id_penugasan'];
+        $pnrb = $row_penilaian['pnrb'];
+        $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
+        $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
+        $uraian = $row_penugasan['uraian_penugasan'];
+        $no_st = $row_penugasan['no_st'];
+        $tgl  = $row_penugasan['tgl_st'];
+    ?>
+        <tr>
+            <td><?= $nomor++ ?></td>
+            <td><?= $no_st ?></td>
+            <td><?= tgl_indo($tgl) ?></td>
+            <td><?= $uraian ?></td>
+            <td>
+                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                    <?= round($pnrb) ?>
+                </div>
+            </td>
+        </tr>
+    <?php
+    }
+}
+function tampil_pion($mysqli)
+{
+    $nomor = 1;
+    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
+    while ($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)) {
+        $id_penugasan = $row_penilaian['id_penugasan'];
+        $pion = $row_penilaian['pion'];
+        $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
+        $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
+        $uraian = $row_penugasan['uraian_penugasan'];
+        $no_st = $row_penugasan['no_st'];
+        $tgl  = $row_penugasan['tgl_st'];
+    ?>
+        <tr>
+            <td><?= $nomor++ ?></td>
+            <td><?= $no_st ?></td>
+            <td><?= tgl_indo($tgl) ?></td>
+            <td><?= $uraian ?></td>
+            <td>
+                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                    <?= round($pion) ?>
+                </div>
+            </td>
+        </tr>
 <?php
     }
-}
-
-function tampil_trusted_advisor($mysqli){
-    $nomor=1;
-    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
-    while($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)){
-    $id_penugasan = $row_penilaian['id_penugasan'];
-    $trad = $row_penilaian['trad'];
-    $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
-    $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
-    $uraian = $row_penugasan['uraian_penugasan'];
-    $no_st = $row_penugasan['no_st'];
-    $tgl  = $row_penugasan['tgl_st'];
-    ?>
-    <tr>
-        <td><?= $nomor++ ?></td>
-        <td><?= $no_st?></td>
-        <td><?= tgl_indo($tgl) ?></td>
-        <td><?= $uraian ?></td>
-        <td>
-        <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
-        <?= round($trad) ?>
-        </div>
-        </td>
-    </tr>
-    <?php
-    }
-
-}
-function tampil_pan($mysqli){
-    $nomor=1;
-    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
-    while($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)){
-    $id_penugasan = $row_penilaian['id_penugasan'];
-    $pnrb = $row_penilaian['pnrb'];
-    $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
-    $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
-    $uraian = $row_penugasan['uraian_penugasan'];
-    $no_st = $row_penugasan['no_st'];
-    $tgl  = $row_penugasan['tgl_st'];
-    ?>
-    <tr>
-        <td><?= $nomor++ ?></td>
-        <td><?= $no_st?></td>
-        <td><?= tgl_indo($tgl) ?></td>
-        <td><?= $uraian ?></td>
-        <td>
-        <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
-        <?= round($pnrb) ?>
-        </div>
-        </td>
-    </tr>
-    <?php
-    }
-
-}
-function tampil_pion($mysqli){
-    $nomor=1;
-    $ambil_penilaian = $mysqli->query("SELECT * FROM penilaian");
-    while($row_penilaian = mysqli_fetch_assoc($ambil_penilaian)){
-    $id_penugasan = $row_penilaian['id_penugasan'];
-    $pion = $row_penilaian['pion'];
-    $ambil_penugasan = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_penugasan'");
-    $row_penugasan = mysqli_fetch_assoc($ambil_penugasan);
-    $uraian = $row_penugasan['uraian_penugasan'];
-    $no_st = $row_penugasan['no_st'];
-    $tgl  = $row_penugasan['tgl_st'];
-    ?>
-    <tr>
-        <td><?= $nomor++ ?></td>
-        <td><?= $no_st?></td>
-        <td><?= tgl_indo($tgl) ?></td>
-        <td><?= $uraian ?></td>
-        <td>
-        <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
-        <?= round($pion) ?>
-        </div>
-        </td>
-    </tr>
-    <?php
-    }
-
 }
 ?>

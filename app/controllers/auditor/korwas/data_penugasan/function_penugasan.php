@@ -36,40 +36,42 @@ function tampil_data($mysqli)
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
             <td>
-            <?php 
-            $instansi_vertikal = $row['auditan_in'];
-            $opede             = $row['auditan_opd'];
-            
-            if(empty($instansi_vertikal)){
-                $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
-                $row_opede = mysqli_fetch_assoc($result_opede);
-                echo $row_opede['nama_instansi']; echo " - "; echo $row_opede['nama_pemda'];
-            }
-             if(empty($opede)){
-                $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
-                $row_vertikal = mysqli_fetch_assoc($result_vertikal);
-                echo $row_vertikal['nama_instansi'];
-            }
-            
-            
-            ?>
+                <?php
+                $instansi_vertikal = $row['auditan_in'];
+                $opede             = $row['auditan_opd'];
+
+                if (empty($instansi_vertikal)) {
+                    $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
+                    $row_opede = mysqli_fetch_assoc($result_opede);
+                    echo $row_opede['nama_instansi'];
+                    echo " - ";
+                    echo $row_opede['nama_pemda'];
+                }
+                if (empty($opede)) {
+                    $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
+                    $row_vertikal = mysqli_fetch_assoc($result_vertikal);
+                    echo $row_vertikal['nama_instansi'];
+                }
+
+
+                ?>
             </td>
             <td><?= $row['uraian_penugasan']; ?></td>
             <td><?= $row['jenis_penugasan'] ?></td>
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status'] == 'Belum Direview') {
+                if ($row['status_tl'] == 'Tuntas') {
                 ?>
-                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                    <small class="badge badge-success">Tuntas</small>
                 <?php
-                } else if ($row['status'] == 'Belum Divalidasi') {
+                } else if ($row['status_tl'] == 'Tuntas Sebagian') {
                 ?>
-                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                    <small class="badge badge-warning">Tuntas Sebagian</small>
                 <?php
                 } else {
                 ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
+                    <small class="badge badge-danger"><?= $row['status_tl']; ?></small>
                 <?php
                 }
                 ?>
@@ -175,19 +177,19 @@ function detail($id_tampil, $mysqli)
                     <tr>
                         <td>Status</td>
                         <td>:</td>
-                        <td> 
+                        <td>
                             <?php
-                            if ($row['status'] == 'Belum Direview') {
+                            if ($row['status_tl'] == 'Tuntas') {
                             ?>
-                                <small class="badge badge-danger"><?= $row['status']; ?></small>
+                                <small class="badge badge-success">Tuntas</small>
                             <?php
-                            } else if ($row['status'] == 'Belum Divalidasi') {
+                            } else if ($row['status_tl'] == 'Tuntas Sebagian') {
                             ?>
-                                <small class="badge badge-warning"><?= $row['status']; ?></small>
+                                <small class="badge badge-warning">Tuntas Sebagian</small>
                             <?php
                             } else {
                             ?>
-                                <small class="badge badge-success"><?= $row['status']; ?></small>
+                                <small class="badge badge-danger"><?= $row['status_tl']; ?></small>
                             <?php
                             }
                             ?>
@@ -236,16 +238,97 @@ function detail($id_tampil, $mysqli)
             </div>
         </div>
     </div>
-    <?php
+<?php
 }
 function hapus_data($id, $mysqli)
 {
-    $delete = $mysqli->prepare("DELETE FROM penugasan WHERE id_penugasan ='$id'");
+    $delete = $mysqli->prepare("DELETE FROM penugasan WHERE id_penugasan ='{$id}'");
     $delete->execute();
 
-    $delete2 = $mysqli->prepare("DELETE FROM penugasan_auditor WHERE id_penugasan ='$id'");
+    $delete2 = $mysqli->prepare("DELETE FROM penugasan_auditor WHERE id_penugasan ='{$id}'");
     $delete2->execute();
+
+    $stmt_baktl = $mysqli->prepare("SELECT * FROM baktl WHERE id_penugasan='{$id}'");
+    $stmt_baktl->execute();
+    $rslt_baktl = $stmt_baktl->get_result();
+    $rws_baktl = $rslt_baktl->fetch_object();
+
+    $delete3 = $mysqli->prepare("DELETE FROM baktl WHERE id_baktl='{$rws_baktl->id_baktl}'");
+    $delete3->execute();
+    unlink("assets/uploads/baktl/$rws_baktl->file_upload");
+
+    $stmt_temuan = $mysqli->prepare("SELECT * FROM temuan WHERE id_penugasan = '{$id}'");
+    $stmt_temuan->execute();
+    $rslt_temuan = $stmt_temuan->get_result();
+    $rws_temuan = $rslt_temuan->fetch_object();
+
+        // // uraian
+        // $stmt_dt_uraian = $mysqli->prepare("SELECT * FROM data_uraian WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $stmt_dt_uraian->execute();
+        // $rslt_dt_uraian = $stmt_dt_uraian->get_result();
+        // $rws_dt_uraian = $rslt_dt_uraian->fetch_object();
+        // while ($rws_dt_uraian = $rslt_dt_uraian->fetch_object()) {
+        //     $delete_uraian = $mysqli->prepare("DELETE FROM uraian WHERE id_uraian='{$rws_dt_uraian->id_uraian}'");
+        //     $delete_uraian->execute();
+        // }
+        // $delete_dt_uraian = $mysqli->prepare("DELETE FROM data_uraian WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $delete_dt_uraian->execute();
+
+        // // sebab
+        // $stmt_dt_sebab = $mysqli->prepare("SELECT * FROM data_sebab WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $stmt_dt_sebab->execute();
+        // $rslt_dt_sebab = $stmt_dt_sebab->get_result();
+        // while ($rws_dt_sebab = $rslt_dt_sebab->fetch_object()) {
+        //     $delete_sebab = $mysqli->prepare("DELETE FROM sebab WHERE id_sebab='{$rws_dt_sebab->id_sebab}'");
+        //     $delete_sebab->execute();
+        // }
+        // $delete_dt_sebab = $mysqli->prepare("DELETE FROM data_sebab WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $delete_dt_sebab->execute();
+
+        // // kriteria
+        // $stmt_dt_kriteria = $mysqli->prepare("SELECT * FROM data_kriteria WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $stmt_dt_kriteria->execute();
+        // $rslt_dt_kriteria = $stmt_dt_kriteria->get_result();
+        // while ($rws_dt_kriteria = $rslt_dt_kriteria->fetch_object()) {
+        //     $delete_kriteria = $mysqli->prepare("DELETE FROM kriteria WHERE id_kriteria='{$rws_dt_kriteria->id_kriteria}'");
+        //     $delete_kriteria->execute();
+        // }
+        // $delete_dt_kriteria = $mysqli->prepare("DELETE FROM data_kriteria WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $delete_dt_kriteria->execute();
+
+        // // akibat
+        // $stmt_dt_akibat = $mysqli->prepare("SELECT * FROM data_akibat WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $stmt_dt_akibat->execute();
+        // $rslt_dt_akibat = $stmt_dt_akibat->get_result();
+        // while ($rws_dt_akibat = $rslt_dt_akibat->fetch_object()) {
+        //     $delete_akibat = $mysqli->prepare("DELETE FROM akibat WHERE id_akibat='{$rws_dt_akibat->id_akibat}'");
+        //     $delete_akibat->execute();
+        // }
+        // $delete_dt_akibat = $mysqli->prepare("DELETE FROM data_akibat WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $delete_dt_akibat->execute();
+
+        // // rekomendasi
+        // $stmt_dt_rekomendasi = $mysqli->prepare("SELECT * FROM data_rekomendasi WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $stmt_dt_rekomendasi->execute();
+        // $rslt_dt_rekomendasi = $stmt_dt_rekomendasi->get_result();
+        // while ($rws_dt_rekomendasi = $rslt_dt_rekomendasi->fetch_object()) {
+        //     $delete_rekomendasi = $mysqli->prepare("DELETE FROM rekomendasi WHERE id_rekomendasi='{$rws_dt_rekomendasi->id_rekomendasi}'");
+        //     $delete_rekomendasi->execute();
+        // }
+        // $delete_dt_rekomendasi = $mysqli->prepare("DELETE FROM data_rekomendasi WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        // $delete_dt_rekomendasi->execute();
+
+        // tindak lanjut
+        $stmt_tl = $mysqli->prepare("SELECT * FROM tindak_lanjut WHERE id_temuan='{$rws_temuan->id_temuan}'");
+        $stmt_tl->execute();
+        $rslt_tl = $stmt_tl->get_result();
+        $rws_tl = $rslt_tl->fetch_object();
+
+        $delete3 = $mysqli->prepare("DELETE FROM tindak_lanjut WHERE id_temuan='{$rws_tl->id_temuan}'");
+        $delete3->execute();
+        unlink("assets/uploads/tindak_lanjut/$rws_tl->file_tl");
+
+    $delete4 = $mysqli->prepare("DELETE FROM temuan WHERE id_penugasan='{$id}'");
+    $delete4->execute();
 }
-
-
 ?>

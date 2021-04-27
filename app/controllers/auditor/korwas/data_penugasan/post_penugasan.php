@@ -66,7 +66,7 @@ if(isset($_POST['editpenugasan'])){
         $opd = $_POST['opd'];
     }
 
-    $update = $mysqli->query("UPDATE penugasan SET no_st = '$no_st', tgl_st = '$tgl_st', uraian_penugasan = '$nama_penugasan', jenis_penugasan = '$jenis_penugasan', auditan_in = '$instansi_vertikal', auditan_opd = '$opd',status = '$status',pkpt='$pkpt',kf1 = '$kf1'");
+    $update = $mysqli->query("UPDATE penugasan SET no_st = '$no_st', tgl_st = '$tgl_st', uraian_penugasan = '$nama_penugasan', jenis_penugasan = '$jenis_penugasan', auditan_in = '$instansi_vertikal', auditan_opd = '$opd',status = '$status',pkpt='$pkpt',kf1 = '$kf1' WHERE id_penugasan='$idid'");
     $auditor = $_POST['auditor'];
     $peran = $_POST['peran'];
     $total = count($auditor)-1;
