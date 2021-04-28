@@ -111,10 +111,11 @@ function tampil_trusted_advisor($mysqli)
             <td><?= tgl_indo($tgl) ?></td>
             <td><?= $uraian ?></td>
             <td>
-                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                
                     <?= round($trad) ?>
-                </div>
+                
             </td>
+            <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>
         </tr>
     <?php
     }
@@ -138,10 +139,11 @@ function tampil_pan($mysqli)
             <td><?= tgl_indo($tgl) ?></td>
             <td><?= $uraian ?></td>
             <td>
-                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                
                     <?= round($pnrb) ?>
-                </div>
+                
             </td>
+            <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>
         </tr>
     <?php
     }
@@ -165,10 +167,11 @@ function tampil_pion($mysqli)
             <td><?= tgl_indo($tgl) ?></td>
             <td><?= $uraian ?></td>
             <td>
-                <div style="font-weight: bold; width:20%; padding:5px; height:20%;" class="text-center text-white bg-success rounded">
+                
                     <?= round($pion) ?>
-                </div>
+              
             </td>
+            <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>
         </tr>
 <?php
     }

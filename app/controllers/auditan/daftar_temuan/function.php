@@ -40,9 +40,32 @@ function tampil_data($id_instansi, $base_url, $mysqli)
 ?>
             <tr>
                 <td><?= $no; ?></td>
+                <td><?= $row_penugasan_iv->no_st ?></td>
                 <td><?= isset($row_temuan_iv2->no_laporan) ? $row_temuan_iv2->no_laporan : "Temuan belum di input."; ?></td>
                 <td><?= tgl_indo($row_temuan_iv2->tgl_laporan); ?></td>
                 <td><?= $row_penugasan_iv->uraian_penugasan; ?></td>
+                <td><?php
+                if(isset($row_temuan_iv2->id_temuan)){ 
+                $id_tugas = $row_temuan_iv2->id_penugasan;
+                $sql_jumlah = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan ='$id_tugas'");
+                echo mysqli_num_rows($sql_jumlah);
+                }else{
+                    echo 0;
+                }           
+                ?> Temuan</td>
+                <td>Rp. <?php
+                if(isset($row_temuan_iv2->id_temuan)){ 
+                    $id_tugas = $row_temuan_iv2->id_penugasan;
+                    $sql_nominal = $mysqli->query("SELECT SUM(isirupiah) FROM temuan WHERE id_penugasan = '$id_tugas'");
+                    while($row_nominal = $sql_nominal->fetch_array()){
+                        echo number_format($row_nominal['SUM(isirupiah)']);
+                    }
+                   
+                    
+                }else{
+                    echo 0;
+                }           
+                ?></td>
                 <td>
                     <?php while ($row_temuan_iv = $sql_temuan_iv->fetch_object()) : ?>
                         <?php
@@ -115,16 +138,12 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                 <td>Rp. <?php
                 if(isset($row_temuan_opd2->id_temuan)){ 
                     $id_tugas = $row_temuan_opd2->id_penugasan;
-                    $sql_nominal = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '$id_tugas'");
-                   
-                    while( $row_nominal = $sql_nominal->fetch_assoc()){
-                       if(empty($row_nominal['isirupiah'])){
-                           $row_nominal['isirupiah'] =0;
-                       }
-                        $ttl = 0;
-                       $ttl += $row_nominal['isirupiah'];
-                       echo ltrim(number_format($ttl),'0');
+                    $sql_nominal = $mysqli->query("SELECT SUM(isirupiah) FROM temuan WHERE id_penugasan = '$id_tugas'");
+                    while($row_nominal = $sql_nominal->fetch_array()){
+                        echo number_format($row_nominal['SUM(isirupiah)']);
                     }
+                   
+                    
                 }else{
                     echo 0;
                 }           

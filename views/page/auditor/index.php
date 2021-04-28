@@ -168,6 +168,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "PIONIR";
         $fortitle = "Korwas - PIONIR";
         $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "detail_nilai"){
+        $page = "Detail Penilaian";
+        $fortitle = "Detail Penilaian";
+        $title = $fortitle . " | PO'OPIYOHE";
     }
 }
 ?>
@@ -270,7 +274,9 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/korwas/hasil_penugasan/hasil_penugasan.php';
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_detail_penugasan") {
         include 'views/page/auditor/korwas/hasil_penugasan/detail_penugasan.php';
-    } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "trusted_advisor"){
+    } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "detail_nilai") {
+        include 'views/page/auditor/korwas/detail_nilai.php';
+    }else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "trusted_advisor"){
         include 'views/page/auditor/korwas/trusted_advisor.php';
     }else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "pan_rb"){
         include 'views/page/auditor/korwas/pan_rb.php';

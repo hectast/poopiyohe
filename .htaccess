@@ -77,6 +77,7 @@ RewriteRule ^korwas_lihat_penugasan$ auditor.php?views_korwas=korwas_lihat_penug
 RewriteRule ^korwas_edit_penugasan$ auditor.php?views_korwas=korwas_edit_penugasan
 RewriteRule ^korwas_hasil_penugasan$ auditor.php?views_korwas=korwas_hasil_penugasan
 RewriteRule ^korwas_detail_penugasan/([0-9]+)$ auditor.php?views_korwas=korwas_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^detail_nilai/([0-9]+)$ auditor.php?views_korwas=detail_nilai&id=$1 [NC,L]
 RewriteRule ^trusted_advisor$ auditor.php?views_korwas=trusted_advisor
 RewriteRule ^pan_rb$ auditor.php?views_korwas=pan_rb
 RewriteRule ^pionir$ auditor.php?views_korwas=pionir

@@ -29,6 +29,7 @@ include 'app/controllers/auditor/korwas/hasil_penugasan/post.php';
                     <th>Tgl. ST</th>
                     <th>Nama Penugasan</th>
                     <th>Nilai PAN - RB</th>
+                    <th>Detail</th>
                 </tr>
                </thead>
                <tbody>
