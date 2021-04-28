@@ -28,18 +28,6 @@ if (mysqli_num_rows($result) > 0) {
                     <h2 class="page-title"><a href="<?= $base_url; ?>detail_temuan/<?= $row_data_temuan->id_penugasan; ?>" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
-            <?php
-            if (isset($_SESSION['msg_tl'])) {
-        ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_tl'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-        <?php
-            }
-            ?>
             <div class="row justify-content-center mt-4">
 
                 <div class="col-md-8">

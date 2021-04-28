@@ -102,7 +102,7 @@ $rslt_getPenugasan = $stmtGetPenugasan->get_result();
                             ?>
                             <!-- query -->
                             <p class=" mb-2">Trusted Advisor</p>
-                            <h1 class="mb-1" style="font-size: 70px;"><?= round($itrad) ?></h1>
+                            <h1 class="mb-1" style="font-size: 70px;"><?= round($itrad,2) ?></h1>
                             <div class="small text-primary"><a href="<?= $base_url ?>trusted_advisor">Lihat Detail</a></div>
                         </div>
                         <div class="row align-items-center mb-1">
@@ -234,7 +234,7 @@ $rslt_getPenugasan = $stmtGetPenugasan->get_result();
                             ?>
                             <!-- query -->
                             <p class=" mb-2">PAN RB</p>
-                            <h1 class="mb-1" style="font-size: 70px;"><?= round($ipnrb) ?></h1>
+                            <h1 class="mb-1" style="font-size: 70px;"><?= round($ipnrb,2) ?></h1>
                             <div class="small text-primary"><a href="<?= $base_url ?>pan_rb">Lihat Detail</a></div>
                         </div>
                         <div class="row align-items-center mb-1">
@@ -367,7 +367,7 @@ $rslt_getPenugasan = $stmtGetPenugasan->get_result();
                             ?>
                             <!-- query -->
                             <p class=" mb-2">PIONIR</p>
-                            <h1 class="mb-1" style="font-size: 70px;"><?= round($ipion) ?></h1>
+                            <h1 class="mb-1" style="font-size: 70px;"><?= round($ipion,2) ?></h1>
                             <div class="small text-primary"><a href="<?= $base_url ?>/pionir">Lihat Detail</a></div>
                         </div>
                         <div class="row align-items-center mb-1">

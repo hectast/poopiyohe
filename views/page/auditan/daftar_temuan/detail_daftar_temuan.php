@@ -39,6 +39,19 @@ if (mysqli_num_rows($result) > 0) {
     <main role="main" class="main-content">
         <div class="container-fluid">
 
+            <?php
+            if (isset($_SESSION['msg_tl'])) {
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_tl'); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php
+            }
+            ?>
+
             <div class="row">
                 <div class="col-12">
                     <h2 class="page-title"><a href="<?= $base_url; ?>daftar_temuan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
@@ -193,7 +206,7 @@ if (mysqli_num_rows($result) > 0) {
                                         if (isset($array_tl) && isset($array_rekom)) {
                                             $unique_rekom = array_unique($array_rekom);
                                             $unique_tl = array_unique($array_tl);
-                                            if (count($unique_tl) == count($unique_rekom)) {
+                                            if (count($unique_tl) == count($unique_rekom) ) {
                                                 echo "
                                                     <i class='fe fe-check-circle text-success'></i><br />
                                                     <span class='badge badge-success text-light'>Tuntas</span>
@@ -294,7 +307,19 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Saldo</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="mb-1 text-danger text-center">
+                                                Rp. 0
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
                                             <strong class="card-title">Kondisi</strong>
@@ -310,7 +335,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <strong class="card-title">Rupiah</strong>
+                                            <strong class="card-title">Nilai Awal Temuan</strong>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="mb-1 text-danger text-center">
@@ -319,7 +344,19 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Saldo</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="mb-1 text-danger text-center">
+                                                Rp. <?= number_format($row->saldo); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
                                             <strong class="card-title">Kondisi</strong>

@@ -12,7 +12,9 @@ include 'app/flash_message.php';
 
 
         $count = count($filebukti);
-        $saldo = $_POST['saldo'];
+        if (isset($_POST['saldo'])) {
+            $saldo = $_POST['saldo'];
+        }
         for ($i=0;$i<$count;$i++) {
 
             // cek apakah tidak ada dokumen yang di upload

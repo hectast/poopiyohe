@@ -47,13 +47,20 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                 </td>
                 <td>
                     <?php
-                    if (empty($cek)) {
-                    ?>
-                        <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
-                    <?php
+                    if (isset($row_nilai['pion'])) {
+                        $cek = $row_nilai['pion'];
+                        if (empty($cek)) {
+                        ?>
+                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i>Beri Nilai</a>
+                        <?php
+                        } else {
+                        ?>
+                            <?= tgl_indo($row_nilai['tgl_nilai']) ?>
+                        <?php
+                        }
                     } else {
-                    ?>
-                        <?= tgl_indo($row_nilai['tgl_nilai']) ?>
+                        ?>
+                        <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i>Beri Nilai</a>
                     <?php
                     }
                     ?>
@@ -106,12 +113,12 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                         <?php
                         } else {
                         ?>
-                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
+                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i>Beri Nilai</a>
                         <?php
                         }
                     } else {
                         ?>
-                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i> Nilai</a>
+                            <a href="detail_penilaian/<?= $row->id_penugasan; ?>" class="btn btn-sm btn-primary"><i class="fe fe-edit"></i>Beri Nilai</a>
                         <?php
                     }
                     ?>

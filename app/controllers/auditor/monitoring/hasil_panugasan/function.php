@@ -96,9 +96,9 @@ function tampil_data_belumreview($mysqli)
     <?php
     }
 }
-function tampil_data_sudahreview($mysqli)
+function tampil_data_tuntas($mysqli)
 {
-    $querx = "SELECT * FROM penugasan WHERE status = 'Sudah Direview' ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
     $result = $mysqli->query($querx);
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
@@ -130,23 +130,6 @@ function tampil_data_sudahreview($mysqli)
             <td><?= $row['uraian_penugasan']; ?></td>
             <td><?= $row['jenis_penugasan'] ?></td>
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
-            <td>
-                <?php
-                if ($row['status'] == 'Belum Direview') {
-                ?>
-                    <small class="badge badge-danger"><?= $row['status']; ?></small>
-                <?php
-                } else if ($row['status'] == 'Sudah Direview') {
-                ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
-                <?php
-                } else {
-                ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
-                <?php
-                }
-                ?>
-            </td>
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fe fe-settings"></span>

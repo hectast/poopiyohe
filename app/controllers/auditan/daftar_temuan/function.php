@@ -1,4 +1,5 @@
 <?php
+// error_reporting(0);
 function tgl_indo($tanggal)
 {
     $bulan = array(
@@ -45,36 +46,32 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                 <td>
                     <?php while ($row_temuan_iv = $sql_temuan_iv->fetch_object()) : ?>
                         <?php
-                        $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan_iv->id_temuan'");
+                        $sql_data_rekomendasi_iv = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan_iv->id_temuan'");
                         ?>
-                        <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
+                        <?php while ($row_data_rekomendasi_iv = $sql_data_rekomendasi_iv->fetch_object()) : ?>
                             <?php
-                            $array_data_rekomendasi[] = $row_data_rekomendasi->id_rekomendasi;
-                            $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
+                            $array_data_rekomendasi_iv[] = $row_data_rekomendasi_iv->id_rekomendasi;
+                            $sql_tindak_lanjut_iv = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi_iv->id_rekomendasi'");
                             ?>
-                            <?php while ($row_tindak_lanjut = $sql_tindak_lanjut->fetch_object()) : ?>
+                            <?php while ($row_tindak_lanjut_iv = $sql_tindak_lanjut_iv->fetch_object()) : ?>
                                 <?php
-                                $array[] = $row_tindak_lanjut->id_rekomendasi;
+                                $array_iv[] = $row_tindak_lanjut_iv->id_rekomendasi;
                                 ?>
                             <?php endwhile; ?>
                         <?php endwhile; ?>
                     <?php endwhile; ?>
 
                     <?php
-                    $napa_dia_rekom = array_unique($array_data_rekomendasi);
-                    $napa_dia = array_unique($array);
-                    // echo "<pre>";
-                    // print_r($napa_dia_rekom);
-                    // print_r($napa_dia);
-                    // print_r(count($napa_dia_rekom));
-                    // echo "<br>";
-                    // print_r(count($napa_dia));
-                    // echo "</pre>";
-
-                    if (count($napa_dia) == count($napa_dia_rekom)) {
-                        echo "<small class='badge badge-success'>Tuntas</small>";
-                    } else if (count($napa_dia) < count($napa_dia_rekom)) {
-                        echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                    if (isset($array_tl_iv) && isset($array_data_rekomendasi_iv)) {
+                        $rekom_iv = array_unique($array_data_rekomendasi_iv);
+                        $tl_iv = array_unique($array_tl_iv);
+                        if (count($tl_iv) == count($rekom_iv)) {
+                            echo "<small class='badge badge-success'>Tuntas</small>";
+                        } else if (count($tl_iv) < count($rekom_iv)) {
+                            echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                        } else {
+                            echo "<small class='badge badge-danger'>Belum TL</small>";
+                        }
                     } else {
                         echo "<small class='badge badge-danger'>Belum TL</small>";
                     }
@@ -101,10 +98,37 @@ function tampil_data($id_instansi, $base_url, $mysqli)
             echo "";
         ?>
             <tr>
-                <td><?= $no; ?></td>
+                <td><?= $no; ?> </td>
+                <td><?= $row_penugasan_opd->no_st ?></td>
                 <td><?= isset($row_temuan_opd2->no_laporan) ? $row_temuan_opd2->no_laporan : "<small><i>Temuan belum di input.</i></small>"; ?></td>
                 <td><?= isset($row_temuan_opd2->tgl_laporan) ? tgl_indo($row_temuan_opd2->tgl_laporan) : "<small><i>Temuan belum di input.</i></small>"; ?></td>
                 <td><?= $row_penugasan_opd->uraian_penugasan; ?></td>
+                <td><?php
+                if(isset($row_temuan_opd2->id_temuan)){ 
+                $id_tugas = $row_temuan_opd2->id_penugasan;
+                $sql_jumlah = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan ='$id_tugas'");
+                echo mysqli_num_rows($sql_jumlah);
+                }else{
+                    echo 0;
+                }           
+                ?> Temuan</td>
+                <td>Rp. <?php
+                if(isset($row_temuan_opd2->id_temuan)){ 
+                    $id_tugas = $row_temuan_opd2->id_penugasan;
+                    $sql_nominal = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '$id_tugas'");
+                   
+                    while( $row_nominal = $sql_nominal->fetch_assoc()){
+                       if(empty($row_nominal['isirupiah'])){
+                           $row_nominal['isirupiah'] =0;
+                       }
+                        $ttl = 0;
+                       $ttl += $row_nominal['isirupiah'];
+                       echo ltrim(number_format($ttl),'0');
+                    }
+                }else{
+                    echo 0;
+                }           
+                ?></td>
                 <td>
                     <?php
                         $sql_temuan_opd = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='$row_penugasan_opd->id_penugasan'");
@@ -151,7 +175,10 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                         <a href="<?= $base_url; ?>detail_temuan/<?= $row_penugasan_opd->id_penugasan; ?>" class="dropdown-item"><i class="fe fe-search"></i> Detail Penugasan</a>
                     </div>
                     <?php else : ?>
-                        <small><i>Aksi belum bisa dilakukan.</i></small>
+                        <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fe fe-slash"></span>
+                    </button>
+                    
                     <?php endif; ?>
                 </td>
             </tr>

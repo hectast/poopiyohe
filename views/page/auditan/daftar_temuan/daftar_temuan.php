@@ -55,10 +55,13 @@ $id_instansi = $_SESSION['id'];
                         <table class="table datatables" id="dataTable-1" >
                             <thead class="thead-light">
                                 <tr>
-                                    <th width="5%">No</th>                    
+                                    <th width="2%">No</th>     
+                                    <th>No. ST</th>               
                                     <th>Nomor Laporan</th>                    
                                     <th>Tanggal Laporan</th>                    
-                                    <th width="45%">Uraian Penugasan</th>
+                                    <th>Uraian Penugasan</th>
+                                    <th>Jumlah Temuan</th>
+                                    <th>Nominal</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>

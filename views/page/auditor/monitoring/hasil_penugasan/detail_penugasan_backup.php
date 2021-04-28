@@ -405,6 +405,14 @@ if (mysqli_num_rows($result) > 0) {
         ?>
 
         <?php
+        if ($row_penugasan['status'] == 'Belum Direview') {
+        ?>
+            <form action="<?= $base_url ?>/monitoring_hasil_penugasan" method="post">
+                <input type="hidden" name="id_penugasan" value="<?= $row_penugasan['id_penugasan']; ?>">
+                <button type="submit" name="review_data" class="btn btn-primary"> <i class="fe fe-clipboard"></i> Review Data</button>
+            </form>
+            <?php
+        } else if ($row_penugasan['status'] == 'Sudah Direview') {
 
             $sql_cektuntas = "SELECT * FROM surat_tuntas WHERE id_penugasan = '$row_penugasan[id_penugasan]'";
             $tuntas = $mysqli->query($sql_cektuntas);
@@ -448,8 +456,70 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
                 <!-- modals -->
+
+
+
+
+            <?php
+            } else {
+                $query_surat = "SELECT * FROM surat_tuntas WHERE id_penugasan = {$row_penugasan['id_penugasan']}";
+                $result_surat = $mysqli->query($query_surat);
+                $row_surat = mysqli_fetch_assoc($result_surat);
+                $cek_surat = mysqli_num_rows($result_surat);
+                // echo "<center>";
+                // print_r($cek_surat);
+                // echo "</center>";
+                if ($cek_surat > 0) {
+                    $filesurat = $row_surat['surat_tuntas'];
+                }
+            ?>
+
+                <form class="mb-5" action="<?= $base_url ?>monitoring_hasil_penugasan" method="POST">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalsurat"><i class="fe fe-eye"></i> Lihat Surat Tuntas</button>
+                    <!-- modals2 -->
+                    <div class="modal fade" id="modalsurat" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="defaultModalLabel"><i class="fe fe-mail"></i> Surat Tuntas </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                    <table class="table table-borderless" border="0">
+                                        <tr>
+                                            <td>Nomor Surat</td>
+                                            <td>:</td>
+                                            <td><?= $row_surat['nomor_surat']  ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal Surat</td>
+                                            <td>:</td>
+                                            <td><?= tgl_indo($row_surat['tgl_surat']);  ?></td>
+                                        </tr>
+                                        <tr>
+
+                                            <td colspan="3"><object data="<?= $base_url ?>assets/uploads/surat_tuntas/<?= $filesurat ?>" width="100%" height="500"></object></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- modals2 -->
+                    <input type="hidden" name="id_penugasan" value="<?= $row_penugasan['id_penugasan'] ?>">
+                    <button type="submit" name="teruskan_data" class="btn btn-secondary"> <i class="fe fe-send"></i> Teruskan Ke Korwas dan Dalnis</button>
+                </form>
+
+
         <?php
             }
+        }
         ?>
         </div> <!-- .container-fluid -->
     </main> <!-- main -->
