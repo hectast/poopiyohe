@@ -22,7 +22,7 @@ if (isset($_POST['addpenugasan'])) {
     $auditan_opd    = $_POST['opd'];
  
     
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1','Belum TL')");
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1','Belum Diusulkan')");
 
     $auditor = $_POST['auditor'];
     $peran = $_POST['peran'];

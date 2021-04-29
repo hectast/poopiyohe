@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
 
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="<?= $base_url ?>/detail_temuan/<?= $row_data_temuan->id_penugasan ?>" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id_temuan" value="<?= $row_data_rekomendasi->id_temuan; ?>">
                                 <input type="hidden" name="id_rekomendasi" value="<?= $row_data_rekomendasi->id_rekomendasi; ?>">
                                 <div class="row">

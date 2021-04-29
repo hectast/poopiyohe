@@ -1,4 +1,5 @@
 <?php
+include 'app/controllers/auditan/tindak_lanjut/function.php';
 include 'app/flash_message.php';
     if (isset($_POST['tindak_lanjut']) and $_SERVER['REQUEST_METHOD'] == "POST") {
         $id_temuan = $_POST['id_temuan'];
@@ -71,6 +72,12 @@ include 'app/flash_message.php';
     
     $stmt_update_saldo = $mysqli->prepare("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$id_temuan'");
     $stmt_update_saldo->execute();
-    flash("msg_tl","Rekomendasi Sudah Ditindak Lanjuti");
+?>
+    <script>
+        document.location.href = '<?= $base_url ?>detail_temuan/<?= $row_data_temuan->id_penugasan ?>';
+        alert('Rekomendasi berhasil diusulkan');
+        document.location.href = '<?= $base_url ?>detail_temuan/<?= $row_data_temuan->id_penugasan ?>';
+    </script>
+<?php
     }
 ?>

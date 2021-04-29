@@ -102,9 +102,9 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Beranda";
         $fortitle = "Monitoring - Beranda";
         $title = $fortitle . " | PO'OPIYOHE";
-    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_hasil_penugasan") {
-        $page = "Detail Penugasan";
-        $fortitle = "Monitoring - Hasil Penugasan";
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_tindak_lanjut") {
+        $page = "Tindak Lanjut";
+        $fortitle = "Monitoring - Tindak Lanjut";
         $title = $fortitle . " | PO'OPIYOHE";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_data_penugasan") {
         $page = "Data Penugasan";
@@ -122,9 +122,13 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Detail Penugasan";
         $fortitle = "Monitoring - Lihat Detail Penugasan";
         $title = $fortitle . " | PO'OPIYOHE";
-    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_detail_penugasan") {
-        $page = "Detail Penugasan";
-        $fortitle = "Monitoring - Detail Penugasan";
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_detail_tl") {
+        $page = "Detail Tindak Lanjut";
+        $fortitle = "Monitoring - Detail Tindak Lanjut";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_cek_tl") {
+        $page = "Cek Tindak Lanjut";
+        $fortitle = "Monitoring - Cek Tindak Lanjut";
         $title = $fortitle . " | PO'OPIYOHE";
     }
 } else if ($akses === 2) {
@@ -244,10 +248,12 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
 } else if ($akses === 1 && isset($_GET['views_monitoring'])) {
     if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "beranda_monitoring") {
         include 'views/page/auditor/monitoring/beranda.php';
-    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_hasil_penugasan") {
-        include 'views/page/auditor/monitoring/hasil_penugasan/hasil_penugasan.php';
-    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_detail_penugasan") {
-        include 'views/page/auditor/monitoring/hasil_penugasan/detail_penugasan.php';
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_tindak_lanjut") {
+        include 'views/page/auditor/monitoring/tindak_lanjut/hasil_penugasan.php';
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_detail_tl") {
+        include 'views/page/auditor/monitoring/tindak_lanjut/detail_penugasan.php';
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_cek_tl") {
+        include 'views/page/auditor/monitoring/tindak_lanjut/cek_tl.php';
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_data_penugasan") {
         include 'views/page/auditor/monitoring/data_penugasan/datapenugasan.php';
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_tambah_penugasan") {

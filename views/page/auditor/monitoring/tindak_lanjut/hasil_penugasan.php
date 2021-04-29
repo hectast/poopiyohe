@@ -37,7 +37,7 @@
                 <div class="card shadow mb-4">
 
                     <div class="card-header">
-                        <strong class="card-title">Daftar <?= $page; ?></strong>
+                        <strong class="card-title">Daftar Penugasan Untuk <?= $page; ?></strong>
                     </div>
 
                     <div class="card-body">
@@ -50,13 +50,13 @@
                                     <th>Uraian Penugasan</th>
                                     <th>Jenis Penugasan</th>
                                     <th>Ket</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    tampil_data_tuntas($mysqli);
+                                    tampil_data($mysqli);
                                 ?>
                             </tbody>
                         </table>

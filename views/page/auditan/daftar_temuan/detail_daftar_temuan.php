@@ -3,7 +3,7 @@ $sql = "SELECT * FROM temuan WHERE id_penugasan='{$_GET['id']}'";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
-include 'app/controllers/auditan/tindak_lanjut/post.php';
+include 'app/flash_message.php';
 if (mysqli_num_rows($result) > 0) {
     $sql_penugasan = "SELECT * FROM penugasan WHERE id_penugasan='{$_GET['id']}'";
     $stmt_penugasan = $mysqli->prepare($sql_penugasan);
@@ -38,19 +38,6 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     <main role="main" class="main-content">
         <div class="container-fluid">
-
-            <?php
-            if (isset($_SESSION['msg_tl'])) {
-            ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span class="fe fe-check fe-16 mr-2"></span> <?= flash('msg_tl'); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php
-            }
-            ?>
 
             <div class="row">
                 <div class="col-12">
@@ -183,51 +170,39 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="col-md-12 text-center">
                                     <h4 class="mb-1">
                                         <?php
-                                        $sql_tmn = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$_GET['id']}'");
-                                        ?>
-                                        <?php while ($row_temuan = $sql_tmn->fetch_object()) : ?>
-                                            <?php
-                                            $sql_data_rekom = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
-                                            ?>
-                                            <?php while ($row_data_rekom = $sql_data_rekom->fetch_object()) : ?>
-                                                <?php
-                                                $array_rekom[] = $row_data_rekom->id_rekomendasi;
-                                                $sql_tl = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekom->id_rekomendasi'");
-                                                ?>
-                                                <?php while ($row_tl = $sql_tl->fetch_object()) : ?>
-                                                    <?php
-                                                    $array_tl[] = $row_tl->id_rekomendasi;
-                                                    ?>
-                                                <?php endwhile; ?>
-                                            <?php endwhile; ?>
-                                        <?php endwhile; ?>
+                                            $stmttmn = $mysqli->prepare("SELECT * FROM temuan WHERE id_penugasan='{$row_penugasan['id_penugasan']}'");
+                                            $stmttmn->execute();
+                                            $rslttmn = $stmttmn->get_result();
+                                            while($rwstmn = $rslttmn->fetch_assoc()) {
 
-                                        <?php
-                                        if (isset($array_tl) && isset($array_rekom)) {
-                                            $unique_rekom = array_unique($array_rekom);
-                                            $unique_tl = array_unique($array_tl);
-                                            if (count($unique_tl) == count($unique_rekom) ) {
+                                                $stmt_tndklnjt = $mysqli->prepare("SELECT * FROM tindak_lanjut WHERE id_temuan='{$rwstmn['id_temuan']}'");
+                                                $stmt_tndklnjt->execute();
+                                                $rslt_tndklnjt = $stmt_tndklnjt->get_result();
+                                                while ($rws_tndklnjt = $rslt_tndklnjt->fetch_assoc()){
+                                                    $idtmn[] = $rws_tndklnjt['id_temuan'];
+                                                }
+                                            }
+
+                                            if(isset($idtmn)) {
+                                                if (count($idtmn) > 0) {
+                                                    $sql_status_tl = $mysqli->prepare("UPDATE penugasan SET status_tl='Sudah Diusulkan' WHERE id_penugasan='{$row_penugasan['id_penugasan']}'");
+                                                    $sql_status_tl->execute();
+                                                }
+                                            }
+
+                                            // echo $asdasd;
+
+                                            if ($row_penugasan['status_tl'] == "Sudah Diusulkan") {
                                                 echo "
-                                                    <i class='fe fe-check-circle text-success'></i><br />
-                                                    <span class='badge badge-success text-light'>Tuntas</span>
-                                                ";
-                                            } else if (count($unique_tl) < count($unique_rekom)) {
-                                                echo "
-                                                    <i class='fe fe-alert-circle text-warning'></i><br />
-                                                    <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
+                                                    <i class='fe fe-edit text-success'></i><br />
+                                                    <span class='badge badge-success text-light'>Sudah Mengusulkan</span>
                                                 ";
                                             } else {
                                                 echo "
                                                     <i class='fe fe-x-circle text-danger'></i><br />
-                                                    <span class='badge badge-danger text-light'>Belum TL</span>
+                                                    <span class='badge badge-danger text-light'>Belum Mengusulkan</span>
                                                 ";
                                             }
-                                        } else {
-                                            echo "
-                                                <i class='fe fe-x-circle text-danger'></i><br />
-                                                <span class='badge badge-danger text-light'>Belum TL</span>
-                                            ";
-                                        }
                                         ?>
                                     </h4>
                                 </div>
@@ -298,7 +273,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <strong class="card-title">Rupiah</strong>
+                                            <strong class="card-title">Nilai Awal Temuan</strong>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="mb-1 text-success text-center">
@@ -508,14 +483,14 @@ if (mysqli_num_rows($result) > 0) {
                                                 if (mysqli_num_rows($sql_tindak_lanjut) > 0) {
                                             ?>
                                                     <div class="col-md-4">
-                                                        <div class="card shadow bg-success text-center mb-3">
+                                                        <div class="card shadow bg-warning text-center mb-3">
                                                             <div class="card-body p-4">
-                                                                <span class="circle circle-md bg-success-light">
-                                                                    <i class="fe fe-check fe-24 text-white"></i>
+                                                                <span class="circle circle-md bg-warning-light">
+                                                                    <i class="fe fe-loader fe-24 text-white"></i>
                                                                 </span>
                                                                 <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                 <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a>
+                                                                <a href="javascript:void(0)" class="btn bg-warning-light text-white" style="cursor:unset;">Tindak lanjut sudah diusulkan</a>
                                                             </div> <!-- .card-body -->
                                                         </div> <!-- .card -->
                                                     </div>

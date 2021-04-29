@@ -96,9 +96,9 @@ function tampil_data_belumreview($mysqli)
     <?php
     }
 }
-function tampil_data_tuntas($mysqli)
+function tampil_data($mysqli)
 {
-    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan WHERE status_tl='Sudah Diusulkan' ORDER BY id_penugasan DESC";
     $result = $mysqli->query($querx);
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
@@ -131,12 +131,29 @@ function tampil_data_tuntas($mysqli)
             <td><?= $row['jenis_penugasan'] ?></td>
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
+                <?php
+                if ($row['status_tl'] == 'Belum Direview') {
+                ?>
+                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Sudah Direview') {
+                ?>
+                    <small class="badge badge-success"><?= $row['status']; ?></small>
+                <?php
+                } else if($row['status'] == 'Belum Divalidasi') {
+                ?>
+                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                <?php
+                }
+                ?>
+            </td>
+            <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fe fe-settings"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
-                    <a href="monitoring_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                    <a href="monitoring_detail_tl/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
     
                 </div>
             </td>
