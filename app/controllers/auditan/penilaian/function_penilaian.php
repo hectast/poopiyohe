@@ -55,6 +55,7 @@ function tampil_daftar_tugas($id_instansi, $mysqli)
                         <?php
                         } else {
                         ?>
+                            <a href="edit_nilai/<?= $row->id_penugasan; ?>" class="fe fe-edit"></a>
                             <?= tgl_indo($row_nilai['tgl_nilai']) ?>
                         <?php
                         }
