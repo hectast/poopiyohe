@@ -28,13 +28,13 @@ $row = mysqli_fetch_assoc($result);
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>No. ST</label>
-                                        <input name="no_st" value="<?= $row['no_st'] ?>" type="text" class="form-control">
+                                        <input name="no_st" value="<?= $row['no_st'] ?>" type="text" class="form-control" required>
                                         <input type="hidden" name="status" value="<?= $row['status'] ?>">
                                         <input type="hidden" name="idid" value="<?= $id ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Uraian Penugasan</label>
-                                        <input name="nama_penugasan" value="<?= $row['uraian_penugasan'] ?>" type="text" class="form-control">
+                                        <input name="nama_penugasan" value="<?= $row['uraian_penugasan'] ?>" type="text" class="form-control" required>
                                     </div>
                                     <div class="row_jp mt-4">
                                         <select class="form-control jenpen" name="d1">
@@ -51,7 +51,7 @@ $row = mysqli_fetch_assoc($result);
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Tgl. ST</label>
-                                        <input name="tgl_st" type="date" class="form-control" value="<?= $row['tgl_st'] ?>">
+                                        <input name="tgl_st" type="date" class="form-control" value="<?= $row['tgl_st'] ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row_jp">
@@ -205,9 +205,9 @@ $row = mysqli_fetch_assoc($result);
                                                 <div class="form-group">
                                                     <select name="peran[]" id="" class="select-peran custom-select">
                                                         <option value="" hidden>-Pilih Peran-</option>
-                                                        <option value="Ketua Tim">Ketua Tim</option>
-                                                        <option value="Pengendali Teknis">Pengendali Teknis</option>
                                                         <option value="Pembantu Penanggung Jawab">Pembantu Penanggung Jawab</option>
+                                                        <option value="Pengendali Teknis">Pengendali Teknis</option>
+                                                        <option value="Ketua Tim">Ketua Tim</option>
                                                         <option value="Anggota Tim">Anggota Tim</option>
                                                     </select>
                                                 </div>
@@ -236,9 +236,9 @@ $row = mysqli_fetch_assoc($result);
                                                     <div class="form-group">
                                                         <select name="peran[]" id="" class="select-peran custom-select">
                                                             <option value="" hidden>-Pilih Peran-</option>
-                                                            <option value="Ketua Tim">Ketua Tim</option>
-                                                            <option value="Pengendali Teknis">Pengendali Teknis</option>
                                                             <option value="Pembantu Penanggung Jawab">Pembantu Penanggung Jawab</option>
+                                                            <option value="Pengendali Teknis">Pengendali Teknis</option>
+                                                            <option value="Ketua Tim">Ketua Tim</option>
                                                             <option value="Anggota Tim">Anggota Tim</option>
                                                         </select>
                                                     </div>

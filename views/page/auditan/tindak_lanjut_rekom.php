@@ -94,16 +94,22 @@ if (mysqli_num_rows($result) > 0) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Nominal TL</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Rp.</span>
+                                    <?php
+                                        if ($nonrp != "Non Rupiah") {
+                                    ?>
+                                        <div class="form-group">
+                                            <label>Nominal TL</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Rp.</span>
+                                                </div>
+                                                <input class="form-control" name="nominal_tl[]" type="number">
+                                                <small></small>
                                             </div>
-                                            <input class="form-control" name="nominal_tl[]" type="number">
-                                            <small></small>
                                         </div>
-                                    </div>
+                                    <?php
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label>Upload Bukti</label>
                                         <input type="file" name="filebukti[]" class="form-control-file">
@@ -140,6 +146,7 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
+                                <?php if ($nonrp != "Non Rupiah") : ?>
                                 <div class="form-group">                                
                                     <label>Nominal TL</label>
                                     <div class="input-group mb-3">
@@ -149,6 +156,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <input class="form-control input-money" name="nominal_tl[]" type="text">
                                     </div>
                                 </div>
+                                <?php endif; ?>
                                 <div class="form-group">
                                     <label>Upload Bukti</label>
                                     <input type="file" class="form-control-file" name="filebukti[]">

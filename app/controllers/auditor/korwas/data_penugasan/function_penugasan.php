@@ -230,7 +230,6 @@ function detail($id_tampil, $mysqli)
                             </tr>
                         <?php
                         }
-
                         ?>
                     </tbody>
                 </table>

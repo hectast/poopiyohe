@@ -3,6 +3,18 @@ include 'app/controllers/auditor/korwas/data_penugasan/function_penugasan.php';
 include 'app/flash_message.php';
 error_reporting(0);
 if (isset($_POST['addpenugasan'])) {
+    $stmt_pngsn = $mysqli->prepare("SELECT * FROM penugasan WHERE no_st='{$_POST['no_st']}'");
+    $stmt_pngsn->execute();
+    $rslt_pngsn = $stmt_pngsn->get_result();
+    if (mysqli_num_rows($rslt_pngsn) > 0) {
+    ?>
+        <script>
+            alert('Maaf, No. ST yang anda masukkan sudah ada !');
+            document.location.href = 'korwas_tambah_penugasan';
+        </script>
+    <?php
+        return false;
+    }
     $no_st          = $_POST['no_st'];
     $nama_penugasan = $_POST['nama_penugasan'];
     $tgl_st         = $_POST['tgl_st'];
