@@ -158,7 +158,7 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="col-md-12 text-center">
                                 <h4 class="mb-1">
                                     <i class='fe fe-x-circle text-danger'></i><br />
-                                    <span class='badge badge-danger text-light'>Belum TL</span>
+                                    <span class='badge badge-danger text-light'>Statis</span>
                                 </h4>
                             </div>
                         </div>
@@ -286,7 +286,87 @@ if (mysqli_num_rows($result) > 0) {
 
                         <h4>
                             <i class="fe fe-search text-primary"></i> Temuan <?= $no; ?>
+                            <?php
+                            $sql_dtrkmnds = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                            $sql_tndklnjt = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_temuan='$row_temuan->id_temuan'");
+                            $sql_tndklnjt_tnts = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_temuan='$row_temuan->id_temuan' AND status='Tuntas'");
+                            $sql_tndklnjt_tnts_sbgn = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_temuan='$row_temuan->id_temuan' AND status='Tuntas Sebagian'");
+                            $sql_tndklnjt_blm_tnts = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_temuan='$row_temuan->id_temuan' AND status='Belum Tuntas'");
+
+                            if (mysqli_num_rows($sql_tndklnjt) > 0) {
+                                $rws_dtrkmnds = $sql_dtrkmnds->fetch_object();
+                                $sql_tndklnjt2 = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_temuan='$row_temuan->id_temuan' AND status != ''");
+                                while ($rws_tndklnjt2 = $sql_tndklnjt2->fetch_object()) {
+                                //    echo "<br>"; echo $rws_tndklnjt2->id_rekomendasi;echo"<br> ";
+                                    $arr_tndklnjt2[] = $rws_tndklnjt2->id_rekomendasi;
+                                }
+                                $sql_dtrkmnds2 = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                                while ($rws_dtrkmnds2 = $sql_dtrkmnds2->fetch_object()) {
+                                    $arr_dtrkmnds2[] = $rws_dtrkmnds2->id_temuan;
+                                }
+                                // echo "<br>"  . print_r($arr_tndklnjt2);
+                                // echo "<br>" . count($arr_dtrkmnds2) . " - " . count(array_unique($arr_tndklnjt2));
+                                // echo "<br>" . $row_temuan->id_temuan . " - " . $rws_dtrkmnds->id_rekomendasi;
+                                if(empty($arr_tndklnjt2)){
+                                    ?>
+                                    <span class="badge badge-warning text-light">KONTOL</span>
+                                <?php 
+                                }else{
+                                    if (count($arr_dtrkmnds2) > count(array_unique($arr_tndklnjt2))) {
+                                    
+                                            ?>
+                                            <span class="badge badge-warning text-light">Tuns Sebagian</span>
+                                        <?php
+                        
+                                        if (mysqli_num_rows($sql_tndklnjt_tnts) > 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) == 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) == 0) {
+                                            while ($rws_tndklnjt = $sql_tndklnjt->fetch_assoc()) {
+                                                $stts_tl[] = $rws_tndklnjt['status'];
+                                            }
+                                            if (in_array("", $stts_tl)) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">Tuntas Sebagian</span>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <span class="badge badge-success text-light">Tuntas</span>
+                                            <?php
+                                            }
+                                        } else if (mysqli_num_rows($sql_tndklnjt_tnts) > 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) > 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) == 0) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">tuntas sebagian</span>
+                                            <?php
+                                        } else if (mysqli_num_rows($sql_tndklnjt_tnts) > 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) == 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) > 0) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">tuntas sebagian</span>
+                                            <?php
+                                        } else if (mysqli_num_rows($sql_tndklnjt_tnts) == 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) > 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) == 0) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">tuntas sebagian</span>
+                                            <?php
+                                        } else if (mysqli_num_rows($sql_tndklnjt_tnts) == 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) > 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) > 0) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">tuntas sebagian</span>
+                                            <?php
+                                        } else if (mysqli_num_rows($sql_tndklnjt_tnts) == 0 && mysqli_num_rows($sql_tndklnjt_tnts_sbgn) == 0 && mysqli_num_rows($sql_tndklnjt_blm_tnts) > 0) {
+                                            ?>
+                                                <span class="badge badge-warning text-light">Belum TL</span>
+                                            <?php
+                                        } 
+                                      
+                                        } else {    
+                                           
+                                        }
+
+                                }
+                                
+                            } else {
+                                ?>
+                                <span class="badge badge-danger text-light">Belum TL</span>
+                                <?php
+                            }
+                            ?>
                         </h4>
+
 
                         <div class="row mb-3">
                             <?php if (!is_numeric($row_temuan->isirupiah)) : ?>
@@ -583,7 +663,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
-                                                        <?php
+                                                    <?php
                                                     } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
                                                     ?>
                                                         <div class="col-md-4">
@@ -635,7 +715,7 @@ if (mysqli_num_rows($result) > 0) {
                                                         <?php
                                                         }
                                                     } else {
-                                                    ?>
+                                                        ?>
                                                         <div class="col-md-4">
                                                             <div class="card shadow bg-primary text-center mb-3">
                                                                 <div class="card-body p-4">
