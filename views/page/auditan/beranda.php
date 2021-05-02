@@ -65,7 +65,7 @@ $id_instansi = $_SESSION['id'];
                                                          echo mysqli_num_rows($temuan_opd);
                                                       }
                                                     }
-                                                    ?>                                            
+                                                    ?>                            
                                                 </span>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@ $id_instansi = $_SESSION['id'];
                                                             $saldo = $mysqli->query("SELECT sum(saldo) FROM temuan WHERE id_penugasan = '$row_iv[id_penugasan]'");
                                                             $row_saldo = $saldo->fetch_assoc();
                                                             echo number_format($row_saldo['sum(saldo)']);
-                                                        }  
+                                                        }    
                                                     } else if (mysqli_num_rows($query_opd) > 0) {
                                                        $query_opd = $mysqli->query("SELECT * FROM penugasan WHERE auditan_opd = '$id_instansi'");
                                                        while($row_opdd = $query_opd->fetch_assoc()) {
@@ -101,7 +101,7 @@ $id_instansi = $_SESSION['id'];
                                                            echo number_format($row_saldo['sum(saldo)']);
                                                        }  
                                                     }
-                                                ?>
+                                                ?>  
                                                 </span>
                                             </div>
                                         </div>
