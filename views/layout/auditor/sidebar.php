@@ -42,9 +42,9 @@
                     </a>
                 </li>
                 <li class="nav-item w-100">
-                    <a class="nav-link" href="<?= $base_url; ?>monitoring_hasil_penugasan">
-                        <i class="fe fe-file-text fe-16"></i>
-                        <span class="ml-3 item-text">Hasil Penugasan</span>
+                    <a class="nav-link" href="<?= $base_url; ?>monitoring_tindak_lanjut">
+                        <i class="fe fe-corner-down-right fe-16"></i>
+                        <span class="ml-3 item-text">Tindak Lanjut</span>
                     </a>
                 </li>
             </ul>

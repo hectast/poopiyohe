@@ -27,11 +27,11 @@ include 'app/controllers/auditor/korwas/data_penugasan/post_penugasan.php';
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>No. ST</label>
-                                        <input name="no_st" type="text" class="form-control">
+                                        <input name="no_st" type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Uraian Penugasan</label>
-                                        <input name="nama_penugasan" type="text" class="form-control">
+                                        <input name="nama_penugasan" type="text" class="form-control" required>
                                     </div>
                                     <div class="row_jp mt-4">
                                         <!-- <label>Deputi</label> -->
@@ -44,16 +44,11 @@ include 'app/controllers/auditor/korwas/data_penugasan/post_penugasan.php';
                                             <option value="D5">D5</option>
                                         </select>
                                     </div>
-
-                                    <!-- <div class="form-group">
-
-                                                </div> -->
-
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Tgl. ST</label>
-                                        <input name="tgl_st" type="date" class="form-control">
+                                        <input name="tgl_st" type="date" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row_jp">
@@ -145,9 +140,9 @@ include 'app/controllers/auditor/korwas/data_penugasan/post_penugasan.php';
                                                 <div class="form-group">
                                                     <select name="peran[]" class="select-peran custom-select">
                                                         <option value="" hidden>-Pilih Peran-</option>
-                                                        <option value="Ketua Tim">Ketua Tim</option>
-                                                        <option value="Pengendali Teknis">Pengendali Teknis</option>
                                                         <option value="Pembantu Penanggung Jawab">Pembantu Penanggung Jawab</option>
+                                                        <option value="Pengendali Teknis">Pengendali Teknis</option>
+                                                        <option value="Ketua Tim">Ketua Tim</option>
                                                         <option value="Anggota Tim">Anggota Tim</option>
                                                     </select>
                                                 </div>

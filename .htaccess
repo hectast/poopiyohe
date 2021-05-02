@@ -89,8 +89,9 @@ RewriteRule ^monitoring_data_penugasan$ auditor.php?views_monitoring=monitoring_
 RewriteRule ^monitoring_tambah_penugasan$ auditor.php?views_monitoring=monitoring_tambah_penugasan
 RewriteRule ^monitoring_lihat_penugasan$ auditor.php?views_monitoring=monitoring_lihat_penugasan
 RewriteRule ^monitoring_edit_penugasan$ auditor.php?views_monitoring=monitoring_edit_penugasan
-RewriteRule ^monitoring_hasil_penugasan$ auditor.php?views_monitoring=monitoring_hasil_penugasan
-RewriteRule ^monitoring_detail_penugasan/([0-9]+)$ auditor.php?views_monitoring=monitoring_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^monitoring_tindak_lanjut$ auditor.php?views_monitoring=monitoring_tindak_lanjut
+RewriteRule ^monitoring_detail_tl/([0-9]+)$ auditor.php?views_monitoring=monitoring_detail_tl&id=$1 [NC,L]
+RewriteRule ^monitoring_cek_tl/([0-9]+)/([0-9]+)$ auditor.php?views_monitoring=monitoring_cek_tl&tm=$1&id=$2 [NC,L]
 
 RewriteRule ^beranda$ index.php?views_user=beranda
 

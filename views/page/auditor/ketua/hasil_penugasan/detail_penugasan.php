@@ -537,7 +537,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                 </span>
                                                                 <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                 <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a>
+                                                                <a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a><a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a>
                                                             </div> <!-- .card-body -->
                                                         </div> <!-- .card -->
                                                     </div>

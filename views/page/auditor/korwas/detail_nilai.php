@@ -24,30 +24,25 @@ $id_penugasan = $_GET['id'];
                                 $sql = $query->fetch_assoc();
                                 $in = $sql['auditan_in'];
                                 $opd =  $sql['auditan_opd'];
-                                if (isset($in)) {
+                                if (!empty($in)) {
                                     $instansi = $sql['auditan_in'];
                                     $query_in = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id ='$instansi'");
                                     $row_in = $query_in->fetch_assoc();
                                 ?>
                                     <h4><?= $row_in['nama_instansi']; ?></h4>
-                            
-
                                 <?php
                                 }
-                                if (isset($opd)) {
+                                
+                                if (!empty($opd)) {
                                     $instansi = $sql['auditan_opd'];
                                     $query_opd = $mysqli->query("SELECT * FROM opd WHERE id ='$instansi'");
                                     $row_opd = $query_opd->fetch_assoc();
                                 ?>
                                     <h4><?= $row_opd['nama_instansi'] ?></h4>
                                     <h5><?= $row_opd['nama_pemda'] ?></h5><br>
-                                    
                                 <?php
-
                                 }
-
                                 ?>
-
                                 <table class="table">
                                     <tr>
                                         <td>No. ST</td>
