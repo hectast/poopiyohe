@@ -38,25 +38,23 @@ if (mysqli_num_rows($result) > 0) {
 
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-title">
-                        <a href="<?= $base_url; ?>korwas_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
-                        <?= $page; ?>
-                    </h2>
+                    <h2 class="page-title"><a href="<?= $base_url; ?>korwas_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-7">
-                    <div class="card shadow mb-4">
+
+                <div class="col-md-7 mb-3">
+                    <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Penugasan</strong>
                         </div>
                         <div class="card-body">
-                            <table class="table">
+                            <table class="table mb-1">
                                 <tr>
                                     <td>No.ST</td>
                                     <td>:</td>
-                                    <td><?= $row_penugasan['no_st'] ?></td>
+                                    <td><?= $row_penugasan['no_st']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tgl.ST</td>
@@ -111,14 +109,14 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
 
-                <div class="col-5">
-                    <div class="card shadow mb-4">
+                <div class="col-md-5 mb-3">
+                    <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Auditor (Personel)</strong>
                         </div>
                         <div class="card-body">
                             <table class="table">
-                                <thead>
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nama</th>
                                         <th>Peran</th>
@@ -155,9 +153,11 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                 </div>
-            </div> <!-- .row -->
+
+            </div>
 
             <div class="row">
+
                 <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-header">
@@ -187,6 +187,7 @@ if (mysqli_num_rows($result) > 0) {
                 $stmt_surat_tuntas->execute();
                 $result_surat_tuntas = $stmt_surat_tuntas->get_result();
                 ?>
+
                 <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-header">
@@ -223,6 +224,7 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <?php if (mysqli_num_rows($result_baktl) > 0) : ?>
@@ -322,9 +324,9 @@ if (mysqli_num_rows($result) > 0) {
                                             <strong class="card-title">Kondisi</strong>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="mb-1 text-danger">
+                                            <h6 class="mb-1 text-danger">
                                                 <?= $row_temuan->kondisi; ?>
-                                            </h5>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -359,9 +361,9 @@ if (mysqli_num_rows($result) > 0) {
                                             <strong class="card-title">Kondisi</strong>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="mb-1 text-danger">
+                                            <h6 class="mb-1 text-danger">
                                                 <?= $row_temuan->kondisi; ?>
-                                            </h5>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -509,7 +511,7 @@ if (mysqli_num_rows($result) > 0) {
                                                             $status_tl[] = $rws_tindak_lanjut['status'];
                                                         }
                                                         if (in_array("", $status_tl)) {
-                                            ?>
+                                                        ?>
                                                             <div class="col-md-4">
                                                                 <div class="card shadow bg-warning text-center mb-3">
                                                                     <div class="card-body p-4">
@@ -518,7 +520,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                         </span>
                                                                         <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                         <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                        <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                     </div> <!-- .card-body -->
                                                                 </div> <!-- .card -->
                                                             </div>
@@ -533,7 +535,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                         </span>
                                                                         <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                         <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-success-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                        <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-success-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                     </div> <!-- .card-body -->
                                                                 </div> <!-- .card -->
                                                             </div>
@@ -549,7 +551,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                     <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
@@ -564,7 +566,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                     <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
@@ -579,7 +581,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                     <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
@@ -594,7 +596,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                     <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
@@ -613,7 +615,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                         </span>
                                                                         <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                         <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                        <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                     </div> <!-- .card-body -->
                                                                 </div> <!-- .card -->
                                                             </div>
@@ -628,7 +630,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                         </span>
                                                                         <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                         <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-danger-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                        <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-danger-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                     </div> <!-- .card-body -->
                                                                 </div> <!-- .card -->
                                                             </div>
@@ -644,7 +646,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                     <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>monitoring_cek_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <a href="<?= $base_url; ?>korwas_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
@@ -674,9 +676,10 @@ if (mysqli_num_rows($result) > 0) {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
+
                 <?php $no++; ?>
             <?php endwhile; ?>
 

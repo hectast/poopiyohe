@@ -32,7 +32,7 @@ function tampil_data($idFromSA, $peran, $mysqli)
     while ($rowPA = $resultPA->fetch_assoc()) {
         $idP = $rowPA['id_penugasan'];
 
-        $querx = "SELECT * FROM penugasan WHERE id_penugasan='{$idP}' AND status='Belum Divalidasi' OR status='Sudah Divalidasi'";
+        $querx = "SELECT * FROM penugasan WHERE id_penugasan='{$idP}'";
         $result = $mysqli->query($querx);
         while ($row = mysqli_fetch_assoc($result)) {
             $tkn = 'sam_san_tech)';

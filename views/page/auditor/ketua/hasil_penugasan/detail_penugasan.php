@@ -1,5 +1,4 @@
 <?php
-
 $sql = "SELECT * FROM penugasan WHERE id_penugasan='{$_GET['id']}'";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
@@ -36,27 +35,26 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     <main role="main" class="main-content">
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-title">
-                        <a href="<?= $base_url; ?>ketua_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a>
-                        <?= $page; ?>
-                    </h2>
+                    <h2 class="page-title"><a href="<?= $base_url; ?>dalnis_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
-            <div class="row mb-3">
 
-                <div class="col-7">
-                    <div class="card shadow">
+            <div class="row">
+
+                <div class="col-md-7 mb-3">
+                    <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Penugasan</strong>
                         </div>
                         <div class="card-body">
-                            <table class="table">
+                            <table class="table mb-1">
                                 <tr>
                                     <td>No.ST</td>
                                     <td>:</td>
-                                    <td><?= $row_penugasan['no_st'] ?></td>
+                                    <td><?= $row_penugasan['no_st']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tgl.ST</td>
@@ -110,14 +108,15 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
-                    <div class="card shadow">
+
+                <div class="col-md-5 mb-3">
+                    <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Auditor (Personel)</strong>
                         </div>
                         <div class="card-body">
                             <table class="table">
-                                <thead>
+                                <thead class="thead-light">
                                     <tr>
                                         <th>Nama</th>
                                         <th>Peran</th>
@@ -151,16 +150,15 @@ if (mysqli_num_rows($result) > 0) {
                                     ?>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
-
                 </div>
-            </div> <!-- .row -->
 
-            <div class="row mb-3">
+            </div>
 
-                <div class="col-md-6">
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Status</strong>
@@ -169,53 +167,8 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="row justify-content-center">
                                 <div class="col-md-12 text-center">
                                     <h4 class="mb-1">
-                                        <?php
-                                        $sql_tmn = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$row_penugasan['id_penugasan']}'");
-                                        ?>
-                                        <?php while ($row_tmn = $sql_tmn->fetch_object()) : ?>
-                                            <?php
-                                            $sql_data_rekom = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_tmn->id_temuan'");
-                                            ?>
-                                            <?php while ($row_data_rekom = $sql_data_rekom->fetch_object()) : ?>
-                                                <?php
-                                                $array_rekom[] = $row_data_rekom->id_rekomendasi;
-                                                $sql_tl = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekom->id_rekomendasi'");
-                                                ?>
-                                                <?php while ($row_tl = $sql_tl->fetch_object()) : ?>
-                                                    <?php
-                                                    $array_tl[] = $row_tl->id_rekomendasi;
-                                                    ?>
-                                                <?php endwhile; ?>
-                                            <?php endwhile; ?>
-                                        <?php endwhile; ?>
-
-                                        <?php
-                                        if (isset($array_tl) && isset($array_rekom)) {
-                                            $unique_rekom = array_unique($array_rekom);
-                                            $unique_tl = array_unique($array_tl);
-                                            if (count($unique_tl) == count($unique_rekom)) {
-                                                echo "
-                                                    <i class='fe fe-check-circle text-success'></i><br />
-                                                    <span class='badge badge-success text-light'>Tuntas</span>
-                                                ";
-                                            } else if (count($unique_tl) < count($unique_rekom)) {
-                                                echo "
-                                                    <i class='fe fe-alert-circle text-warning'></i><br />
-                                                    <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
-                                                ";
-                                            } else {
-                                                echo "
-                                                    <i class='fe fe-x-circle text-danger'></i><br />
-                                                    <span class='badge badge-danger text-light'>Belum TL</span>
-                                                ";
-                                            }
-                                        } else {
-                                            echo "
-                                                <i class='fe fe-x-circle text-danger'></i><br />
-                                                <span class='badge badge-danger text-light'>Belum TL</span>
-                                            ";
-                                        }
-                                        ?>
+                                        <i class='fe fe-check text-success'></i><br />
+                                        <span class='badge badge-success text-light'>Statis</span>
                                     </h4>
                                 </div>
                             </div>
@@ -235,7 +188,7 @@ if (mysqli_num_rows($result) > 0) {
                 $result_surat_tuntas = $stmt_surat_tuntas->get_result();
                 ?>
 
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Lihat File Upload</strong>
@@ -332,19 +285,19 @@ if (mysqli_num_rows($result) > 0) {
             $no = 1;
             ?>
             <?php while ($row_temuan = $result_temuan->fetch_object()) : ?>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-12">
 
                         <h4>
                             <i class="fe fe-search text-primary"></i> Temuan <?= $no; ?>
                         </h4>
 
-                        <div class="row mb-3">
+                        <div class="row">
                             <?php if (!is_numeric($row_temuan->isirupiah)) : ?>
-                                <div class="col-md-4">
+                                <div class="col-md-3 mb-3">
                                     <div class="card">
                                         <div class="card-header">
-                                            <strong class="card-title">Rupiah</strong>
+                                            <strong class="card-title">Nilai Awal Temuan</strong>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="mb-1 text-success text-center">
@@ -353,23 +306,35 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Saldo</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="mb-1 text-danger text-center">
+                                                Rp. 0
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
                                     <div class="card">
                                         <div class="card-header">
                                             <strong class="card-title">Kondisi</strong>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="mb-1 text-danger">
+                                            <h6 class="mb-1 text-danger">
                                                 <?= $row_temuan->kondisi; ?>
-                                            </h5>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
                             <?php else : ?>
-                                <div class="col-md-4">
+                                <div class="col-md-3 mb-3">
                                     <div class="card">
                                         <div class="card-header">
-                                            <strong class="card-title">Rupiah</strong>
+                                            <strong class="card-title">Nilai Awal Temuan</strong>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="mb-1 text-danger text-center">
@@ -378,144 +343,154 @@ if (mysqli_num_rows($result) > 0) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Saldo</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="mb-1 text-danger text-center">
+                                                Rp. <?= number_format($row_temuan->saldo); ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
                                     <div class="card">
                                         <div class="card-header">
                                             <strong class="card-title">Kondisi</strong>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="mb-1 text-danger">
+                                            <h6 class="mb-1 text-danger">
                                                 <?= $row_temuan->kondisi; ?>
-                                            </h5>
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
                             <?php endif; ?>
                         </div>
 
-                        <div class="card mb-4">
+                        <div class="card">
                             <div class="card-body">
                                 <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="uraianakibat-tab<?= $no; ?>" data-toggle="tab" href="#uraianakibat<?= $no; ?>" role="tab" aria-controls="uraianakibat<?= $no; ?>" aria-selected="true">Uraian & Akibat</a>
+                                        <a class="nav-link active" id="uraian-tab<?= $no; ?>" data-toggle="tab" href="#uraian<?= $no; ?>" role="tab" aria-controls="uraian<?= $no; ?>" aria-selected="true">Uraian</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="kriteriasebab-tab<?= $no; ?>" data-toggle="tab" href="#kriteriasebab<?= $no; ?>" role="tab" aria-controls="kriteriasebab<?= $no; ?>" aria-selected="false">Kriteria & Sebab</a>
+                                        <a class="nav-link" id="kriteria-tab<?= $no; ?>" data-toggle="tab" href="#kriteria<?= $no; ?>" role="tab" aria-controls="kriteria<?= $no; ?>" aria-selected="false">Kriteria</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="sebab-tab<?= $no; ?>" data-toggle="tab" href="#sebab<?= $no; ?>" role="tab" aria-controls="sebab<?= $no; ?>" aria-selected="false">Sebab</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="akibat-tab<?= $no; ?>" data-toggle="tab" href="#akibat<?= $no; ?>" role="tab" aria-controls="akibat<?= $no; ?>" aria-selected="false">Akibat</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="rekomendasi-tab<?= $no; ?>" data-toggle="tab" href="#rekomendasi<?= $no; ?>" role="tab" aria-controls="rekomendasi<?= $no; ?>" aria-selected="false">Rekomendasi</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="uraianakibat<?= $no; ?>" role="tabpanel" aria-labelledby="uraianakibat-tab<?= $no; ?>">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <table class="table" style="display: table;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th><strong>Uraian</strong></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $sql_data_uraian = $mysqli->query("SELECT * FROM data_uraian WHERE id_temuan='$row_temuan->id_temuan'");
-                                                        while ($row_data_uraian = $sql_data_uraian->fetch_object()) {
-                                                            $sql_uraian = $mysqli->query("SELECT * FROM uraian WHERE id_uraian='$row_data_uraian->id_uraian'");
-                                                            $row_uraian = $sql_uraian->fetch_object();
-                                                            echo "";
-                                                        ?>
-                                                            <tr>
-                                                                <td><?= $row_uraian->uraian; ?></td>
-                                                            </tr>
-                                                        <?php
-                                                            echo "";
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <table class="table" style="display: table;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th><strong>Akibat</strong></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $sql_data_akibat = $mysqli->query("SELECT * FROM data_akibat WHERE id_temuan='$row_temuan->id_temuan'");
-                                                        while ($row_data_akibat = $sql_data_akibat->fetch_object()) {
-                                                            $sql_akibat = $mysqli->query("SELECT * FROM akibat WHERE id_akibat='$row_data_akibat->id_akibat'");
-                                                            $row_akibat = $sql_akibat->fetch_object();
-                                                            echo "";
-                                                        ?>
-                                                            <tr>
-                                                                <td><?= $row_akibat->akibat; ?></td>
-                                                            </tr>
-                                                        <?php
-                                                            echo "";
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                    <div class="tab-pane fade show active" id="uraian<?= $no; ?>" role="tabpanel" aria-labelledby="uraian-tab<?= $no; ?>">
+                                        <table class="table" style="display: table;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th><strong>Uraian</strong></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sql_data_uraian = $mysqli->query("SELECT * FROM data_uraian WHERE id_temuan='$row_temuan->id_temuan'");
+                                                while ($row_data_uraian = $sql_data_uraian->fetch_object()) {
+                                                    $sql_uraian = $mysqli->query("SELECT * FROM uraian WHERE id_uraian='$row_data_uraian->id_uraian'");
+                                                    $row_uraian = $sql_uraian->fetch_object();
+                                                    echo "";
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $row_uraian->uraian; ?></td>
+                                                    </tr>
+                                                <?php
+                                                    echo "";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="tab-pane fade" id="kriteriasebab<?= $no; ?>" role="tabpanel" aria-labelledby="kriteriasebab-tab<?= $no; ?>">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <table class="table" style="display: table;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th><strong>Kriteria</strong></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $sql_data_kriteria = $mysqli->query("SELECT * FROM data_kriteria WHERE id_temuan='$row_temuan->id_temuan'");
+                                    <div class="tab-pane fade" id="kriteria<?= $no; ?>" role="tabpanel" aria-labelledby="kriteria-tab<?= $no; ?>">
+                                        <table class="table" style="display: table;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th><strong>Kriteria</strong></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sql_data_kriteria = $mysqli->query("SELECT * FROM data_kriteria WHERE id_temuan='$row_temuan->id_temuan'");
 
-                                                        while ($row_data_kriteria = $sql_data_kriteria->fetch_object()) {
-                                                            $sql_kriteria = $mysqli->query("SELECT * FROM kriteria WHERE id_kriteria='$row_data_kriteria->id_kriteria'");
-                                                            $row_kriteria = $sql_kriteria->fetch_object();
-                                                            echo "";
-                                                        ?>
-                                                            <tr>
-                                                                <td><?= $row_kriteria->kriteria; ?></td>
-                                                            </tr>
-                                                        <?php
-                                                            echo "";
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <table class="table" style="display: table;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th><strong>Sebab</strong></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $sql_data_sebab = $mysqli->query("SELECT * FROM data_sebab WHERE id_temuan='$row_temuan->id_temuan'");
+                                                while ($row_data_kriteria = $sql_data_kriteria->fetch_object()) {
+                                                    $sql_kriteria = $mysqli->query("SELECT * FROM kriteria WHERE id_kriteria='$row_data_kriteria->id_kriteria'");
+                                                    $row_kriteria = $sql_kriteria->fetch_object();
+                                                    echo "";
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $row_kriteria->kriteria; ?></td>
+                                                    </tr>
+                                                <?php
+                                                    echo "";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="sebab<?= $no; ?>" role="tabpanel" aria-labelledby="sebab-tab<?= $no; ?>">
+                                        <table class="table" style="display: table;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th><strong>Sebab</strong></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sql_data_sebab = $mysqli->query("SELECT * FROM data_sebab WHERE id_temuan='$row_temuan->id_temuan'");
 
-                                                        while ($row_data_sebab = $sql_data_sebab->fetch_object()) {
-                                                            $sql_sebab = $mysqli->query("SELECT * FROM sebab WHERE id_sebab='$row_data_sebab->id_sebab'");
-                                                            $row_sebab = $sql_sebab->fetch_object();
-                                                            echo "";
-                                                        ?>
-                                                            <tr>
-                                                                <td><?= $row_sebab->sebab; ?></td>
-                                                            </tr>
-                                                        <?php
-                                                            echo "";
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                                while ($row_data_sebab = $sql_data_sebab->fetch_object()) {
+                                                    $sql_sebab = $mysqli->query("SELECT * FROM sebab WHERE id_sebab='$row_data_sebab->id_sebab'");
+                                                    $row_sebab = $sql_sebab->fetch_object();
+                                                    echo "";
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $row_sebab->sebab; ?></td>
+                                                    </tr>
+                                                <?php
+                                                    echo "";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="akibat<?= $no; ?>" role="tabpanel" aria-labelledby="akibat-tab<?= $no; ?>">
+                                        <table class="table" style="display: table;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th><strong>Akibat</strong></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sql_data_akibat = $mysqli->query("SELECT * FROM data_akibat WHERE id_temuan='$row_temuan->id_temuan'");
+                                                while ($row_data_akibat = $sql_data_akibat->fetch_object()) {
+                                                    $sql_akibat = $mysqli->query("SELECT * FROM akibat WHERE id_akibat='$row_data_akibat->id_akibat'");
+                                                    $row_akibat = $sql_akibat->fetch_object();
+                                                    echo "";
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $row_akibat->akibat; ?></td>
+                                                    </tr>
+                                                <?php
+                                                    echo "";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="tab-pane fade" id="rekomendasi<?= $no; ?>" role="tabpanel" aria-labelledby="rekomendasi-tab<?= $no; ?>">
                                         <div class="row justify-content-center">
@@ -527,23 +502,158 @@ if (mysqli_num_rows($result) > 0) {
                                                 $row_rekomendasi = $sql_rekomendasi->fetch_object();
 
                                                 $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi'");
+                                                $sql_tl_tuntas = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Tuntas'");
+                                                $sql_tl_tuntas_sebagian = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Tuntas Sebagian'");
+                                                $sql_tl_belum_tuntas = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Belum Tuntas'");
                                                 if (mysqli_num_rows($sql_tindak_lanjut) > 0) {
-                                            ?>
-                                                    <div class="col-md-4">
-                                                        <div class="card shadow bg-success text-center mb-3">
-                                                            <div class="card-body p-4">
-                                                                <span class="circle circle-md bg-success-light">
-                                                                    <i class="fe fe-check fe-24 text-white"></i>
-                                                                </span>
-                                                                <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a><a href="javascript:void(0)" class="btn bg-success-light text-white" style="cursor:unset;">Sudah Ditindak Lanjuti</a>
-                                                            </div> <!-- .card-body -->
-                                                        </div> <!-- .card -->
-                                                    </div>
-                                                <?php
+                                                    if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
+                                                        while ($rws_tindak_lanjut = $sql_tindak_lanjut->fetch_assoc()) {
+                                                            $status_tl[] = $rws_tindak_lanjut['status'];
+                                                        }
+                                                        if (in_array("", $status_tl)) {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-warning text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-warning-light">
+                                                                            <i class="fe fe-minus fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-success text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-success-light">
+                                                                            <i class="fe fe-check fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-success-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                        }
+                                                    } else if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
+                                                        ?>
+                                                        <div class="col-md-4">
+                                                            <div class="card shadow bg-warning text-center mb-3">
+                                                                <div class="card-body p-4">
+                                                                    <span class="circle circle-md bg-warning-light">
+                                                                        <i class="fe fe-minus fe-24 text-white"></i>
+                                                                    </span>
+                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                </div> <!-- .card-body -->
+                                                            </div> <!-- .card -->
+                                                        </div>
+                                                    <?php
+                                                    } else if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
+                                                    ?>
+                                                        <div class="col-md-4">
+                                                            <div class="card shadow bg-warning text-center mb-3">
+                                                                <div class="card-body p-4">
+                                                                    <span class="circle circle-md bg-warning-light">
+                                                                        <i class="fe fe-minus fe-24 text-white"></i>
+                                                                    </span>
+                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                </div> <!-- .card-body -->
+                                                            </div> <!-- .card -->
+                                                        </div>
+                                                    <?php
+                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
+                                                    ?>
+                                                        <div class="col-md-4">
+                                                            <div class="card shadow bg-warning text-center mb-3">
+                                                                <div class="card-body p-4">
+                                                                    <span class="circle circle-md bg-warning-light">
+                                                                        <i class="fe fe-minus fe-24 text-white"></i>
+                                                                    </span>
+                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                </div> <!-- .card-body -->
+                                                            </div> <!-- .card -->
+                                                        </div>
+                                                    <?php
+                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
+                                                    ?>
+                                                        <div class="col-md-4">
+                                                            <div class="card shadow bg-warning text-center mb-3">
+                                                                <div class="card-body p-4">
+                                                                    <span class="circle circle-md bg-warning-light">
+                                                                        <i class="fe fe-minus fe-24 text-white"></i>
+                                                                    </span>
+                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                </div> <!-- .card-body -->
+                                                            </div> <!-- .card -->
+                                                        </div>
+                                                        <?php
+                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
+                                                        while ($rws_tindak_lanjut = $sql_tindak_lanjut->fetch_assoc()) {
+                                                            $status_tl[] = $rws_tindak_lanjut['status'];
+                                                        }
+                                                        if (in_array("", $status_tl)) {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-primary text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-primary-light">
+                                                                            <i class="fe fe-edit-2 fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-danger text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-danger-light">
+                                                                            <i class="fe fe-alert-circle fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-danger-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <div class="col-md-4">
+                                                            <div class="card shadow bg-primary text-center mb-3">
+                                                                <div class="card-body p-4">
+                                                                    <span class="circle circle-md bg-primary-light">
+                                                                        <i class="fe fe-edit-2 fe-24 text-white"></i>
+                                                                    </span>
+                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>ketua_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                </div> <!-- .card-body -->
+                                                            </div> <!-- .card -->
+                                                        </div>
+                                                    <?php
+                                                    }
                                                 } else {
-                                                ?>
+                                                    ?>
                                                     <div class="col-md-4">
                                                         <div class="card shadow bg-danger text-center mb-3">
                                                             <div class="card-body p-4">
@@ -552,7 +662,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                 </span>
                                                                 <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                 <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-danger-light text-white" style="cursor:unset;">Belum Ditindak Lanjuti</a>
+                                                                <a href="javascript:void(0)" class="btn bg-danger-light text-white" style="cursor:unset;">Belum Diusulkan</a>
                                                             </div> <!-- .card-body -->
                                                         </div> <!-- .card -->
                                                     </div>
@@ -566,8 +676,10 @@ if (mysqli_num_rows($result) > 0) {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
                 <?php $no++; ?>
             <?php endwhile; ?>
 
@@ -578,7 +690,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
     <script>
         alert("Maaf data tidak diketahui !");
-        document.location.href = '<?= $base_url; ?>detail_penugasan';
+        document.location.href = '<?= $base_url; ?>ketua_hasil_penugasan';
     </script>
 <?php
 }

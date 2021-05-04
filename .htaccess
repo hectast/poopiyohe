@@ -50,6 +50,7 @@ RewriteRule ^ketua_data_penugasan$ auditor.php?views_ketua=ketua_data_penugasan
 RewriteRule ^ketua_tambah_penugasan$ auditor.php?views_ketua=ketua_tambah_penugasan
 RewriteRule ^ketua_lihat_penugasan$ auditor.php?views_ketua=ketua_lihat_penugasan
 RewriteRule ^ketua_edit_penugasan$ auditor.php?views_ketua=ketua_edit_penugasan
+RewriteRule ^ketua_detail_tl/([0-9]+)/([0-9]+)$ auditor.php?views_ketua=ketua_detail_tl&tm=$1&id=$2 [NC,L]
 
 # Auditor Anggota
 RewriteRule ^beranda_anggota$ auditor.php?views_anggota=beranda_anggota
@@ -60,6 +61,7 @@ RewriteRule ^anggota_edit_penugasan$ auditor.php?views_anggota=anggota_edit_penu
 RewriteRule ^anggota_hasil_penugasan$ auditor.php?views_anggota=anggota_hasil_penugasan
 RewriteRule ^anggota_tambah_temuan/([0-9]+)$ auditor.php?views_anggota=anggota_tambah_temuan&id=$1 [NC,L]
 RewriteRule ^anggota_detail_penugasan/([0-9]+)$ auditor.php?views_anggota=anggota_detail_penugasan&id=$1 [NC,L]
+RewriteRule ^anggota_detail_tl/([0-9]+)/([0-9]+)$ auditor.php?views_anggota=anggota_detail_tl&tm=$1&id=$2 [NC,L]
 
 # Auditor Dalnis
 RewriteRule ^beranda_dalnis$ auditor.php?views_dalnis=beranda_dalnis
@@ -69,6 +71,8 @@ RewriteRule ^dalnis_data_penugasan$ auditor.php?views_dalnis=dalnis_data_penugas
 RewriteRule ^dalnis_tambah_penugasan$ auditor.php?views_dalnis=dalnis_tambah_penugasan
 RewriteRule ^dalnis_lihat_penugasan$ auditor.php?views_dalnis=dalnis_lihat_penugasan
 RewriteRule ^dalnis_edit_penugasan$ auditor.php?views_dalnis=dalnis_edit_penugasan
+RewriteRule ^dalnis_detail_tl/([0-9]+)$ auditor.php?views_dalnis=dalnis_detail_tl&id=$1 [NC,L]
+RewriteRule ^dalnis_detail_tl/([0-9]+)/([0-9]+)$ auditor.php?views_dalnis=dalnis_detail_tl&tm=$1&id=$2 [NC,L]
 
 # Auditor Korwas
 RewriteRule ^beranda_korwas$ auditor.php?views_korwas=beranda_korwas
@@ -82,6 +86,7 @@ RewriteRule ^detail_nilai/([0-9]+)$ auditor.php?views_korwas=detail_nilai&id=$1 
 RewriteRule ^trusted_advisor$ auditor.php?views_korwas=trusted_advisor
 RewriteRule ^pan_rb$ auditor.php?views_korwas=pan_rb
 RewriteRule ^pionir$ auditor.php?views_korwas=pionir
+RewriteRule ^korwas_detail_tl/([0-9]+)/([0-9]+)$ auditor.php?views_korwas=korwas_detail_tl&tm=$1&id=$2 [NC,L]
 
 # Auditor Monitoring
 RewriteRule ^beranda_monitoring$ auditor.php?views_monitoring=beranda_monitoring

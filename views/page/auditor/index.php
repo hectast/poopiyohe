@@ -36,6 +36,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Detail Penugasan";
         $fortitle = "Ketua - Lihat Detail Penugasan";
         $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_detail_tl") {
+        $page = "Detail Tindak Lanjut";
+        $fortitle = "Ketua - Detail Tindak Lanjut";
+        $title = $fortitle . " | PO'OPIYOHE";
     }
 } else if (mysqli_num_rows($rslt_getDataAnggota) > 0 && isset($_GET['views_anggota'])) {
     if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "beranda_anggota") {
@@ -66,6 +70,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Detail Penugasan";
         $fortitle = "Anggota - Detail Penugasan";
         $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_tl") {
+        $page = "Detail Tindak Lanjut";
+        $fortitle = "Anggota - Detail Tindak Lanjut";
+        $title = $fortitle . " | PO'OPIYOHE";
     }
 } else if (mysqli_num_rows($rslt_getDataDalnis) > 0 && isset($_GET['views_dalnis'])) {
     if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "beranda_dalnis") {
@@ -95,6 +103,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Dalnis - Lihat Detail Penugasan";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_detail_tl") {
+        $page = "Detail Tindak Lanjut";
+        $fortitle = "Dalnis - Detail Tindak Lanjut";
         $title = $fortitle . " | PO'OPIYOHE";
     }
 } else if ($akses === 1 && isset($_GET['views_monitoring'])) {
@@ -176,6 +188,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Detail Penilaian";
         $fortitle = "Detail Penilaian";
         $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_detail_tl") {
+        $page = "Detail Tindak Lanjut";
+        $fortitle = "Korwas - Detail Tindak Lanjut";
+        $title = $fortitle . " | PO'OPIYOHE";
     }
 }
 ?>
@@ -204,6 +220,8 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/ketua/data_penugasan/edit_penugasan.php';
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_lihat_penugasan") {
         include 'views/page/auditor/ketua/data_penugasan/detailpenugasan.php';
+    } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_detail_tl") {
+        include 'views/page/auditor/ketua/tindak_lanjut/detail_tl.php';
     } else {
         include 'views/page/auditor/ketua/beranda.php';
     }   
@@ -224,6 +242,8 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/anggota/hasil_penugasan/tambah_temuan.php';
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_penugasan") {
         include 'views/page/auditor/anggota/hasil_penugasan/detail_penugasan.php';
+    } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_tl") {
+        include 'views/page/auditor/anggota/tindak_lanjut/detail_tl.php';
     } else {
         include 'views/page/auditor/anggota/beranda.php';
     }   
@@ -242,6 +262,8 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/dalnis/data_penugasan/edit_penugasan.php';
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_lihat_penugasan") {
         include 'views/page/auditor/dalnis/data_penugasan/detailpenugasan.php';
+    } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_detail_tl") {
+        include 'views/page/auditor/dalnis/tindak_lanjut/detail_tl.php';
     } else {
         include 'views/page/auditor/dalnis/beranda.php';
     }    
@@ -288,6 +310,8 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/korwas/pan_rb.php';
     }else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "pionir"){
         include 'views/page/auditor/korwas/pionir.php';
+    }else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_detail_tl") {
+        include 'views/page/auditor/korwas/tindak_lanjut/detail_tl.php';
     }else {
         include 'views/page/auditor/korwas/beranda.php';
     }

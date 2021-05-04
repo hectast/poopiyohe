@@ -59,17 +59,21 @@ function tampil_data($mysqli)
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status'] == 'Belum Direview') {
+                if ($row['status'] == 'Tuntas') {
                 ?>
-                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                    <small class="badge badge-success text-light"><?= $row['status']; ?></small>
                 <?php
-                } else if ($row['status'] == 'Belum Divalidasi') {
+                } else if ($row['status'] == 'Tuntas Sebagian') {
                 ?>
-                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                    <small class="badge badge-warning text-light"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Belum Tuntas') {
+                ?>
+                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
                 <?php
                 } else {
                 ?>
-                    <small class="badge badge-success"><?= $row['status']; ?></small>
+                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
                 <?php
                 }
                 ?>
@@ -165,21 +169,25 @@ function detail($id_tampil, $mysqli)
                         <td>Status</td>
                         <td>:</td>
                         <td> 
-                            <?php
-                            if ($row['status'] == 'Belum Direview') {
+                        <?php
+                            if ($row['status'] == 'Tuntas') {
                             ?>
-                                <small class="badge badge-danger"><?= $row['status']; ?></small>
+                                <small class="badge badge-success text-light"><?= $row['status']; ?></small>
                             <?php
-                            } else if ($row['status'] == 'Belum Divalidasi') {
+                            } else if ($row['status'] == 'Tuntas Sebagian') {
                             ?>
-                                <small class="badge badge-warning"><?= $row['status']; ?></small>
+                                <small class="badge badge-warning text-light"><?= $row['status']; ?></small>
+                            <?php
+                            } else if ($row['status'] == 'Belum Tuntas') {
+                            ?>
+                                <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
                             <?php
                             } else {
                             ?>
-                                <small class="badge badge-success"><?= $row['status']; ?></small>
+                                <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
                             <?php
                             }
-                            ?>
+                        ?>
                         </td>
                     </tr>
                 </table>
