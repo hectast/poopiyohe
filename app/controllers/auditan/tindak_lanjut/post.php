@@ -10,8 +10,6 @@ include 'app/flash_message.php';
         $error = $_FILES['filebukti']['error'];
         $ukuranFile = $_FILES['filebukti']['size'];
         $tmpName = $_FILES['filebukti']['tmp_name'];
-
-
         $count = count($filebukti);
         if (isset($_POST['saldo'])) {
             $saldo = $_POST['saldo'];
@@ -80,4 +78,34 @@ include 'app/flash_message.php';
     </script>
 <?php
     }
+
+if(isset($_POST['edit_tl'])){
+    $uraian = $_POST['uraian_tl'];
+    $nominal = $_POST['nominal_tl'];
+    $id_tl = $_POST['id_tl'];
+    $file_sebelumnya = $_POST['file_sebelumnya'];
+    if ($_FILES['file']['error'] === 4) {
+        $dokumen_baru = $file_sebelumnya;
+    } else {
+        $dokumen_baru = upload_dokumen();
+        unlink("assets/uploads/tindak_lanjut/$file_sebelumnya");
+    }
+
+    $update = $mysqli->query("UPDATE tindak_lanjut SET uraian_tl = '$uraian', nominal_tl = '$nominal', file_tl = '$dokumen_baru', status = '' WHERE id_tl = '$id_tl'");
+    $saldo_temuan = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_tl = '$id_tl'");
+    $row_tl2 = $saldo_temuan->fetch_assoc();
+    $temuan = $row_tl2['id_temuan'];
+
+    $get_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_temuan = '$temuan'");
+    $row_temuan2 = $get_temuan->fetch_assoc();
+    $isi_saldo = $row_temuan2['saldo'];
+
+    @$hasil_saldo = $isi_saldo - $nominal;
+ 
+   $update = $mysqli->query("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$temuan'");
+
+    
+    flash("msg_edit","Tindak Lanjut Berhasil Diperbarui");
+    
+}
 ?>

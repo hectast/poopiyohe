@@ -488,7 +488,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                 </span>
                                                                 <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
                                                                 <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-warning-light text-white" style="cursor:unset;">Tindak lanjut sudah diusulkan</a>
+                                                                <a href="javascript:void(0)" class="btn bg-warning-light text-white" style="cursor:unset;">Tindak lanjut sudah diusulkan</a> <a href="<?= $base_url ?>auditan_cek_tl/<?= $no ?>/<?= $row_rekomendasi->id_rekomendasi ?>" class="btn btn-secondary">cek tl</a> 
                                                             </div> <!-- .card-body -->
                                                         </div> <!-- .card -->
                                                     </div>
