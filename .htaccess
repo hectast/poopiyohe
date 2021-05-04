@@ -36,6 +36,8 @@ RewriteRule ^detail_temuan/([0-9]+)$ auditan.php?views_auditan=detail_temuan&id=
 #RewriteRule ^input_tindak_lanjut/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=input_tindak_lanjut&tm=$1&id=$2 [NC,L]
 RewriteRule ^tindak_lanjut_rekom/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=tindak_lanjut_rekom&tm=$1&id=$2 [NC,L]
 RewriteRule ^edit_nilai/([0-9]+)$ auditan.php?views_auditan=edit_nilai&id=$1 [NC,L]
+RewriteRule ^auditan_cek_tl/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=auditan_cek_tl&tm=$1&id=$2 [NC,L] 
+RewriteRule ^edit_tl/([0-9]+)/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=edit_tl&tm=$1&id=$2&tl=$3 [NC,L]
 
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
 
