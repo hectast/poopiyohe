@@ -130,6 +130,11 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                 }
                                     ?>
                                 </div>
+                                <div class="form-group">
+                                    <label>Riwayat Tindak Lanjut auditan</label>
+                                    <br>
+                                    <a href="<?= $base_url ?>riwayat_tl/<?= $_GET['tm'] ?>/<?= $_GET['id'] ?>/<?= $row_tl->id_tl ?>" class="btn btn-sm btn-outline-primary"><i class="fe fe-refresh-ccw"></i> Riwayat</a>
+                                </div>
                               
                                     <?php if ($row_tl->status == "Tuntas") : ?>
                                     <div class="form-group text-success">
@@ -147,7 +152,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                 <?php
                                     if(empty($row_tl->status)){
                                     ?>  
-                                       <div class="text-info"> <span class="dot dot-lg bg-info mr-2"></span> Belum Dilihat Pihak BPKP</div>
+                                       <div class="text-info"> <span class="dot dot-lg bg-info mr-2"></span> Belum Diverifikasi</div>
                                     <?php
                                     }
                                 ?>

@@ -11,10 +11,9 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
     $result_data_rekomendasi = $sql_data_rekomendasi->get_result();
     $row_data_rekomendasi = $result_data_rekomendasi->fetch_object();
 
-    $sql_temuan = $mysqli->prepare("SELECT * FROM temuan WHERE id_temuan='$row_data_rekomendasi->id_temuan'");
-    $sql_temuan->execute();
-    $result_temuan = $sql_temuan->get_result();
-    $row_temuan = $result_temuan->fetch_object();
+    $sql_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_temuan='$row_data_rekomendasi->id_temuan'");
+    $row_temuan = $sql_temuan->fetch_assoc();
+  
 
     include 'app/controllers/auditor/monitoring/hasil_panugasan/post_cek_tl.php';
 ?>
@@ -23,7 +22,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
 
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-title"><a href="<?= $base_url; ?>monitoring_detail_tl/<?= $row_temuan->id_penugasan; ?>" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
+                    <h2 class="page-title"><a href="<?= $base_url; ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
 
@@ -40,7 +39,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                             </div>
                             <div class="border-bottom mb-3"></div>
                             <?php
-                            $query_cek = $mysqli->query("SELECT * FROM temuan WHERE id_temuan ='$row_temuan->id_temuan'");
+                            $query_cek = $mysqli->query("SELECT * FROM temuan WHERE id_temuan ='$row_temuan[id_temuan]'");
                             $cek = $query_cek->fetch_assoc();
                             $nonrp = $cek['jenisnominal'];
 
@@ -55,7 +54,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input class="form-control" name="" value="<?= number_format($row_temuan->isirupiah); ?>" type="text" disabled>
+                                                <input class="form-control" name="" value="<?= number_format($row_temuan['isirupiah']); ?>" type="text" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -66,8 +65,8 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input class="form-control" value="<?= number_format($row_temuan->saldo); ?>" type="text" disabled>
-                                                <input type="hidden" name="saldo" value="<?= $row_temuan->saldo; ?>">
+                                                <input class="form-control" value="<?= number_format($row_temuan['saldo']); ?>" type="text" disabled>
+                                                <input type="hidden" name="saldo" value="<?= $row_temuan['saldo']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -88,6 +87,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                     while ($row_tl = $result_tl->fetch_object()) {
                     ?>
                     <form action="" method="POST">
+                    <input type="hidden" name="id_rekomendasi" value="<?= $row_data_rekomendasi->id_rekomendasi; ?>">
                         <input type="hidden" name="id_tl" value="<?= $row_tl->id_tl; ?>">                    
                         <div class="card mb-4">
                             <div class="card-body">
@@ -109,6 +109,11 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                     <label>Bukti TL</label>
                                     <br>
                                     <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#modalBukti"><i class="fe fe-file-text"></i> File Bukti</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>Riwayat Tindak Lanjut auditan</label>
+                                    <br>
+                                    <a href="<?= $base_url ?>riwayat_tindak_lanjut/<?= $_GET['tm'] ?>/<?= $_GET['id'] ?>/<?= $row_tl->id_tl ?>" class="btn btn-sm btn-outline-primary"><i class="fe fe-refresh-ccw"></i> Riwayat</a>
                                 </div>
                                 <?php if (!empty($row_tl->status)) : ?>
                                     <?php if ($row_tl->status == "Tuntas") : ?>
@@ -148,7 +153,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                       
                     <?php
                     }
                     ?>
