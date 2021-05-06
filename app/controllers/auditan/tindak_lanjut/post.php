@@ -3,6 +3,7 @@ include 'app/controllers/auditan/tindak_lanjut/function.php';
 include 'app/flash_message.php';
     if (isset($_POST['tindak_lanjut']) and $_SERVER['REQUEST_METHOD'] == "POST") {
         $id_temuan = $_POST['id_temuan'];
+        $tgl = date('Y-m-d');
         $id_rekomendasi = $_POST['id_rekomendasi'];
         $uraian_tl = $_POST['uraian_tl'];
         $nominal = $_POST['nominal_tl'];
@@ -61,15 +62,13 @@ include 'app/flash_message.php';
             move_uploaded_file($tmpName[$i], 'assets/uploads/tindak_lanjut/' . $namaFileBaru);
 
 
-            @$jumlah_nominal += $nominal[$i];
+           
             
             $stmt_tindak_lanjut = $mysqli->prepare("INSERT INTO tindak_lanjut (id_temuan, id_rekomendasi, uraian_tl, file_tl, nominal_tl) VALUES ('$id_temuan', '$id_rekomendasi', '$uraian_tl[$i]', '$namaFileBaru','$nominal[$i]')");
             $stmt_tindak_lanjut->execute(); 
-        }
-    @$hasil_saldo = ($saldo) - ($jumlah_nominal);
-    
-    $stmt_update_saldo = $mysqli->prepare("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$id_temuan'");
-    $stmt_update_saldo->execute();
+            $id_tindaklanjut = $mysqli->insert_id;
+            $history = $mysqli->query("INSERT INTO history_tl (id_tl, id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim) VALUES ('$id_tindaklanjut','$id_rekomendasi','$uraian_tl[$i]','$nominal[$i]','$namaFileBaru','$tgl')");
+        }   
 ?>
     <script>
         document.location.href = '<?= $base_url ?>detail_temuan/<?= $row_data_temuan->id_penugasan ?>';
@@ -83,28 +82,18 @@ if(isset($_POST['edit_tl'])){
     $uraian = $_POST['uraian_tl'];
     $nominal = $_POST['nominal_tl'];
     $id_tl = $_POST['id_tl'];
+    $tgl = date('Y-m-d');
+    $id_rekomen = $_POST['id_rekomendasi'];
     $file_sebelumnya = $_POST['file_sebelumnya'];
     if ($_FILES['file']['error'] === 4) {
         $dokumen_baru = $file_sebelumnya;
     } else {
         $dokumen_baru = upload_dokumen();
-        unlink("assets/uploads/tindak_lanjut/$file_sebelumnya");
+        // unlink("assets/uploads/tindak_lanjut/$file_sebelumnya");
     }
-
-    $update = $mysqli->query("UPDATE tindak_lanjut SET uraian_tl = '$uraian', nominal_tl = '$nominal', file_tl = '$dokumen_baru', status = '' WHERE id_tl = '$id_tl'");
-    $saldo_temuan = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_tl = '$id_tl'");
-    $row_tl2 = $saldo_temuan->fetch_assoc();
-    $temuan = $row_tl2['id_temuan'];
-
-    $get_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_temuan = '$temuan'");
-    $row_temuan2 = $get_temuan->fetch_assoc();
-    $isi_saldo = $row_temuan2['saldo'];
-
-    @$hasil_saldo = $isi_saldo - $nominal;
- 
-   $update = $mysqli->query("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$temuan'");
-
     
+    $update = $mysqli->query("UPDATE tindak_lanjut SET uraian_tl = '$uraian', nominal_tl = '$nominal', file_tl = '$dokumen_baru', status = '' WHERE id_tl = '$id_tl'");
+    $history = $mysqli->query("INSERT INTO history_tl (id_tl, id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim) VALUES('$id_tl','$id_rekomen','$uraian','$nominal','$dokumen_baru','$tgl')");
     flash("msg_edit","Tindak Lanjut Berhasil Diperbarui");
     
 }

@@ -130,6 +130,10 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $page = "Cek Tindak Lanjut";
         $fortitle = "Monitoring - Cek Tindak Lanjut";
         $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "riwayat_tindak_lanjut") {
+        $page = "Riwayat Tindak Lanjut";
+        $fortitle = "Monitoring - Riwayat Tindak Lanjut";
+        $title = $fortitle . " | PO'OPIYOHE";
     }
 } else if ($akses === 2) {
     if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "beranda_korwas") {
@@ -262,6 +266,8 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         include 'views/page/auditor/monitoring/data_penugasan/edit_penugasan.php';
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_lihat_penugasan") {
         include 'views/page/auditor/monitoring/data_penugasan/detailpenugasan.php';
+    } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "riwayat_tindak_lanjut") {
+        include 'views/page/auditor/monitoring/tindak_lanjut/riwayat.php';
     } else {
         include 'views/page/auditor/monitoring/beranda.php';
     }

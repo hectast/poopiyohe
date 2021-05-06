@@ -38,6 +38,7 @@ RewriteRule ^tindak_lanjut_rekom/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=ti
 RewriteRule ^edit_nilai/([0-9]+)$ auditan.php?views_auditan=edit_nilai&id=$1 [NC,L]
 RewriteRule ^auditan_cek_tl/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=auditan_cek_tl&tm=$1&id=$2 [NC,L] 
 RewriteRule ^edit_tl/([0-9]+)/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=edit_tl&tm=$1&id=$2&tl=$3 [NC,L]
+RewriteRule ^riwayat_tl/([0-9]+)/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=riwayat_tl&tm=$1&id=$2&tl=$3 [NC,L]
 
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
 
@@ -94,6 +95,7 @@ RewriteRule ^monitoring_edit_penugasan$ auditor.php?views_monitoring=monitoring_
 RewriteRule ^monitoring_tindak_lanjut$ auditor.php?views_monitoring=monitoring_tindak_lanjut
 RewriteRule ^monitoring_detail_tl/([0-9]+)$ auditor.php?views_monitoring=monitoring_detail_tl&id=$1 [NC,L]
 RewriteRule ^monitoring_cek_tl/([0-9]+)/([0-9]+)$ auditor.php?views_monitoring=monitoring_cek_tl&tm=$1&id=$2 [NC,L]
+RewriteRule ^riwayat_tindak_lanjut/([0-9]+)/([0-9]+)/([0-9]+)$ auditor.php?views_monitoring=riwayat_tindak_lanjut&id=$1&rk=$2&tl=$3 [NC,L]
 
 RewriteRule ^beranda$ index.php?views_user=beranda
 
