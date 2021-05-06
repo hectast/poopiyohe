@@ -63,17 +63,21 @@ function tampil_data($mysqli)
             <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
             <td>
                 <?php
-                if ($row['status_tl'] == 'Tuntas') {
+                if ($row['status'] == 'Tuntas') {
                 ?>
-                    <small class="badge badge-success">Tuntas</small>
+                    <small class="badge badge-success text-light"><?= $row['status']; ?></small>
                 <?php
-                } else if ($row['status_tl'] == 'Tuntas Sebagian') {
+                } else if ($row['status'] == 'Tuntas Sebagian') {
                 ?>
-                    <small class="badge badge-warning">Tuntas Sebagian</small>
+                    <small class="badge badge-warning text-light"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Belum Tuntas') {
+                ?>
+                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
                 <?php
                 } else {
                 ?>
-                    <small class="badge badge-danger"><?= $row['status_tl']; ?></small>
+                    <small class="badge badge-danger text-light">Belum TL</small>
                 <?php
                 }
                 ?>

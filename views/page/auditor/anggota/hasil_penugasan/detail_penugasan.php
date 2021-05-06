@@ -167,8 +167,29 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="row justify-content-center">
                                 <div class="col-md-12 text-center">
                                     <h4 class="mb-1">
-                                        <i class='fe fe-check text-success'></i><br />
-                                        <span class='badge badge-success text-light'>Statis</span>
+                                        <?php
+                                        if ($row_penugasan["status"] == "Tuntas") {
+                                        ?>
+                                            <i class='fe fe-check-circle text-success'></i><br />
+                                            <span class='badge badge-success text-light'>Tuntas</span>
+                                        <?php
+                                        } else if ($row_penugasan["status"] == "Tuntas Sebagian") {
+                                        ?>
+                                            <i class='fe fe-minus-circle text-warning'></i><br />
+                                            <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
+                                        <?php
+                                        } else if ($row_penugasan["status"] == "Belum Tuntas") {
+                                        ?>
+                                            <i class='fe fe-x-circle text-danger'></i><br />
+                                            <span class='badge badge-danger text-light'>Belum Tuntas</span>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <i class='fe fe-x-circle text-danger'></i><br />
+                                            <span class='badge badge-danger text-light'>Belum TL</span>
+                                        <?php
+                                        }
+                                        ?>
                                     </h4>
                                 </div>
                             </div>
@@ -214,6 +235,17 @@ if (mysqli_num_rows($result) > 0) {
                                                     <i class="fe fe-file-text text-primary"></i><br />
                                                     <span class="badge badge-primary text-light" style="cursor: pointer;" data-toggle="modal" data-target="#modalBaktl">
                                                         BAKTL
+                                                    </span>
+                                                </h4>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if (mysqli_num_rows($result_surat_tuntas) == 0 && mysqli_num_rows($result_baktl) == 0) : ?>
+                                            <div class="col-sm-12 col-12">
+                                                <h4 class="mb-1">
+                                                    <i class="fe fe-x-circle text-danger"></i><br />
+                                                    <span class="badge badge-danger text-light">
+                                                        Belum ada file yang ter-upload
                                                     </span>
                                                 </h4>
                                             </div>
@@ -290,6 +322,21 @@ if (mysqli_num_rows($result) > 0) {
 
                         <h4>
                             <i class="fe fe-search text-primary"></i> Temuan <?= $no; ?>
+                            <?php
+                                if ($row_temuan->status == "Tuntas") {
+                                ?>
+                                    <span class="badge badge-success text-light">Tuntas</span>
+                                <?php
+                                } else if ($row_temuan->status == "Tuntas Sebagian") {
+                                ?>
+                                    <span class="badge badge-warning text-light">Tuntas Sebagian</span>
+                                <?php
+                                } else if ($row_temuan->status == "Belum Tuntas") {
+                                ?>
+                                    <span class="badge badge-danger text-light">Belum Tuntas</span>
+                                <?php
+                                }
+                            ?>
                         </h4>
 
                         <div class="row">
@@ -495,148 +542,13 @@ if (mysqli_num_rows($result) > 0) {
                                     <div class="tab-pane fade" id="rekomendasi<?= $no; ?>" role="tabpanel" aria-labelledby="rekomendasi-tab<?= $no; ?>">
                                         <div class="row justify-content-center">
                                             <?php
-                                            $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
                                             $no_rekom = 1;
-                                            while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) {
-                                                $sql_rekomendasi = $mysqli->query("SELECT * FROM rekomendasi WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
-                                                $row_rekomendasi = $sql_rekomendasi->fetch_object();
+                                            $sql_dtrekom = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
+                                            while ($row_dtrekom = $sql_dtrekom->fetch_object()) {
 
-                                                $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi'");
-                                                $sql_tl_tuntas = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Tuntas'");
-                                                $sql_tl_tuntas_sebagian = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Tuntas Sebagian'");
-                                                $sql_tl_belum_tuntas = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_rekomendasi->id_rekomendasi' AND status='Belum Tuntas'");
-                                                if (mysqli_num_rows($sql_tindak_lanjut) > 0) {
-                                                    if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
-                                                        while ($rws_tindak_lanjut = $sql_tindak_lanjut->fetch_assoc()) {
-                                                            $status_tl[] = $rws_tindak_lanjut['status'];
-                                                        }
-                                                        if (in_array("", $status_tl)) {
-                                                        ?>
-                                                            <div class="col-md-4">
-                                                                <div class="card shadow bg-warning text-center mb-3">
-                                                                    <div class="card-body p-4">
-                                                                        <span class="circle circle-md bg-warning-light">
-                                                                            <i class="fe fe-minus fe-24 text-white"></i>
-                                                                        </span>
-                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                    </div> <!-- .card-body -->
-                                                                </div> <!-- .card -->
-                                                            </div>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <div class="col-md-4">
-                                                                <div class="card shadow bg-success text-center mb-3">
-                                                                    <div class="card-body p-4">
-                                                                        <span class="circle circle-md bg-success-light">
-                                                                            <i class="fe fe-check fe-24 text-white"></i>
-                                                                        </span>
-                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-success-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                    </div> <!-- .card-body -->
-                                                                </div> <!-- .card -->
-                                                            </div>
-                                                        <?php
-                                                        }
-                                                    } else if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
-                                                        ?>
-                                                        <div class="col-md-4">
-                                                            <div class="card shadow bg-warning text-center mb-3">
-                                                                <div class="card-body p-4">
-                                                                    <span class="circle circle-md bg-warning-light">
-                                                                        <i class="fe fe-minus fe-24 text-white"></i>
-                                                                    </span>
-                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                </div> <!-- .card-body -->
-                                                            </div> <!-- .card -->
-                                                        </div>
-                                                    <?php
-                                                    } else if (mysqli_num_rows($sql_tl_tuntas) > 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
-                                                    ?>
-                                                        <div class="col-md-4">
-                                                            <div class="card shadow bg-warning text-center mb-3">
-                                                                <div class="card-body p-4">
-                                                                    <span class="circle circle-md bg-warning-light">
-                                                                        <i class="fe fe-minus fe-24 text-white"></i>
-                                                                    </span>
-                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                </div> <!-- .card-body -->
-                                                            </div> <!-- .card -->
-                                                        </div>
-                                                    <?php
-                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) == 0) {
-                                                    ?>
-                                                        <div class="col-md-4">
-                                                            <div class="card shadow bg-warning text-center mb-3">
-                                                                <div class="card-body p-4">
-                                                                    <span class="circle circle-md bg-warning-light">
-                                                                        <i class="fe fe-minus fe-24 text-white"></i>
-                                                                    </span>
-                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                </div> <!-- .card-body -->
-                                                            </div> <!-- .card -->
-                                                        </div>
-                                                    <?php
-                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) > 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
-                                                    ?>
-                                                        <div class="col-md-4">
-                                                            <div class="card shadow bg-warning text-center mb-3">
-                                                                <div class="card-body p-4">
-                                                                    <span class="circle circle-md bg-warning-light">
-                                                                        <i class="fe fe-minus fe-24 text-white"></i>
-                                                                    </span>
-                                                                    <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                </div> <!-- .card-body -->
-                                                            </div> <!-- .card -->
-                                                        </div>
-                                                        <?php
-                                                    } else if (mysqli_num_rows($sql_tl_tuntas) == 0 && mysqli_num_rows($sql_tl_tuntas_sebagian) == 0 && mysqli_num_rows($sql_tl_belum_tuntas) > 0) {
-                                                        while ($rws_tindak_lanjut = $sql_tindak_lanjut->fetch_assoc()) {
-                                                            $status_tl[] = $rws_tindak_lanjut['status'];
-                                                        }
-                                                        if (in_array("", $status_tl)) {
-                                                        ?>
-                                                            <div class="col-md-4">
-                                                                <div class="card shadow bg-primary text-center mb-3">
-                                                                    <div class="card-body p-4">
-                                                                        <span class="circle circle-md bg-primary-light">
-                                                                            <i class="fe fe-edit-2 fe-24 text-white"></i>
-                                                                        </span>
-                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                    </div> <!-- .card-body -->
-                                                                </div> <!-- .card -->
-                                                            </div>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <div class="col-md-4">
-                                                                <div class="card shadow bg-danger text-center mb-3">
-                                                                    <div class="card-body p-4">
-                                                                        <span class="circle circle-md bg-danger-light">
-                                                                            <i class="fe fe-alert-circle fe-24 text-white"></i>
-                                                                        </span>
-                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-danger-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
-                                                                    </div> <!-- .card-body -->
-                                                                </div> <!-- .card -->
-                                                            </div>
-                                                        <?php
-                                                        }
-                                                    } else {
+                                                $sql_rekom = $mysqli->query("SELECT * FROM rekomendasi WHERE id_rekomendasi='$row_dtrekom->id_rekomendasi'");
+                                                while ($row_rekom = $sql_rekom->fetch_object()) {
+                                                    if ($row_dtrekom->status == "Cek TL") {
                                                         ?>
                                                         <div class="col-md-4">
                                                             <div class="card shadow bg-primary text-center mb-3">
@@ -645,28 +557,73 @@ if (mysqli_num_rows($result) > 0) {
                                                                         <i class="fe fe-edit-2 fe-24 text-white"></i>
                                                                     </span>
                                                                     <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekomendasi->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    <p class="text-white mt-1 mb-3"><?= $row_rekom->rekomendasi; ?></p>
+                                                                    <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekom->id_rekomendasi; ?>" class="btn bg-primary-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
                                                                 </div> <!-- .card-body -->
                                                             </div> <!-- .card -->
                                                         </div>
-                                                    <?php
+                                                        <?php
+                                                    } else if ($row_dtrekom->status == "Tuntas") {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-success text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-success-light">
+                                                                            <i class="fe fe-check fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekom->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekom->id_rekomendasi; ?>" class="btn bg-success-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                    } else if ($row_dtrekom->status == "Tuntas Sebagian") {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-warning text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-warning-light">
+                                                                            <i class="fe fe-minus fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekom->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekom->id_rekomendasi; ?>" class="btn bg-warning-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                    } else if ($row_dtrekom->status == "Belum Tuntas") {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-danger text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-danger-light">
+                                                                            <i class="fe fe-alert-circle fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekom->rekomendasi; ?></p>
+                                                                        <a href="<?= $base_url; ?>anggota_detail_tl/<?= $no; ?>/<?= $row_rekom->id_rekomendasi; ?>" class="btn bg-danger-light text-white">Cek TL<i class="fe fe-arrow-right fe-16 ml-2"></i></a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                            <div class="col-md-4">
+                                                                <div class="card shadow bg-danger text-center mb-3">
+                                                                    <div class="card-body p-4">
+                                                                        <span class="circle circle-md bg-danger-light">
+                                                                            <i class="fe fe-x fe-24 text-white"></i>
+                                                                        </span>
+                                                                        <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
+                                                                        <p class="text-white mt-1 mb-3"><?= $row_rekom->rekomendasi; ?></p>
+                                                                        <a href="javascript:void(0)" class="btn bg-danger-light text-white" style="cursor:unset;">Belum Diusulkan</a>
+                                                                    </div> <!-- .card-body -->
+                                                                </div> <!-- .card -->
+                                                            </div>
+                                                        <?php
                                                     }
-                                                } else {
-                                                    ?>
-                                                    <div class="col-md-4">
-                                                        <div class="card shadow bg-danger text-center mb-3">
-                                                            <div class="card-body p-4">
-                                                                <span class="circle circle-md bg-danger-light">
-                                                                    <i class="fe fe-x fe-24 text-white"></i>
-                                                                </span>
-                                                                <h5 class="mb-1 text-light mt-3">Rekomendasi <?= $no_rekom; ?></h5>
-                                                                <p class="text-white mt-1 mb-3"><?= $row_rekomendasi->rekomendasi; ?></p>
-                                                                <a href="javascript:void(0)" class="btn bg-danger-light text-white" style="cursor:unset;">Belum Diusulkan</a>
-                                                            </div> <!-- .card-body -->
-                                                        </div> <!-- .card -->
-                                                    </div>
-                                            <?php
                                                 }
                                                 $no_rekom++;
                                             }

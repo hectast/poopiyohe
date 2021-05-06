@@ -262,7 +262,7 @@ if (isset($_POST['login'])) {
                 ?>
                     <script>
                         alert('Password yang anda masukkan salah !');
-                        document.location.href = 'login';
+                        document.location.href = 'beranda';
                     </script>
                 <?php
             }

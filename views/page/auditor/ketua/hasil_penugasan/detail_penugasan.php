@@ -38,7 +38,7 @@ if (mysqli_num_rows($result) > 0) {
 
             <div class="row">
                 <div class="col-12">
-                    <h2 class="page-title"><a href="<?= $base_url; ?>dalnis_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
+                    <h2 class="page-title"><a href="<?= $base_url; ?>ketua_hasil_penugasan" style="text-decoration: none;"><i class="fe fe-arrow-left-circle"></i></a> <?= $page; ?></h2>
                 </div>
             </div>
 
@@ -167,8 +167,29 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="row justify-content-center">
                                 <div class="col-md-12 text-center">
                                     <h4 class="mb-1">
-                                        <i class='fe fe-check text-success'></i><br />
-                                        <span class='badge badge-success text-light'>Statis</span>
+                                        <?php
+                                        if ($row_penugasan["status"] == "Tuntas") {
+                                        ?>
+                                            <i class='fe fe-check-circle text-success'></i><br />
+                                            <span class='badge badge-success text-light'>Tuntas</span>
+                                        <?php
+                                        } else if ($row_penugasan["status"] == "Tuntas Sebagian") {
+                                        ?>
+                                            <i class='fe fe-minus-circle text-warning'></i><br />
+                                            <span class='badge badge-warning text-light'>Tuntas Sebagian</span>
+                                        <?php
+                                        } else if ($row_penugasan["status"] == "Belum Tuntas") {
+                                        ?>
+                                            <i class='fe fe-x-circle text-danger'></i><br />
+                                            <span class='badge badge-danger text-light'>Belum Tuntas</span>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <i class='fe fe-x-circle text-danger'></i><br />
+                                            <span class='badge badge-danger text-light'>Belum TL</span>
+                                        <?php
+                                        }
+                                        ?>
                                     </h4>
                                 </div>
                             </div>
@@ -214,6 +235,17 @@ if (mysqli_num_rows($result) > 0) {
                                                     <i class="fe fe-file-text text-primary"></i><br />
                                                     <span class="badge badge-primary text-light" style="cursor: pointer;" data-toggle="modal" data-target="#modalBaktl">
                                                         BAKTL
+                                                    </span>
+                                                </h4>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if (mysqli_num_rows($result_surat_tuntas) == 0 && mysqli_num_rows($result_baktl) == 0) : ?>
+                                            <div class="col-sm-12 col-12">
+                                                <h4 class="mb-1">
+                                                    <i class="fe fe-x-circle text-danger"></i><br />
+                                                    <span class="badge badge-danger text-light">
+                                                        Belum ada file yang ter-upload
                                                     </span>
                                                 </h4>
                                             </div>
@@ -511,7 +543,7 @@ if (mysqli_num_rows($result) > 0) {
                                                             $status_tl[] = $rws_tindak_lanjut['status'];
                                                         }
                                                         if (in_array("", $status_tl)) {
-                                                        ?>
+                                            ?>
                                                             <div class="col-md-4">
                                                                 <div class="card shadow bg-warning text-center mb-3">
                                                                     <div class="card-body p-4">

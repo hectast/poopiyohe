@@ -60,53 +60,44 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                     while($row_nominal = $sql_nominal->fetch_array()){
                         echo number_format($row_nominal['SUM(isirupiah)']);
                     }
-                   
-                    
                 }else{
                     echo 0;
                 }           
                 ?></td>
                 <td>
-                    <?php while ($row_temuan_iv = $sql_temuan_iv->fetch_object()) : ?>
-                        <?php
-                        $sql_data_rekomendasi_iv = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan_iv->id_temuan'");
-                        ?>
-                        <?php while ($row_data_rekomendasi_iv = $sql_data_rekomendasi_iv->fetch_object()) : ?>
-                            <?php
-                            $array_data_rekomendasi_iv[] = $row_data_rekomendasi_iv->id_rekomendasi;
-                            $sql_tindak_lanjut_iv = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi_iv->id_rekomendasi'");
-                            ?>
-                            <?php while ($row_tindak_lanjut_iv = $sql_tindak_lanjut_iv->fetch_object()) : ?>
-                                <?php
-                                $array_iv[] = $row_tindak_lanjut_iv->id_rekomendasi;
-                                ?>
-                            <?php endwhile; ?>
-                        <?php endwhile; ?>
-                    <?php endwhile; ?>
-
                     <?php
-                    if (isset($array_tl_iv) && isset($array_data_rekomendasi_iv)) {
-                        $rekom_iv = array_unique($array_data_rekomendasi_iv);
-                        $tl_iv = array_unique($array_tl_iv);
-                        if (count($tl_iv) == count($rekom_iv)) {
-                            echo "<small class='badge badge-success'>Tuntas</small>";
-                        } else if (count($tl_iv) < count($rekom_iv)) {
-                            echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                        if ($row_penugasan_iv->status == "Tuntas") {
+                            echo "
+                                <small class='badge badge-success text-light'>$row_penugasan_iv->status</small>
+                            ";
+                        } else if ($row_penugasan_iv->status == "Tuntas Sebagian") {
+                            echo "
+                                <small class='badge badge-warning text-light'>$row_penugasan_iv->status</small>
+                            ";
+                        } else if ($row_penugasan_iv->status == "Belum Tuntas") {
+                            echo "
+                                <small class='badge badge-danger text-light'>$row_penugasan_iv->status</small>
+                            ";
                         } else {
-                            echo "<small class='badge badge-danger'>Belum TL</small>";
+                            echo "
+                                <small class='badge badge-danger text-light'>Belum TL</small>
+                            ";    
                         }
-                    } else {
-                        echo "<small class='badge badge-danger'>Belum TL</small>";
-                    }
                     ?>
                 </td>
                 <td>
+                    <?php if (mysqli_num_rows($sql_temuan_iv) > 0) : ?>
                     <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="fe fe-settings"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="<?= $base_url; ?>detail_temuan/<?= $row_penugasan_iv->id_penugasan; ?>" class="dropdown-item"><i class="fe fe-search"></i> Detail Penugasan</a>
                     </div>
+                    <?php else : ?>
+                    <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fe fe-slash"></span>
+                    </button>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php
@@ -150,43 +141,27 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                 ?></td>
                 <td>
                     <?php
-                        $sql_temuan_opd = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='$row_penugasan_opd->id_penugasan'");
-                    ?>
-                    <?php while ($row_temuan_opd = $sql_temuan_opd->fetch_object()) : ?>
-                        <?php
-                        $sql_data_rekomendasi_opd = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan_opd->id_temuan'");
-                        ?>
-                        <?php while ($row_data_rekomendasi_opd = $sql_data_rekomendasi_opd->fetch_object()) : ?>
-                            <?php
-                            $array_data_rekomendasi_opd[] = $row_data_rekomendasi_opd->id_rekomendasi;
-                            $sql_tindak_lanjut_opd = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi_opd->id_rekomendasi'");
-                            ?>
-                            <?php while ($row_tindak_lanjut_opd = $sql_tindak_lanjut_opd->fetch_object()) : ?>
-                                <?php
-                                $array_tl_opd[] = $row_tindak_lanjut_opd->id_rekomendasi;
-                                ?>
-                            <?php endwhile; ?>
-                        <?php endwhile; ?>
-                    <?php endwhile; ?>
-
-                    <?php
-                    if (isset($array_tl_opd) && isset($array_data_rekomendasi_opd)) {
-                        $rekom_opd = array_unique($array_data_rekomendasi_opd);
-                        $tl_opd = array_unique($array_tl_opd);
-                        if (count($tl_opd) == count($rekom_opd)) {
-                            echo "<small class='badge badge-success'>Tuntas</small>";
-                        } else if (count($tl_opd) < count($rekom_opd)) {
-                            echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
+                        if ($row_penugasan_opd->status == "Tuntas") {
+                            echo "
+                                <small class='badge badge-success text-light'>$row_penugasan_opd->status</small>
+                            ";
+                        } else if ($row_penugasan_opd->status == "Tuntas Sebagian") {
+                            echo "
+                                <small class='badge badge-warning text-light'>$row_penugasan_opd->status</small>
+                            ";
+                        } else if ($row_penugasan_opd->status == "Belum Tuntas") {
+                            echo "
+                                <small class='badge badge-danger text-light'>$row_penugasan_opd->status</small>
+                            ";
                         } else {
-                            echo "<small class='badge badge-danger'>Belum TL</small>";
+                            echo "
+                                <small class='badge badge-danger text-light'>Belum TL</small>
+                            ";    
                         }
-                    } else {
-                        echo "<small class='badge badge-danger'>Belum TL</small>";
-                    }
                     ?>
                 </td>
                 <td>
-                    <?php if (mysqli_num_rows($sql_temuan_opd) > 0) : ?>
+                    <?php if (mysqli_num_rows($sql_temuan_opd2) > 0) : ?>
                     <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="fe fe-settings"></span>
                     </button>
@@ -194,10 +169,9 @@ function tampil_data($id_instansi, $base_url, $mysqli)
                         <a href="<?= $base_url; ?>detail_temuan/<?= $row_penugasan_opd->id_penugasan; ?>" class="dropdown-item"><i class="fe fe-search"></i> Detail Penugasan</a>
                     </div>
                     <?php else : ?>
-                        <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="fe fe-slash"></span>
                     </button>
-                    
                     <?php endif; ?>
                 </td>
             </tr>

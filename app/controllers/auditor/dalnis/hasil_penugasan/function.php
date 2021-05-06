@@ -67,21 +67,25 @@ function tampil_data($idFromSA, $peran, $mysqli)
                 <td><?= $row['jenis_penugasan'] ?></td>
                 <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
                 <td>
-                    <?php
-                    if ($row['status_tl'] == 'Tuntas') {
-                    ?>
-                        <small class="badge badge-success">Tuntas</small>
-                    <?php
-                    } else if ($row['status_tl'] == 'Tuntas Sebagian') {
-                    ?>
-                        <small class="badge badge-warning">Tuntas Sebagian</small>
-                    <?php
-                    } else {
-                    ?>
-                        <small class="badge badge-danger"><?= $row['status_tl']; ?></small>
-                    <?php
-                    }
-                    ?>
+                <?php
+                if ($row['status'] == 'Tuntas') {
+                ?>
+                    <small class="badge badge-success text-light"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Tuntas Sebagian') {
+                ?>
+                    <small class="badge badge-warning text-light"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Belum Tuntas') {
+                ?>
+                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
+                <?php
+                } else {
+                ?>
+                    <small class="badge badge-danger text-light">Belum TL</small>
+                <?php
+                }
+                ?>
                 </td>
                 <td>
                     <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

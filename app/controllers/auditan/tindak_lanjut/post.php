@@ -1,6 +1,7 @@
 <?php
 include 'app/controllers/auditan/tindak_lanjut/function.php';
 include 'app/flash_message.php';
+error_reporting(0);
     if (isset($_POST['tindak_lanjut']) and $_SERVER['REQUEST_METHOD'] == "POST") {
         $id_temuan = $_POST['id_temuan'];
         $id_rekomendasi = $_POST['id_rekomendasi'];

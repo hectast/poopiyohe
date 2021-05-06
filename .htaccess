@@ -39,7 +39,12 @@ RewriteRule ^edit_nilai/([0-9]+)$ auditan.php?views_auditan=edit_nilai&id=$1 [NC
 RewriteRule ^auditan_cek_tl/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=auditan_cek_tl&tm=$1&id=$2 [NC,L] 
 RewriteRule ^edit_tl/([0-9]+)/([0-9]+)/([0-9]+)$ auditan.php?views_auditan=edit_tl&tm=$1&id=$2&tl=$3 [NC,L]
 
+# default
 RewriteRule ^beranda_auditor$ auditor.php?views_auditor=beranda_auditor
+RewriteRule ^auditor_data_penugasan$ auditor.php?views_auditor=auditor_data_penugasan
+RewriteRule ^auditor_tambah_penugasan$ auditor.php?views_auditor=auditor_tambah_penugasan
+RewriteRule ^auditor_edit_penugasan$ auditor.php?views_auditor=auditor_edit_penugasan
+RewriteRule ^auditor_lihat_penugasan$ auditor.php?views_auditor=auditor_lihat_penugasan
 
 # Auditor Ketua
 RewriteRule ^beranda_ketua$ auditor.php?views_ketua=beranda_ketua

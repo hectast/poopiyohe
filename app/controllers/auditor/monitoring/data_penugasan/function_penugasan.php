@@ -73,7 +73,7 @@ function tampil_data($mysqli)
                 <?php
                 } else {
                 ?>
-                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
+                    <small class="badge badge-danger text-light">Belum TL</small>
                 <?php
                 }
                 ?>
@@ -184,7 +184,7 @@ function detail($id_tampil, $mysqli)
                             <?php
                             } else {
                             ?>
-                                <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
+                                <small class="badge badge-danger text-light">Belum TL</small>
                             <?php
                             }
                         ?>

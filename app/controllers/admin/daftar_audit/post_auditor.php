@@ -53,3 +53,42 @@ if (isset($_POST['ubah'])) {
         flash("msg_edit_data", "Data berhasi diubah");
     }
 }
+
+if (isset($_POST['akses_korwas'])) {
+    $id = $_POST['id'];
+    $token_korwas = $_POST['token_korwas'];
+
+    $tkn = 'sam_san_tech)';
+    $token = md5("$tkn:$id");
+
+    if ($token_korwas === $token) {
+        akses_korwas($id, $mysqli);
+        flash("msg_simpan_data", "Pemberian akses korwas berhasil");
+    }
+}
+
+if (isset($_POST['akses_monitoring'])) {
+    $id = $_POST['id'];
+    $token_monitoring = $_POST['token_monitoring'];
+
+    $tkn = 'sam_san_tech)';
+    $token = md5("$tkn:$id");
+
+    if ($token_monitoring === $token) {
+        akses_monitoring($id, $mysqli);
+        flash("msg_simpan_data", "Pemberian akses monitoring berhasil");
+    }
+}
+
+if (isset($_POST['hapus_akses'])) {
+    $id = $_POST['id'];
+    $token_hapus_akses = $_POST['token_hapus_akses'];
+
+    $tkn = 'sam_san_tech)';
+    $token = md5("$tkn:$id");
+
+    if ($token_hapus_akses === $token) {
+        hapus_akses($id, $mysqli);
+        flash("msg_hapus_data", "Penghapusan akses berhasil");
+    }
+}

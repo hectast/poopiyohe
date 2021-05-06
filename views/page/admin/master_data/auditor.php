@@ -86,6 +86,7 @@ include 'app/controllers/admin/daftar_audit/post_auditor.php';
                                     <th>No</th>
                                     <th>Nama Auditor</th>
                                     <th>Email Auditor</th>
+                                    <th>Akses Khusus</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

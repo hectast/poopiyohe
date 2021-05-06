@@ -193,6 +193,28 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
         $fortitle = "Korwas - Detail Tindak Lanjut";
         $title = $fortitle . " | PO'OPIYOHE";
     }
+} else if ($_SESSION['auditornopngsn'] === 3 && isset($_GET['views_auditor'])) {
+    if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor") {
+        $page = "Beranda";
+        $fortitle = "Auditor - beranda";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_data_penugasan") {
+        $page = "Data Penugasan";
+        $fortitle = "Auditor - Data Penugasan";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_tambah_penugasan") {
+        $page = "Tambah Penugasan";
+        $fortitle = "Auditor - Tambah Penugasan";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_edit_penugasan") {
+        $page = "Edit Penugasan";
+        $fortitle = "Auditor - Edit Penugasan";
+        $title = $fortitle . " | PO'OPIYOHE";
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_lihat_penugasan") {
+        $page = "Detail Penugasan";
+        $fortitle = "Auditor - Detail Penugasan";
+        $title = $fortitle . " | PO'OPIYOHE";
+    }
 }
 ?>
 
@@ -317,9 +339,17 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
     }
 } else if ($_SESSION['auditornopngsn'] === 3 && isset($_GET['views_auditor'])) {
     if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor") {
-        include 'views/page/auditor/beranda.php';
+        include 'views/page/auditor/default/beranda.php';
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_data_penugasan") {
+        include 'views/page/auditor/default/data_penugasan/datapenugasan.php';
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_tambah_penugasan") {
+        include 'views/page/auditor/default/data_penugasan/tambah_penugasan.php';
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_edit_penugasan") {
+        include 'views/page/auditor/default/data_penugasan/edit_penugasan.php';
+    } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_lihat_penugasan") {
+        include 'views/page/auditor/default/data_penugasan/detailpenugasan.php';
     } else {
-        include 'views/page/auditor/beranda.php';
+        include 'views/page/auditor/default/beranda.php';
     }
 } else {
 

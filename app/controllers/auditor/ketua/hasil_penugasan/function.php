@@ -68,38 +68,22 @@ function tampil_data($idFromSA, $peran, $mysqli)
                 <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
                 <td>
                 <?php
-                $sql_temuan = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan='{$row['id_penugasan']}'");
+                if ($row['status'] == 'Tuntas') {
                 ?>
-                <?php while ($row_temuan = $sql_temuan->fetch_object()) : ?>
-                    <?php
-                    $sql_data_rekomendasi = $mysqli->query("SELECT * FROM data_rekomendasi WHERE id_temuan='$row_temuan->id_temuan'");
-                    ?>
-                    <?php while ($row_data_rekomendasi = $sql_data_rekomendasi->fetch_object()) : ?>
-                        <?php
-                        $array_data_rekomendasi[] = $row_data_rekomendasi->id_rekomendasi;
-                        $sql_tindak_lanjut = $mysqli->query("SELECT * FROM tindak_lanjut WHERE id_rekomendasi='$row_data_rekomendasi->id_rekomendasi'");
-                        ?>
-                        <?php while ($row_tindak_lanjut = $sql_tindak_lanjut->fetch_object()) : ?>
-                            <?php
-                            $array_tl[] = $row_tindak_lanjut->id_rekomendasi;
-                            ?>
-                        <?php endwhile; ?>
-                    <?php endwhile; ?>
-                <?php endwhile; ?>
-
+                    <small class="badge badge-success text-light"><?= $row['status']; ?></small>
                 <?php
-                if (isset($array_tl) && isset($array_data_rekomendasi)) {
-                    $rekom = array_unique($array_data_rekomendasi);
-                    $tl = array_unique($array_tl);
-                    if (count($tl) == count($rekom)) {
-                        echo "<small class='badge badge-success'>Tuntas</small>";
-                    } else if (count($tl) < count($rekom)) {
-                        echo "<small class='badge badge-warning text-light'>Tuntas Sebagian</small>";
-                    } else {
-                        echo "<small class='badge badge-danger'>Belum TL</small>";
-                    }
+                } else if ($row['status'] == 'Tuntas Sebagian') {
+                ?>
+                    <small class="badge badge-warning text-light"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Belum Tuntas') {
+                ?>
+                    <small class="badge badge-danger text-light"><?= $row['status']; ?></small>
+                <?php
                 } else {
-                    echo "<small class='badge badge-danger'>Belum TL</small>";
+                ?>
+                    <small class="badge badge-danger text-light">Belum TL</small>
+                <?php
                 }
                 ?>
                 </td>

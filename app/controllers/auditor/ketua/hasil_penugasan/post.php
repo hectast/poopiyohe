@@ -33,7 +33,7 @@ error_reporting(0);
             $total_rekomendasi = count($rekomendasi[$i]);
 
             //tambahTemuan
-            $insert = "INSERT INTO temuan VALUES ('','$id_penugasan','$no_laporan','$tgl_laporan','$kondisi[$i]','$cekrpnonrp[$i]','$isianrupiah[$i]','$isianrupiah[$i]','$hal[$i]')";
+            $insert = "INSERT INTO temuan VALUES ('','$id_penugasan','$no_laporan','$tgl_laporan','$kondisi[$i]','$cekrpnonrp[$i]','$isianrupiah[$i]','$isianrupiah[$i]','$hal[$i]','')";
             $mysqli->query($insert);
             $id_akhir = $mysqli->insert_id;
 
@@ -88,7 +88,7 @@ error_reporting(0);
                     $mysqli->query($sql_r);
                     $id_rekomendasi = $mysqli->insert_id;
 
-                    $input_sb = "INSERT INTO data_rekomendasi VALUES('$id_akhir','$id_rekomendasi')";
+                    $input_sb = "INSERT INTO data_rekomendasi VALUES('$id_akhir','$id_rekomendasi','')";
                     $mysqli->query($input_sb);
                 }
 
