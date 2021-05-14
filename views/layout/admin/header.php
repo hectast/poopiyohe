@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title><?= isset($title) ? $title : "PO'OPIYOHE"; ?></title>
+    <title><?= isset($title) ? $title : "PO'OPIYOHE | Administrator"; ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="assets/css/simplebar.css">
     <!-- Fonts CSS -->
@@ -21,8 +21,40 @@
     <link rel="stylesheet" href="assets/css/select2.css">
     <!-- App CSS -->
     <link rel="stylesheet" href="assets/css/app-light.css" id="lightTheme">
+    <style>
+.boks{
+    display: inline-block;
+    padding: 10px;
+    margin: 5px 5px 0 0;
+    background-color: #f7f8f9;      
+}
+</style>
     <!-- <link rel="stylesheet" href="assets/css/app-dark.css" id="darkTheme" disabled> -->
 </head>
-
+<?php
+function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+ 
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+?>
 <body class="vertical light">
     <div class="wrapper">

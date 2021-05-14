@@ -20,10 +20,49 @@
     "responsive": true,
     "autoWidth": true,
   });
+
+  $('#dataTable-audit').DataTable({
+    "info":false,
+    "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
+  });
+
+  $('#dataTable-provinsi').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+
+
+  $('#dataTable-kota').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-kabgor').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-gorut').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-bonbol').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-boal').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-pohu').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  
   
   $('.select1').select2({
     theme: 'bootstrap4',
   });
+  
+
 
   $(document).ready(function() {
     setTimeout(function() {

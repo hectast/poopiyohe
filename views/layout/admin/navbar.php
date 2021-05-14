@@ -6,13 +6,13 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="avatar avatar-sm mt-2">
-                    <img src="assets/img/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-                    <small class="text-dark ml-1"><strong>Super Admin</strong></small>
+                    <img src="assets/img/avatars/profile.png" alt="..." class="avatar-img rounded-circle">
+                    <small class="text-dark ml-1"><strong><?= strtoupper($_SESSION['tipe_user']); ?></strong></small>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Profil</a>
-                <a class="dropdown-item" href="#">Keluar</a>
+                <!-- <a class="dropdown-item" href="#">Profil</a> -->
+                <a class="dropdown-item" href="app/logout.php" onclick="return confirm('Yakin keluar dari halaman ini ?')">Keluar</a>
             </div>
         </li>
     </ul>

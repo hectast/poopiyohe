@@ -1,41 +1,101 @@
 <?php
-
 include 'app/controllers/admin/function_penugasan.php';
 include 'app/flash_message.php';
+error_reporting(0);
+if (isset($_POST['addpenugasan'])) {
+    $no_st          = $_POST['no_st'];
+    $nama_penugasan = $_POST['nama_penugasan'];
+    $tgl_st         = $_POST['tgl_st'];
+    $jp             = $_POST['jenis_penugasan'];
+   
+    if ($jp != 'Lainnya') {
+        $jenis_penugasan = $_POST['jenis_penugasan'];
+    } else {
+        $jenis_penugasan = $_POST['lainnya'];
+    }
 
-if(isset($_POST['tambah_auditor'])){
+    $pkpt = $_POST['pkpt'];
+    $kf1 = $_POST['kf1'];
+    $d1 = $_POST['d1'];
 
-$id = $_POST['id'];
-$_SESSION['keranjang'][$id] = $id ;
-flash("msg_sukses_data", "Auditor Berhasil Ditambahkan");
+    $auditan_in     = $_POST['vertikal'];
+    $auditan_opd    = $_POST['opd'];
+ 
+    
+    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$no_st','$tgl_st','$nama_penugasan','$jenis_penugasan','$auditan_in','$auditan_opd','Belum Direview','$pkpt','$kf1','$d1')");
 
-}else if(isset($_POST['hapus_keranjang'])){
-    $id = $_POST['id'];
-    unset($_SESSION['keranjang'][$id]);
-    flash("msg_sukses_hapus_data", "Auditor Berhasil Dihapus");
-}else if(isset($_POST['addpenugasan'])){
-    $idtugas = $_POST['idtugas'];
-    $id_pemda = $_POST['id_pemda'];
-    $id_instansi = $_POST['id_instansi'];
-
-    $insert = $mysqli->query("INSERT INTO penugasan VALUES ('','$id_instansi','$id_pemda','Sementara')");
+    $auditor = $_POST['auditor'];
+    $peran = $_POST['peran'];
+    $total = count($auditor)-1;
     $id_terakhir = $mysqli->insert_id;
 
-    foreach($_SESSION['keranjang'] as $id){
-        $query = $mysqli->query("SELECT * FROM auditor WHERE id ='$id'");
-        $tampil = $query->fetch_array();
-        $idauditor = $tampil['id'];
-        $nama = $tampil['nama'];
-        $mysqli->query("INSERT INTO auditor_penugasan VALUES('','$id_terakhir','$idauditor')");
-        
+    for ($i = 0; $i < $total; $i++) {
+        $queryinput = "INSERT INTO penugasan_auditor VALUES('','$id_terakhir','$auditor[$i]','$peran[$i]')";
+        $insert2 = $mysqli->query($queryinput);
     }
-    unset($_SESSION['keranjang']);
-    echo"
-    <script>
-        alert('Data Berhasil Disimpan');
-        window.location.href='http://localhost/poopiyohe/data_penugasan';
-    </script>
-    ";
-    
 
+
+    flash("msg_addpenugasan", "Data Berhasil Disimpan");
+} 
+if(isset($_POST['editpenugasan'])){
+    
+    $no_st          = $_POST['no_st'];
+    $nama_penugasan = $_POST['nama_penugasan'];
+    $tgl_st         = $_POST['tgl_st'];
+    $jp             = $_POST['jenis_penugasan'];
+    $status         = $_POST['status'];
+    $pkpt = $_POST['pkpt'];
+    $kf1 = $_POST['kf1'];
+    $d1 = $_POST['d1'];
+    $idid = $_POST['idid'];
+
+      
+    if ($jp != 'Lainnya') {
+        $jenis_penugasan = $_POST['jenis_penugasan'];
+    } else {
+        $jenis_penugasan = $_POST['lainnya'];
+    }
+
+    if(empty($_POST['vertikal'])){
+        $instansi_vertikal = $_POST['vertikaledit'];
+    }else{
+        $instansi_vertikal = $_POST['vertikal'];
+    }
+
+    if(empty($_POST['opd'])){
+        $opd = $_POST['opdedit'];
+    }else{
+        $opd = $_POST['opd'];
+    }
+
+    $update = $mysqli->query("UPDATE penugasan SET no_st = '$no_st', tgl_st = '$tgl_st', uraian_penugasan = '$nama_penugasan', jenis_penugasan = '$jenis_penugasan', auditan_in = '$instansi_vertikal', auditan_opd = '$opd',status = '$status',pkpt='$pkpt',kf1 = '$kf1',d1='$d1' WHERE id_penugasan = '$idid'");
+    $auditor = $_POST['auditor'];
+    $peran = $_POST['peran'];
+    $total = count($auditor)-1;
+    
+   
+    if($auditor[0] == 0){   
+       
+    }else{
+        $mysqli->query("DELETE FROM penugasan_auditor WHERE id_penugasan = '$idid'");
+        for ($i = 0; $i < $total; $i++) {
+            $queryinput = "INSERT INTO penugasan_auditor VALUES('','$idid','$auditor[$i]','$peran[$i]')";
+            $insert2 = $mysqli->query($queryinput);
+        }
+    }
+    flash("msg_edit_data", "Data berhasil diubah");
+    }
+if(isset($_POST['lihat_data'])){
+    $id_tampil = $_POST['id_lihat'];
+    
+}
+if(isset($_POST['hapus_data'])){
+    $id = $_POST['id_lihat'];
+    $token = $_POST['token'];
+    $tkn = 'sam_san_tech)';
+    $token2 = md5("$tkn:$id");
+    if ($token === $token2) {
+        hapus_data($id, $mysqli);
+        flash("msg_hapus_data", "Data berhasil dihapus");
+    }
 }

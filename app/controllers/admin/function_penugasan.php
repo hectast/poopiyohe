@@ -1,165 +1,227 @@
 <?php
-
 function tampil_data($mysqli)
 {
-    $query = "SELECT * FROM penugasan";
-    $to = $mysqli->prepare($query);
-    $to->execute();
-    $result = $to->get_result();
-    $no = 1;
-    while ($row = $result->fetch_object()) {
-        $idtugas = $row->id_tugas;
-        $id_instansi = $row->id_instansi_vertikal;
-        $qinstansi = "SELECT * FROM instansi_vertikal WHERE id = '$id_instansi'";
-        $rwinstansi = $mysqli->query($qinstansi);
-        $rinstansi = mysqli_fetch_assoc($rwinstansi);
-        $id_pemda = $row->id_pemda;
-        $qpemda = "SELECT * FROM pemda WHERE id = '$id_pemda'";
-        $rwpemda = $mysqli->query($qpemda);
-        $rpemda = mysqli_fetch_assoc($rwpemda);
-        $status = $row->status;
+    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
+    $result = $mysqli->query($querx);
+    while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
-        $token = md5("$tkn:$idtugas");
-        echo "";
+        $id = $row['id_penugasan'];
+        $token = md5("$tkn:$id");
 ?>
         <tr>
-            <td><?= $no++; ?></td>
-            <td><?= $rinstansi['nama_instansi']; ?></td>
-            <td><?= $rpemda['pemda']; ?></td>
-            <td><a href="" data-toggle="modal" data-target="#defaultModalx<?= $idtugas; ?>" class="btn btn-sm btn-primary"><i class="fe fe-search"></i> Lihat Auditor</a></td>
-            <td><?= $status; ?></td>           
+            <td><?= $row['no_st'] ?></td>
+            <td><?= tgl_indo($row['tgl_st']); ?></td>
+            <td>
+            <?php 
+            $instansi_vertikal = $row['auditan_in'];
+            $opede             = $row['auditan_opd'];
+            
+            if(empty($instansi_vertikal)){
+                $result_opede = $mysqli->query("SELECT * FROM opd WHERE id = '$opede'");
+                $row_opede = mysqli_fetch_assoc($result_opede);
+                echo $row_opede['nama_instansi']; echo " - "; echo $row_opede['nama_pemda'];
+            }
+             if(empty($opede)){
+                $result_vertikal = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id = '$instansi_vertikal'");
+                $row_vertikal = mysqli_fetch_assoc($result_vertikal);
+                echo $row_vertikal['nama_instansi'];
+            }
+            
+            
+            ?>
+            </td>
+            <td><?= $row['uraian_penugasan']; ?></td>
+            <td><?= $row['jenis_penugasan'] ?></td>
+            <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
+            <td>
+                <?php
+                if ($row['status'] == 'Belum Direview') {
+                ?>
+                    <small class="badge badge-danger"><?= $row['status']; ?></small>
+                <?php
+                } else if ($row['status'] == 'Belum Divalidasi') {
+                ?>
+                    <small class="badge badge-warning"><?= $row['status']; ?></small>
+                <?php
+                } else {
+                ?>
+                    <small class="badge badge-success"><?= $row['status']; ?></small>
+                <?php
+                }
+                ?>
+            </td>
             <td>
                 <button class="btn btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fe fe-settings"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#defaultModal<?= $idtugas; ?>">Ubah</button>
-                    <form action="instansi_vertikal" method="post">
-                        <input type="hidden" name="token_hapus" value="<?= $token; ?>">
-                        <input type="hidden" name="id" value="">
-                        <button type="submit" name="hapus_data" onclick="return confirm('Yakin menghapus data ini?')" class="dropdown-item">Hapus</button>
+
+                    <form action="detail_penugasan" method="post">
+                        <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
+                        <input type="hidden" name="token" value="<?= $token ?>">
+                        <button name="lihat_data" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</button>
+
                     </form>
+                    <form action="edit_penugasan" method="post">
+                        <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
+                        <input type="hidden" name="token" value="<?= $token ?>">
+                        <button name="edit_data" class="dropdown-item"><i class="fe fe-edit"></i> Ubah</button>
+                    </form>
+                    <form action="datapenugasan" method="post">
+                        <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
+                        <input type="hidden" name="token" value="<?= $token ?>">
+                        <button name="hapus_data" class="dropdown-item" onclick="return confirm('Anda Yakin Menghapus Data Ini?')"><i class="fe fe-trash"></i> Hapus</button>
+                    </form>
+
                 </div>
             </td>
         </tr>
-        <!-- modal -->
-        <div class="modal fade" id="defaultModalx<?= $idtugas; ?>" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="defaultModalLabel">Form Ubah Instansi Vertikal</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-2">No</div>
-                            <div class="col-10">Nama</div>
-                        </div>
-
-                        <?php
-                            $nmr = 1;
-                            $qaudit = "SELECT * FROM auditor_penugasan WHERE id_tugas='$idtugas'";
-                            $rsauditor = $mysqli->query($qaudit);
-                            while($rwauditor = mysqli_fetch_assoc($rsauditor)){
-
-                            $idtugas_t = $rwauditor['id'];
-                           
-                            $auditorname = $mysqli->query("SELECT * FROM auditor WHERE id = '$idtugas_t'");
-                           while( $rowauditor = mysqli_fetch_assoc($auditorname)){
-                             $auditorname_t = $rowauditor['nama'];
-                        ?>
-                        <div class="row">
-                            <div class="col-2"><?= $nmr++ ?></div>
-                            <div class="col-10"><?= $auditorname_t; ?></div>
-                        
-                        </div>
-                        <?php
-                           }
-                        }
-                           ?>
-                        
-
-                    </div>
-                   
-
-                </div>
-            </div>
-        </div>
-        <!-- modal2 -->
-
-
     <?php
-                           
     }
 }
-
 function tampil_data_auditor($mysqli)
 {
-    $query = "SELECT * FROM auditor";
-    $to = $mysqli->prepare($query);
-    $to->execute();
-    $result = $to->get_result();
-    $no = 1;
-    $nomor = 1;
-    while ($row = $result->fetch_object()) {
+    $r_auditor = $mysqli->query("SELECT * FROM auditor");
+    while ($auditor = mysqli_fetch_assoc($r_auditor)) {
     ?>
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $id = $row->id ?></td>
-            <td><?= $row->nama ?></td>
-            <td>
-                <form action="tambah_penugasan" method="POST">
-                    <input type="hidden" name="id" value="<?= $id ?>">
-                    <button type="submit" name="tambah_auditor" class="btn btn-sm btn-primary"><i class="fe fe-plus-circle"></i> Auditor</button>
-                </form>
-
-            </td>
-        </tr>
+        <option value="<?= $auditor['id'] ?>"><?= $auditor['nama'] ?></option>
     <?php
     }
 }
-
-function tampil_data_auditor_selek($mysqli)
+function detail($id_tampil, $mysqli)
 {
-    if (empty($_SESSION['keranjang'])) {
+
+    $query = $mysqli->query("SELECT * FROM penugasan WHERE id_penugasan = '$id_tampil'");
+    $row = mysqli_fetch_assoc($query);
     ?>
-        <tr>
-            <td colspan="3" align="center">Auditor Kosong</td>
-        </tr>
-        <?php
-    } else {
-        $nomor = 1;
-        foreach (($_SESSION["keranjang"]) as $id) :
-        ?>
-            <?php
-            $query = $mysqli->query("SELECT * FROM auditor WHERE id = '$id' ");
-            $tampil = $query->fetch_assoc();
-            ?>
-            <tr>
-                <td><?= $nomor++ ?></td>
-                <td><?= $tampil['nama']; ?></td>
-                <td>
-                    <form action="tambah_penugasan" method="POST">
-                        <input type="hidden" name="id" value="<?= $id ?>">
-                        <button type="submit" name="hapus_keranjang" class="btn btn-sm btn-danger "><i class="fe fe-trash"></i></button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach ?>
-    <?php }
+    <div class="col-7">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <strong class="card-title">Data Penugasan</strong>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>No.ST</td>
+                        <td>:</td>
+                        <td><?= $row['no_st'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tgl.ST</td>
+                        <td>:</td>
+                        <td><?= tgl_indo($row['tgl_st']) ?></td>
+                    </tr>
+                    <tr>
+                        <td>Uraian Penugasan</td>
+                        <td>:</td>
+                        <td><?= $row['uraian_penugasan'] ?></td>
+                    </tr>
+
+                    <tr>
+                        <td>Jenis Penugasan</td>
+                        <td>:</td>
+                        <td><?= $row['jenis_penugasan'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Auditan</td>
+                        <td>:</td>
+                        <td>
+                            <?php
+                            if (empty($row['auditan_in'])) {
+                                $au2 = $row['auditan_opd'];
+                                $opd2 = $mysqli->query("SELECT * FROM opd WHERE id='$au2'");
+                                $r_opd = mysqli_fetch_assoc($opd2);
+                                echo $r_opd['nama_instansi'];
+                                echo ' - ';
+                                echo $r_opd['nama_pemda'];
+                            } else {
+                                $au = $row['auditan_in'];
+                                $iv = $mysqli->query("SELECT * FROM instansi_vertikal WHERE id='$au'");
+                                $r_iv = mysqli_fetch_assoc($iv);
+                                echo $r_iv['nama_instansi'];
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Keterangan</td>
+                        <td>:</td>
+                        <td><?= $row['pkpt'] ?> , <?= $row['kf1'] ?> , <?= $row['d1'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td> 
+                            <?php
+                            if ($row['status'] == 'Belum Direview') {
+                            ?>
+                                <small class="badge badge-danger"><?= $row['status']; ?></small>
+                            <?php
+                            } else if ($row['status'] == 'Belum Divalidasi') {
+                            ?>
+                                <small class="badge badge-warning"><?= $row['status']; ?></small>
+                            <?php
+                            } else {
+                            ?>
+                                <small class="badge badge-success"><?= $row['status']; ?></small>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <strong class="card-title">Data Auditor (Personel)</strong>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Peran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query2 = $mysqli->query("SELECT * FROM penugasan_auditor WHERE id_penugasan = '$row[id_penugasan]'");
+                        while ($row2 = mysqli_fetch_assoc($query2)) {
+                        ?>
+                            <tr>
+                                <td>
+                                    <?php
+                                    $nama_auditor = $row2['id'];
+                                    $query3 = $mysqli->query("SELECT * FROM auditor WHERE id = '$nama_auditor'");
+                                    $row_auditor = mysqli_fetch_assoc($query3);
+                                    echo $row_auditor['nama'];
+                                    ?>
+                                </td>
+                                <td><?= $row2['peran']; ?></td>
+                            </tr>
+                        <?php
+                        }
+
+                        ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <?php
+}
+function hapus_data($id, $mysqli)
+{
+    $delete = $mysqli->prepare("DELETE FROM penugasan WHERE id_penugasan ='$id'");
+    $delete->execute();
+
+    $delete2 = $mysqli->prepare("DELETE FROM penugasan_auditor WHERE id_penugasan ='$id'");
+    $delete2->execute();
 }
 
 
-function tampil_data_pemda($mysqli)
-{
-    $query = "SELECT * FROM pemda";
-    $result = $mysqli->query($query);
-    while ($d = mysqli_fetch_assoc($result)) {
-    ?>
-        <option value="<?= $d['id'] ?>"><?= $d['pemda']; ?></option>
-<?php
-    }
-}
 ?>
