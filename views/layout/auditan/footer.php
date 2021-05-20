@@ -31,6 +31,14 @@
     "responsive": true,
     "autoWidth": true,
   });
+  $('#dataTable-2').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-3').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
 
   $('.select1').select2({
     theme: 'bootstrap4',

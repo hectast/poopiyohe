@@ -26,6 +26,9 @@ RewriteRule ^data_penugasan$ admin.php?views_admin=datapenugasan
 RewriteRule ^tambah_penugasan$ admin.php?views_admin=tambah_penugasan
 RewriteRule ^detail_penugasan$ admin.php?views_admin=detail_penugasan
 RewriteRule ^edit_penugasan$ admin.php?views_admin=edit_penugasan
+RewriteRule ^cetak_laporan$ admin.php?views_admin=cetak_laporan
+RewriteRule ^cetak$ admin.php?views_admin=cetak
+
 
 # Auditan
 RewriteRule ^beranda_auditan$ auditan.php?views_auditan=beranda_auditan

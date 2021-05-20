@@ -15,6 +15,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['tipe_user'] == 'admin') {
 	header('Location: admin');
 	exit;
 }
-
+include 'app/log_default.php';
 include 'app/env.php';
 require_once 'views/page/user/index.php';

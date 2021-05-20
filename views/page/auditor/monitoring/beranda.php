@@ -204,7 +204,7 @@
                                                             <span class="fe fe-settings"></span>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a href="korwas_detail_penugasan/<?= $row_pngsn_tuntas1['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                                                            <a href="monitoring_detail_penugasan/<?= $row_pngsn_tuntas1['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -270,7 +270,7 @@
                                                             <span class="fe fe-settings"></span>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a href="korwas_detail_penugasan/<?= $row_pngsn_tuntas2['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                                                            <a href="monitoring_detail_penugasan/<?= $row_pngsn_tuntas2['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -336,7 +336,7 @@
                                                             <span class="fe fe-settings"></span>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a href="korwas_detail_penugasan/<?= $row_pngsn_tuntas3['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
+                                                            <a href="monitoring_detail_penugasan/<?= $row_pngsn_tuntas3['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
                                                         </div>
                                                     </td>
                                                 </tr>

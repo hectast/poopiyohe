@@ -15,6 +15,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['tipe_user'] == 'auditor') {
 	header('Location: auditor');
 	exit;
 }
+include 'app/log_admin.php';
 
 include 'app/env.php';
 include 'app/controllers/login/cek_session.php';
