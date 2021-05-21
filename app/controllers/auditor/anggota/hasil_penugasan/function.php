@@ -27,8 +27,9 @@ function tgl_indo($tanggal)
 
 function tampil_data($idFromSA, $peran, $mysqli)
 {
-    $querPA = "SELECT * FROM penugasan_auditor WHERE id='{$idFromSA}' AND peran='$peran'";
+    $querPA = "SELECT * FROM penugasan_auditor JOIN penugasan ON penugasan_auditor.id_penugasan = penugasan.id_penugasan WHERE id='{$idFromSA}' AND peran='$peran' ORDER BY penugasan.no_st DESC";
     $resultPA = $mysqli->query($querPA);
+    $no=1;
     while ($rowPA = $resultPA->fetch_assoc()) {
         $idP = $rowPA['id_penugasan'];
 
@@ -40,6 +41,7 @@ function tampil_data($idFromSA, $peran, $mysqli)
             $token = md5("$tkn:$id");
 ?>
             <tr>
+                <td><?= $no++; ?></td>
                 <td><?= $row['no_st'] ?></td>
                 <td><?= tgl_indo($row['tgl_st']); ?></td>
                 <td>

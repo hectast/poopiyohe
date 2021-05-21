@@ -27,19 +27,21 @@ function tgl_indo($tanggal)
 
 function tampil_data($idFromSA, $peran, $mysqli)
 {
-    $querPA = "SELECT * FROM penugasan_auditor WHERE id='{$idFromSA}' AND peran='$peran'";
+    $querPA = "SELECT * FROM penugasan_auditor JOIN penugasan ON penugasan_auditor.id_penugasan = penugasan.id_penugasan WHERE id='{$idFromSA}' AND peran='$peran' ORDER BY penugasan.no_st DESC";
     $resultPA = $mysqli->query($querPA);
+    $no=1;
     while ($rowPA = $resultPA->fetch_assoc()) {
         $idP = $rowPA['id_penugasan'];
-
         $querx = "SELECT * FROM penugasan WHERE id_penugasan='{$idP}'";
         $result = $mysqli->query($querx);
+        
         while ($row = mysqli_fetch_assoc($result)) {
             $tkn = 'sam_san_tech)';
             $id = $row['id_penugasan'];
             $token = md5("$tkn:$id");
 ?>
             <tr>
+                <td><?= $no++; ?></td>
                 <td><?= $row['no_st'] ?></td>
                 <td><?= tgl_indo($row['tgl_st']); ?></td>
                 <td>
@@ -97,7 +99,7 @@ function tampil_data($idFromSA, $peran, $mysqli)
 
                         <!-- <a href="" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</a> -->
                         <a href="ketua_tambah_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-plus"></i> Input Temuan</a>
-                        <a href="ketua_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
+                        <!-- <a href="ketua_edit_temuan/" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a> -->
 
 
                     </div>

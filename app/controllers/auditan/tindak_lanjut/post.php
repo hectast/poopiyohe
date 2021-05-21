@@ -62,7 +62,14 @@ error_reporting(0);
             // jika lolos pengecekan
             move_uploaded_file($tmpName[$i], 'assets/uploads/tindak_lanjut/' . $namaFileBaru);
 
+            $stmt_cek_tl = $mysqli->prepare("UPDATE data_rekomendasi SET status='Cek TL' WHERE id_rekomendasi='$id_rekomendasi'");
+            $stmt_cek_tl->execute();
 
+            // @$jumlah_nominal += $nominal[$i];
+            // @$hasil_saldo = ($saldo) - ($jumlah_nominal);
+
+            // $stmt_update_saldo = $mysqli->prepare("UPDATE temuan SET saldo = '$hasil_saldo' WHERE id_temuan = '$id_temuan'");
+            // $stmt_update_saldo->execute();
            
             
             $stmt_tindak_lanjut = $mysqli->prepare("INSERT INTO tindak_lanjut (id_temuan, id_rekomendasi, uraian_tl, file_tl, nominal_tl) VALUES ('$id_temuan', '$id_rekomendasi', '$uraian_tl[$i]', '$namaFileBaru','$nominal[$i]')");

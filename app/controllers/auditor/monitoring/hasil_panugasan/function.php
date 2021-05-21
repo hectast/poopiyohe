@@ -26,14 +26,16 @@ function tgl_indo($tanggal){
 
 function tampil_data($mysqli)
 {
-    $querx = "SELECT * FROM penugasan WHERE status_tl='Sudah Diusulkan' ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan WHERE status_tl='Sudah Diusulkan' ORDER BY no_st DESC";
     $result = $mysqli->query($querx);
+    $no=1;
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
         $id = $row['id_penugasan'];
         $token = md5("$tkn:$id");
 ?>
         <tr>
+            <td><?= $no++; ?></td>
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
             <td>

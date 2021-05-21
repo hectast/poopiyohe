@@ -1,6 +1,6 @@
 <?php
 include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
-
+$id_anggota = $rowAnggota->id;
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -57,6 +57,7 @@ include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
+                                   <th>No</th>
                                    <th>No.ST</th>
                                    <th>Tgl.ST</th>
                                    <th>Auditan</th>

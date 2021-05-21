@@ -32,6 +32,7 @@ include 'app/controllers/auditor/korwas/hasil_penugasan/post.php';
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
+                                   <th>No</th>
                                    <th>No.ST</th>
                                    <th>Tgl.ST</th>
                                    <th>Auditan</th>
