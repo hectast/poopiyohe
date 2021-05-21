@@ -102,7 +102,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                             <span class="input-group-text">Rp.</span>
                                         </div>
                                         
-                                        <input class="form-control" name="nominal_tl" oninvalid="this.setCustomValidity('Nominal Melebihi Saldo (Rp. <?= number_format($cek['saldo']) ?>)')" type="number" max="<?= $cek['saldo'] ?>">
+                                        <input class="form-control" name="nominal_tl" oninvalid="this.setCustomValidity(this.willValidate ? '' : 'Nominal Melebihi Saldo (Rp. <?= number_format($cek['saldo']) ?>)')" type="number" max="<?= $cek['saldo'] ?>">
                                         <small></small>
                                     </div>
                                 </div>

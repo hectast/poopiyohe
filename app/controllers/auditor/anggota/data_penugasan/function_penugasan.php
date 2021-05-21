@@ -23,16 +23,18 @@ function tgl_indo($tanggal)
 
     return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
-function tampil_data($mysqli)
+function tampil_data($mysqli, $id_auditan)
 {
-    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan WHERE  ORDER BY no_st DESC";
     $result = $mysqli->query($querx);
+    $no=1;
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
         $id = $row['id_penugasan'];
         $token = md5("$tkn:$id");
 ?>
         <tr>
+            <td><?= $no++; ?></td>
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
             <td>

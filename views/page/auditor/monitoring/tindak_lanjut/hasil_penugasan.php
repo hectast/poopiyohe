@@ -44,6 +44,7 @@
                         <table class="table table-hover datatables" id="dataTable-4">
                             <thead class="thead-light">
                                 <tr>
+                                    <th>No</th>
                                     <th>No.ST</th>
                                     <th>Tgl.ST</th>
                                     <th>Auditan</th>

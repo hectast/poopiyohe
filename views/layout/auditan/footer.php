@@ -31,6 +31,14 @@
     "responsive": true,
     "autoWidth": true,
   });
+  $('#dataTable-2').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
+  $('#dataTable-3').DataTable({
+    "responsive": true,
+    "autoWidth": true,
+  });
 
   $('.select1').select2({
     theme: 'bootstrap4',
@@ -64,36 +72,35 @@
 
 <script>
   $(document).ready(function() {
-
-    var options = {
-      series: [40, 30, 20],
-      colors: ['#dc3545', '#eea303', '#3ad29f'],
-      chart: {
-        width: "60%",
-        offsetX: 100,
-        type: 'pie',
-      },
-      // dataLabels: {
-      //   enabled: false,
-      // },
-      legend: {
-        show: false
-      },
-      labels: ['Belum Validasi', 'Sudah Validasi', 'Selesai'],
-      responsive: [{
-        breakpoint: 1000,
-        options: {
-          chart: {
-            width: "80%",
-            offsetX: 40,
+    function load_unseen_notification(view = '', baseUrl = 'http://localhost/poopiyohe/')
+    {
+      $.ajax({
+        url: "<?= $base_url; ?>app/controllers/auditan/notifikasi/fetch.php",
+        method: "POST",
+        data: {view:view, id:<?= $_SESSION['id']; ?>, baseUrl:baseUrl},
+        dataType: "json",
+        success: function(data)
+        {
+          $('.notifContent').html(data.notification);
+          if (data.unseen_notification > 0)
+          {
+            $('.notifCount').html(data.unseen_notification);
           }
         }
-      }]
-    };
+      });
+    }
 
-    var chart = new ApexCharts(document.querySelector("#pdpPieChart"), options);
-    chart.render();
-  });
+    load_unseen_notification();
+
+    $(document).on('click', '.notifBtn', function(){
+      $('.notifCount').html('');
+        load_unseen_notification('yes');
+    });
+
+    setInterval(function(){
+      load_unseen_notification();
+    }, 5000);
+    });
 </script>
 </body>
 

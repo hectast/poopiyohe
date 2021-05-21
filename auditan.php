@@ -15,6 +15,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['tipe_user'] == 'admin') {
 	header('Location: admin');
 	exit;
 }
+include 'app/log_auditan.php';
 
 $base_url = 'http://localhost/poopiyohe/';
 

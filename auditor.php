@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['tipe_user'] != 'auditor') {
@@ -15,6 +16,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['tipe_user'] == 'admin') {
 	header('Location: admin');
 	exit;
 }
+include 'app/log_auditor.php';
 
 $base_url = 'http://localhost/poopiyohe/';
 

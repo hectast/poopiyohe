@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="<?= $base_url; ?>assets/img/images/Poopiyohe.svg" type="image/svg">
     <title><?= isset($title) ? $title : "PO'OPIYOHE | Auditan"; ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="<?= $base_url; ?>assets/css/simplebar.css">
