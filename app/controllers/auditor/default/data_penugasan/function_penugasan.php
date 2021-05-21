@@ -24,9 +24,9 @@ function tgl_indo($tanggal)
     return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
 
-function tampil_data($mysqli)
+function tampil_data($mysqli, $idFromSA)
 {
-    $querx = "SELECT * FROM penugasan";
+    $querx = "SELECT * FROM penugasan_auditor JOIN penugasan ON penugasan_auditor.id_penugasan = penugasan.id_penugasan WHERE id='{$idFromSA}' ORDER BY no_st DESC";
     $result = $mysqli->query($querx);
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
@@ -102,19 +102,16 @@ function tampil_data($mysqli)
                     <span class="fe fe-settings"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-
                     <form action="default_lihat_penugasan" method="post">
                         <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
                         <input type="hidden" name="token" value="<?= $token ?>">
                         <button name="lihat_data" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</button>
-
                     </form>
                     <form action="default_edit_penugasan" method="post">
                         <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
                         <input type="hidden" name="token" value="<?= $token ?>">
                         <button name="edit_data" class="dropdown-item"><i class="fe fe-edit"></i> Ubah</button>
                     </form>
-
                 </div>
             </td>
         </tr>

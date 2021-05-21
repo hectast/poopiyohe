@@ -24,9 +24,9 @@ function tgl_indo($tanggal)
     return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 }
 
-function tampil_data($mysqli)
+function tampil_data($mysqli, $idFromSA)
 {
-    $querx = "SELECT * FROM penugasan ORDER BY no_st DESC";
+    $querx = "SELECT * FROM penugasan_auditor JOIN penugasan ON penugasan_auditor.id_penugasan = penugasan.id_penugasan WHERE id='{$idFromSA}' ORDER BY no_st DESC";
     $result = $mysqli->query($querx);
     $no=1;
     while ($row = mysqli_fetch_assoc($result)) {

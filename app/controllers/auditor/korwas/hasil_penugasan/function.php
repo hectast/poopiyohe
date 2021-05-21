@@ -90,7 +90,7 @@ function tampil_data($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="korwas_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
-                    <a href="korwas_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
+                    <!-- <a href="korwas_edit_temuan/" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a> -->
                 </div>
             </td>
         </tr>
