@@ -44,11 +44,14 @@ if (isset($_GET['id_penugasan'])) {
     $stmt_opd = $mysqli->prepare("SELECT * FROM opd WHERE id='$row_penugasan->auditan_opd'");
     $stmt_opd->execute();
     $result_opd = $stmt_opd->get_result();
+
+    $sp2 = date("Y-m-d", strtotime($row_penugasan->tgl_upload . "+3 month"));
+    $sp3 = date("Y-m-d", strtotime($row_penugasan->tgl_upload . "+4 month"));
 ?>
     <html>
 
     <head>
-        <title>Print SP2</title>
+        <title>Print SP3</title>
         <style>
             body {
                 font-family: 'Times New Roman', sans-serif;
@@ -89,7 +92,7 @@ if (isset($_GET['id_penugasan'])) {
                     <td>Nomor</td>
                     <td>:</td>
                     <td>S-/PW31/2/2021</td>
-                    <td align="right"><?= tgl_indo(date("Y-m-d")); ?></td>
+                    <td align="right"><?= tgl_indo($sp3); ?></td>
                 </tr>
                 <tr>
                     <td>Lampiran</td>
@@ -100,7 +103,7 @@ if (isset($_GET['id_penugasan'])) {
                     <td valign="top">Hal</td>
                     <td valign="top">:</td>
                     <td>
-                        Penegasan Kedua atas Temuan Hasil <br>
+                        Penegasan Ketiga atas Temuan Hasil <br>
                         Pengawasan yang Belum Ditindaklanjuti
                     </td>
                 </tr>
@@ -137,27 +140,44 @@ if (isset($_GET['id_penugasan'])) {
             <br>
             <table border="0" width="100%">
                 <tr>
-                    <td align="justify">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Menunjuk surat kami nomor …. tanggal <?= tgl_indo(date("Y-m-d")); ?> Tentang LHA Nomor: <?= $row_penugasan->no_laporan; ?>
-                        tanggal <?= tgl_indo($row_penugasan->tgl_laporan); ?> dan berdasarkan basis data hasil pengawasan Perwakilan BPKP Provinsi Gorontalo, masih terdapat rekomendasi atas temuan pemeriksaan yang belum kami terima tindak lanjutnya sebagaimana terlampir.
+                    <td align="justify" colspan="2">
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                        Menunjuk surat kami :
                     </td>
                 </tr>
                 <tr>
+                    <td valign="top">1.</td>
                     <td align="justify">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Nomor .. tanggal <?= tgl_indo($sp3); ?> tentang LHA Nomor <?= $row_penugasan->no_laporan; ?> tanggal <?= tgl_indo($row_penugasan->tgl_upload); ?>;
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">2.</td>
+                    <td align="justify">
+                        Nomor .. tanggal <?= tgl_indo($sp2); ?> tentang Penegasan Kedua atas Temuan Hasil Pengawasan yang Belum Ditindaklanjuti; dan
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify" colspan="2">
+                        berdasarkan basis data hasil pengawasan kami, masih terdapat rekomendasi temuan pengawasan yang belum kami terima tindak lanjutnya sebagaimana terlampir.
+                    </td>
+                </tr>
+                <tr>
+                    <td align="justify" colspan="2">
+                        &nbsp;
                         Kami mengharapkan sekiranya Saudara dapat melakukan upaya percepatan pelaksanaan tindak lanjut terkait.
                     </td>
                 </tr>
                 <tr>
-                    <td align="justify">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <td align="justify" colspan="2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Apabila terdapat kendala dalam pelaksanaan tindak lanjut tersebut, diharapkan untuk menyampaikannya kepada kami.
                     </td>
                 </tr>
                 <tr>
-                    <td align="justify">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <td></td>
+                    <td align="justify" colspan="2">
+                        &nbsp;
                         Atas perhatian dan kerjasama yang baik, kami ucapkan terima kasih.
                     </td>
                 </tr>

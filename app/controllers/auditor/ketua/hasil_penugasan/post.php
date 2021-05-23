@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
     include 'app/controllers/auditor/ketua/hasil_penugasan/function.php';
+    include 'app/controllers/auditor/ketua/hasil_penugasan/function_upload.php';
     include 'app/flash_message.php';
     if(isset($_POST['simpan_data'])){
         
@@ -19,9 +20,17 @@ error_reporting(0);
         $sebab = $_POST['sebab'];
         $akibat = $_POST['akibat'];
         $rekomendasi = $_POST['rekomendasi'];
-       
-       
 
+
+        $upload_laporan = upload_laporan();
+        if (!$upload_laporan) {
+            return false;
+        }
+
+        $tgl_upload_laporan = date("Y-m-d");
+
+        $stmt_upload_laporan = $mysqli->query("INSERT INTO laporan (id_penugasan,file_laporan,tgl_upload) VALUES ('$id_penugasan','$upload_laporan','$tgl_upload_laporan')");
+       
         $total = count($kondisi);
       
         for($i=0; $i<$total; $i++){

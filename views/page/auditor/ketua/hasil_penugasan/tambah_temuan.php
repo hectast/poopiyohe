@@ -86,24 +86,23 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="pb-3 timeline-item item-primary">
                                     <div class="pl-5">
 
-                                        <form action="<?= $base_url ?>ketua_hasil_penugasan" method="POST">
+                                        <form action="<?= $base_url ?>ketua_hasil_penugasan" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="id_penugasan" value="<?= $_GET['id'] ?>">
 
-                                            <div class="row mb-3">
-                                                <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <strong class="card-title">Upload Laporan</strong>
                                                         </div>
                                                         <div class="card-body">
                                                             <div class="form-group mb-0" style="padding: 20.8% 20%;">
-                                                                <input type="file" id="file" name="file" class="form-control-file" required>
+                                                                <input type="file" name="file_laporan" class="form-control-file" required>
                                                             </div>
-                                                            <!-- <div class="pb-5"></div> -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-8 mb-3">
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <strong>Input Temuan Berdasarkan Laporan</strong>
