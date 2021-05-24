@@ -75,7 +75,7 @@ error_reporting(0);
             $stmt_tindak_lanjut = $mysqli->prepare("INSERT INTO tindak_lanjut (id_temuan, id_rekomendasi, uraian_tl, file_tl, nominal_tl) VALUES ('$id_temuan', '$id_rekomendasi', '$uraian_tl[$i]', '$namaFileBaru','$nominal[$i]')");
             $stmt_tindak_lanjut->execute(); 
             $id_tindaklanjut = $mysqli->insert_id;
-            $history = $mysqli->query("INSERT INTO history_tl (id_tl, id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim) VALUES ('$id_tindaklanjut','$id_rekomendasi','$uraian_tl[$i]','$nominal[$i]','$namaFileBaru','$tgl')");
+            $history = $mysqli->query("INSERT INTO history_tl (id_tl, id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim,status_akhir) VALUES ('$id_tindaklanjut','$id_rekomendasi','$uraian_tl[$i]','$nominal[$i]','$namaFileBaru','$tgl','1')");
         }   
 ?>
     <script>
@@ -101,7 +101,8 @@ if(isset($_POST['edit_tl'])){
     }
     
     $update = $mysqli->query("UPDATE tindak_lanjut SET uraian_tl = '$uraian', nominal_tl = '$nominal', file_tl = '$dokumen_baru', status = '' WHERE id_tl = '$id_tl'");
-    $history = $mysqli->query("INSERT INTO history_tl (id_tl, id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim) VALUES('$id_tl','$id_rekomen','$uraian','$nominal','$dokumen_baru','$tgl')");
+    $history = $mysqli->query("INSERT INTO history_tl (id_tl,   id_rekomendasi, uraian_tl, nominal_tl, file_tl, tgl_kirim,status_akhir) VALUES('$id_tl','$id_rekomen','$uraian','$nominal','$dokumen_baru','$tgl','2')");
+    
     flash("msg_edit","Tindak Lanjut Berhasil Diperbarui");
     
 }

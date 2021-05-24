@@ -98,8 +98,8 @@ function tampil_data($idFromSA, $peran, $mysqli)
                         <a href="anggota_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
 
                         <!-- <a href="" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</a> -->
-                        <a href="anggota_tambah_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-plus"></i> Input Temuan</a>
-                        <a href="anggota_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
+                        <!-- <a href="anggota_tambah_temuan/" class="dropdown-item"> <i class="fe fe-plus"></i> Input Temuan</a> -->
+                        <!-- <a href="anggota_edit_temuan/" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a> -->
 
 
                     </div>

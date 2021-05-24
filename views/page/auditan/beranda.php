@@ -254,11 +254,11 @@ function tgl_indo($tanggal)
                                                 Rp. 
                                                 <?php
                                                     if(mysqli_num_rows($query_opd) > 0){
-                                                        $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE data_rekomendasi.status = 'Tuntas Sebagian' AND auditan_opd = '$id_instansi' ");
+                                                        $query_nilai_sebagian = $mysqli->query("SELECT * FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan JOIN history_tl ON tindak_lanjut.id_tl = history_tl.id_tl WHERE (data_rekomendasi.status = 'Tuntas Sebagian' OR status_akhir = '1') AND (auditan_opd = '$id_instansi') ");
                                                         $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
                                                         echo number_format($row_nilai_sebagian['ttl']);
                                                     }else if(mysqli_num_rows($query_in) > 0){
-                                                        $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE data_rekomendasi.status = 'Tuntas Sebagian' AND auditan_in = '$id_instansi' ");
+                                                        $query_nilai_sebagian = $mysqli->query("SELECT * FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan JOIN history_tl ON tindak_lanjut.id_tl = history_tl.id_tl WHERE (data_rekomendasi.status = 'Tuntas Sebagian' OR status_akhir = '1') AND (auditan_in = '$id_instansi')");
                                                         $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
                                                         echo number_format($row_nilai_sebagian['ttl']);
                                                     }else{
@@ -274,11 +274,11 @@ function tgl_indo($tanggal)
                                             <div class="col">
                                                 <h4><strong><?php
                                                 if(mysqli_num_rows($query_opd) > 0){
-                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='' AND penugasan.auditan_opd = '$id_instansi'");
+                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE (data_rekomendasi.status='' OR data_rekomendasi.status = 'Cek TL' OR data_rekomendasi.status='Belum Tuntas') AND (penugasan.auditan_opd = '$id_instansi')");
                                                 $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
                                                 echo $row_ttl_b_tuntas['ttl'];
                                                 }else if(mysqli_num_rows($query_in) > 0){
-                                                    $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='' AND penugasan.auditan_in = '$id_instansi'");
+                                                    $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE (data_rekomendasi.status='' OR data_rekomendasi.status = 'Cek TL' OR data_rekomendasi.status='Belum Tuntas') AND (penugasan.auditan_in = '$id_instansi')");
                                                     $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
                                                     echo $row_ttl_b_tuntas['ttl'];
                                                 }else{

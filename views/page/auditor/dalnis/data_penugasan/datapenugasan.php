@@ -1,6 +1,6 @@
 <?php
 include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
-
+$idFromSA = $_SESSION['id'];
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -70,7 +70,7 @@ include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
                                 </tr>
                             </thead>
                             <tbody>
-                               <?php tampil_data($mysqli) ?>
+                               <?php tampil_data($mysqli, $idFromSA) ?>
                             </tbody>
                         </table>
                     </div>

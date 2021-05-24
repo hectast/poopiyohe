@@ -162,9 +162,10 @@ function tgl_indo($tanggal)
                                                 <h4 class="mb-0">
                                                 Rp. 
                                                 <?php
-                                                    $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi WHERE data_rekomendasi.status = 'Tuntas Sebagian' ");
+                                                    $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM history_tl JOIN data_rekomendasi ON history_tl.id_rekomendasi = data_rekomendasi.id_rekomendasi WHERE data_rekomendasi.status = 'Tuntas Sebagian' ");
                                                     $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
                                                     echo number_format($row_nilai_sebagian['ttl']);
+
                                                 ?>
                                                 </h4>
                                             </div>
@@ -174,7 +175,7 @@ function tgl_indo($tanggal)
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h4><strong><?php
-                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = ''");
+                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = '' OR status ='Cek TL'");
                                                 $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
                                                 echo $row_ttl_b_tuntas['ttl']
                                                 ?></strong></h4>

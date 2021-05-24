@@ -179,7 +179,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                         <div class="row align-items-center">
                                             <div class="col">
                                                 <h4><strong><?php
-                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = ''");
+                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = '' OR status = 'Cek TL'");
                                                 $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
                                                 echo $row_ttl_b_tuntas['ttl']
                                                 ?></strong></h4>
