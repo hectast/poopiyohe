@@ -72,7 +72,8 @@
 
 <script>
   $(document).ready(function() {
-    function load_unseen_notification(view = '', baseUrl = 'http://localhost/poopiyohe/')
+    const bURL = '<?= $base_url; ?>';
+    function load_unseen_notification(view = '', baseUrl = bURL)
     {
       $.ajax({
         url: "<?= $base_url; ?>app/controllers/auditan/notifikasi/fetch.php",

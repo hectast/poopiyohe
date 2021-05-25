@@ -102,12 +102,12 @@ function tampil_data($mysqli, $idFromSA)
                     <span class="fe fe-settings"></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <form action="default_lihat_penugasan" method="post">
+                    <form action="auditor_lihat_penugasan" method="post">
                         <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
                         <input type="hidden" name="token" value="<?= $token ?>">
                         <button name="lihat_data" class="dropdown-item"> <i class="fe fe-search"></i> Lihat Detail</button>
                     </form>
-                    <form action="default_edit_penugasan" method="post">
+                    <form action="auditor_edit_penugasan" method="post">
                         <input type="hidden" name="id_lihat" value="<?= $row['id_penugasan']; ?>">
                         <input type="hidden" name="token" value="<?= $token ?>">
                         <button name="edit_data" class="dropdown-item"><i class="fe fe-edit"></i> Ubah</button>

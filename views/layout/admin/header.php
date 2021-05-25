@@ -15,6 +15,7 @@
     <!-- Icons CSS -->
     <link rel="stylesheet" href="assets/css/feather.css">
     <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="assets/css/daterangepicker.css">
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
     <!-- <link rel="stylesheet" href="assets/notif_plug/toastr/toastr.min.css"> -->

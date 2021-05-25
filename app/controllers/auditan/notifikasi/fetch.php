@@ -80,7 +80,7 @@ if (isset($_POST["view"])) {
                                             - ' . $row_temuan_iv->no_laporan . ' <br>
                                             - ' . $row_penugasan_iv->uraian_penugasan . '
                                         </div>
-                                        <a href="" class="btn btn-sm btn-link">Download SP3</a>
+                                        <a href="' . $baseUrl . 'app/controllers/auditan/notifikasi/sp3.php?id_penugasan=' . $row_temuan_iv->id_penugasan . '" target="_blank" class="btn btn-sm btn-link">Download SP3</a>
                                         <a href="' . $baseUrl . 'detail_temuan/' . $row_penugasan_iv->id_penugasan . '" class="btn btn-sm btn-link">TL Sekarang >></a>
                                     </div>
                                 </div>

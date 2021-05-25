@@ -7,23 +7,23 @@ $stmtGetPenugasan = $mysqli->prepare("SELECT * FROM penugasan");
 $stmtGetPenugasan->execute();
 $rslt_getPenugasan = $stmtGetPenugasan->get_result();
 
-// Tuntas
-$sql_pngsn_tuntas = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas'");
-while ($row_pngsn_tuntas = $sql_pngsn_tuntas->fetch_assoc()) {
-    $idPngsn_tuntas[] = $row_pngsn_tuntas['id_penugasan'];
-}
+// // Tuntas
+// $sql_pngsn_tuntas = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas'");
+// while ($row_pngsn_tuntas = $sql_pngsn_tuntas->fetch_assoc()) {
+//     $idPngsn_tuntas[] = $row_pngsn_tuntas['id_penugasan'];
+// }
 
-// Tuntas Sebagian
-$sql_pngsn_sebagian = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas Sebagian'");
-while ($row_pngsn_sebagian = $sql_pngsn_sebagian->fetch_assoc()) {
-    $idPngsn_sebagian[] = $row_pngsn_sebagian['id_penugasan'];
-}
+// // Tuntas Sebagian
+// $sql_pngsn_sebagian = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas Sebagian'");
+// while ($row_pngsn_sebagian = $sql_pngsn_sebagian->fetch_assoc()) {
+//     $idPngsn_sebagian[] = $row_pngsn_sebagian['id_penugasan'];
+// }
 
-// Tuntas Sebagian
-$sql_pngsn_belum = $mysqli->query("SELECT * FROM penugasan WHERE status=''");
-while ($row_pngsn_belum = $sql_pngsn_belum->fetch_assoc()) {
-    $idPngsn_belum[] = $row_pngsn_belum['id_penugasan'];
-}
+// // Tuntas Sebagian
+// $sql_pngsn_belum = $mysqli->query("SELECT * FROM penugasan WHERE status=''");
+// while ($row_pngsn_belum = $sql_pngsn_belum->fetch_assoc()) {
+//     $idPngsn_belum[] = $row_pngsn_belum['id_penugasan'];
+// }
 
 function tgl_indo($tanggal)
 {
@@ -53,9 +53,9 @@ function tgl_indo($tanggal)
 <main role="main" class="main-content">
     <div class="container-fluid">
 
-        <div class="row">
+    <div class="row">
             <div class="col-md-4 mb-3">
-                <div class="card shadow">
+                <div class="card">
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
@@ -72,7 +72,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="card shadow">
+                <div class="card">
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
@@ -93,19 +93,25 @@ function tgl_indo($tanggal)
                     <div class="card-body forTarget">
                         <div class="row align-items-center">
                             <div class="col">
-                                <span class="h2 mb-0"><?= isset($totalrekom) ? $totalrekom : 0; ?></span>
+                                <span class="h2 mb-0"><?php
+                                
+                                $query_ttl_saldo = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi");
+                                $row_ttl_saldo = $query_ttl_saldo->fetch_assoc();
+                                echo $row_ttl_saldo['ttl'];
+
+                                ?></span>
                                 <p class="text-muted mb-0">
                                     <span class="badge badge-pill badge-primary">Rekomendasi</span>
                                 </p>
                             </div>
                             <div class="col-auto">
                                 <h3 class="mb-0">
-                                    Rp.
-                                    <?php
-                                    $query_forTotal = $mysqli->query("SELECT sum(saldo) FROM temuan");
+                                Rp. 
+                                <?php
+                                    $query_forTotal = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan");
                                     $row_forTotal = $query_forTotal->fetch_assoc();
-                                    echo number_format($row_forTotal['sum(saldo)']);
-                                    ?>
+                                    echo number_format($row_forTotal['ttl']);
+                                ?>
                                 </h3>
                             </div>
                         </div>
@@ -117,27 +123,25 @@ function tgl_indo($tanggal)
                             <div class="card-body">
                                 <div class="list-group list-group-flush my-n3">
                                     <div class="list-group-item">
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center">    
                                             <div class="col">
-                                                <h4><strong><?= isset($idPngsn_tuntas) ? count($idPngsn_tuntas) : 0; ?></strong></h4>
+                                                <h4><strong><?php
+                                                $query_ttl_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status='Tuntas'");
+                                                $row_ttl_tuntas = $query_ttl_tuntas->fetch_assoc();
+                                                echo $row_ttl_tuntas['ttl'];
+                                                ?></strong></h4>
                                                 <div class="my-0 small">
                                                     <span class="badge badge-pill badge-success text-light">Tuntas</span>
                                                 </div>
                                             </div>
                                             <div class="col-auto">
                                                 <h4 class="mb-0">
-                                                    Rp.
-                                                    <?php
-                                                    $query_forTotal1 = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas'");
-                                                    while ($row_forTotal1 = $query_forTotal1->fetch_assoc()) {
-                                                        $query_saldoTuntas = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '{$row_forTotal1['id_penugasan']}'");
-                                                        $row_saldoTuntas = $query_saldoTuntas->fetch_assoc();
-                                                        $dataSaldoTuntas[] = isset($row_saldoTuntas['saldo']) ? $row_saldoTuntas['saldo'] : 0;
-                                                        // echo number_format($row_saldoTuntas['sum(saldo)']);
-                                                    }
-                                                    $totalSaldoTuntas = array_sum($dataSaldoTuntas);
-                                                    echo number_format($totalSaldoTuntas);
-                                                    ?>
+                                                Rp. 
+                                                <?php
+                                                    $query_nilai_tuntas = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi WHERE data_rekomendasi.status = 'Tuntas' ");
+                                                    $row_nilai_tuntas = $query_nilai_tuntas->fetch_assoc();
+                                                    echo number_format($row_nilai_tuntas['ttl']);
+                                                ?>
                                                 </h4>
                                             </div>
                                         </div>
@@ -145,24 +149,23 @@ function tgl_indo($tanggal)
                                     <div class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <h4><strong><?= isset($idPngsn_sebagian) ? count($idPngsn_sebagian) : 0; ?></strong></h4>
+                                                <h4><strong><?php
+                                                $query_ttl_t_sebagian = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status='Tuntas Sebagian'");
+                                                $row_ttl_t_sebagian = $query_ttl_t_sebagian->fetch_assoc();
+                                                echo $row_ttl_t_sebagian['ttl']
+                                                ?></strong></h4>
                                                 <div class="my-0 small">
                                                     <span class="badge badge-pill badge-warning text-light">Tuntas Sebagian</span>
                                                 </div>
                                             </div>
                                             <div class="col-auto">
                                                 <h4 class="mb-0">
-                                                    Rp.
-                                                    <?php
-                                                    $query_forTotal2 = $mysqli->query("SELECT * FROM penugasan WHERE status='Tuntas Sebagian'");
-                                                    while ($row_forTotal2 = $query_forTotal2->fetch_assoc()) {
-                                                        $query_saldoSebagian = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '{$row_forTotal2['id_penugasan']}'");
-                                                        $row_saldoSebagian = $query_saldoSebagian->fetch_assoc();
-                                                        $dataSaldoSebagian[] = isset($row_saldoSebagian['saldo']) ? $row_saldoSebagian['saldo'] : 0;
-                                                    }
-                                                    $totalSaldoSebagian = array_sum($dataSaldoSebagian);
-                                                    echo number_format($totalSaldoSebagian);
-                                                    ?>
+                                                Rp. 
+                                                <?php
+                                                    $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi WHERE data_rekomendasi.status = 'Tuntas Sebagian' ");
+                                                    $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
+                                                    echo number_format($row_nilai_sebagian['ttl']);
+                                                ?>
                                                 </h4>
                                             </div>
                                         </div>
@@ -170,24 +173,23 @@ function tgl_indo($tanggal)
                                     <div class="list-group-item">
                                         <div class="row align-items-center">
                                             <div class="col">
-                                                <h4><strong><?= isset($idPngsn_belum) ? count($idPngsn_belum) : 0; ?></strong></h4>
+                                                <h4><strong><?php
+                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = ''");
+                                                $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
+                                                echo $row_ttl_b_tuntas['ttl']
+                                                ?></strong></h4>
                                                 <div class="my- small">
                                                     <span class="badge badge-pill badge-danger text-light">Belum TL</span>
                                                 </div>
                                             </div>
                                             <div class="col-auto">
                                                 <h4 class="mb-0">
-                                                    Rp.
-                                                    <?php
-                                                    $query_forTotal3 = $mysqli->query("SELECT * FROM penugasan WHERE status=''");
-                                                    while ($row_forTotal3 = $query_forTotal3->fetch_assoc()) {
-                                                        $query_saldoBelum = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '{$row_forTotal3['id_penugasan']}'");
-                                                        $row_saldoBelum = $query_saldoBelum->fetch_assoc();
-                                                        $dataSaldoBelum[] = isset($row_saldoBelum['saldo']) ? $row_saldoBelum['saldo'] : 0;
-                                                    }
-                                                    $totalSaldoBelum = array_sum($dataSaldoBelum);
-                                                    echo $totalSaldoBelum;
-                                                    ?>
+                                                Rp. 
+                                                <?php
+                                                     $query_nilai_belum = $mysqli->query("SELECT sum(saldo) AS ttl FROM temuan");
+                                                     $row_nilai_belum = $query_nilai_belum->fetch_assoc();
+                                                     echo number_format($row_nilai_belum['ttl']);
+                                                ?>
                                                 </h4>
                                             </div>
                                         </div> <!-- / .row -->
