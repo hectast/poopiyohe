@@ -13,9 +13,28 @@
 <script src='assets/js/jquery.dataTables.min.js'></script>
 <script src='assets/js/dataTables.bootstrap4.min.js'></script>
 <script src='assets/js/select2.min.js'></script>
+<script src="assets/js/bootstrap-datepicker.min.js"></script>
 <!-- <script src="assets/notif_plug/sweetalert2/sweetalert2.min.js"></script>
 <script src="assets/notif_plug/toastr/toastr.min.js"></script> -->
+<script type="text/javascript">
+   $(function(){
+     $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true,
+    });
+    $("#tgl_mulai").on('changeDate', function(selected) {
+        var startDate = new Date(selected.date.valueOf());
+        $("#tgl_akhir").datepicker('setStartDate', startDate);
+        if($("#tgl_mulai").val() > $("#tgl_akhir").val()){
+          $("#tgl_akhir").val($("#tgl_mulai").val());
+        }
+    });
+ });
+</script>
+
 <script>
+
   $('#dataTable-1').DataTable({
     "responsive": true,
     "autoWidth": true,

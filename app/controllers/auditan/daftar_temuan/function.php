@@ -27,8 +27,8 @@ function tgl_indo($tanggal)
 
 function tampil_data($id_instansi, $base_url, $mysqli)
 {
-    $sql_penugasan_iv = $mysqli->query("SELECT * FROM penugasan WHERE auditan_in='{$id_instansi}'");
-    $sql_penugasan_opd = $mysqli->query("SELECT * FROM penugasan WHERE auditan_opd='{$id_instansi}'");
+    $sql_penugasan_iv = $mysqli->query("SELECT * FROM penugasan WHERE auditan_in='{$id_instansi}' ORDER BY no_st DESC");
+    $sql_penugasan_opd = $mysqli->query("SELECT * FROM penugasan WHERE auditan_opd='{$id_instansi}' ORDER BY no_st DESC");
     $no = 1;
 
     if (mysqli_num_rows($sql_penugasan_iv) > 0) {
@@ -41,8 +41,8 @@ function tampil_data($id_instansi, $base_url, $mysqli)
             <tr>
                 <td><?= $no; ?></td>
                 <td><?= $row_penugasan_iv->no_st ?></td>
-                <td><?= isset($row_temuan_iv2->no_laporan) ? $row_temuan_iv2->no_laporan : "Temuan belum di input."; ?></td>
-                <td><?= tgl_indo($row_temuan_iv2->tgl_laporan); ?></td>
+                <td><?= isset($row_temuan_iv2->no_laporan) ? $row_temuan_iv2->no_laporan : "<small><i>Temuan belum di input.</i></small>"; ?></td>
+                <td><?= isset($row_temuan_iv2->tgl_laporan) ? tgl_indo($row_temuan_iv2->tgl_laporan) : "<small><i>Temuan belum di input.</i></small>"; ?></td>
                 <td><?= $row_penugasan_iv->uraian_penugasan; ?></td>
                 <td><?php
                 if(isset($row_temuan_iv2->id_temuan)){ 

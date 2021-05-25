@@ -103,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input class="form-control" name="nominal_tl[]" type="number">
+                                                <input class="form-control" name="nominal_tl[]" oninvalid="this.setCustomValidity(this.willValidate ? '' : 'Nominal Melebihi Saldo (Rp. <?= number_format($cek['saldo']) ?>)')" max="<?= $cek['saldo'] ?>" type="number">
                                                 <small></small>
                                             </div>
                                         </div>

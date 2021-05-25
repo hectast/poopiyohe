@@ -27,14 +27,16 @@ function tgl_indo($tanggal)
 
 function tampil_data($mysqli)
 {
-    $querx = "SELECT * FROM penugasan ORDER BY id_penugasan DESC";
+    $querx = "SELECT * FROM penugasan ORDER BY no_st DESC";
     $result = $mysqli->query($querx);
+    $no=1;
     while ($row = mysqli_fetch_assoc($result)) {
         $tkn = 'sam_san_tech)';
         $id = $row['id_penugasan'];
         $token = md5("$tkn:$id");
 ?>
         <tr>
+            <td><?= $no++; ?></td>
             <td><?= $row['no_st'] ?></td>
             <td><?= tgl_indo($row['tgl_st']); ?></td>
             <td>
@@ -88,7 +90,7 @@ function tampil_data($mysqli)
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="korwas_detail_penugasan/<?= $row['id_penugasan']; ?>" class="dropdown-item"><i class="fe fe-search"></i> Lihat Detail</a>
-                    <a href="korwas_edit_temuan/<?= $row['id_penugasan']; ?>" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a>
+                    <!-- <a href="korwas_edit_temuan/" class="dropdown-item"> <i class="fe fe-edit"></i> Edit Temuan</a> -->
                 </div>
             </td>
         </tr>

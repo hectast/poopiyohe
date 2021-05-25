@@ -5,9 +5,11 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header modalheader">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    <img src="assets/img/images/logowhite.png" alt="" style="width: 30%;"> | Login
-                </h5>
+                <div class="w-100">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="assets/img/SiKepo.svg" alt="" style="width: 20%;"> | Login
+                    </h5>
+                </div>
             </div>
             <div class="modal-body">
                 <form action="" method="post">
@@ -34,8 +36,8 @@
 </div>
 <!---------------------------------------- header ---------------------------------------->
 <header>
-    <div class="logo"><img src="assets/img/images/logo.svg" alt="" width="200"></div>
-    <nav>
+    <div class="logo"><img src="assets/img/SiKepo.svg" alt="" width="70%"></div>
+    <nav class="mt-1">
         <a href="">Beranda</a>
         <a href="">Fungsi</a>
         <a href="">Tentang</a>
@@ -43,11 +45,11 @@
         <a class="login" data-toggle="modal" data-target="#exampleModal" href="">Login</a>
     </nav>
     <div id="nv">
-        <a class="nav-link navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="nav-link navbar-toggler mt-4" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars"></span>
         </a>
     </div>
-    <div class="collapse navbar-collapse " id="navbarCollapse">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active list-menu">
                 <a class="nav-link" href="">Beranda</a>
@@ -65,13 +67,12 @@
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Login</a>
             </li>
         </ul>
-
-
     </div>
     <div class="center">
-        <h1 class="head_title">Keamanan Terjamin!!</h1>
-        <h1 class="head_subtitle">Audit Menjadi Lebih Aman Dengan Aplikasi</h1>
-        <img src="assets/img/logo.svg" width="200" alt="">
+        <h1 class="head_title"><i class="far fa-bookmark"></i></h1>
+        <h1 class="head_subtitle"><i>"No single actor has all knowledge and information required to solve complex dynamics and diversified"</i></h1>
+        <p>(Kooiman, J)</p>
+        <!-- <img src="assets/img/logo.svg" width="200" alt=""> -->
         <p>Badan Pengawasan Keuangan dan Pembangunan Perwakilan Provinsi Gorontalo </p>
         <a href="" class="tombol btn btn-bkp" data-toggle="modal" data-target="#exampleModal">Masuk</a>
     </div>
@@ -100,7 +101,7 @@
         <div class="col-md-4">
             <div class="box box-centered">
                 <img src="assets/img/images/feedback.png" width="90" alt="">
-                <h1>Lorem </h1>
+                <h1>Lorem</h1>
                 <p>Lorem ipsum sit amet dolor lorem ipsum sit amet dolor site amet</p>
             </div>
         </div>
@@ -114,15 +115,13 @@
         </div>
         <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix">
             <div class="left-heading">
-                <img src="assets/img/images/logosolid.png" width="200" alt="">
+                <img src="assets/img/SiKepo_biru.svg" alt="">
             </div>
             <div class="left-text">
                 <p>
-                    Po'opiyohe adalah aplikasi Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam recusandae
-                    corrupti veniam optio consequatur itaque harum dolorum similique officiis non! Voluptatem labore
-                    doloremque enim ut harum quam rem deleniti cumque?
+                    "No single actor has all knowledge and information required to solve complex dynamics and diversified"
+                    <br>(Kooiman, J)
                 </p>
-
             </div>
         </div>
     </div>

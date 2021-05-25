@@ -48,10 +48,10 @@ if (mysqli_num_rows($result) > 0) {
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <div class="row d-flex align-items-center justify-content-between">
-                                                            <div class="col-md-10">
-                                                                <strong class="card-title">BAKTL<span class="badge badge-success ml-2">Berhasil di upload</span></strong>
+                                                            <div class="col-auto">
+                                                                <strong class="card-title">BAKTL<span class="badge badge-success text-light ml-2">Berhasil di upload</span></strong>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col">
                                                                 <button type="button" class="btn btn-sm btn-secondary float-right" data-toggle="modal" data-target="#modalBaktl" title="Lihat Dokumen"><i class="fe fe-book-open fe-16"></i></button>
                                                             </div>
                                                         </div>
@@ -86,11 +86,23 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="pb-3 timeline-item item-primary">
                                     <div class="pl-5">
 
-                                        <form action="<?= $base_url ?>ketua_hasil_penugasan" method="POST">
+                                        <form action="<?= $base_url ?>ketua_hasil_penugasan" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="id_penugasan" value="<?= $_GET['id'] ?>">
 
-                                            <div class="row pb-3">
-                                                <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <strong class="card-title">Upload Laporan</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="form-group mb-0" style="padding: 20.8% 20%;">
+                                                                <input type="file" name="file_laporan" class="form-control-file" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 mb-3">
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <strong>Input Temuan Berdasarkan Laporan</strong>
@@ -98,21 +110,21 @@ if (mysqli_num_rows($result) > 0) {
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <div class="form-group mb-3">
+                                                                    <div class="form-group">
                                                                         <label>No. ST</label>
                                                                         <input type="text" name="no_st[]" class="form-control" value="<?= $no_st  ?>" disabled>
                                                                     </div>
-                                                                    <div class="form-group mb-3">
+                                                                    <div class="form-group">
                                                                         <label for="instansi">Tgl. ST</label>
                                                                         <input name="tgl_st[]" type="text" value="<?= $tgl_st; ?>" class="form-control" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <div class="form-group mb-3">
+                                                                    <div class="form-group">
                                                                         <label>No. Laporan</label>
                                                                         <input type="text" name="no_laporan" class="form-control">
                                                                     </div>
-                                                                    <div class="form-group mb-3">
+                                                                    <div class="form-group">
                                                                         <label for="instansi">Tgl. Laporan</label>
                                                                         <input type="date" name="tgl_laporan" class="form-control">
                                                                     </div>
@@ -144,7 +156,7 @@ if (mysqli_num_rows($result) > 0) {
                                                                                     <label class="form-check-label" for="cekNonRupiah">Non Rupiah</label>
                                                                                 </div>
                                                                             </div>
-                                                                        
+
                                                                             <div id="uraianArea">
                                                                                 <div class="form-group mb-3">
                                                                                     <label>Uraian</label>

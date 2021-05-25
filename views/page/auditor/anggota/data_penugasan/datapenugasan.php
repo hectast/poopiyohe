@@ -1,6 +1,7 @@
 <?php
 include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
-
+$idFromSA = $_SESSION['id'];
+// $peran = $rowAnggota['peran'];
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -54,9 +55,11 @@ include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
                         <strong class="card-title">Daftar <?= $page; ?></strong>
                     </div>
                     <div class="card-body">
+                    <a href="anggota_tambah_penugasan" class="btn btn-primary"><i class="fe fe-plus-circle"></i> Tambah Data</a> <br><br>
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
+                                   <th>No</th>
                                    <th>No.ST</th>
                                    <th>Tgl.ST</th>
                                    <th>Auditan</th>
@@ -68,7 +71,7 @@ include 'app/controllers/auditor/anggota/data_penugasan/post_penugasan.php';
                                 </tr>
                             </thead>
                             <tbody>
-                               <?php tampil_data($mysqli) ?>
+                               <?php tampil_data($mysqli, $idFromSA); ?>
                             </tbody>
                         </table>
                     </div>

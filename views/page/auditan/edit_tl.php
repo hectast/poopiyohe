@@ -87,7 +87,8 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                     while ($row_tl = $result_tl->fetch_object()) {
                     ?>
                     <form action="<?= $base_url ?>auditan_cek_tl/<?= $_GET['tm'] ?>/<?= $_GET['id'] ?>" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id_tl" value="<?= $_GET['tl']; ?>">                    
+                        <input type="hidden" name="id_tl" value="<?= $_GET['tl']; ?>"> 
+                        <input type="hidden" name="id_rekomendasi" value="<?= $_GET['id']; ?>">                   
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="form-group">
@@ -101,7 +102,7 @@ if (mysqli_num_rows($result_rekomendasi) > 0) {
                                             <span class="input-group-text">Rp.</span>
                                         </div>
                                         
-                                        <input class="form-control" name="nominal_tl" type="number">
+                                        <input class="form-control" name="nominal_tl" oninvalid="this.setCustomValidity(this.willValidate ? '' : 'Nominal Melebihi Saldo (Rp. <?= number_format($cek['saldo']) ?>)')" type="number" max="<?= $cek['saldo'] ?>">
                                         <small></small>
                                     </div>
                                 </div>

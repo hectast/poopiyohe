@@ -40,6 +40,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item w-100">
+                <a class="nav-link" href="cetak_laporan">
+                    <i class="fe fe-file-text fe-16"></i>
+                    <span class="ml-3 item-text">Laporan</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </aside>

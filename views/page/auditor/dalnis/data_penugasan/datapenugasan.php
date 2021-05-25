@@ -1,6 +1,6 @@
 <?php
 include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
-
+$idFromSA = $_SESSION['id'];
 ?>
 <main role="main" class="main-content">
     <div class="container-fluid">
@@ -58,6 +58,7 @@ include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
                         <table class="table table-hover datatables" id="dataTable-1">
                             <thead class="thead-light">
                                 <tr>
+                                   <th>No</th>
                                    <th>No.ST</th>
                                    <th>Tgl.ST</th>
                                    <th>Auditan</th>
@@ -69,7 +70,7 @@ include 'app/controllers/auditor/dalnis/data_penugasan/post_penugasan.php';
                                 </tr>
                             </thead>
                             <tbody>
-                               <?php tampil_data($mysqli) ?>
+                               <?php tampil_data($mysqli, $idFromSA) ?>
                             </tbody>
                         </table>
                     </div>

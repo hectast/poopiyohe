@@ -322,6 +322,21 @@ if (mysqli_num_rows($result) > 0) {
 
                         <h4>
                             <i class="fe fe-search text-primary"></i> Temuan <?= $no; ?>
+                            <?php
+                                if ($row_temuan->status == "Tuntas") {
+                                ?>
+                                    <span class="badge badge-success text-light">Tuntas</span>
+                                <?php
+                                } else if ($row_temuan->status == "Tuntas Sebagian") {
+                                ?>
+                                    <span class="badge badge-warning text-light">Tuntas Sebagian</span>
+                                <?php
+                                } else if ($row_temuan->status == "Belum Tuntas") {
+                                ?>
+                                    <span class="badge badge-danger text-light">Belum Tuntas</span>
+                                <?php
+                                }
+                            ?>
                         </h4>
 
                         <div class="row">
