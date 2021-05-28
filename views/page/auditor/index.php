@@ -3,221 +3,221 @@ if (mysqli_num_rows($rslt_getDataKetua) > 0 && isset($_GET['views_ketua'])) {
     if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "beranda_ketua") {
         $page = "Beranda";
         $fortitle = "Ketua - Beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_hasil_penugasan") {
         $page = "Hasil Penugasan";
         $fortitle = "Ketua - Hasil Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_tambah_temuan") {
         $page = "Tambah Temuan";
         $fortitle = "Ketua - Tambah Temuan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketuan_edit_temuan") {
         $page = "Edit Temuan";
         $fortitle = "Ketua - Edit Temuan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_detail_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Ketua - Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Ketua - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Ketua - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Ketua - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Ketua - Lihat Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_ketua']) && $_GET['views_ketua'] == "ketua_detail_tl") {
         $page = "Detail Tindak Lanjut";
         $fortitle = "Ketua - Detail Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 } else if (mysqli_num_rows($rslt_getDataAnggota) > 0 && isset($_GET['views_anggota'])) {
     if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "beranda_anggota") {
         $page = "Beranda";
         $fortitle = "Anggota - Beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Anggota - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Anggota - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Anggota - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Anggota - Lihat Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_hasil_penugasan") {
         $page = "Hasil Penugasan";
         $fortitle = "Anggota - Hasil Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Anggota - Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_anggota']) && $_GET['views_anggota'] == "anggota_detail_tl") {
         $page = "Detail Tindak Lanjut";
         $fortitle = "Anggota - Detail Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 } else if (mysqli_num_rows($rslt_getDataDalnis) > 0 && isset($_GET['views_dalnis'])) {
     if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "beranda_dalnis") {
         $page = "Beranda";
         $fortitle = "Dalnis - Beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_hasil_penugasan") {
         $page = "Hasil Penugasan";
         $fortitle = "Dalnis - Hasil Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_detail_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Dalnis - Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Dalnis - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Dalnis - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Dalnis - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Dalnis - Lihat Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_dalnis']) && $_GET['views_dalnis'] == "dalnis_detail_tl") {
         $page = "Detail Tindak Lanjut";
         $fortitle = "Dalnis - Detail Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 } else if ($akses === 1 && isset($_GET['views_monitoring'])) {
     if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "beranda_monitoring") {
         $page = "Beranda";
         $fortitle = "Monitoring - Beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_tindak_lanjut") {
         $page = "Tindak Lanjut";
         $fortitle = "Monitoring - Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Monitoring - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Monitoring - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Monitoring - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Monitoring - Lihat Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_detail_tl") {
         $page = "Detail Tindak Lanjut";
         $fortitle = "Monitoring - Detail Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "monitoring_cek_tl") {
         $page = "Cek Tindak Lanjut";
         $fortitle = "Monitoring - Cek Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_monitoring']) && $_GET['views_monitoring'] == "riwayat_tindak_lanjut") {
         $page = "Riwayat Tindak Lanjut";
         $fortitle = "Monitoring - Riwayat Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 } else if ($akses === 2) {
     if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "beranda_korwas") {
         $page = "Beranda";
         $fortitle = "Korwas - Beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Korwas - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Korwas - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Korwas - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Korwas - Lihat Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_hasil_penugasan") {
         $page = "Hasil Penugasan";
         $fortitle = "Korwas - Hasil Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_detail_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Korwas - Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "trusted_advisor"){
         $page = "Trusted Advisor";
         $fortitle = "Korwas - Trusted Advisor";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "pan_rb"){
         $page = "PAN - RB";
         $fortitle = "Korwas - PAN - RB";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "pionir"){
         $page = "PIONIR";
         $fortitle = "Korwas - PIONIR";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "detail_nilai"){
         $page = "Detail Penilaian";
         $fortitle = "Detail Penilaian";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_korwas']) && $_GET['views_korwas'] == "korwas_detail_tl") {
         $page = "Detail Tindak Lanjut";
         $fortitle = "Korwas - Detail Tindak Lanjut";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 } else if ($_SESSION['auditornopngsn'] === 3 && isset($_GET['views_auditor'])) {
     if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "beranda_auditor") {
         $page = "Beranda";
         $fortitle = "Auditor - beranda";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_data_penugasan") {
         $page = "Data Penugasan";
         $fortitle = "Auditor - Data Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_tambah_penugasan") {
         $page = "Tambah Penugasan";
         $fortitle = "Auditor - Tambah Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_edit_penugasan") {
         $page = "Edit Penugasan";
         $fortitle = "Auditor - Edit Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     } else if (isset($_GET['views_auditor']) && $_GET['views_auditor'] == "auditor_lihat_penugasan") {
         $page = "Detail Penugasan";
         $fortitle = "Auditor - Detail Penugasan";
-        $title = $fortitle . " | PO'OPIYOHE";
+        $title = $fortitle . " | SI Kepo";
     }
 }
 ?>

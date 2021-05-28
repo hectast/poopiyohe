@@ -4,19 +4,19 @@
 
 if (isset($_GET['views_admin']) && $_GET['views_admin'] == "beranda_admin") {
     $page = "Beranda";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "opd") {
     $page = "OPD";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "instansi_vertikal") {
     $page = "Instansi Vertikal";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "data_auditor") {
     $page = "Data Auditor";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_admin']) && $_GET['views_admin'] == "cetak_laporan") {
     $page = "Cetak Laporan";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 }
 ?>
 

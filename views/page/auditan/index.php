@@ -1,36 +1,36 @@
 <?php
 if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "beranda_auditan") {
     $page = "Beranda";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "daftar_temuan") {
     $page = "Daftar Penugasan BPKP";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_temuan") {
     $page = "Detail Temuan";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "input_tindak_lanjut") {
     $page = "Input Tindak Lanjut";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "tindak_lanjut_rekom") {
     $page = "Tindak Lanjut Rekomendasi";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "penilaian"){
     $page = "Daftar Penugasan";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "detail_penilaian"){
     $page = "Penilaian";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "edit_nilai"){
     $page = "Edit Penilaian";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "auditan_cek_tl"){
     $page = "Cek Tindak Lanjut";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "edit_tl"){
     $page = "Edit Tindak Lanjut";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 } else if (isset($_GET['views_auditan']) && $_GET['views_auditan'] == "riwayat_tl"){
     $page = "Riwayat Tindak Lanjut";
-    $title = $page . " | PO'OPIYOHE";
+    $title = $page . " | SI Kepo";
 }
 ?>
 

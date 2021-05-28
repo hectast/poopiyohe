@@ -116,19 +116,13 @@ function tgl_indo($tanggal)
                                 <span class="h3 mb-0">
                                     <?php
                                     if (mysqli_num_rows($query_in) > 0) {
-                                        $query_in4 = $mysqli->query("SELECT * FROM penugasan WHERE auditan_in = '$id_instansi'");
-                                        while ($row_in4 = $query_in4->fetch_assoc()) {
-                                            $temuan_in4 = $mysqli->query("SELECT * FROM temuan WHERE id_penugasan = '$row_in4[id_penugasan]'");
-                                            echo mysqli_num_rows($temuan_in4);
-                                        }
+                                      $query = $mysqli->query("SELECT count(id_temuan) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.auditan_in = '$id_instansi'");
+                                      $row   = $query->fetch_assoc();
+                                      echo $row['ttl'];
                                     } else if (mysqli_num_rows($query_opd) > 0) {
-                                        $query_opd4 = $mysqli->query("SELECT * FROM penugasan WHERE auditan_opd = '$id_instansi'");
-                                        while ($row_opd4 = $query_opd4->fetch_assoc()) {
-                                            $temuan_opd4 = $mysqli->query("SELECT count(id_temuan) AS ttl FROM temuan WHERE id_penugasan = '$row_opd4[id_penugasan]'");
-                                            $row_total = $temuan_opd4->fetch_assoc();
-                                            $total_temuan[] = $row_total['ttl'];
-                                        }
-                                        echo array_sum($total_temuan);
+                                        $query = $mysqli->query("SELECT count(id_temuan) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.auditan_opd = '$id_instansi'");
+                                        $row   = $query->fetch_assoc();
+                                        echo $row['ttl'];
                                     }else{
                                         echo "0";
                                     }
@@ -141,177 +135,33 @@ function tgl_indo($tanggal)
             </div>
 
             <div class="col-md-4 mb-3">
-                <div class="card forHover">
-                    <div class="card-body forTarget">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row align-items-center">
-                            <div class="col">
-                                <span class="h2 mb-0"><?php
-                                if(mysqli_num_rows($query_opd) > 0){
-                                    $query_ttl_saldo = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_opd = '$id_instansi'");
-                                    $row_ttl_saldo = $query_ttl_saldo->fetch_assoc();
-                                    echo $row_ttl_saldo['ttl'];
-                                }else if(mysqli_num_rows($query_in) > 0){
-                                    $query_ttl_saldo = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_in = '$id_instansi'");
-                                    $row_ttl_saldo = $query_ttl_saldo->fetch_assoc();
-                                    echo $row_ttl_saldo['ttl'];
-                                }else{
-                                    echo "0";
-                                }
-        
-                                ?></span>
-                                <p class="text-muted mb-0">
-                                    <span class="badge badge-pill badge-primary">Rekomendasi</span>
-                                </p>
+                            <div class="col-2 text-center">
+                                <span class="circle circle-sm bg-primary text-white p-2">
+                                    Rp
+                                </span>
                             </div>
-                            <div class="col-auto">
-                                <h3 class="mb-0">
-                                Rp. 
-                                <?php
-                                if(mysqli_num_rows($query_opd) > 0){
-                                    $query_forTotal = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_opd = '$id_instansi'");
-                                    $row_forTotal = $query_forTotal->fetch_assoc();
-                                    echo number_format($row_forTotal['ttl']);
-                                }else if(mysqli_num_rows($query_in) > 0){
-                                    $query_forTotal = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_in = '$id_instansi'");
-                                    $row_forTotal = $query_forTotal->fetch_assoc();
-                                    echo number_format($row_forTotal['ttl']);
-                                }else{
-                                    echo "0";
-                                }
-                                ?>
-                                </h3>
+                            <div class="col pr-0">
+                                <p class="small text-muted mb-2">Saldo</p>
+                                <span class="h3 mb-0">Rp .
+                                  <?php
+                                    if(mysqli_num_rows($query_opd) > 0){
+                                        $query = $mysqli->query("SELECT SUM(saldo) AS ttl FROM penugasan JOIN temuan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.auditan_opd = '$id_instansi'");
+                                        $row = $query->fetch_assoc();
+                                        echo number_format($row['ttl']);
+                                    }else if(mysqli_num_rows($query_in) > 0){
+                                        $query = $mysqli->query("SELECT SUM(saldo) AS ttl FROM penugasan JOIN temuan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.auditan_in = '$id_instansi'");
+                                        $row = $query->fetch_assoc();
+                                        echo number_format($row['ttl']);
+                                    }else{
+                                        echo "0";
+                                    }
+                                  ?>
+                                </span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row mt-3" id="contentTarget">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="list-group list-group-flush my-n3">
-                                    <div class="list-group-item">
-                                        <div class="row align-items-center">    
-                                            <div class="col">
-                                                <h4><strong><?php
-                                                if(mysqli_num_rows($query_opd) > 0){
-                                                    $query_ttl_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='Tuntas' AND penugasan.auditan_opd = '$id_instansi'");
-                                                    $row_ttl_tuntas = $query_ttl_tuntas->fetch_assoc();
-                                                    echo $row_ttl_tuntas['ttl'];
-                                                }else if(mysqli_num_rows($query_in) > 0){
-                                                    $query_ttl_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='Tuntas' AND penugasan.auditan_in = '$id_instansi'");
-                                                    $row_ttl_tuntas = $query_ttl_tuntas->fetch_assoc();
-                                                    echo $row_ttl_tuntas['ttl'];
-                                                }else{
-                                                    echo "0";
-                                                }
-                                                ?></strong></h4>
-                                                <div class="my-0 small">
-                                                    <span class="badge badge-pill badge-success text-light">Tuntas</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <h4 class="mb-0">
-                                                Rp. 
-                                                <?php
-                                                if(mysqli_num_rows($query_opd) > 0){
-                                                    $query_nilai_tuntas = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan  WHERE data_rekomendasi.status = 'Tuntas' AND penugasan.auditan_opd = '$id_instansi'");
-                                                    $row_nilai_tuntas = $query_nilai_tuntas->fetch_assoc();
-                                                    echo number_format($row_nilai_tuntas['ttl']);
-                                                }else if(mysqli_num_rows($query_in) > 0){
-                                                    $query_nilai_tuntas = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan  WHERE data_rekomendasi.status = 'Tuntas' AND penugasan.auditan_in = '$id_instansi'");
-                                                    $row_nilai_tuntas = $query_nilai_tuntas->fetch_assoc();
-                                                    echo number_format($row_nilai_tuntas['ttl']);
-                                                }else{
-                                                    echo "0";
-                                                }
-                                                ?>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-item">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h4><strong><?php
-                                                if(mysqli_num_rows($query_opd) > 0){
-                                                    $query_ttl_t_sebagian = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='Tuntas Sebagian' AND penugasan.auditan_opd = '$id_instansi'");
-                                                    $row_ttl_t_sebagian = $query_ttl_t_sebagian->fetch_assoc();
-                                                    echo $row_ttl_t_sebagian['ttl'];
-                                                }else if(mysqli_num_rows($query_in) > 0){
-                                                    $query_ttl_t_sebagian = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='Tuntas Sebagian' AND penugasan.auditan_in = '$id_instansi'");
-                                                    $row_ttl_t_sebagian = $query_ttl_t_sebagian->fetch_assoc();
-                                                    echo $row_ttl_t_sebagian['ttl'];
-                                                }else{
-                                                    echo "0";
-                                                }
-                                                ?></strong></h4>
-                                                <div class="my-0 small">
-                                                    <span class="badge badge-pill badge-warning text-light">Tuntas Sebagian</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <h4 class="mb-0">
-                                                Rp. 
-                                                <?php
-                                                    if(mysqli_num_rows($query_opd) > 0){
-                                                        $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE data_rekomendasi.status = 'Tuntas Sebagian' AND auditan_opd = '$id_instansi' ");
-                                                        $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
-                                                        echo number_format($row_nilai_sebagian['ttl']);
-                                                    }else if(mysqli_num_rows($query_in) > 0){
-                                                        $query_nilai_sebagian = $mysqli->query("SELECT sum(nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE data_rekomendasi.status = 'Tuntas Sebagian' AND auditan_in = '$id_instansi' ");
-                                                        $row_nilai_sebagian = $query_nilai_sebagian->fetch_assoc();
-                                                        echo number_format($row_nilai_sebagian['ttl']);
-                                                    }else{
-                                                        echo "0";
-                                                    }
-                                                ?>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-item">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <h4><strong><?php
-                                                if(mysqli_num_rows($query_opd) > 0){
-                                                $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='' AND penugasan.auditan_opd = '$id_instansi'");
-                                                $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
-                                                echo $row_ttl_b_tuntas['ttl'];
-                                                }else if(mysqli_num_rows($query_in) > 0){
-                                                    $query_ttl_b_tuntas = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE data_rekomendasi.status='' AND penugasan.auditan_in = '$id_instansi'");
-                                                    $row_ttl_b_tuntas = $query_ttl_b_tuntas->fetch_assoc();
-                                                    echo $row_ttl_b_tuntas['ttl'];
-                                                }else{
-                                                    echo "0";
-                                                }
-                                                ?></strong></h4>
-                                                <div class="my- small">
-                                                    <span class="badge badge-pill badge-danger text-light">Belum TL</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <h4 class="mb-0">
-                                                Rp. 
-                                                <?php
-                                                    if(mysqli_num_rows($query_opd) > 0){
-                                                     $query_nilai_belum = $mysqli->query("SELECT sum(saldo) AS ttl FROM temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_opd = '$id_instansi' ");
-                                                     $row_nilai_belum = $query_nilai_belum->fetch_assoc();
-                                                     echo number_format($row_nilai_belum['ttl']);
-                                                    }else if(mysqli_num_rows($query_in) > 0){
-                                                        $query_nilai_belum = $mysqli->query("SELECT sum(saldo) AS ttl FROM temuan JOIN penugasan ON temuan.id_penugasan = penugasan.id_penugasan WHERE penugasan.auditan_in = '$id_instansi' ");
-                                                        $row_nilai_belum = $query_nilai_belum->fetch_assoc();
-                                                        echo number_format($row_nilai_belum['ttl']);
-                                                    }else{
-                                                        echo "0";
-                                                    }
-                                                ?>
-                                                </h4>
-                                            </div>
-                                        </div> <!-- / .row -->
-                                    </div>
-                                </div> <!-- / .list-group -->
-                            </div> <!-- / .card-body -->
-                        </div> <!-- / .card -->
                     </div>
                 </div>
             </div>
@@ -692,7 +542,7 @@ function tgl_indo($tanggal)
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $row_pngsn_tuntas3['no_st']; ?></td>
-                                                        <td><?= isset($row_temuan_iv3['no_laporan']) ? $row_temuan_iv3['no_laporan'] : "Temuan belum di input."; ?></td>
+                                                        <td><?= isset($row_temuan_iv3['no_laporan']) ? $row_temuan_iv3['no_laporan'] : "<i>Temuan belum di input.</i>"; ?></td>
                                                         <td><?= tgl_indo($row_temuan_iv3['tgl_laporan']); ?></td>
                                                         <td><?= $row_pngsn_tuntas3['uraian_penugasan']; ?></td>
                                                         <td>
@@ -747,8 +597,8 @@ function tgl_indo($tanggal)
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $row_pngsn_tuntas3['no_st']; ?></td>
-                                                        <td><?= isset($row_temuan_opd3['no_laporan']) ? $row_temuan_opd3['no_laporan'] : "Temuan belum di input."; ?></td>
-                                                        <td><?= tgl_indo($row_temuan_opd3['tgl_laporan']); ?></td>
+                                                        <td><?= isset($row_temuan_opd3['no_laporan']) ? $row_temuan_opd3['no_laporan'] : "<i>Temuan belum di input.</i>"; ?></td>
+                                                        <td><?= isset($row_temuan_opd3['tgl_laporan']) ? tgl_indo($row_temuan_opd3['tgl_laporan']) : "<i>Temuan belum di input.</i>"; ?></td>
                                                         <td><?= $row_pngsn_tuntas3['uraian_penugasan']; ?></td>
                                                         <td>
                                                             <?php

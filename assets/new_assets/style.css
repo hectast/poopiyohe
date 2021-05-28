@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+body {
+  background-color: #fbf9f9;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+  background: url("assts/bulat\ kanan\ atas.png") no-repeat;
+  background-position: top right;
+}
+
+.bulat-kanan {
+  z-index: -2;
+  position: absolute;
+  transform: translate(-109px, 472px);
+}
+
+h1 {
+  color: #715e99;
+  font-weight: 700;
+  font-size: 55px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.vh-100 {
+  height: 100vh !important;
+}
+
+.row {
+  padding: 10px;
+}
+
+.col-md-bos {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.auth-bg-section {
+  background: url("assts/bg_lebar.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.logo2 {
+  display: none;
+}
+.head2 {
+  display: none;
+}
+
+.kiri {
+  padding: 35px 40px 0 45px;
+}
+.kanan {
+  padding: 30px 0px 0px 45px;
+}
+
+p {
+  color: #484848;
+  font-size: 20px;
+}
+.font-grey {
+  font-size: 15px;
+  color: #b0b0b0;
+  font-weight: 500;
+}
+
+.quote {
+  color: #484848;
+  font-weight: bold;
+}
+
+label {
+  color: #715e99;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+input {
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  border: 0px;
+  box-shadow: 1px 1px 10px #e4e4e4;
+}
+::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 10px 50px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 10px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primer {
+  color: #fbf9f9;
+  background-color: #4749af;
+  border-color: #4749af;
+}
+.btn-primer:hover {
+  background-color: #fbf9f9;
+  color: #4749af;
+  border: 2px solid #4749af;
+}
+
+@media (max-width: 1236px) {
+  body {
+    background-color: #fbf9f9;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1px;
+    background: #fbf9f9;
+  }
+  .auth-bg-section {
+    background: url("assts/Kotak_responsive.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .foot {
+    margin-bottom: 30px;
+  }
+  .bulat-kanan {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-bos {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .auth-bg-section {
+    background: url("assts/responsive\ no\ text.png");
+    background-size: 100% 100%;
+    height: 350px;
+    background-repeat: no-repeat;
+  }
+  .row {
+    padding: 0;
+  }
+  .col-md-bos,
+  .col-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .kiri {
+    padding: 10px 40px 0 45px;
+    text-align: center;
+  }
+  .kanan {
+    padding: 30px 45px 0px 45px;
+    text-align: center;
+  }
+  .foot {
+    margin-bottom: 25px;
+  }
+  h1 {
+    color: #715e99;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .non {
+    display: none;
+  }
+  input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 0px;
+    box-shadow: 1px 1px 10px #e4e4e4;
+  }
+  p {
+    color: #484848;
+    font-size: 12px;
+  }
+  ::placeholder {
+    color: #b0b0b0;
+    opacity: 1;
+    font-size: 12px;
+  }
+  .logo2 {
+    display: inline;
+  }
+  .head2 {
+    display: inline;
+  }
+
+  .logo {
+    display: none;
+  }
+  .head {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 <?php
-    include 'app/controllers/login/cek_login.php';
+include 'app/controllers/login/cek_login.php';
 ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -15,11 +15,11 @@
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="" class="text-primer"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" name="email" class="form-control" >
+                        <input type="text" name="email" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="" class="text-primer"><i class="fa fa-lock"></i> Password</label>
-                        <input type="password" name="password" class="form-control" >
+                        <input type="password" name="password" class="form-control">
                     </div>
                     <div class="form-group">
                         <button type="submit" name="login" class="btn btn-primary col-12"> <i class="fa fa-door-open"></i>Masuk</button>
@@ -35,95 +35,37 @@
     </div>
 </div>
 <!---------------------------------------- header ---------------------------------------->
-<header>
-    <div class="logo"><img src="assets/img/SiKepo.svg" alt="" width="70%"></div>
-    <nav class="mt-1">
-        <a href="">Beranda</a>
-        <a href="">Fungsi</a>
-        <a href="">Tentang</a>
-        <a href="">Kontak</a>
-        <a class="login" data-toggle="modal" data-target="#exampleModal" href="">Login</a>
-    </nav>
-    <div id="nv">
-        <a class="nav-link navbar-toggler mt-4" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa fa-bars"></span>
-        </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active list-menu">
-                <a class="nav-link" href="">Beranda</a>
-            </li>
-            <li class="nav-item list-menu">
-                <a class="nav-link" href="">Fungsi</a>
-            </li>
-            <li class="nav-item list-menu">
-                <a class="nav-link" href="">Tentang</a>
-            </li>
-            <li class="nav-item list-menu">
-                <a href="" class="nav-link">Kontak</a>
-            </li>
-            <li class="nav-item lists">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Login</a>
-            </li>
-        </ul>
-    </div>
-    <div class="center">
-        <h1 class="head_title"><i class="far fa-bookmark"></i></h1>
-        <h1 class="head_subtitle"><i>"No single actor has all knowledge and information required to solve complex dynamics and diversified"</i></h1>
-        <p>(Kooiman, J)</p>
-        <!-- <img src="assets/img/logo.svg" width="200" alt=""> -->
-        <p>Badan Pengawasan Keuangan dan Pembangunan Perwakilan Provinsi Gorontalo </p>
-        <a href="" class="tombol btn btn-bkp" data-toggle="modal" data-target="#exampleModal">Masuk</a>
-    </div>
 
-</header>
-<!---------------------------------------- header ---------------------------------------->
-<div class="break">
-    <h2>
-        <div class="upper"><img src="assets/img/images/logosolid.png" width="200" alt=""></div>
-    </h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="box box-centered">
-                <img src="assets/img/images/appraisal-form.png" width="90" alt="">
-                <h1>Lorem</h1>
-                <p>Lorem ipsum sit amet dolor lorem ipsum sit amet dolor site amet</p>
-            </div>
+<div class="container-fluid con-a">
+    <div class="row vh-100">
+        <div class="col-md-bos auth-bg-section text-white kiri">
+            <img src="assets/new_assets/assts/sikepo.png" width="220" alt="" class="mb-3 head">
+            <img src="assets/new_assets/assts/sikepo.png" width="100" alt="" class="mb-3 head2">
+            <p><i>"No single actor has all knowledge and information required to solve complex dynamics and diversified"</i></p>
+            <div class="quote">-Kooiman, J</div>
         </div>
-        <div class="col-md-4">
-            <div class="box box-centered">
-                <img src="assets/img/images/shield.png" width="90" alt="">
-                <h1>Lorem</h1>
-                <p>Lorem ipsum sit amet dolor lorem ipsum sit amet dolor site amet</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="box box-centered">
-                <img src="assets/img/images/feedback.png" width="90" alt="">
-                <h1>Lorem</h1>
-                <p>Lorem ipsum sit amet dolor lorem ipsum sit amet dolor site amet</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!--------------------------------------- section --------------------------------------->
-<div id="section">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 col-sm-12">
-            <img src="assets/img/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
-        </div>
-        <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix">
-            <div class="left-heading">
-                <img src="assets/img/SiKepo_biru.svg" alt="">
-            </div>
-            <div class="left-text">
-                <p>
-                    "No single actor has all knowledge and information required to solve complex dynamics and diversified"
-                    <br>(Kooiman, J)
-                </p>
-            </div>
+        <div class="col-6 kanan">
+            <img src="assets/new_assets/assts/bulat kanan atas full.png" class="bulat-kanan" height="120" alt="">
+            <h1>Selamat Datang di</h1>
+            <img src="assets/new_assets/assts/sikepo.png" width="220" alt="" class="mb-3 logo">
+            <img src="assets/new_assets/assts/sikepo.png" width="100" alt="" class="mb-3 logo2">
+            <p class="font-grey">Badan Pengawasan Keuangan dan Pembangunan <br class="non">Perwakilan Provinsi Gorontalo</p>
+            <form action="" method="post" class="mt-4">
+                <div class="form-group mb-4">
+                    <label for="" class="mb-2">E-Mail</label>
+                    <input type="text" name="email" placeholder="Masukan email yang telah diberikan oleh admin" class="">
+                </div>
+                <div class="form-group mb-5">
+                    <label class="mb-2" for="">Password</label>
+                    <input type="password" name="password" placeholder="Masukan password yang telah diberikan oleh admin" class="">
+                </div>
+                <div class="form-group mb-5 text-center">
+                    <button type="submit" name="login" class="btn btn-primer">Masuk</button>
+                </div>
+                <div class="text-center foot">
+                    <div class="bold">Belum tahu cara penggunaanya ? <a href="">Donwload Panduan</a></div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<!--------------------------------------- section --------------------------------------->

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="<?= $base_url; ?>assets/img/images/Poopiyohe.svg" type="image/svg">
-    <title><?= isset($title) ? $title : "PO'OPIYOHE | Auditan"; ?></title>
+    <title><?= isset($title) ? $title : "Auditan | SI Kepo"; ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="<?= $base_url; ?>assets/css/simplebar.css">
     <!-- Fonts CSS -->

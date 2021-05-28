@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/images/Poopiyohe.svg" type="image/svg">
-    <title><?= isset($title) ? $title : "PO'OPIYOHE | Administrator"; ?></title>
+    <title><?= isset($title) ? $title : "Administrator | SI Kepo"; ?></title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="assets/css/simplebar.css">
     <!-- Fonts CSS -->
