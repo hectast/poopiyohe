@@ -58,8 +58,12 @@
         ?>
         <script>
             alert("Memperbarui data");
-            document.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
-            document.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
+            window.location.href = "<?= $base_url ?>monitoring_detail_tl/<?= $row_temuan['id_penugasan']; ?>";
         </script>
         <?php
     } else if (isset($_POST['belum_tuntas'])) {

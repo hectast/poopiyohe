@@ -109,7 +109,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
         </div>
-
+        Status Penugasan :
         <div class="row">
             <div class="col-md-4 mb-3">
                 <div class="card forHover">
@@ -167,6 +167,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
         </div>
+        
 
         <div id="targetContent">
             <div id="content1" class="target">
@@ -298,7 +299,7 @@ function tgl_indo($tanggal)
                                         <?php endwhile; ?>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -364,6 +365,78 @@ function tgl_indo($tanggal)
                                         <?php endwhile; ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        Jumlah Rekomendasi :
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_t = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Tuntas'");
+                                $row_rekom_t = $query_rekom_t->fetch_assoc();
+                                echo $row_rekom_t['ttl'];
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-success text-white">Rekomendasi Tuntas</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-check text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_tt = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Tuntas Sebagian'");
+                                $row_rekom_tt = $query_rekom_tt->fetch_assoc();
+                                echo $row_rekom_tt['ttl'];
+                                ?>
+                                 </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-warning text-white">Rekomendasi Tuntas Sebagian</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-minus text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_bt = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Cek TL' OR status ='Belum Tuntas' OR status=''");
+                                $row_rekom_bt = $query_rekom_bt->fetch_assoc();
+                                echo $row_rekom_bt['ttl'];
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-danger text-white">Rekomendasi Belum Tuntas/Belum TL</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-x text-muted mb-0"></span>
                             </div>
                         </div>
                     </div>

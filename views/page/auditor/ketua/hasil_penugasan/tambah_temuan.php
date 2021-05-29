@@ -58,6 +58,41 @@ if (mysqli_num_rows($result) > 0) {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <?php
+                                            $sql_laporan = "SELECT * FROM laporan JOIN temuan ON laporan.id_penugasan = temuan.id_penugasan WHERE laporan.id_penugasan = '{$_GET['id']}'";
+                                            $stmt_laporan = $mysqli->prepare($sql_laporan);
+                                            $stmt_laporan->execute();
+                                            $result_laporan = $stmt_laporan->get_result();
+                                            $row_laporan = $result_laporan->fetch_object();
+                                            ?>
+                                            <?php if (mysqli_num_rows($result_laporan) > 0) : ?>
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <div class="row d-flex align-items-center justify-content-between">
+                                                                <div class="col-auto">
+                                                                    <strong class="card-title">Laporan<span class="badge badge-success text-light ml-2">Berhasil di upload</span></strong>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <button type="button" class="btn btn-sm btn-secondary float-right" data-toggle="modal" data-target="#modalLaporan" title="Lihat Laporan"><i class="fe fe-book-open fe-16"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal fade" id="modalLaporan" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <object data="<?= $base_url; ?>assets/uploads/laporan/<?= $row_laporan->file_laporan; ?>" type="application/pdf" width="100%" height="650">
+                                                                            <!-- <a href="data/test.pdf">test.pdf</a> -->
+                                                                        </object>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
 
                                         <div class="modal fade" id="modalBaktl" tabindex="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
@@ -90,171 +125,187 @@ if (mysqli_num_rows($result) > 0) {
                                             <input type="hidden" name="id_penugasan" value="<?= $_GET['id'] ?>">
 
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <strong class="card-title">Upload Laporan</strong>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="form-group mb-0" style="padding: 20.8% 20%;">
-                                                                <input type="file" name="file_laporan" class="form-control-file" required>
+                                                <?php if (mysqli_num_rows($result_laporan) == 0) : ?>
+                                                    <div class="col-md-4 mb-3">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <strong class="card-title">Upload Laporan</strong>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8 mb-3">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <strong>Input Temuan Berdasarkan Laporan</strong>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>No. ST</label>
-                                                                        <input type="text" name="no_st[]" class="form-control" value="<?= $no_st  ?>" disabled>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="instansi">Tgl. ST</label>
-                                                                        <input name="tgl_st[]" type="text" value="<?= $tgl_st; ?>" class="form-control" disabled>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label>No. Laporan</label>
-                                                                        <input type="text" name="no_laporan" class="form-control">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="instansi">Tgl. Laporan</label>
-                                                                        <input type="date" name="tgl_laporan" class="form-control">
-                                                                    </div>
+                                                            <div class="card-body">
+                                                                <div class="form-group mb-0" style="padding: 20.8% 20%;">
+                                                                    <input type="file" name="file_laporan" class="form-control-file" required>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                <?php endif; ?>
 
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div id="temuanArea">
+                                                <?php if (mysqli_num_rows($result_laporan) == 0) : ?>
+                                                    <div class="col-md-8 mb-3">
+                                                    <?php else : ?>
+                                                        <div class="col-md-12 mb-3">
+                                                        <?php endif; ?>
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <strong>Input Temuan Berdasarkan Laporan</strong>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>No. ST</label>
+                                                                            <input type="text" name="no_st[]" class="form-control" value="<?= $no_st  ?>" disabled>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="instansi">Tgl. ST</label>
+                                                                            <input name="tgl_st[]" type="text" value="<?= $tgl_st; ?>" class="form-control" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>No. Laporan</label>
+                                                                            <?php if (mysqli_num_rows($result_laporan) > 0) : ?>
+                                                                                <input type="text" name="no_laporan" class="form-control" value="<?= $row_laporan->no_laporan; ?>" readonly>
+                                                                            <?php else : ?>
+                                                                                <input type="text" name="no_laporan" class="form-control">
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <?php if (mysqli_num_rows($result_laporan) > 0) : ?>
+                                                                                <label for="instansi">Tgl. Laporan</label>
+                                                                                <input type="date" name="tgl_laporan" class="form-control" value="<?= $row_laporan->tgl_laporan; ?>" readonly>
+                                                                            <?php else : ?>
+                                                                                <label for="instansi">Tgl. Laporan</label>
+                                                                                <input type="date" name="tgl_laporan" class="form-control">
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
 
-                                                                <div id="temuanGroup">
-                                                                    <h5><u>Temuan 1</u></h5>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div id="temuanArea">
+
+                                                                        <div id="temuanGroup">
+                                                                            <h5><u>Temuan 1</u></h5>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="form-group mb-3" id="cekRpNonRp">
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <input type="checkbox" id="cekRupiah" name="cekrpnonrp[]" class="form-check-input" value="Rupiah">
+                                                                                            <label class="form-check-label" for="cekRupiah">Rupiah</label>
+                                                                                        </div>
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <input type="checkbox" id="cekNonRupiah" name="cekrpnonrp[]" class="form-check-input" value="Non Rupiah">
+                                                                                            <label class="form-check-label" for="cekNonRupiah">Non Rupiah</label>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div id="uraianArea">
+                                                                                        <div class="form-group mb-3">
+                                                                                            <label>Uraian</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="uraian[0][]" type="text">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button type="button" id="buttonUraianAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+
+                                                                                    <div id="kondisiArea">
+                                                                                        <div class="form-group mb-3" id="kondisiGroup">
+                                                                                            <label>Kondisi</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="kondisi[]" type="text" id="kondisiText">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="kriteriaArea">
+                                                                                        <div class="form-group mb-3">
+                                                                                            <label>Kriteria</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="kriteria[0][]" type="text">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button type="button" id="buttonKriteriaAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div id="sebabArea">
+                                                                                        <div class="form-group mb-3">
+                                                                                            <label>Sebab</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="sebab[0][]" type="text">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button type="button" id="buttonSebabAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="akibatArea">
+                                                                                        <div class="form-group mb-3">
+                                                                                            <label>Akibat</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="akibat[0][]" type="text">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button type="button" id="buttonAkibatAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div id="rekomArea">
+                                                                                        <div class="form-group mb-3">
+                                                                                            <label>Rekomendasi</label>
+                                                                                            <div class="input-group">
+                                                                                                <input class="form-control" name="rekomendasi[0][]" type="text">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button type="button" id="buttonRekomAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group mb-3">
+                                                                                        <label>Hal-hal yang perlu di perhatikan <small class="text-danger">* tidak wajib</small></label>
+                                                                                        <textarea class="form-control" name="hal[]"></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
                                                                     <div class="row">
                                                                         <div class="col-md-12">
-
-                                                                            <div class="form-group mb-3" id="cekRpNonRp">
-                                                                                <div class="form-check form-check-inline">
-                                                                                    <input type="checkbox" id="cekRupiah" name="cekrpnonrp[]" class="form-check-input" value="Rupiah">
-                                                                                    <label class="form-check-label" for="cekRupiah">Rupiah</label>
-                                                                                </div>
-                                                                                <div class="form-check form-check-inline">
-                                                                                    <input type="checkbox" id="cekNonRupiah" name="cekrpnonrp[]" class="form-check-input" value="Non Rupiah">
-                                                                                    <label class="form-check-label" for="cekNonRupiah">Non Rupiah</label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div id="uraianArea">
-                                                                                <div class="form-group mb-3">
-                                                                                    <label>Uraian</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="uraian[0][]" type="text">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" id="buttonUraianAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-
-                                                                            <div id="kondisiArea">
-                                                                                <div class="form-group mb-3" id="kondisiGroup">
-                                                                                    <label>Kondisi</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="kondisi[]" type="text" id="kondisiText">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div id="kriteriaArea">
-                                                                                <div class="form-group mb-3">
-                                                                                    <label>Kriteria</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="kriteria[0][]" type="text">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" id="buttonKriteriaAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div id="sebabArea">
-                                                                                <div class="form-group mb-3">
-                                                                                    <label>Sebab</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="sebab[0][]" type="text">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" id="buttonSebabAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div id="akibatArea">
-                                                                                <div class="form-group mb-3">
-                                                                                    <label>Akibat</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="akibat[0][]" type="text">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" id="buttonAkibatAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div id="rekomArea">
-                                                                                <div class="form-group mb-3">
-                                                                                    <label>Rekomendasi</label>
-                                                                                    <div class="input-group">
-                                                                                        <input class="form-control" name="rekomendasi[0][]" type="text">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" id="buttonRekomAdd" class="btn btn-link"><i class="fe fe-plus-circle fe-16"></i></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group mb-3">
-                                                                                <label>Hal-hal yang perlu di perhatikan <small class="text-danger">* tidak wajib</small></label>
-                                                                                <textarea class="form-control" name="hal[]"></textarea>
-                                                                            </div>
+                                                                            <button type="button" id="addTemuan" class="btn btn-outline-secondary btn-block"><i class="fe fe-plus-circle"></i> Tambah Temuan</button>
+                                                                            <button type="submit" name="simpan_data" class="btn btn-outline-primary btn-block"><i class="fe fe-save"></i> Simpan</button>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
-
                                                             </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <button type="button" id="addTemuan" class="btn btn-outline-secondary btn-block"><i class="fe fe-plus-circle"></i> Tambah Temuan</button>
-                                                                    <button type="submit" name="simpan_data" class="btn btn-outline-primary btn-block"><i class="fe fe-save"></i> Simpan</button>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
                                         </form>
 

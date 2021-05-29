@@ -148,12 +148,12 @@ include 'app/controllers/admin/cetak.php';
                                             <td>
                                                 <?php
                                                 echo $kejadian_rekom = $row['ttl'];
-                                                $k_rekom[] = $row['ttl'];
+                                                $k_rekom[] = $row['ttl'];   
                                                 ?>
                                             </td>
                                             <td>Rp.
                                                 <?php
-                                                $query_kg = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE year(tgl_laporan) = '$thn'");
+                                                $query_kg = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE year(tgl_laporan) = '$thn' AND penugasan.jenis_penugasan = '$row[jenis_penugasan]'");
                                                 while ($rw_kg = $query_kg->fetch_assoc()) {
                                                     $nilai_rekom = $rw_kg['ttl'];
                                                     echo number_format($nilai_rekom);
@@ -163,7 +163,7 @@ include 'app/controllers/admin/cetak.php';
                                             </td>
                                             <td>
                                                 <?php
-                                                $query_kg_tl = $mysqli->query("SELECT *, count(data_rekomendasi.id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan WHERE data_rekomendasi.status ='Tuntas' AND year(tgl_laporan) = '$thn'");
+                                                $query_kg_tl = $mysqli->query("SELECT *, count(data_rekomendasi.id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.jenis_penugasan = '$row[jenis_penugasan]' AND data_rekomendasi.status ='Tuntas' AND year(tgl_laporan) = '$thn'");
                                                 $rw_tl = $query_kg_tl->fetch_assoc();
                                                 echo $kejadian_tl = $rw_tl['ttl'];
                                                 $k_tl[] = $rw_tl['ttl'];
@@ -178,7 +178,7 @@ include 'app/controllers/admin/cetak.php';
                                             </td>
                                             <td>Rp.
                                                 <?php
-                                                $query_tl = $mysqli->query("SELECT *, sum(tindak_lanjut.nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan WHERE data_rekomendasi.status = 'Tuntas' AND year(tgl_laporan) = '$thn'");
+                                                $query_tl = $mysqli->query("SELECT *, sum(tindak_lanjut.nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.jenis_penugasan = '$row[jenis_penugasan]' AND data_rekomendasi.status = 'Tuntas' AND year(tgl_laporan) = '$thn'");
                                                 $rw_tln = $query_tl->fetch_assoc();
                                                 $nilai_tl = $rw_tln['ttl'];
                                                 echo number_format($nilai_tl);
@@ -235,7 +235,8 @@ include 'app/controllers/admin/cetak.php';
                                         </td>
                                         <td>
                                         <?php 
-                                         echo ($jmlh_k_tl / $jmlh_k_rekom)*100 ." %";
+                                         $prsn_rekom = ($jmlh_k_tl / $jmlh_k_rekom)*100;
+                                         echo round($prsn_rekom,2).' %';
                                         ?>
                                         </td>
                                         <td>Rp. 
@@ -252,7 +253,9 @@ include 'app/controllers/admin/cetak.php';
                                         </td>
                                         <td>
                                             <?php
-                                             echo ($jmlh_k_saldo / $jmlh_k_rekom)*100 ." %";
+                                             $prsn = ($jmlh_k_saldo / $jmlh_k_rekom)*100;
+                                             echo round($prsn,2). "%";
+                                             
                                             ?>
                                         </td>
                                         <td>Rp. 

@@ -77,13 +77,13 @@ while ($row = $query->fetch_assoc()) {
     $kejadian_rekom = $row['ttl'];
     $k_rekom[] = $row['ttl'];
     // batas td
-    $query_kg = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE year(tgl_laporan) = '$thn'");
+    $query_kg = $mysqli->query("SELECT sum(isirupiah) AS ttl FROM temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE year(tgl_laporan) = '$thn' AND penugasan.jenis_penugasan = '$row[jenis_penugasan]'");
     while ($rw_kg = $query_kg->fetch_assoc()) {
         $nilai_rekom = $rw_kg['ttl'];
         $n_rekom[] = $rw_kg['ttl'];
     }
     // batas td
-    $query_kg_tl = $mysqli->query("SELECT *, count(data_rekomendasi.id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan WHERE data_rekomendasi.status ='Tuntas' AND year(tgl_laporan) = '$thn'");
+    $query_kg_tl = $mysqli->query("SELECT *, count(data_rekomendasi.id_rekomendasi) AS ttl FROM data_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.jenis_penugasan = '$row[jenis_penugasan]' AND data_rekomendasi.status ='Tuntas' AND year(tgl_laporan) = '$thn'");
     $rw_tl = $query_kg_tl->fetch_assoc();
     $kejadian_tl = $rw_tl['ttl'];
     $k_tl[] = $rw_tl['ttl'];
@@ -91,7 +91,7 @@ while ($row = $query->fetch_assoc()) {
     $persen_tl = 0;
     $persen_tl = ($kejadian_tl / $kejadian_rekom) * 100;
     // batas td
-    $query_tl = $mysqli->query("SELECT *, sum(tindak_lanjut.nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan WHERE data_rekomendasi.status = 'Tuntas' AND year(tgl_laporan) = '$thn'");
+    $query_tl = $mysqli->query("SELECT *, sum(tindak_lanjut.nominal_tl) AS ttl FROM tindak_lanjut JOIN data_rekomendasi ON tindak_lanjut.id_rekomendasi = data_rekomendasi.id_rekomendasi JOIN temuan ON data_rekomendasi.id_temuan = temuan.id_temuan JOIN penugasan ON penugasan.id_penugasan = temuan.id_penugasan WHERE penugasan.jenis_penugasan = '$row[jenis_penugasan]' AND data_rekomendasi.status = 'Tuntas' AND year(tgl_laporan) = '$thn'");
     $rw_tln = $query_tl->fetch_assoc();
     $nilai_tl = $rw_tln['ttl'];
     $n_tl[] = $rw_tln['ttl'];
@@ -142,10 +142,10 @@ $html .= '
     <td>'.$jmlh_k_rekom.'</td>
     <td>Rp. '.number_format($jmlh_n_rekom).'</td>
     <td>'.$jmlh_k_tl.'</td>
-    <td>'. ($jmlh_k_tl / $jmlh_k_rekom)*100 .' %</td>
+    <td>'. round(($jmlh_k_tl / $jmlh_k_rekom)*100,2) .' %</td>
     <td>Rp. '.number_format($jmlh_n_tl).'</td>
     <td>'.$jmlh_k_saldo.'</td>
-    <td>'. ($jmlh_k_saldo / $jmlh_k_rekom)*100 .' %</td>
+    <td>'. round(($jmlh_k_saldo / $jmlh_k_rekom)*100,2) .' %</td>
     <td>Rp. '.number_format($jmlh_n_saldo).'</td>
 </tr>
 </tbody>

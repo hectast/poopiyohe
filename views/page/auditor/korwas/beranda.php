@@ -115,7 +115,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
             
             </div>
         </div>
-
+        Status Penugasan :
         <div class="row">
             <div class="col-md-4 mb-3">
                 <div class="card forHover">
@@ -376,6 +376,78 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                 </div>
             </div>
         </div>
+        Jumlah Rekomendasi :
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_t = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Tuntas'");
+                                $row_rekom_t = $query_rekom_t->fetch_assoc();
+                                echo $row_rekom_t['ttl'];
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-success text-white">Rekomendasi Tuntas</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-check text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_tt = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Tuntas Sebagian'");
+                                $row_rekom_tt = $query_rekom_tt->fetch_assoc();
+                                echo $row_rekom_tt['ttl'];
+                                ?>
+                                 </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-warning text-white">Rekomendasi Tuntas Sebagian</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-minus text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_rekom_bt = $mysqli->query("SELECT count(id_rekomendasi) AS ttl FROM data_rekomendasi WHERE status = 'Cek TL' OR status ='Belum Tuntas' OR status=''");
+                                $row_rekom_bt = $query_rekom_bt->fetch_assoc();
+                                echo $row_rekom_bt['ttl'];
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-danger text-white">Rekomendasi Belum Tuntas/Belum TL</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-x text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-4 mb-3">
@@ -405,7 +477,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iic = $xic['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iic) ?></td>
+                                    <td><?= round($iic, 2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Technical Expertise</td>
@@ -417,7 +489,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ite = $xte['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ite) ?></td>
+                                    <td><?= round($ite,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Ethical Resilience</td>
@@ -429,7 +501,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ier = $xer['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ier) ?></td>
+                                    <td><?= round($ier,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Inspirational Leaders</td>
@@ -441,7 +513,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iil = $xil['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iil) ?></td>
+                                    <td><?= round($iil,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Open-Mindedness</td>
@@ -453,7 +525,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iom = $xom['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iom) ?></td>
+                                    <td><?= round($iom,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Critical Thinker</td>
@@ -465,7 +537,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ict = $xct['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ict) ?></td>
+                                    <td><?= round($ict,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Dynamic Communicators</td>
@@ -477,7 +549,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $idc = $xdc['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($idc) ?></td>
+                                    <td><?= round($idc,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Result Foccused</td>
@@ -489,7 +561,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $irf = $xrf['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($irf) ?></td>
+                                    <td><?= round($irf,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Insightful Relationship</td>
@@ -501,7 +573,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iir = $xir['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iir) ?></td>
+                                    <td><?= round($iir,2) ?></td>
                                 </tr>
                             </table>
 
@@ -537,7 +609,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $isya = $xsya['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($isya) ?></td>
+                                    <td><?= round($isya,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Sistem, Mekanisme dan Prosedur</td>
@@ -549,7 +621,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ismp = $xsmp['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ismp) ?></td>
+                                    <td><?= round($ismp,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Waktu Penyelesaian</td>
@@ -561,7 +633,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iwak = $xwak['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iwak) ?></td>
+                                    <td><?= round($iwak,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Biaya / Tarif</td>
@@ -573,7 +645,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ibia = $xbia['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ibia) ?></td>
+                                    <td><?= round($ibia,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Produk Spesifikasi Jenis Layanan</td>
@@ -585,7 +657,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ipro = $xpro['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ipro) ?></td>
+                                    <td><?= round($ipro,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Kompetensi Pelaksana</td>
@@ -597,7 +669,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ikom = $xkom['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ikom) ?></td>
+                                    <td><?= round($ikom,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Perilaku Pelaksana</td>
@@ -609,7 +681,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iper = $xper['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iper) ?></td>
+                                    <td><?= round($iper,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Penanganan Pengaduan,Saran dan Masukan</td>
@@ -621,7 +693,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ipsm = $xpsm['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ipsm) ?></td>
+                                    <td><?= round($ipsm,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Sarana dan Prasarana</td>
@@ -633,7 +705,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $isar = $xsar['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($isar) ?></td>
+                                    <td><?= round($isar,2) ?></td>
                                 </tr>
                             </table>
 
@@ -670,7 +742,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iprf = $xprf['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iprf) ?></td>
+                                    <td><?= round($iprf,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Integritas</td>
@@ -682,7 +754,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iitg = $xitg['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iitg) ?></td>
+                                    <td><?= round($iitg,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Orientasi Pengguna</td>
@@ -694,7 +766,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iorp = $xorp['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iorp) ?></td>
+                                    <td><?= round($iorp,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Nurani</td>
@@ -706,7 +778,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $inur = $xnur['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($inur) ?></td>
+                                    <td><?= round($inur,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Independen</td>
@@ -718,7 +790,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $iind = $xind['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($iind) ?></td>
+                                    <td><?= round($iind,2) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Responsibel</td>
@@ -730,7 +802,7 @@ $totalrekom = $count_tuntas + $count_sebagian + $count_belum;
                                     $ires = $xres['average'];
                                     ?>
                                     <!-- query -->
-                                    <td><?= round($ires) ?></td>
+                                    <td><?= round($ires,2) ?></td>
                                 </tr>
                             </table>
 

@@ -22,6 +22,24 @@ while ($row_pngsn_adtr = $sql_pngsn_adtr->fetch_assoc()) {
     while ($row_pngsn_belum = $sql_pngsn_belum->fetch_assoc()) {
         $idPngsn_belum[] = $row_pngsn_belum['id_penugasan'];
     }
+
+    //rekom_tuntas
+    $sql_rekom_tuntas = $mysqli->query("SELECT * FROM penugasan JOIN temuan ON penugasan.id_penugasan = temuan.id_penugasan JOIN data_rekomendasi ON temuan.id_temuan = data_rekomendasi.id_temuan WHERE penugasan.id_penugasan={$row_pngsn_adtr['id_penugasan']} AND data_rekomendasi.status='Tuntas'");
+    while($row_rekom_tuntas = $sql_rekom_tuntas->fetch_assoc()){
+        $tuntas[] = $row_rekom_tuntas['id_rekomendasi'];
+    }
+
+     //rekom_tuntas_sebagian
+     $sql_rekom_tuntas_sebagian = $mysqli->query("SELECT * FROM penugasan JOIN temuan ON penugasan.id_penugasan = temuan.id_penugasan JOIN data_rekomendasi ON temuan.id_temuan = data_rekomendasi.id_temuan WHERE penugasan.id_penugasan={$row_pngsn_adtr['id_penugasan']} AND data_rekomendasi.status='Tuntas Sebagian'");
+     while($row_rekom_tuntas_sebagian = $sql_rekom_tuntas_sebagian->fetch_assoc()){
+         $tuntas_sebagian[] = $row_rekom_tuntas_sebagian['id_rekomendasi'];
+     }
+
+     //rekom_bl
+     $sql_rekom_blm = $mysqli->query("SELECT * FROM penugasan JOIN temuan ON penugasan.id_penugasan = temuan.id_penugasan JOIN data_rekomendasi ON temuan.id_temuan = data_rekomendasi.id_temuan WHERE (penugasan.id_penugasan={$row_pngsn_adtr['id_penugasan']}) AND (data_rekomendasi.status='' OR data_rekomendasi.status='Cek TL' OR data_rekomendasi.status='Belum Tuntas')");
+     while($row_rekom_blm = $sql_rekom_blm->fetch_assoc()){
+         $tuntas_blm[] = $row_rekom_blm['id_rekomendasi'];
+     }
 }
 
 function tgl_indo($tanggal)
@@ -75,7 +93,13 @@ function tgl_indo($tanggal)
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
-                                <span class="h2 mb-0"><?= mysqli_num_rows($rslt_getTemuan); ?></span>
+                                <span class="h2 mb-0">
+                                <?php 
+                                    $query_TMN = $mysqli->query("SELECT count(id_temuan) AS ttl FROM temuan JOIN penugasan_auditor ON penugasan_auditor.id_penugasan = temuan.id_penugasan WHERE penugasan_auditor.id = '{$rowAnggota['id']}'");
+                                    $row_TMN = $query_TMN->fetch_assoc();
+                                    echo $row_TMN['ttl']; 
+                                ?>
+                                </span>
                                 <p class="text-muted mb-0">
                                     <span class="badge badge-pill badge-primary">Temuan</span>
                                 </p>
@@ -88,7 +112,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
         </div>
-
+        Status Penugasan :
         <div class="row">
             <div class="col-md-4 mb-3">
                 <div class="card forHover">
@@ -149,7 +173,7 @@ function tgl_indo($tanggal)
 
         <div id="targetContent">
             <div id="content1" class="target">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -221,7 +245,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
             <div id="content2" class="target">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -292,7 +316,7 @@ function tgl_indo($tanggal)
                 </div>
             </div>
             <div id="content3" class="target">
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -357,6 +381,72 @@ function tgl_indo($tanggal)
                                         ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        Jumlah Rekomendasi :
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                echo count($tuntas);
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-success text-white">Rekomendasi Tuntas</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-check text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                echo count($tuntas_sebagian);
+                                ?>
+                                 </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-warning text-white">Rekomendasi Tuntas Sebagian</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-minus text-muted mb-0"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <span class="h2 mb-0">
+                                <?php
+                                echo count($tuntas_blm);
+                                ?>
+                                </span>
+                                <p class="text-muted mb-0">
+                                    <span class="badge badge-pill badge-danger text-white">Rekomendasi Belum Tuntas/Belum TL</span>
+                                </p>
+                            </div>
+                            <div class="col-auto">
+                                <span class="fe fe-32 fe-x text-muted mb-0"></span>
                             </div>
                         </div>
                     </div>

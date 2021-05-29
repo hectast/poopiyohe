@@ -118,7 +118,7 @@ function tampil_trusted_advisor($mysqli)
             <td><?= $uraian ?></td>
             <td>
                 
-                    <?= round($trad) ?>
+                    <?= round($trad,2) ?>
                 
             </td>
             <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>
@@ -146,7 +146,7 @@ function tampil_pan($mysqli)
             <td><?= $uraian ?></td>
             <td>
                 
-                    <?= round($pnrb) ?>
+                    <?= round($pnrb,2) ?>
                 
             </td>
             <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>
@@ -174,7 +174,7 @@ function tampil_pion($mysqli)
             <td><?= $uraian ?></td>
             <td>
                 
-                    <?= round($pion) ?>
+                    <?= round($pion,2) ?>
               
             </td>
             <td><a href="detail_nilai/<?= $id_penugasan?>" class="btn btn-primary btn-sm"><i class="fe fe-search"></i> Detail Nilai</a></td>

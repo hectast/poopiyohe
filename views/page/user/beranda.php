@@ -1,39 +1,9 @@
 <?php
 include 'app/controllers/login/cek_login.php';
+// include 'app/function_download.php';
+// $random_karakter = random_karakter();
+// setcookie(base64_encode('random_karakter'), base64_encode($random_karakter), time() + 3600);
 ?>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header modalheader">
-                <div class="w-100">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <img src="assets/img/SiKepo.svg" alt="" style="width: 20%;"> | Login
-                    </h5>
-                </div>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="" class="text-primer"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" name="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="text-primer"><i class="fa fa-lock"></i> Password</label>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" name="login" class="btn btn-primary col-12"> <i class="fa fa-door-open"></i>Masuk</button>
-                        <!-- <a href="login" class="btn btn-link mt-2 col-12"><small>Login sebagai admin</small></a> -->
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!---------------------------------------- header ---------------------------------------->
 
 <div class="container-fluid con-a">
@@ -63,7 +33,10 @@ include 'app/controllers/login/cek_login.php';
                     <button type="submit" name="login" class="btn btn-primer">Masuk</button>
                 </div>
                 <div class="text-center foot">
-                    <div class="bold">Belum tahu cara penggunaanya ? <a href="">Donwload Panduan</a></div>
+                    <div class="bold">
+                        Belum tahu cara penggunaanya ?
+                        <a href='https://drive.google.com/uc?export=download&id=1DUVV2PrBlyvuNq2Tu3Guxg1_hlIh_CZj'>Download Panduan</a>
+                    </div>
                 </div>
             </form>
         </div>

@@ -75,7 +75,13 @@ function tgl_indo($tanggal)
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col">
-                                <span class="h2 mb-0"><?= mysqli_num_rows($rslt_getTemuan); ?></span>
+                                <span class="h2 mb-0">
+                                <?php
+                                $query_TMN = $mysqli->query("SELECT count(id_temuan) AS ttl FROM temuan JOIN penugasan_auditor ON penugasan_auditor.id_penugasan = temuan.id_penugasan WHERE penugasan_auditor.id = '{$rowDalnis['id']}'");
+                                $row_TMN = $query_TMN->fetch_assoc();
+                                echo $row_TMN['ttl'];
+                                ?>
+                                </span>
                                 <p class="text-muted mb-0">
                                     <span class="badge badge-pill badge-primary">Temuan</span>
                                 </p>
